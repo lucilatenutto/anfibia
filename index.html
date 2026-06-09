@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revista Anfibia — Crónica y Ensayos</title>
+    <!-- Google Fonts: Bebas Neue (for bold headlines), Montserrat (for labels/ui), Lora (for literary serif credit text) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lora:ital,wght@0,400..700;1,400..700&family=Montserrat:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom Style -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Header / Navbar -->
+    <header class="main-header">
+        <div class="header-container">
+            <div class="header-left">
+                <a href="#" class="brand-logo">Anfibia</a>
+                <div class="unsam-badge">
+                    <img src="unsam.png" alt="UNSAM" class="unsam-logo-img">
+                </div>
+                <div class="social-icons">
+                    <a href="#" class="social-link" title="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-link" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link" title="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <nav class="header-nav">
+                <ul class="nav-list">
+                    <li><a href="#" class="nav-item special-link">Comunidad Anfibia</a></li>
+                    <li><a href="#" class="nav-item">Textos</a></li>
+                    <li><a href="#" class="nav-item">Podcast</a></li>
+                    <li><a href="#" class="nav-item">Talleres</a></li>
+                    <li><a href="#" class="nav-item">Maestría</a></li>
+                    <li><a href="#" class="nav-item">Diplomatura IA</a></li>
+                    <li><a href="#" class="nav-item">LPP</a></li>
+                    <li><a href="#" class="nav-item">Futuro Imperfecto 3</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-right">
+                <button class="search-btn" id="searchBtn" title="Buscar">
+                    <i class="fas fa-search"></i>
+                </button>
+                <button class="menu-toggle" id="menuToggle" title="Menú">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Search Overlay -->
+    <div class="search-overlay" id="searchOverlay">
+        <div class="search-box">
+            <input type="text" placeholder="Buscar crónicas, ensayos, autores..." id="searchInput">
+            <button class="close-search" id="closeSearch"><i class="fas fa-times"></i></button>
+        </div>
+    </div>
+
+    <!-- HERO SLIDER SECTION (Full screen width, controlled height) -->
+    <section class="hero-slider-section" id="mainSlider">
+        <!-- Slider Wrapper -->
+        <div class="slider-wrapper">
+
+            <!-- Slide 1 (Active) -->
+            <article class="slide active" data-index="0">
+                <div class="slide-image-container">
+                    <img src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?q=80&w=1200"
+                        alt="El Indio nos dio un código" class="slide-image">
+                    <div class="slide-overlay"></div>
+                    <div class="slide-badge">DESTACADO</div>
+                </div>
+                <div class="slide-content">
+                    <span class="slide-category">ARTE, POLICÍA, POLÍTICA Y AUTOGESTIÓN</span>
+                    <h1 class="slide-title">EL INDIO NOS DIO UN CÓDIGO</h1>
+                    <div class="slide-meta">
+                        <span class="author">Por <strong>Ana Longoni</strong></span>
+                        <span class="separator">|</span>
+                        <span class="artist">Arte: <strong>Cristina Sille</strong></span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Slide 2 (Hidden by default, for carousel demo) -->
+            <article class="slide" data-index="1">
+                <div class="slide-image-container">
+                    <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=1200"
+                        alt="Un objetivo simple y brutal" class="slide-image">
+                    <div class="slide-overlay"></div>
+                    <div class="slide-badge">ENSAYO</div>
+                </div>
+                <div class="slide-content">
+                    <span class="slide-category">DISCURSOS DE ODIO</span>
+                    <h1 class="slide-title">UN OBJETIVO SIMPLE Y BRUTAL</h1>
+                    <div class="slide-meta">
+                        <span class="author">Por <strong>Julia Mengolini</strong></span>
+                        <span class="separator">|</span>
+                        <span class="artist">Arte: <strong>Nora Lezano</strong></span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Slide 3 (Hidden by default, for carousel demo) -->
+            <article class="slide" data-index="2">
+                <div class="slide-image-container">
+                    <img src="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?q=80&w=1200"
+                        alt="El sueldo se me va en pagar deudas" class="slide-image">
+                    <div class="slide-overlay"></div>
+                    <div class="slide-badge">CRÓNICA</div>
+                </div>
+                <div class="slide-content">
+                    <span class="slide-category">ECONOMÍA FAMILIAR, POLÍTICA Y DEMOCRACIA</span>
+                    <h1 class="slide-title">EL SUELDO SE ME VA EN PAGAR LAS DEUDAS</h1>
+                    <div class="slide-meta">
+                        <span class="author">Por <strong>Ariel Wilkis</strong></span>
+                        <span class="separator">|</span>
+                        <span class="artist">Arte: <strong>Flora Dunand</strong></span>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+
+        <!-- Slider Navigation Controls -->
+        <button class="slider-btn prev" id="sliderPrev" aria-label="Anterior"><i
+                class="fas fa-chevron-left"></i></button>
+        <button class="slider-btn next" id="sliderNext" aria-label="Siguiente"><i
+                class="fas fa-chevron-right"></i></button>
+
+        <!-- Slider Indicators -->
+        <div class="slider-dots">
+            <span class="dot active" data-slide="0"></span>
+            <span class="dot" data-slide="1"></span>
+            <span class="dot" data-slide="2"></span>
+        </div>
+    </section>
+
+    <!-- Main Content Container -->
+    <main class="editorial-container">
+
+        <!-- ARTICLES GRID SECTION (All 6 articles from the second image) -->
+        <section class="bottom-grid-section">
+            <div class="section-title-wrapper">
+                <h2 class="section-title">ÚLTIMOS LANZAMIENTOS</h2>
+                <div class="title-line"></div>
+            </div>
+
+            <div class="articles-grid">
+
+                <!-- Grid Card 1 -->
+                <article class="grid-card">
+                    <div class="grid-card-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=600"
+                            alt="El sueldo se me va en pagar las deudas" class="grid-card-img">
+                        <span class="card-badge">ENSAYO</span>
+                    </div>
+                    <div class="grid-card-content">
+                        <span class="card-category">ECONOMÍA FAMILIAR, POLÍTICA Y DEMOCRACIA</span>
+                        <h3 class="card-title"><a href="#">EL SUELDO SE ME VA EN PAGAR LAS DEUDAS</a></h3>
+                        <div class="card-meta">
+                            <span class="card-author">Por <strong>Ariel Wilkis</strong></span>
+                            <span class="card-separator">/</span>
+                            <span class="card-artist">Arte: <strong>Flora Dunand</strong></span>
+                        </div>
+                        <div class="card-footer">
+                            <button class="share-btn" title="Compartir"><i class="fas fa-share-alt"></i></button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Grid Card 2 -->
+                <article class="grid-card">
+                    <div class="grid-card-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=600"
+                            alt="El triunfo del yopitalismo" class="grid-card-img">
+                        <span class="card-badge">ENSAYO</span>
+                    </div>
+                    <div class="grid-card-content">
+                        <span class="card-category">ELECCIONES PRESIDENCIALES EN COLOMBIA</span>
+                        <h3 class="card-title"><a href="#">EL TRIUNFO DEL YOPITALISMO</a></h3>
+                        <div class="card-meta">
+                            <span class="card-author">Por <strong>Omar Rincón</strong></span>
+                        </div>
+                        <div class="card-footer">
+                            <button class="share-btn" title="Compartir"><i class="fas fa-share-alt"></i></button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Grid Card 3 -->
+                <article class="grid-card">
+                    <div class="grid-card-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=600"
+                            alt="Un objetivo simple y brutal" class="grid-card-img">
+                        <span class="card-badge">ENSAYO</span>
+                    </div>
+                    <div class="grid-card-content">
+                        <span class="card-category">DISCURSOS DE ODIO</span>
+                        <h3 class="card-title"><a href="#">UN OBJETIVO SIMPLE Y BRUTAL</a></h3>
+                        <div class="card-meta">
+                            <span class="card-author">Por <strong>Julia Mengolini</strong></span>
+                            <span class="card-separator">/</span>
+                            <span class="card-artist">Arte: <strong>Nora Lezano</strong></span>
+                        </div>
+                        <div class="card-footer">
+                            <button class="share-btn" title="Compartir"><i class="fas fa-share-alt"></i></button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Grid Card 4 -->
+                <article class="grid-card">
+                    <div class="grid-card-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?q=80&w=600"
+                            alt="Prepárate para vivir cien años" class="grid-card-img">
+                        <span class="card-badge">ENSAYO</span>
+                    </div>
+                    <div class="grid-card-content">
+                        <span class="card-category">NUEVAS LONGEVIDADES</span>
+                        <h3 class="card-title"><a href="#">PREPARATE PARA VIVIR CIEN AÑOS</a></h3>
+                        <div class="card-meta">
+                            <span class="card-author">Por <strong>Gabriela Cerruti</strong></span>
+                            <span class="card-separator">/</span>
+                            <span class="card-artist">Arte: <strong>Pato Iaco</strong></span>
+                        </div>
+                        <div class="card-footer">
+                            <button class="share-btn" title="Compartir"><i class="fas fa-share-alt"></i></button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Grid Card 5 -->
+                <article class="grid-card">
+                    <div class="grid-card-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?q=80&w=600"
+                            alt="Sí hay plata" class="grid-card-img">
+                        <span class="card-badge">ENSAYO</span>
+                    </div>
+                    <div class="grid-card-content">
+                        <span class="card-category">LA DESTRUCCIÓN PLANIFICADA DE LAS UNIVERSIDADES</span>
+                        <h3 class="card-title"><a href="#">SÍ HAY PLATA</a></h3>
+                        <div class="card-meta">
+                            <span class="card-author">Por <strong>Juan Pablo Bohoslavsky, Francisco
+                                    Cantamutto</strong></span>
+                        </div>
+                        <div class="card-footer">
+                            <button class="share-btn" title="Compartir"><i class="fas fa-share-alt"></i></button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Grid Card 6 -->
+                <article class="grid-card">
+                    <div class="grid-card-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1508739773434-c26b3d09e071?q=80&w=600"
+                            alt="Gemelo digital" class="grid-card-img">
+                        <span class="card-badge">ENSAYO</span>
+                    </div>
+                    <div class="grid-card-content">
+                        <span class="card-category">EL SUEÑO DEL CONTROL TOTAL</span>
+                        <h3 class="card-title"><a href="#">GEMELO DIGITAL: DESMANTELAR Y VIGILAR</a></h3>
+                        <div class="card-meta">
+                            <span class="card-author">Por <strong>Jairo Álvarez, Juan Pablo Bohoslavsky</strong></span>
+                        </div>
+                        <div class="card-footer">
+                            <button class="share-btn" title="Compartir"><i class="fas fa-share-alt"></i></button>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-branding">
+                <span class="footer-logo">Anfibia</span>
+                <p>Periodismo narrativo y comunicación científica.</p>
+            </div>
+            <div class="footer-copy">
+                &copy; 2026 Revista Anfibia / UNSAM. Rediseño experimental.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notification for Share / Interactive elements -->
+    <div class="toast-notification" id="toast">
+        <i class="fas fa-link"></i> <span id="toastMessage">Enlace copiado al portapapeles!</span>
+    </div>
+
+    <!-- Script for carousel and basic interactivity -->
+    <script src="script.js"></script>
+</body>
+
+</html>
