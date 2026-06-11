@@ -179,7 +179,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Toggle active state
             btn.classList.toggle('loved');
             const icon = btn.querySelector('i');
-            
+
             if (btn.classList.contains('loved')) {
                 if (icon) {
                     icon.classList.remove('far');
@@ -201,7 +201,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const vertProgressBar = document.getElementById('verticalProgressBar');
     const vertProgressHandle = document.getElementById('verticalProgressHandle');
     const vertProgressTrack = document.querySelector('.vertical-progress-track');
-    
+
     if (vertProgressBar && vertProgressHandle && vertProgressTrack) {
         let tickData = [];
 
@@ -214,7 +214,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const subheadings = document.querySelectorAll('.article-body-container h3.article-subheading');
             const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-            
+
             if (docHeight <= 0) return;
 
             subheadings.forEach((heading) => {
@@ -256,10 +256,10 @@ document.addEventListener('DOMContentLoaded', () => {
         function updateProgress() {
             const scrollTop = window.scrollY || document.documentElement.scrollTop;
             const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-            
+
             if (docHeight > 0) {
                 const scrollPercent = Math.min((scrollTop / docHeight) * 100, 100);
-                
+
                 // Update bar height and handle position
                 vertProgressBar.style.height = scrollPercent + '%';
                 vertProgressHandle.style.top = scrollPercent + '%';
@@ -278,7 +278,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Initialize ticks on load and when images are loaded
         setupTicks();
         window.addEventListener('load', setupTicks);
-        
+
         // Handle scroll and resize events
         window.addEventListener('scroll', updateProgress);
         window.addEventListener('resize', () => {
@@ -294,25 +294,25 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnAnnotate = document.getElementById('btnAnnotate');
     const annotationModal = document.getElementById('annotationModal');
     const closeAnnotationModal = document.getElementById('closeAnnotationModal');
-    
+
     // Modal Form Elements
     const modalQuoteDisplay = document.getElementById('modalQuoteDisplay');
     const annotationAuthorInput = document.getElementById('annotationAuthorInput');
     const annotationTextInput = document.getElementById('annotationTextInput');
-    
+
     // Preview Elements
     const igCardPreview = document.getElementById('igCardPreview');
     const previewQuoteText = document.getElementById('previewQuoteText');
     const previewNoteText = document.getElementById('previewNoteText');
     const previewAuthor = document.getElementById('previewAuthor');
     const themeDots = document.querySelectorAll('.theme-dot');
-    
+
     // Action Buttons in Modal
     const btnSavePersonalNote = document.getElementById('btnSavePersonalNote');
     const btnPublishComment = document.getElementById('btnPublishComment');
     const btnDownloadIGCard = document.getElementById('btnDownloadIGCard');
     const instagramStoryCanvas = document.getElementById('instagramStoryCanvas');
-    
+
     // Comments elements
     const commentsList = document.getElementById('commentsList');
     const commentsCountEl = document.getElementById('commentsCount');
@@ -335,7 +335,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (selectionBar) {
         document.addEventListener('mouseup', handleTextSelection);
         document.addEventListener('touchend', handleTextSelection);
-        
+
         // Hide selection bar if clicked elsewhere
         document.addEventListener('mousedown', (e) => {
             if (selectionBar.contains(e.target)) return;
@@ -359,19 +359,19 @@ document.addEventListener('DOMContentLoaded', () => {
         // Ensure we selected something longer than 5 chars, and it's inside the article body
         if (selectedText.length > 5 && selection.rangeCount > 0) {
             const range = selection.getRangeAt(0);
-            
+
             if (articleBody.contains(range.commonAncestorContainer)) {
                 currentSelectedText = selectedText;
                 currentSelectedRange = range.cloneRange();
-                
+
                 // Position selection bar above selection
                 const rects = range.getClientRects();
                 if (rects.length > 0) {
                     // Use the first rect to position the bar above it
                     const rect = rects[0];
                     const barWidth = 180; // approximate width of the bar
-                    
-                    const clampedViewportLeft = Math.max(barWidth/2 + 10, Math.min(window.innerWidth - barWidth/2 - 10, rect.left + rect.width / 2));
+
+                    const clampedViewportLeft = Math.max(barWidth / 2 + 10, Math.min(window.innerWidth - barWidth / 2 - 10, rect.left + rect.width / 2));
                     selectionBar.style.left = `${clampedViewportLeft + window.scrollX}px`;
                     selectionBar.style.top = `${rect.top + window.scrollY - 10}px`;
                     selectionBar.classList.add('active');
@@ -408,7 +408,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const span = document.createElement('span');
         span.className = 'article-highlight';
         span.title = "Cita destacada. Haz clic para anotar.";
-        
+
         try {
             range.surroundContents(span);
         } catch (e) {
@@ -479,7 +479,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function openAnnotationModalWithText(text) {
         currentSelectedText = text || "";
-        
+
         // Populate fields
         if (modalQuoteDisplay) {
             if (currentSelectedText) {
@@ -558,9 +558,9 @@ document.addEventListener('DOMContentLoaded', () => {
         dot.addEventListener('click', () => {
             themeDots.forEach(d => d.classList.remove('active'));
             dot.classList.add('active');
-            
+
             selectedTheme = dot.getAttribute('data-theme');
-            
+
             // Update preview card theme class
             if (igCardPreview) {
                 igCardPreview.className = `ig-card-preview theme-${selectedTheme}`;
@@ -573,7 +573,7 @@ document.addEventListener('DOMContentLoaded', () => {
         btnSavePersonalNote.addEventListener('click', () => {
             const author = annotationAuthorInput.value.trim() || "Lector Anfibia";
             const note = annotationTextInput.value.trim();
-            
+
             if (!note) {
                 showToast("Por favor, redacta una nota antes de guardar.");
                 return;
@@ -591,7 +591,7 @@ document.addEventListener('DOMContentLoaded', () => {
             let savedNotes = JSON.parse(localStorage.getItem('anfibia_personal_notes') || '[]');
             savedNotes.push(personalNote);
             localStorage.setItem('anfibia_personal_notes', JSON.stringify(savedNotes));
-            
+
             // Also color text as highlighted
             if (currentSelectedRange) {
                 highlightRange(currentSelectedRange, currentSelectedText);
@@ -605,7 +605,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Post comment dynamically
     function addCommentToDOM(comment, animate = false) {
         if (!commentsList) return;
-        
+
         const card = document.createElement('div');
         card.className = `comment-card ${comment.quote ? 'highlight-comment' : ''}`;
         if (animate) {
@@ -614,7 +614,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         let innerHTML = "";
-        
+
         if (comment.quote) {
             innerHTML += `
                 <div class="comment-badge"><i class="fas fa-highlighter"></i> CITA DESTACADA</div>
@@ -689,7 +689,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Close modal & scroll to comments
             annotationModal.classList.remove('active');
             showToast("¡Anotación publicada como comentario!");
-            
+
             setTimeout(() => {
                 const commentSec = document.querySelector('.comments-section-container');
                 if (commentSec) {
@@ -814,7 +814,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 ctx.fillStyle = 'rgba(255, 255, 255, 0.95)';
                 ctx.font = 'italic 44px "Lora", Georgia, serif';
                 ctx.textAlign = 'left';
-                
+
                 // Truncate quote if too long to prevent overflowing
                 let truncatedQuote = quote;
                 if (truncatedQuote.length > 280) {
@@ -830,7 +830,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 ctx.moveTo(120, nextY + 30);
                 ctx.lineTo(240, nextY + 30);
                 ctx.stroke();
-                
+
                 nextY = nextY + 130;
             }
 
@@ -936,7 +936,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Check if there is an active text selection
             const selection = window.getSelection();
             const selectedText = selection.toString().trim();
-            
+
             if (selectedText.length > 5) {
                 openAnnotationModalWithText(selectedText);
             } else {
