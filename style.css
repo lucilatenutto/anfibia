@@ -1609,3 +1609,712 @@ button {
         display: none;
     }
 }
+
+/* ==========================================================================
+   ACTIVE READING TOOL & HIGHLIGHTS
+   ========================================================================== */
+.article-highlight {
+    background-color: rgba(241, 90, 36, 0.22);
+    border-bottom: 2px dashed rgba(241, 90, 36, 0.65);
+    border-radius: 2px;
+    padding: 1px 0;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.article-highlight:hover {
+    background-color: rgba(241, 90, 36, 0.35);
+}
+
+/* Floating Selection Bar */
+.selection-share-bar {
+    position: absolute;
+    z-index: 1000;
+    background-color: rgba(5, 5, 5, 0.95);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 50px;
+    padding: 6px 12px;
+    display: flex;
+    gap: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, -100%) scale(0.9);
+    transition: opacity 0.2s ease, transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.selection-share-bar.active {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%, -115%) scale(1);
+}
+
+.selection-share-bar::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 6px;
+    border-style: solid;
+    border-color: rgba(5, 5, 5, 0.95) transparent transparent transparent;
+}
+
+.selection-btn {
+    color: var(--color-white);
+    font-size: 0.72rem;
+    font-family: var(--font-ui);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    padding: 6px 14px;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s ease;
+}
+
+.selection-btn i {
+    font-size: 0.8rem;
+    color: var(--color-anfibia-peach);
+}
+
+.selection-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--color-anfibia-peach-hover);
+}
+
+/* ==========================================================================
+   ANNOTATIONS MODAL (Instagram Share & Notes)
+   ========================================================================== */
+.annotation-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(5, 5, 5, 0.85);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    z-index: 1001;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s ease;
+    padding: 20px;
+}
+
+.annotation-modal-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.annotation-modal-card {
+    background-color: #121212;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    width: 100%;
+    max-width: 860px;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+    position: relative;
+    overflow: hidden;
+    transform: scale(0.95);
+    transition: transform 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+    color: var(--color-white);
+}
+
+.annotation-modal-overlay.active .annotation-modal-card {
+    transform: scale(1);
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 1.4rem;
+    z-index: 10;
+    transition: all 0.2s ease;
+}
+
+.modal-close-btn:hover {
+    color: var(--color-white);
+    transform: scale(1.1);
+}
+
+.modal-body-grid {
+    display: grid;
+    grid-template-columns: 310px 1fr;
+    gap: 40px;
+    padding: 40px;
+}
+
+/* Left: Instagram Preview Card */
+.preview-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.column-title {
+    font-family: var(--font-ui);
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.ig-card-preview {
+    aspect-ratio: 9 / 16;
+    width: 100%;
+    border-radius: 14px;
+    padding: 30px 24px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: background 0.4s ease;
+}
+
+/* IG Themes */
+.ig-card-preview.theme-peach {
+    background: linear-gradient(135deg, #f15a24 0%, #ff7543 50%, #072113 100%);
+}
+
+.ig-card-preview.theme-forest {
+    background: linear-gradient(135deg, #072113 0%, #17422c 60%, #08100b 100%);
+}
+
+.ig-card-preview.theme-dark {
+    background: linear-gradient(135deg, #151515 0%, #2a2a2a 50%, #050505 100%);
+}
+
+.ig-card-watermark {
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    color: var(--color-white);
+    opacity: 0.35;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    line-height: 1;
+    margin-bottom: 24px;
+}
+
+.ig-card-quotes {
+    color: var(--color-white);
+    opacity: 0.25;
+    font-size: 1.8rem;
+    margin-bottom: 8px;
+    line-height: 1;
+}
+
+.ig-card-quote-text {
+    font-family: var(--font-literary);
+    font-size: 0.85rem;
+    font-style: italic;
+    line-height: 1.6;
+    color: var(--color-white);
+    max-height: 140px;
+    overflow-y: auto;
+    margin-bottom: 16px;
+    /* Custom scrollbar for preview */
+    scrollbar-width: none;
+}
+.ig-card-quote-text::-webkit-scrollbar {
+    display: none;
+}
+
+.ig-card-divider {
+    height: 1.5px;
+    background-color: rgba(255, 255, 255, 0.3);
+    width: 40px;
+    margin-bottom: 16px;
+}
+
+.ig-card-note-text {
+    font-family: var(--font-ui);
+    font-size: 0.8rem;
+    font-weight: 500;
+    line-height: 1.5;
+    color: var(--color-white);
+    opacity: 0.9;
+    flex-grow: 1;
+    word-break: break-word;
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+.ig-card-note-text::-webkit-scrollbar {
+    display: none;
+}
+
+.ig-card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding-top: 12px;
+    margin-top: 16px;
+    font-size: 0.6rem;
+    font-family: var(--font-ui);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    opacity: 0.8;
+}
+
+.ig-card-author {
+    font-weight: 700;
+    color: var(--color-white);
+}
+
+.ig-card-url {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* Theme Dot Selector */
+.theme-selector-container {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.selector-label {
+    font-size: 0.72rem;
+    font-family: var(--font-ui);
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.theme-options {
+    display: flex;
+    gap: 10px;
+}
+
+.theme-dot {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.theme-dot.active {
+    border-color: var(--color-white);
+    transform: scale(1.15);
+}
+
+.theme-peach-btn {
+    background: linear-gradient(135deg, #f15a24, #ff7543);
+}
+
+.theme-forest-btn {
+    background: linear-gradient(135deg, #072113, #1e5a3c);
+}
+
+.theme-dark-btn {
+    background: linear-gradient(135deg, #2a2a2a, #050505);
+}
+
+/* Right: Form Column */
+.form-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    font-family: var(--font-ui);
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.selected-quote-box {
+    background-color: rgba(255, 255, 255, 0.03);
+    border-left: 3px solid var(--color-anfibia-peach);
+    padding: 14px 18px;
+    border-radius: 4px;
+    font-family: var(--font-literary);
+    font-size: 0.95rem;
+    font-style: italic;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.85);
+    max-height: 120px;
+    overflow-y: auto;
+}
+
+.form-column input[type="text"],
+.form-column textarea {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    padding: 12px;
+    color: var(--color-white);
+    font-family: var(--font-ui);
+    font-size: 0.85rem;
+    outline: none;
+    transition: all 0.25s ease;
+}
+
+.form-column input[type="text"]:focus,
+.form-column textarea:focus {
+    border-color: var(--color-anfibia-peach);
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+.modal-actions {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.modal-action-btn {
+    flex: 1;
+    padding: 12px 18px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.modal-action-btn.btn-primary {
+    background-color: var(--color-anfibia-peach);
+    color: var(--color-white);
+}
+
+.modal-action-btn.btn-primary:hover {
+    background-color: var(--color-anfibia-peach-hover);
+    transform: translateY(-2px);
+}
+
+.modal-action-btn.btn-secondary {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--color-white);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.modal-action-btn.btn-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+}
+
+.instagram-export-container {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.ig-export-btn {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    color: var(--color-white);
+    padding: 14px 20px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(220, 39, 67, 0.3);
+    transition: all 0.25s ease;
+}
+
+.ig-export-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(220, 39, 67, 0.45);
+}
+
+.export-help {
+    font-size: 0.68rem;
+    color: rgba(255, 255, 255, 0.4);
+    text-align: center;
+}
+
+/* ==========================================================================
+   COMMENTS SECTION
+   ========================================================================== */
+.comments-section-container {
+    background-color: var(--color-white);
+    padding: 80px 24px;
+    border-top: 1px solid var(--color-border-gray);
+}
+
+.comments-inner {
+    max-width: 760px;
+    margin: 0 auto;
+}
+
+.comments-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid var(--color-black);
+    padding-bottom: 16px;
+    margin-bottom: 40px;
+}
+
+.comments-section-title {
+    font-family: var(--font-heading);
+    font-size: 2.2rem;
+    letter-spacing: 0.5px;
+    color: var(--color-black);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.comments-section-title i {
+    color: var(--color-anfibia-peach);
+}
+
+.comments-count {
+    font-family: var(--font-ui);
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--color-medium-gray);
+    letter-spacing: 1px;
+}
+
+.comments-list {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    margin-bottom: 60px;
+}
+
+.comment-card {
+    background-color: var(--color-light-gray);
+    border-radius: 8px;
+    padding: 24px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+    border: 1px solid rgba(0,0,0,0.04);
+    transition: all 0.3s ease;
+}
+
+.comment-card.highlight-comment {
+    border-left: 4px solid var(--color-anfibia-peach);
+    background-color: rgba(241, 90, 36, 0.025);
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.comment-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.65rem;
+    font-weight: 800;
+    color: var(--color-anfibia-peach);
+    letter-spacing: 1.2px;
+    margin-bottom: 12px;
+}
+
+.comment-blockquote {
+    font-family: var(--font-literary);
+    font-size: 1rem;
+    font-style: italic;
+    line-height: 1.5;
+    color: #4a4a4a;
+    background-color: rgba(0,0,0,0.03);
+    border-left: 2px solid #ccc;
+    padding: 10px 16px;
+    margin-bottom: 16px;
+    border-radius: 2px;
+}
+
+.comment-header-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
+    font-size: 0.75rem;
+    font-family: var(--font-ui);
+}
+
+.comment-author {
+    font-weight: 700;
+    color: var(--color-black);
+}
+
+.comment-date {
+    color: var(--color-medium-gray);
+}
+
+.comment-body {
+    font-family: var(--font-literary);
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: #2b2b2b;
+}
+
+/* Comment Form */
+.comment-form-container {
+    border-top: 1px solid var(--color-border-gray);
+    padding-top: 48px;
+}
+
+.form-title {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    margin-bottom: 6px;
+    color: var(--color-black);
+}
+
+.form-subtitle {
+    font-family: var(--font-ui);
+    font-size: 0.78rem;
+    color: var(--color-medium-gray);
+    margin-bottom: 24px;
+}
+
+.form-row {
+    margin-bottom: 16px;
+}
+
+.form-col {
+    width: 100%;
+    max-width: 300px;
+}
+
+.comment-form-container input[type="text"],
+.comment-form-container textarea {
+    width: 100%;
+    padding: 14px;
+    border: 1.5px solid var(--color-border-gray);
+    border-radius: 6px;
+    font-family: var(--font-ui);
+    font-size: 0.85rem;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+.comment-form-container input[type="text"]:focus,
+.comment-form-container textarea:focus {
+    border-color: var(--color-anfibia-peach);
+    background-color: rgba(241, 90, 36, 0.01);
+}
+
+.submit-comment-btn {
+    background-color: var(--color-black);
+    color: var(--color-white);
+    padding: 14px 28px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.submit-comment-btn:hover {
+    background-color: var(--color-anfibia-peach);
+    transform: translateY(-2px);
+}
+
+/* Responsive modal tweaks */
+@media (max-width: 800px) {
+    .modal-body-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding: 30px 20px;
+        max-height: 85vh;
+        overflow-y: auto;
+    }
+    
+    .preview-column {
+        display: none; /* Hide complex preview on mobile screens to save space */
+    }
+}
+
+/* ==========================================================================
+   BOTTOM-RIGHT FLOATING ACTION BUTTONS
+   ========================================================================== */
+.bottom-right-floating-container {
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    z-index: 99;
+}
+
+.floating-action-btn {
+    width: 56px;
+    height: 56px;
+    background-color: var(--color-anfibia-purple); /* #5856d6 */
+    color: var(--color-white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.35rem;
+    box-shadow: 0 4px 15px rgba(88, 86, 214, 0.4);
+    cursor: pointer;
+    border: none;
+    outline: none;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.floating-action-btn:hover {
+    background-color: var(--color-anfibia-purple-hover); /* #4543b5 */
+    transform: translateY(-4px) scale(1.06);
+    box-shadow: 0 8px 25px rgba(88, 86, 214, 0.55);
+}
+
+.floating-action-btn.active {
+    background-color: var(--color-anfibia-peach);
+    box-shadow: 0 4px 15px rgba(241, 90, 36, 0.4);
+}
+
+.floating-action-btn.active:hover {
+    background-color: var(--color-anfibia-peach-hover);
+    box-shadow: 0 8px 25px rgba(241, 90, 36, 0.55);
+}
+
+@media (max-width: 600px) {
+    .bottom-right-floating-container {
+        right: 20px;
+        bottom: 20px;
+        gap: 10px;
+    }
+    .floating-action-btn {
+        width: 48px;
+        height: 48px;
+        font-size: 1.15rem;
+    }
+}
+

@@ -195,6 +195,78 @@
         <p class="article-paragraph">Fernanda da clases de educación ambiental. Recorre escuelas. Cuando los chicos dicen ‘no quiero que llegue el verano’, les responde que no tengan miedo, que en los paisajes pasan cosas, que transformamos el entorno pero que eso no necesariamente significa el final. Que un bosque quemado también puede ser el principio de otro paisaje si lo acompañamos.</p>
     </article>
 
+    <!-- Comments & Active Readings Section -->
+    <section class="comments-section-container">
+        <div class="comments-inner">
+            <div class="comments-header">
+                <h2 class="comments-section-title"><i class="fas fa-comments"></i> Lectura Activa & Comentarios</h2>
+                <div class="comments-count" id="commentsCount">3 comentarios</div>
+            </div>
+            
+            <!-- List of comments -->
+            <div class="comments-list" id="commentsList">
+                <!-- Seed Comment 1 -->
+                <div class="comment-card highlight-comment">
+                    <div class="comment-badge"><i class="fas fa-highlighter"></i> CITA DESTACADA</div>
+                    <blockquote class="comment-blockquote">
+                        "En los 'meses de paz', las comunidades indígenas trabajan en la restauración del suelo, podan las plantas para dejar que la vida propia de las raíces hagan lo suyo."
+                    </blockquote>
+                    <div class="comment-header-meta">
+                        <span class="comment-author">Guido Vecchi</span>
+                        <span class="comment-date">Hace 2 horas</span>
+                    </div>
+                    <div class="comment-body">
+                        Qué importante recuperar los saberes ancestrales sobre los ciclos naturales para la preparación y cuidado del suelo. La resiliencia no se trata de inventar todo de nuevo, sino de recordar lo que funcionaba antes de la monocultura de pinos.
+                    </div>
+                </div>
+                
+                <!-- Seed Comment 2 -->
+                <div class="comment-card">
+                    <div class="comment-header-meta">
+                        <span class="comment-author">Paula Rezzano</span>
+                        <span class="comment-date">Hace 5 horas</span>
+                    </div>
+                    <div class="comment-body">
+                        El viento en la Patagonia ha cambiado de sonido porque el desastre ecológico modificó la barrera física que constituían las copas de los árboles nativos. Qué doloroso leer esto, pero qué necesario para entender la nueva dimensión del peligro.
+                    </div>
+                </div>
+
+                <!-- Seed Comment 3 -->
+                <div class="comment-card highlight-comment">
+                    <div class="comment-badge"><i class="fas fa-highlighter"></i> CITA DESTACADA</div>
+                    <blockquote class="comment-blockquote">
+                        "un buen cálculo para convivir con la naturaleza es el 3-30-300: ver al menos 3 árboles desde la ventana de tu casa... 30 por ciento de verde en cada barrio y que cada vivienda esté a 300 metros de un parque..."
+                    </blockquote>
+                    <div class="comment-header-meta">
+                        <span class="comment-author">Martina Ambientóloga</span>
+                        <span class="comment-date">Ayer</span>
+                    </div>
+                    <div class="comment-body">
+                        Excelente regla urbanística. Si logramos aplicar la regla del 3-30-300 en los asentamientos urbanos de interfase en el sur, no solo mejoramos la calidad de vida, sino que creamos cinturones de amortiguación natural contra los incendios.
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Inline comment writer form -->
+            <div class="comment-form-container">
+                <h3 class="form-title">Sumar mi comentario</h3>
+                <p class="form-subtitle">También puedes resaltar fragmentos del texto de la crónica directamente con tu cursor para comentarlos o guardarlos.</p>
+                
+                <div class="form-row">
+                    <div class="form-col">
+                        <input type="text" id="directCommentAuthor" placeholder="Tu Nombre">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <textarea id="directCommentText" rows="4" placeholder="Escribe un comentario general o una opinión..."></textarea>
+                </div>
+                <div class="form-row">
+                    <button class="submit-comment-btn" id="btnSubmitDirectComment">Enviar Comentario</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer class="main-footer">
         <div class="footer-container">
@@ -207,6 +279,107 @@
             </div>
         </div>
     </footer>
+
+    <!-- Floating Selection Share Bar -->
+    <div class="selection-share-bar" id="selectionBar">
+        <button class="selection-btn" id="btnHighlight" title="Resaltar texto">
+            <i class="fas fa-highlighter"></i> Resaltar
+        </button>
+        <button class="selection-btn" id="btnAnnotate" title="Anotar cita">
+            <i class="fas fa-edit"></i> Anotar
+        </button>
+    </div>
+
+    <!-- Bottom-Right Floating Actions -->
+    <div class="bottom-right-floating-container">
+        <button class="floating-action-btn" id="floatLoveBtn" title="Guardar en favoritos">
+            <i class="far fa-heart"></i>
+        </button>
+        <button class="floating-action-btn" id="floatShareBtn" title="Compartir crónica">
+            <i class="fas fa-share-nodes"></i>
+        </button>
+        <button class="floating-action-btn" id="floatAnnotateBtn" title="Tomar anotación">
+            <i class="fas fa-pencil"></i>
+        </button>
+    </div>
+
+    <!-- Annotation & Instagram Share Modal -->
+    <div class="annotation-modal-overlay" id="annotationModal">
+        <div class="annotation-modal-card">
+            <button class="modal-close-btn" id="closeAnnotationModal" title="Cerrar">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <div class="modal-body-grid">
+                <!-- Left: Instagram Preview Card -->
+                <div class="preview-column">
+                    <h3 class="column-title">Diseño de Cita (Instagram Story)</h3>
+                    <div class="ig-card-preview theme-peach" id="igCardPreview">
+                        <div class="ig-card-watermark">Revista Anfibia</div>
+                        <div class="ig-card-quotes"><i class="fas fa-quote-left"></i></div>
+                        <div class="ig-card-quote-text" id="previewQuoteText">"Aquí va el fragmento seleccionado de la crónica..."</div>
+                        <div class="ig-card-divider"></div>
+                        <div class="ig-card-note-text" id="previewNoteText">Escribe tus pensamientos en el formulario para ver tu anotación aquí...</div>
+                        <div class="ig-card-footer">
+                            <span class="ig-card-author" id="previewAuthor">Lector Anfibia</span>
+                            <span class="ig-card-url">revistaanfibia.org</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Theme Selector -->
+                    <div class="theme-selector-container">
+                        <span class="selector-label">Elige un estilo:</span>
+                        <div class="theme-options">
+                            <button class="theme-dot theme-peach-btn active" data-theme="peach" title="Peach Sunset"></button>
+                            <button class="theme-dot theme-forest-btn" data-theme="forest" title="Patagonia Forest"></button>
+                            <button class="theme-dot theme-dark-btn" data-theme="dark" title="Classic Dark"></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right: Form Fields -->
+                <div class="form-column">
+                    <h3 class="column-title">Tu Lectura Activa</h3>
+                    
+                    <div class="form-group">
+                        <label>Cita Seleccionada</label>
+                        <blockquote class="selected-quote-box" id="modalQuoteDisplay">
+                            "Fragmento seleccionado..."
+                        </blockquote>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="annotationAuthorInput">Tu Nombre</label>
+                        <input type="text" id="annotationAuthorInput" placeholder="Lector Anónimo" value="Lector Anfibia">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="annotationTextInput">Tus Anotaciones / Comentarios</label>
+                        <textarea id="annotationTextInput" rows="5" placeholder="¿Qué te genera esta cita? Comparte tu análisis, pensamiento o reflexión..."></textarea>
+                    </div>
+                    
+                    <div class="modal-actions">
+                        <button class="modal-action-btn btn-secondary" id="btnSavePersonalNote">
+                            <i class="fas fa-bookmark"></i> Guardar Nota
+                        </button>
+                        <button class="modal-action-btn btn-primary" id="btnPublishComment">
+                            <i class="fas fa-comment-dots"></i> Publicar en Artículo
+                        </button>
+                    </div>
+                    
+                    <div class="instagram-export-container">
+                        <button class="ig-export-btn" id="btnDownloadIGCard">
+                            <i class="fab fa-instagram"></i> Descargar para Historia
+                        </button>
+                        <p class="export-help">Se descargará una imagen de alta calidad diseñada para subir directo a tu Instagram Story.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Hidden Canvas for Instagram image generation -->
+    <canvas id="instagramStoryCanvas" width="1080" height="1920" style="display: none;"></canvas>
 
     <!-- Toast Notification for Share / Interactive elements -->
     <div class="toast-notification" id="toast">
