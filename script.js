@@ -953,4 +953,21 @@ document.addEventListener('DOMContentLoaded', () => {
             showToast("Menú móvil: ¡Próximamente disponible en este prototipo!");
         });
     }
+
+    // 6. ACTIVE READING HELPER CLOSE/PERSISTENCE LOGIC
+    const readingHelper = document.getElementById('readingHelper');
+    const closeHelper = document.getElementById('closeHelper');
+
+    if (readingHelper && closeHelper) {
+        // Check if the user previously dismissed the helper
+        if (localStorage.getItem('anfibia_hide_helper') === 'true') {
+            readingHelper.classList.add('hidden');
+        }
+
+        closeHelper.addEventListener('click', () => {
+            readingHelper.classList.add('hidden');
+            localStorage.setItem('anfibia_hide_helper', 'true');
+            showToast("Indicador de lectura ocultado. No volverá a mostrarse.");
+        });
+    }
 });
