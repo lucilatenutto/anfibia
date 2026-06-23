@@ -273,42 +273,30 @@
 
     <!-- Article Body Section -->
     <article class="article-body-container">
-        <!-- Active Reading Helper Card -->
-        <div class="active-reading-helper" id="readingHelper">
-            <button class="helper-close-btn" id="closeHelper" title="Ocultar indicador">
-                <i class="fas fa-times"></i>
+        <!-- Active Reading Collapsible Guide -->
+        <div class="active-reading-guide-collapsible" id="activeReadingGuide">
+            <button class="guide-toggle-btn" id="activeReadingGuideToggle" aria-expanded="false">
+                <span class="toggle-title">
+                    <i class="fas fa-book-open-reader"></i> ¿Cómo funciona la Lectura Activa?
+                </span>
+                <i class="fas fa-chevron-down toggle-chevron"></i>
             </button>
-            <div class="helper-header">
-                <span class="helper-badge">Lectura Activa</span>
-                <h4 class="helper-title">Ensayo Interactivo</h4>
-            </div>
-            <p class="helper-desc">En Anfibia puedes interactuar con el texto de formas únicas. Prueba estas opciones en cualquier parte del relato:</p>
-            
-            <div class="helper-features-grid">
-                <div class="helper-feature-item">
-                    <span class="helper-feature-icon highlight-icon"><i class="fas fa-highlighter"></i></span>
-                    <div class="helper-feature-info">
-                        <strong>Resaltar</strong>
-                        <span>Selecciona cualquier texto con tu cursor y haz clic en "Resaltar" para guardarlo en tu sesión.</span>
+            <div class="guide-content-panel" id="activeReadingGuideContent">
+                <p class="guide-intro">Esta crónica cuenta con <strong>Lectura Activa</strong>. Los comentarios de la comunidad están vinculados directamente a fragmentos destacados del texto. Participa de la lectura compartida siguiendo estos pasos:</p>
+                <div class="guide-steps-grid">
+                    <div class="guide-step-card">
+                        <div class="step-num">1</div>
+                        <p class="step-text"><strong>Resalta:</strong> Selecciona cualquier frase o párrafo de la crónica con tu cursor mientras lees.</p>
+                    </div>
+                    <div class="guide-step-card">
+                        <div class="step-num">2</div>
+                        <p class="step-text"><strong>Anota:</strong> Haz clic en <strong>Anotar</strong> en el menú flotante para dejar tu comentario o guardarlo.</p>
+                    </div>
+                    <div class="guide-step-card">
+                        <div class="step-num">3</div>
+                        <p class="step-text"><strong>Alterna:</strong> Usa el botón del lápiz flotante (abajo a la derecha) para mostrar u ocultar los destacados de otros lectores.</p>
                     </div>
                 </div>
-                <div class="helper-feature-item">
-                    <span class="helper-feature-icon instagram-icon"><i class="fab fa-instagram"></i></span>
-                    <div class="helper-feature-info">
-                        <strong>Anotar e Instagram</strong>
-                        <span>Escribe tus reflexiones y descarga una postal diseñada especialmente para tus Stories.</span>
-                    </div>
-                </div>
-                <div class="helper-feature-item">
-                    <span class="helper-feature-icon comment-icon"><i class="fas fa-comments"></i></span>
-                    <div class="helper-feature-info">
-                        <strong>Comentar y Debatir</strong>
-                        <span>Publica anotaciones visibles como comentarios generales o vinculados directamente a fragmentos.</span>
-                    </div>
-                </div>
-            </div>
-            <div class="helper-footer">
-                <span class="helper-tip"><i class="fas fa-info-circle"></i> <strong>Tip:</strong> Selecciona cualquier fragmento de texto con tu cursor o dedo para comenzar.</span>
             </div>
         </div>
 
@@ -316,7 +304,7 @@
 
         <p class="article-paragraph">Irán quedó en el Grupo G. Sus tres partidos serán en Los Ángeles y Seattle, ciudades del país que dos semanas antes del sorteo había bombardeado su territorio. Una vez iniciada la guerra, Infantino aclaró que había hablado personalmente con Trump y que los partidos se jugarían donde el sorteo indicaba. A Trump, sin embargo, no pareció importarle demasiado. El gobierno estadounidense le negó a la delegación persa la posibilidad de alojarse en territorio norteamericano. El gobierno mexicano respondió ofreciéndole a Irán concentrar en Tijuana y cruzar la frontera para cada encuentro.</p>
 
-        <p class="article-paragraph">Traducido a imagen global, esto significa que el país que tiene restricciones para ingresar a Estados Unidos será recibido por el país al que Washington le exige militarizar su frontera. El Mundial produce, sin que nadie lo haya planificado así, una solidaridad involuntaria entre dos naciones amedrentadas por la prepotencia trumpista.</p>
+        <p class="article-paragraph">Traducido a imagen global, esto significa que el país que tiene restricciones para ingresar a Estados Unidos será recibido por el país al que Washington le exige militarizar su frontera. <span class="community-highlight" data-author="Tomás Gonzalez" data-note="La paradoja migratoria y fronteriza: el fútbol une a través de la exclusión compartida.">El Mundial produce, sin que nadie lo haya planificado así, una solidaridad involuntaria entre dos naciones amedrentadas por la prepotencia trumpista.</span></p>
 
         <p class="article-paragraph">El conflicto en Medio Oriente combina las características de las guerras tradicionales en las que los beligerantes son Estados, los objetivos son geopolíticos o ideológicos y se utilizan Fuerzas Armadas regulares, con la plasticidad y la ambigüedad de las guerras del siglo XXI. Por caso, Estados Unidos nunca declaró formalmente la guerra a Irán. Hubo drones, misiles de precisión, comunicados del Pentágono hablando de “operaciones quirúrgicas sobre infraestructura militar”, pero no hubo discurso ante el Congreso, no hubo resolución ni aprobación legal. La guerra moderna se diagrama con Inteligencia Artificial, se lanza desde pantallas, se justifica con eufemismos técnicos y se da por terminada cuando el presidente le escribe una carta al Congreso diciendo que “las hostilidades han concluido”, mientras mantiene un bloqueo naval sobre el enemigo.</p>
 
@@ -324,7 +312,7 @@
 
         <p class="article-paragraph">A esto se suman las incongruencias del sistema internacional: el mismo gobierno que ataca militarmente a un país está obligado, por contrato con un organismo internacional, a garantizar visas de entrada, seguridad operativa y cancha en condiciones para los jugadores del país agredido.</p>
 
-        <p class="article-paragraph">A su vez, la FIFA, que prohíbe en sus estatutos cualquier forma de “interferencia política” en el fútbol, negocia esas garantías con el Departamento de Estado de la potencia en guerra a la par que entrega a su presidente el Premio de La Paz de la FIFA.</p>
+        <p class="article-paragraph"><span class="community-highlight" data-author="Valeria Ortiz" data-note="La hipocresía corporativa de la FIFA alcanza su punto álgico cuando negocia la soberanía del fútbol en oficinas gubernamentales de Washington.">A su vez, la FIFA, que prohíbe en sus estatutos cualquier forma de “interferencia política” en el fútbol, negocia esas garantías con el Departamento de Estado de la potencia en guerra a la par que entrega a su presidente el Premio de La Paz de la FIFA.</span></p>
 
         <h3 class="article-subheading">¿El fútbol une al mundo?</h3>
 
@@ -336,7 +324,7 @@
 
         <p class="article-paragraph">El periodista y escritor polaco, Ryszard Kapuscinski, llegó a Tegucigalpa horas antes de que comenzara la guerra y la convirtió en uno de los grandes reportajes del siglo XX. Tituló a su libro La Guerra del Fútbol.</p>
 
-        <p class="article-paragraph">Algo parecido sucedió en los estadios de Yugoslavia, a finales de los años ochenta. Las hinchadas del club serbio Estrella Roja y el croata Dinamo Zagreb se enfrentaban con una violencia que vaticinaba la guerra étnica que vendría. Željko Ražnatović, líder de la barra del Estrella Roja, se convertiría luego en el comandante de los “Tigres”, una unidad paramilitar acusada de cometer crímenes de guerra. El mismo Ražnatović declaró que la guerra civil no la iniciaron ni los políticos ni los militares, sino los hinchas en el partido contra el Dinamo. Al igual que en América Central, el fútbol fue el espacio donde la guerra tomó forma antes de ser guerra.</p>
+        <p class="article-paragraph">Algo parecido sucedió en los estadios de Yugoslavia, a finales de los años ochenta. Las hinchadas del club serbio Estrella Roja y el croata Dinamo Zagreb se enfrentaban con una violencia que vaticinaba la guerra étnica que vendría. Željko Ražnatović, líder de la barra del Estrella Roja, se convertiría luego en el comandante de los “Tigres”, una unidad paramilitar acusada de cometer crímenes de guerra. El mismo Ražnatović declaró que la guerra civil no la iniciaron ni los políticos ni los militares, sino los hinchas en el partido contra el Dinamo. <span class="community-highlight" data-author="Carlos Russo" data-note="Kapuscinski describió el fútbol como termómetro social. Las gradas suelen ser el primer campo de batalla de conflictos históricos.">Al igual que en América Central, el fútbol fue el espacio donde la guerra tomó forma antes de ser guerra.</span></p>
 
         <p class="article-paragraph">Otro caso que la taxonomía del fútbol y la política no puede ignorar es Argentina 1978. Es bien sabido que la Junta Militar usó el torneo como plataforma de legitimación internacional. El Mundial debía mostrarle al mundo un país ordenado, moderno y capaz. La selección argentina ganó el campeonato en un estadio a pocas cuadras de donde funcionaba la ESMA. La FIFA nunca dijo nada.</p>
 
@@ -386,7 +374,7 @@
 
         <h3 class="article-subheading">El Mundial más geopolítico de la historia</h3>
 
-        <p class="article-paragraph">El 11 de junio de 2026, en el estadio Azteca de Ciudad de México, se jugará el partido inaugural. Es el único estadio del mundo donde se han disputado dos finales mundialistas. Es también el estadio donde Diego Maradona hizo el gol de todos los tiempos, cuatro años después de la Guerra de Malvinas, en el partido que todo el mundo recuerda como una revancha que el fútbol procesó de una manera que la diplomacia no podía. El Azteca sabe de fútbol y política.</p>
+        <p class="article-paragraph">El 11 de junio de 2026, en el estadio Azteca de Ciudad de México, se jugará el partido inaugural. Es el único estadio del mundo donde se han disputado dos finales mundialistas. Es también el estadio donde Diego Maradona hizo el gol de todos los tiempos, cuatro años después de la Guerra de Malvinas, en el partido que todo el mundo recuerda como una revancha que el fútbol procesó de una manera que la diplomacia no podía. <span class="community-highlight" data-author="Juan Perez" data-note="El Azteca es un templo de la cultura y la resistencia política latinoamericana. Cada rincón respira historia de revanchas deportivas que lavaron heridas reales.">El Azteca sabe de fútbol y política.</span></p>
 
         <p class="article-paragraph">Afuera del estadio habrá hinchas de todo el mundo. Iraníes que no pudieron entrar a territorio estadounidense. Canadienses que llegaron al país que intenta anexarlos. También algunos otros deportados por el ICE. Lo que esos hinchas van a compartir, sin saberlo del todo, es el producto final de un sistema en el que los Estados ceden soberanía a un organismo privado para obtener el derecho de existir en el imaginario global, en el que ese organismo proclama su neutralidad como herramienta de poder y en el que las jerarquías que el fútbol promete suspender reaparecen a la hora de organizar cada Mundial.</p>
 
@@ -400,6 +388,7 @@
                 <h2 class="comments-section-title"><i class="fas fa-comments"></i> Lectura Activa & Comentarios</h2>
                 <div class="comments-count" id="commentsCount">3 comentarios</div>
             </div>
+
 
             <!-- List of comments -->
             <div class="comments-list" id="commentsList">
@@ -419,7 +408,11 @@
                 </div>
 
                 <!-- Seed Comment 2 -->
-                <div class="comment-card">
+                <div class="comment-card highlight-comment">
+                    <div class="comment-badge"><i class="fas fa-highlighter"></i> CITA DESTACADA</div>
+                    <blockquote class="comment-blockquote">
+                        "México firmó garantías de 93 páginas, en inglés, que conceden amplias exenciones fiscales a la FIFA y entidades vinculadas al Mundial 2026."
+                    </blockquote>
                     <div class="comment-header-meta">
                         <span class="comment-author">Sebastián Gomez</span>
                         <span class="comment-date">Hace 5 horas</span>
@@ -442,24 +435,6 @@
                     <div class="comment-body">
                         Excelente ensayo de Frenkel. La paradoja de Irán jugando en Seattle mientras es bombardeado por EE.UU. desmonta completamente el relato naif de que 'el fútbol une al mundo'.
                     </div>
-                </div>
-            </div>
-
-            <!-- Inline comment writer form -->
-            <div class="comment-form-container">
-                <h3 class="form-title">Sumar mi comentario</h3>
-                <p class="form-subtitle">También puedes resaltar fragmentos del texto de la crónica directamente con tu cursor para comentarlos o guardarlos.</p>
-
-                <div class="form-row">
-                    <div class="form-col">
-                        <input type="text" id="directCommentAuthor" placeholder="Tu Nombre">
-                    </div>
-                </div>
-                <div class="form-row">
-                    <textarea id="directCommentText" rows="4" placeholder="Escribe un comentario general o una opinión..."></textarea>
-                </div>
-                <div class="form-row">
-                    <button class="submit-comment-btn" id="btnSubmitDirectComment">Enviar Comentario</button>
                 </div>
             </div>
         </div>

@@ -276,42 +276,30 @@
 
     <!-- Article Body Section -->
     <article class="article-body-container">
-        <!-- Active Reading Helper Card -->
-        <div class="active-reading-helper" id="readingHelper">
-            <button class="helper-close-btn" id="closeHelper" title="Ocultar indicador">
-                <i class="fas fa-times"></i>
+        <!-- Active Reading Collapsible Guide -->
+        <div class="active-reading-guide-collapsible" id="activeReadingGuide">
+            <button class="guide-toggle-btn" id="activeReadingGuideToggle" aria-expanded="false">
+                <span class="toggle-title">
+                    <i class="fas fa-book-open-reader"></i> ¿Cómo funciona la Lectura Activa?
+                </span>
+                <i class="fas fa-chevron-down toggle-chevron"></i>
             </button>
-            <div class="helper-header">
-                <span class="helper-badge">Lectura Activa</span>
-                <h4 class="helper-title">Crónica Interactiva</h4>
-            </div>
-            <p class="helper-desc">En Anfibia puedes interactuar con el texto de formas únicas. Prueba estas opciones en cualquier parte del relato:</p>
-            
-            <div class="helper-features-grid">
-                <div class="helper-feature-item">
-                    <span class="helper-feature-icon highlight-icon"><i class="fas fa-highlighter"></i></span>
-                    <div class="helper-feature-info">
-                        <strong>Resaltar</strong>
-                        <span>Selecciona cualquier texto con tu cursor y haz clic en "Resaltar" para guardarlo en tu sesión.</span>
+            <div class="guide-content-panel" id="activeReadingGuideContent">
+                <p class="guide-intro">Esta crónica cuenta con <strong>Lectura Activa</strong>. Los comentarios de la comunidad están vinculados directamente a fragmentos destacados del texto. Participa de la lectura compartida siguiendo estos pasos:</p>
+                <div class="guide-steps-grid">
+                    <div class="guide-step-card">
+                        <div class="step-num">1</div>
+                        <p class="step-text"><strong>Resalta:</strong> Selecciona cualquier frase o párrafo de la crónica con tu cursor mientras lees.</p>
+                    </div>
+                    <div class="guide-step-card">
+                        <div class="step-num">2</div>
+                        <p class="step-text"><strong>Anota:</strong> Haz clic en <strong>Anotar</strong> en el menú flotante para dejar tu comentario o guardarlo.</p>
+                    </div>
+                    <div class="guide-step-card">
+                        <div class="step-num">3</div>
+                        <p class="step-text"><strong>Alterna:</strong> Usa el botón del lápiz flotante (abajo a la derecha) para mostrar u ocultar los destacados de otros lectores.</p>
                     </div>
                 </div>
-                <div class="helper-feature-item">
-                    <span class="helper-feature-icon instagram-icon"><i class="fab fa-instagram"></i></span>
-                    <div class="helper-feature-info">
-                        <strong>Anotar e Instagram</strong>
-                        <span>Escribe tus reflexiones y descarga una postal diseñada especialmente para tus Stories.</span>
-                    </div>
-                </div>
-                <div class="helper-feature-item">
-                    <span class="helper-feature-icon comment-icon"><i class="fas fa-comments"></i></span>
-                    <div class="helper-feature-info">
-                        <strong>Comentar y Debatir</strong>
-                        <span>Publica anotaciones visibles como comentarios generales o vinculados directamente a fragmentos.</span>
-                    </div>
-                </div>
-            </div>
-            <div class="helper-footer">
-                <span class="helper-tip"><i class="fas fa-info-circle"></i> <strong>Tip:</strong> Selecciona cualquier fragmento de texto con tu cursor o dedo para comenzar.</span>
             </div>
         </div>
 
@@ -430,9 +418,7 @@
         <p class="dialog-line">—A mí me quedó como el fantasma del fuego. Miro y digo ‘allá hay un árbol’. Calculo de
             dónde va a venir el viento. ‘Y si viene para acá qué me va a pasar y si no podé este árbol va a chocar con
             esta chapa’.</p>
-        <p class="dialog-line">—Cambió el sonido del viento. Desde la ventana de mi casa el viento se escuchaba como una
-            ola, decías: viene bajando el viento. Ahora que ya no están las copas de los árboles sino puro palo, corre
-            distinto.</p>
+        <p class="dialog-line">—<span class="community-highlight" data-author="Paula Rezzano" data-note="El viento en la Patagonia ha cambiado de sonido porque el desastre ecológico modificó la barrera física que constituían las copas de los árboles nativos. Qué doloroso leer esto, pero qué necesario para entender la nueva dimensión del peligro.">Cambió el sonido del viento. Desde la ventana de mi casa el viento se escuchaba como una ola, decías: viene bajando el viento. Ahora que ya no están las copas de los árboles sino puro palo, corre distinto.</span></p>
         <p class="dialog-line">—Yo vine a vivir acá a los 10 años. Mi familia es de Río Pico, por eso el viento no me
             asusta.</p>
         <p class="dialog-line">—Cuando pasa el evento y volvés, parece que vivís en zona de guerra entre cenizas, humo
@@ -449,11 +435,7 @@
             chilenos” que recolectan morillas —hongos gourmet carísimos—, que son nativos de la Patagonia y crecen
             exponencialmente cuando se incendia un bosque.</p>
 
-        <p class="article-paragraph">Pero los humanos no somos los únicos agentes del planeta. La performatividad de la
-            naturaleza también hace lo suyo. Así como ahora nieva en Nueva Orleans, hay huracanes tropicales en el
-            Mediterráneo y los londinenses se mueren de calor, en la Comarca empezaron a caer rayos. La escucha profunda
-            del sonido del rayo irrumpe como otra forma de conocimiento, que avisa a través del cuerpo y desata una
-            telepatía comunitaria.</p>
+        <p class="article-paragraph">Pero los humanos no somos los únicos agentes del planeta. <span class="community-highlight" data-author="Ignacio Ruiz" data-note="No somos los únicos actores del planeta; la naturaleza responde activamente a los desequilibrios.">La performatividad de la naturaleza también hace lo suyo.</span> Así como ahora nieva en Nueva Orleans, hay huracanes tropicales en el Mediterráneo y los londinenses se mueren de calor, en la Comarca empezaron a caer rayos. La escucha profunda del sonido del rayo irrumpe como otra forma de conocimiento, que avisa a través del cuerpo y desata una telepatía comunitaria.</p>
 
         <p class="article-paragraph">El conocimiento que la ciencia construye desde hace más de 50 años se vuelve
             concreto. Tanto que en la última COP, realizada en la Amazonía brasileña, la protección de los bosques
@@ -466,10 +448,7 @@
             <img src="hombre.png" alt="Hombre y la convivencia con el fuego" class="article-body-image">
         </div>
 
-        <p class="article-paragraph">¿Qué toca? Aprender a convivir con el fuego. Aceptar que se habita en un lugar con
-            riesgo alto de padecer incendios forestales incontrolables. Que “se trata de una ruptura y no de una crisis”
-            y hay que “diseñar alianzas con las tensiones, no contra las tensiones”, dicen los científicos de la
-            Fundación Patagonia.</p>
+        <p class="article-paragraph">¿Qué toca? <span class="community-highlight" data-author="Laura Mendez" data-note="Resiliencia frente al fuego: cambiar la mentalidad de combatir el incendio a convivir inteligentemente con el riesgo.">Aprender a convivir con el fuego. Aceptar que se habita en un lugar con riesgo alto de padecer incendios forestales incontrolables.</span> Que “se trata de una ruptura y no de una crisis” y hay que “diseñar alianzas con las tensiones, no contra las tensiones”, dicen los científicos de la Fundación Patagonia.</p>
 
         <p class="article-paragraph">Difícil atravesar el invierno como “los meses de paz”. La población local está
             sensible e hiperalerta. La percepción del riesgo comunitario activa estrategias para la acción. Por ejemplo,
@@ -563,10 +542,7 @@
             poblaciones más vulnerables. La Constitución, la Ley General de Ambiente y tantos otros marcos enuncian la
             responsabilidad oficial de cuidar los territorios.</p>
 
-        <p class="article-paragraph">Fernanda da clases de educación ambiental. Recorre escuelas. Cuando los chicos
-            dicen ‘no quiero que llegue el verano’, les responde que no tengan miedo, que en los paisajes pasan cosas,
-            que transformamos el entorno pero que eso no necesariamente significa el final. Que un bosque quemado
-            también puede ser el principio de otro paisaje si lo acompañamos.</p>
+        <p class="article-paragraph">Fernanda da clases de educación ambiental. Recorre escuelas. Cuando los chicos dicen ‘no quiero que llegue el verano’, les responde que no tengan miedo, que en los paisajes pasan cosas, que transformamos el entorno pero que eso no necesariamente significa el final. <span class="community-highlight" data-author="Hugo Mercer" data-note="Una mirada esperanzadora sobre la restauración ecológica: el fuego destruye pero el acompañamiento humano abre nuevos ciclos botánicos.">Que un bosque quemado también puede ser el principio de otro paisaje si lo acompañamos.</span></p>
     </article>
 
     <!-- Comments & Active Readings Section -->
@@ -576,6 +552,7 @@
                 <h2 class="comments-section-title"><i class="fas fa-comments"></i> Lectura Activa & Comentarios</h2>
                 <div class="comments-count" id="commentsCount">3 comentarios</div>
             </div>
+
 
             <!-- List of comments -->
             <div class="comments-list" id="commentsList">
@@ -598,7 +575,11 @@
                 </div>
 
                 <!-- Seed Comment 2 -->
-                <div class="comment-card">
+                <div class="comment-card highlight-comment">
+                    <div class="comment-badge"><i class="fas fa-highlighter"></i> CITA DESTACADA</div>
+                    <blockquote class="comment-blockquote">
+                        "Cambió el sonido del viento. Desde la ventana de mi casa el viento se escuchaba como una ola, decías: viene bajando el viento. Ahora que ya no están las copas de los árboles sino puro palo, corre distinto."
+                    </blockquote>
                     <div class="comment-header-meta">
                         <span class="comment-author">Paula Rezzano</span>
                         <span class="comment-date">Hace 5 horas</span>
@@ -627,26 +608,6 @@
                         urbanos de interfase en el sur, no solo mejoramos la calidad de vida, sino que creamos
                         cinturones de amortiguación natural contra los incendios.
                     </div>
-                </div>
-            </div>
-
-            <!-- Inline comment writer form -->
-            <div class="comment-form-container">
-                <h3 class="form-title">Sumar mi comentario</h3>
-                <p class="form-subtitle">También puedes resaltar fragmentos del texto de la crónica directamente con tu
-                    cursor para comentarlos o guardarlos.</p>
-
-                <div class="form-row">
-                    <div class="form-col">
-                        <input type="text" id="directCommentAuthor" placeholder="Tu Nombre">
-                    </div>
-                </div>
-                <div class="form-row">
-                    <textarea id="directCommentText" rows="4"
-                        placeholder="Escribe un comentario general o una opinión..."></textarea>
-                </div>
-                <div class="form-row">
-                    <button class="submit-comment-btn" id="btnSubmitDirectComment">Enviar Comentario</button>
                 </div>
             </div>
         </div>

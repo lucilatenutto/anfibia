@@ -414,11 +414,57 @@
 
                 </div>
 
-                <!-- Controls -->
-                <button class="subhero-ctrl prev" id="subheroPrev" aria-label="Anterior"><i
-                        class="fas fa-chevron-left"></i></button>
-                <button class="subhero-ctrl next" id="subheroNext" aria-label="Siguiente"><i
-                        class="fas fa-chevron-right"></i></button>
+            </div>
+
+            <!-- Centered Trigger Button for the Expandable Mini-Section -->
+            <div class="subhero-more-trigger-wrapper">
+                <button class="subhero-more-trigger" id="subheroMoreTrigger">
+                    <span>Ver Crónicas Relacionadas</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+            </div>
+
+            <!-- Expandable Sub-section (Mini-Sección) -->
+            <div class="subhero-more-section" id="subheroMoreSection" style="display: none;">
+                <div class="subhero-more-divider"></div>
+                <h3 class="subhero-more-title">MÁS CRÓNICAS Y ENSAYOS RELACIONADOS</h3>
+                <div class="subhero-more-grid">
+                    <!-- Card 1 (corre) -->
+                    <article class="subhero-more-card">
+                        <div class="subhero-more-img-wrapper">
+                            <img src="corre.png" alt="Sufrimiento y éxtasis ricotero" class="subhero-more-img">
+                        </div>
+                        <div class="subhero-more-info">
+                            <span class="subhero-more-kicker">LOS MISMOS RITOS, OTRO FINAL</span>
+                            <h4 class="subhero-more-card-title"><a href="#">SUFRIMIENTO Y ÉXTASIS RICOTERO</a></h4>
+                            <span class="subhero-more-author">Por Paula Bistagnino | Arte: Marcos García</span>
+                        </div>
+                    </article>
+
+                    <!-- Card 2 (baila) -->
+                    <article class="subhero-more-card">
+                        <div class="subhero-more-img-wrapper">
+                            <img src="baila.png" alt="El último pogo bestial con Jijiji" class="subhero-more-img">
+                        </div>
+                        <div class="subhero-more-info">
+                            <span class="subhero-more-kicker">EL ESTALLIDO TAMBIÉN SE TRAGÓ A LOS REDONDOS</span>
+                            <h4 class="subhero-more-card-title"><a href="#">EL ÚLTIMO POGO BESTIAL CON JIJIJI</a></h4>
+                            <span class="subhero-more-author">Por Mariano del Mazo</span>
+                        </div>
+                    </article>
+
+                    <!-- Card 3 (man) -->
+                    <article class="subhero-more-card">
+                        <div class="subhero-more-img-wrapper">
+                            <img src="man.png" alt="La decepción de lo idílico" class="subhero-more-img">
+                        </div>
+                        <div class="subhero-more-info">
+                            <span class="subhero-more-kicker">INDIO SOLARI EN OLAVARRÍA</span>
+                            <h4 class="subhero-more-card-title"><a href="#">LA DECEPCIÓN DE LO IDÍLICO</a></h4>
+                            <span class="subhero-more-author">Por Josefina Cingolani</span>
+                        </div>
+                    </article>
+                </div>
             </div>
         </div>
     </section>
@@ -520,11 +566,91 @@
                     </div>
                 </article>
 
+                <!-- Card 4: SÍ HAY PLATA (More Textos - Hidden by default) -->
+                <article class="anfibia-card more-textos-card" style="display: none;">
+                    <div class="card-img-container">
+                        <img src="gorro.png" alt="Sí hay plata" class="card-image">
+                        <span class="card-badge-flush badge-ensayo">ENSAYO</span>
+                    </div>
+                    <div class="card-info">
+                        <span class="card-kicker">LA DESTRUCCIÓN PLANIFICADA DE LAS UNIVERSIDADES</span>
+                        <h3 class="card-headline"><a href="#">SÍ HAY PLATA</a></h3>
+
+                        <div class="card-divider-peach"></div>
+
+                        <div class="card-meta-footer">
+                            <div class="card-credits">
+                                Por: <span class="credit-author">Juan Pablo Bohoslavsky, Francisco Cantamutto</span> <span
+                                    class="credit-separator">|</span> Arte: <span class="credit-artist">Jairo Alvarez, Juan Pablo Bohoslavsky</span>
+                            </div>
+                            <div class="card-actions">
+                                <button class="action-btn love-btn" title="Me gusta"><i
+                                        class="far fa-heart"></i></button>
+                                <button class="action-btn share-btn" title="Compartir"><i
+                                        class="fas fa-share-alt"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 5: GEMELO DIGITAL (More Textos - Hidden by default) -->
+                <article class="anfibia-card more-textos-card" style="display: none;">
+                    <div class="card-img-container">
+                        <img src="ojo.png" alt="Gemelo Digital" class="card-image">
+                        <span class="card-badge-flush badge-ensayo">ENSAYO</span>
+                    </div>
+                    <div class="card-info">
+                        <span class="card-kicker">EL SUEÑO DEL CONTROL TOTAL</span>
+                        <h3 class="card-headline"><a href="#">GEMELO DIGITAL: DESMANTELAR Y VIGILAR</a></h3>
+
+                        <div class="card-divider-peach"></div>
+
+                        <div class="card-meta-footer">
+                            <div class="card-credits">
+                                Por: <span class="credit-author">Hernán Borisonik</span> <span
+                                    class="credit-separator">|</span> Arte: <span class="credit-artist">Sebastián Angresano</span>
+                            </div>
+                            <div class="card-actions">
+                                <button class="action-btn love-btn" title="Me gusta"><i
+                                        class="far fa-heart"></i></button>
+                                <button class="action-btn share-btn" title="Compartir"><i
+                                        class="fas fa-share-alt"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 6: ENFERMOS (More Textos - Hidden by default) -->
+                <article class="anfibia-card more-textos-card" style="display: none;">
+                    <div class="card-img-container">
+                        <img src="hospi.png" alt="Enfermos" class="card-image">
+                        <span class="card-badge-flush badge-ensayo">ENSAYO</span>
+                    </div>
+                    <div class="card-info">
+                        <span class="card-kicker">DESTRUCCIÓN DEL SISTEMA DE SALUD</span>
+                        <h3 class="card-headline"><a href="#">ENFERMOS</a></h3>
+
+                        <div class="card-divider-peach"></div>
+
+                        <div class="card-meta-footer">
+                            <div class="card-credits">
+                                Por: <span class="credit-author">Alejandra Sánchez Cabezas, Hugo Mercer</span>
+                            </div>
+                            <div class="card-actions">
+                                <button class="action-btn love-btn" title="Me gusta"><i
+                                        class="far fa-heart"></i></button>
+                                <button class="action-btn share-btn" title="Compartir"><i
+                                        class="fas fa-share-alt"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
             </div>
 
             <!-- "Ver Más" Button centered under TEXTOS -->
             <div class="section-more-wrapper">
-                <a href="#" class="more-btn-outline">Ver Más</a>
+                <a href="#" class="more-btn-outline" id="loadMoreTextos">Ver Más</a>
             </div>
         </section>
 
@@ -715,7 +841,7 @@
                 <!-- Card 1: GEMELO DIGITAL: DESMANTELAR Y VIGILAR -->
                 <article class="anfibia-card">
                     <div class="card-img-container">
-                        <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=600"
+                        <img src="ojo.png"
                             alt="Gemelo digital" class="card-image">
                         <span class="card-badge-flush badge-ensayo">ENSAYO</span>
                     </div>
@@ -739,22 +865,22 @@
                     </div>
                 </article>
 
-                <!-- Card 2: SESGOS DE GÉNERO Y CÓDIGO FUENTE -->
+                <!-- Card 2: IA: ¿Y SI EL NEGOCIO LES SALE MAL? -->
                 <article class="anfibia-card">
                     <div class="card-img-container">
-                        <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=600"
-                            alt="Algoritmo" class="card-image">
-                        <span class="card-badge-flush badge-cronica">CRÓNICA</span>
+                        <img src="ai.png"
+                            alt="IA: ¿Y si el negocio les sale mal?" class="card-image">
+                        <span class="card-badge-flush badge-ensayo">ENSAYO</span>
                     </div>
                     <div class="card-info">
-                        <span class="card-kicker">El algoritmo nos vigila</span>
-                        <h3 class="card-headline"><a href="#">SESGOS DE GÉNERO Y CÓDIGO FUENTE</a></h3>
+                        <span class="card-kicker">EXPLOTAR LA BURBUJA O RECUPERAR LA INVERSIÓN</span>
+                        <h3 class="card-headline"><a href="#">IA: ¿Y SI EL NEGOCIO LES SALE MAL?</a></h3>
 
                         <div class="card-divider-peach"></div>
 
                         <div class="card-meta-footer">
                             <div class="card-credits">
-                                Por: <span class="credit-author">Sacha Lulich</span> <span
+                                Por: <span class="credit-author">Esteban Magnani</span> <span
                                     class="credit-separator">|</span> Arte: <span class="credit-artist">Sebastián
                                     Angresano</span>
                             </div>
@@ -768,24 +894,24 @@
                     </div>
                 </article>
 
-                <!-- Card 3: ¿QUIÉN ESCRIBE CUANDO ESCRIBE UNA MÁQUINA? -->
+                <!-- Card 3: UNA IA LATINOAMERICANA ES POSIBLE -->
                 <article class="anfibia-card">
                     <div class="card-img-container">
-                        <img src="https://images.unsplash.com/photo-1677442136019-21780efad99a?q=80&w=600" alt="ChatGPT"
+                        <img src="estatua.png" alt="Una IA latinoamericana es posible"
                             class="card-image">
-                        <span class="card-badge-flush badge-ensayo">ENSAYO</span>
+                        <span class="card-badge-flush badge-cronica">CRÓNICA</span>
                     </div>
                     <div class="card-info">
-                        <span class="card-kicker">ChatGPT y el futuro de la escritura</span>
-                        <h3 class="card-headline"><a href="#">¿QUIÉN ESCRIBE CUANDO ESCRIBE UNA MÁQUINA?</a></h3>
+                        <span class="card-kicker">SE LANZA LATAMGPT</span>
+                        <h3 class="card-headline"><a href="#">UNA IA LATINOAMERICANA ES POSIBLE</a></h3>
 
                         <div class="card-divider-peach"></div>
 
                         <div class="card-meta-footer">
                             <div class="card-credits">
-                                Por: <span class="credit-author">Hinde Pomeraniec</span> <span
-                                    class="credit-separator">|</span> Arte: <span class="credit-artist">María
-                                    Luque</span>
+                                Por: <span class="credit-author">Ernesto Picco</span> <span
+                                    class="credit-separator">|</span> Arte: <span class="credit-artist">Sebastián
+                                    Angresano</span>
                             </div>
                             <div class="card-actions">
                                 <button class="action-btn love-btn" title="Me gusta"><i

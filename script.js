@@ -5,10 +5,11 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     // 1. CAROUSEL / SLIDER LOGIC
-    const slides = document.querySelectorAll('.slide');
+        const slides = document.querySelectorAll('.slide');
     const dots = document.querySelectorAll('.dot');
     const prevBtn = document.getElementById('sliderPrev');
     const nextBtn = document.getElementById('sliderNext');
+    const sliderWrapper = document.querySelector('.slider-wrapper');
     let currentSlide = 0;
     let slideInterval;
 
@@ -39,6 +40,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 dot.classList.remove('active');
             }
         });
+
+        // Scroll the wrapper to the active slide on mobile
+        if (sliderWrapper && sliderWrapper.scrollWidth > sliderWrapper.clientWidth) {
+            const activeSlide = slides[currentSlide];
+            if (activeSlide) {
+                sliderWrapper.scrollTo({
+                    left: activeSlide.offsetLeft,
+                    behavior: 'smooth'
+                });
+            }
+        }
     }
 
     function nextSlide() {
@@ -52,6 +64,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // Auto rotate every 6 seconds
     function startSlideShow() {
         slideInterval = setInterval(nextSlide, 6000);
+    }
+
+    // Reset slide show timer
+    function resetSlideShow() {
+        clearInterval(slideInterval);
+        startSlideShow();
     }
 
     // Event listeners for prev/next buttons
@@ -74,6 +92,43 @@ document.addEventListener('DOMContentLoaded', () => {
             resetSlideShow();
         });
     });
+
+    // Sync swipe gestures on mobile slider to update dots
+    if (sliderWrapper) {
+        let isScrolling;
+        sliderWrapper.addEventListener('scroll', () => {
+            window.clearTimeout(isScrolling);
+            isScrolling = setTimeout(() => {
+                const width = sliderWrapper.clientWidth;
+                if (width > 0 && sliderWrapper.scrollWidth > width) {
+                    const newSlideIndex = Math.round(sliderWrapper.scrollLeft / width);
+                    if (newSlideIndex !== currentSlide) {
+                        currentSlide = newSlideIndex;
+
+                        // Update active classes on slides
+                        slides.forEach((slide, idx) => {
+                            if (idx === currentSlide) {
+                                slide.classList.add('active');
+                            } else {
+                                slide.classList.remove('active');
+                            }
+                        });
+
+                        // Update active classes on dots
+                        dots.forEach((dot, idx) => {
+                            if (idx === currentSlide) {
+                                dot.classList.add('active');
+                            } else {
+                                dot.classList.remove('active');
+                            }
+                        });
+
+                        resetSlideShow();
+                    }
+                }
+            }, 100);
+        });
+    }
 
     // Start slideshow on load if slides exist
     if (slides.length > 0) {
@@ -148,15 +203,65 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Attach to subhero navigation controls
-    const subheroPrev = document.getElementById('subheroPrev');
-    const subheroNext = document.getElementById('subheroNext');
-    if (subheroPrev && subheroNext) {
-        subheroPrev.addEventListener('click', () => {
-            showToast("Sección Especial: Mostrando inicio de 'Las Despedidas'");
+    // "Ver Más" Button for TEXTOS section
+    const loadMoreTextos = document.getElementById('loadMoreTextos');
+    if (loadMoreTextos) {
+        loadMoreTextos.addEventListener('click', (e) => {
+            e.preventDefault();
+            const hiddenCards = document.querySelectorAll('.more-textos-card');
+            if (hiddenCards.length === 0) return;
+
+            // Check display of first card to toggle state
+            const isCurrentlyHidden = hiddenCards[0].style.display === 'none';
+
+            if (isCurrentlyHidden) {
+                hiddenCards.forEach(card => {
+                    card.style.display = 'flex';
+                    card.style.opacity = '0';
+                    card.style.transition = 'opacity 0.4s ease';
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                    }, 10);
+                });
+                loadMoreTextos.textContent = 'Ver Menos';
+                showToast("Mostrando más ensayos de TEXTOS");
+            } else {
+                hiddenCards.forEach(card => {
+                    card.style.display = 'none';
+                });
+                loadMoreTextos.textContent = 'Ver Más';
+                showToast("Ocultando ensayos adicionales");
+            }
         });
-        subheroNext.addEventListener('click', () => {
-            showToast("Sección Especial: No hay más artículos en esta sección");
+    }
+
+    // Toggle the mini-section for related subhero chronicles
+    const subheroMoreTrigger = document.getElementById('subheroMoreTrigger');
+    const subheroMoreSection = document.getElementById('subheroMoreSection');
+
+    if (subheroMoreTrigger && subheroMoreSection) {
+        subheroMoreTrigger.addEventListener('click', (e) => {
+            e.preventDefault();
+            const isHidden = subheroMoreSection.style.display === 'none';
+            const textEl = subheroMoreTrigger.querySelector('span');
+
+            if (isHidden) {
+                subheroMoreSection.style.display = 'block';
+                subheroMoreSection.style.opacity = '0';
+                subheroMoreSection.style.transition = 'opacity 0.4s ease';
+                setTimeout(() => {
+                    subheroMoreSection.style.opacity = '1';
+                    subheroMoreSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }, 10);
+                subheroMoreTrigger.classList.add('active');
+                if (textEl) textEl.textContent = 'Ocultar Crónicas';
+                showToast("Abriendo archivo de crónicas");
+            } else {
+                subheroMoreSection.style.display = 'none';
+                subheroMoreTrigger.classList.remove('active');
+                if (textEl) textEl.textContent = 'Ver Crónicas Relacionadas';
+                showToast("Cerrando archivo de crónicas");
+            }
         });
     }
 
@@ -903,21 +1008,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    if (floatAnnotateBtn) {
-        floatAnnotateBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            // Check if there is an active text selection
-            const selection = window.getSelection();
-            const selectedText = selection.toString().trim();
-
-            if (selectedText.length > 5) {
-                openAnnotationModalWithText(selectedText);
-            } else {
-                // Open modal for general annotation (no text selection)
-                openAnnotationModalWithText("");
-            }
-        });
-    }
 
     // 5. MOBILE MENU DRAWER LOGIC
     const menuToggle = document.getElementById('menuToggle');
@@ -974,22 +1064,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 6. ACTIVE READING HELPER CLOSE/PERSISTENCE LOGIC
-    const readingHelper = document.getElementById('readingHelper');
-    const closeHelper = document.getElementById('closeHelper');
-
-    if (readingHelper && closeHelper) {
-        // Check if the user previously dismissed the helper
-        if (localStorage.getItem('anfibia_hide_helper') === 'true') {
-            readingHelper.classList.add('hidden');
-        }
-
-        closeHelper.addEventListener('click', () => {
-            readingHelper.classList.add('hidden');
-            localStorage.setItem('anfibia_hide_helper', 'true');
-            showToast("Indicador de lectura ocultado. No volverá a mostrarse.");
-        });
-    }
 
     // ==========================================================================
     // 7. USER AUTHENTICATION & RESTRICTIONS SYSTEM
@@ -1429,8 +1503,16 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
         
-        popover.querySelector('.popover-author').innerHTML = `<i class="fas fa-user-pen"></i> Lectura de ${author}`;
-        popover.querySelector('.popover-body').textContent = `"${note}"`;
+        const authorText = author ? `${author} resaltó esto` : "Un lector resaltó esto";
+        popover.querySelector('.popover-author').innerHTML = `<i class="fas fa-highlighter"></i> ${authorText}`;
+        
+        const bodyEl = popover.querySelector('.popover-body');
+        if (note) {
+            bodyEl.textContent = `"${note}"`;
+            bodyEl.style.display = 'block';
+        } else {
+            bodyEl.style.display = 'none';
+        }
         
         const rect = el.getBoundingClientRect();
         const scrollX = window.scrollX || window.pageXOffset;
@@ -1442,24 +1524,114 @@ document.addEventListener('DOMContentLoaded', () => {
         popover.classList.add('active');
     }
 
-    // Attach listeners to community highlights
+    // Attach hover listeners to community highlights and assign color themes (peach, purple, teal)
     const commHighlights = document.querySelectorAll('.community-highlight');
-    commHighlights.forEach(el => {
-        el.addEventListener('click', (e) => {
-            e.stopPropagation();
-            const author = el.getAttribute('data-author') || "Lectura Anfibia";
+    const themes = ['theme-peach', 'theme-purple', 'theme-teal'];
+    let hoverTimeout = null;
+
+    commHighlights.forEach((el, index) => {
+        el.setAttribute('data-index', index);
+        
+        // Dynamically add color theme class based on index
+        const theme = themes[index % themes.length];
+        el.classList.add(theme);
+        
+        // Show tooltip on hover (mouseenter)
+        el.addEventListener('mouseenter', (e) => {
+            if (!document.body.classList.contains('show-highlights')) return;
+            if (hoverTimeout) {
+                clearTimeout(hoverTimeout);
+                hoverTimeout = null;
+            }
+            const author = el.getAttribute('data-author') || "";
             const note = el.getAttribute('data-note') || "";
             openCommunityPopover(el, author, note);
         });
+
+        // Hide tooltip when mouse leaves the highlighted span (mouseleave)
+        el.addEventListener('mouseleave', () => {
+            hoverTimeout = setTimeout(() => {
+                const popover = document.getElementById('communityPopover');
+                if (popover) {
+                    popover.classList.remove('active');
+                }
+            }, 300); // 300ms delay to prevent flickering and allow user to hover over tooltip itself
+        });
     });
 
-    // Close popover when clicking elsewhere
+    // Keep popover open if user hovers directly over the popover container
+    document.addEventListener('mouseover', (e) => {
+        const popover = document.getElementById('communityPopover');
+        if (popover && popover.contains(e.target)) {
+            if (hoverTimeout) {
+                clearTimeout(hoverTimeout);
+                hoverTimeout = null;
+            }
+        }
+    });
+
+    // Close popover when mouse leaves the popover container
+    document.addEventListener('mouseout', (e) => {
+        const popover = document.getElementById('communityPopover');
+        if (popover && popover.contains(e.target)) {
+            const related = e.relatedTarget;
+            if (!related || (!popover.contains(related) && !related.closest('.community-highlight'))) {
+                hoverTimeout = setTimeout(() => {
+                    popover.classList.remove('active');
+                }, 300);
+            }
+        }
+    });
+
+    // Close community popover when clicking elsewhere (fallback support)
     document.addEventListener('mousedown', (e) => {
         const popover = document.getElementById('communityPopover');
         if (popover && !popover.contains(e.target) && !e.target.closest('.community-highlight')) {
             popover.classList.remove('active');
         }
     });
+
+    function initializeHighlightsToggle() {
+        const floatAnnotateBtn = document.getElementById('floatAnnotateBtn');
+        if (!floatAnnotateBtn) return;
+
+        // Enable community highlights by default on load
+        document.body.classList.add('show-highlights');
+        floatAnnotateBtn.classList.add('active');
+
+        floatAnnotateBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            const isShowing = document.body.classList.toggle('show-highlights');
+            floatAnnotateBtn.classList.toggle('active', isShowing);
+
+            if (isShowing) {
+                showToast("Destacados de la comunidad visibles");
+            } else {
+                showToast("Destacados ocultos (Lectura Limpia)");
+                // Force close popover if active
+                const popover = document.getElementById('communityPopover');
+                if (popover) {
+                    popover.classList.remove('active');
+                }
+            }
+        });
+    }
+
+    function initializeReadingGuideToggle() {
+        const guideToggleBtn = document.getElementById('activeReadingGuideToggle');
+        const guideContainer = document.getElementById('activeReadingGuide');
+        
+        if (guideToggleBtn && guideContainer) {
+            guideToggleBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                const isExpanded = guideContainer.classList.toggle('expanded');
+                guideToggleBtn.setAttribute('aria-expanded', isExpanded ? 'true' : 'false');
+            });
+        }
+    }
 
     function renderFavoritesList() {
         if (!favoritesList) return;
@@ -1950,4 +2122,6 @@ document.addEventListener('DOMContentLoaded', () => {
     renderHomeHistory();
     renderHistoryList();
     checkAndRestoreScroll();
+    initializeHighlightsToggle();
+    initializeReadingGuideToggle();
 });
