@@ -1759,6 +1759,49 @@ button {
     .community-fav-title {
         font-size: 1.25rem !important;
     }
+
+    /* Mobile font-size scaling for cleaner layout */
+    .card-headline, .subhero-card-title {
+        font-size: 1.75rem !important;
+    }
+    
+    .slide-title {
+        font-size: 2.2rem !important;
+    }
+    
+    .slide-content {
+        padding: 20px !important;
+    }
+    
+    .banner-title {
+        font-size: 1.4rem !important;
+    }
+    
+    /* Article typography scaling */
+    .article-main-title {
+        font-size: 3.0rem !important;
+        line-height: 0.95 !important;
+    }
+    
+    .article-subheading {
+        font-size: 1.8rem !important;
+        margin-top: 40px !important;
+    }
+    
+    .article-paragraph {
+        font-size: 1.1rem !important;
+        line-height: 1.7 !important;
+    }
+    
+    .dialog-line {
+        font-size: 1.05rem !important;
+        line-height: 1.65 !important;
+    }
+    
+    /* Popover adjustments for mobile screen */
+    .community-popover {
+        width: 290px !important;
+    }
 }
 
 @media (max-width: 480px) {
@@ -1843,6 +1886,23 @@ button {
         flex-wrap: wrap !important;
         gap: 4px 8px !important;
         line-height: 1.4 !important;
+    }
+
+    .article-subheading {
+        font-size: 1.4rem !important;
+        margin-top: 32px !important;
+    }
+    
+    .article-paragraph {
+        font-size: 0.98rem !important;
+        line-height: 1.6 !important;
+        margin-bottom: 20px !important;
+    }
+    
+    .dialog-line {
+        font-size: 0.95rem !important;
+        line-height: 1.55 !important;
+        margin-bottom: 16px !important;
     }
 }
 
@@ -1964,7 +2024,7 @@ button {
 
 /* Article Body Content Styles */
 .article-body-container {
-    max-width: 760px;
+    max-width: 680px;
     margin: 64px auto 96px auto;
     padding: 0 24px;
     text-align: left;
@@ -2673,7 +2733,7 @@ button {
 }
 
 .comments-inner {
-    max-width: 760px;
+    max-width: 680px;
     margin: 0 auto;
 }
 
@@ -4006,7 +4066,8 @@ button {
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 8px;
     padding: 14px;
-    width: 280px;
+    width: 380px;
+    max-width: calc(100vw - 48px);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     opacity: 0;
     pointer-events: none;
