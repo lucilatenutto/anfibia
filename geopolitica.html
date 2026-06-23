@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La geopolítica del Mundial 2026 — Revista Anfibia</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lora:ital,wght@0,400..700;1,400..700&family=Montserrat:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom Style -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Header / Navbar -->
+    <header class="main-header">
+        <div class="header-container">
+            <div class="header-left">
+                <a href="index.html" class="brand-logo">Anfibia</a>
+                <div class="header-divider"></div>
+                <div class="unsam-badge">
+                    <img src="unsam.png" alt="UNSAM" class="unsam-logo-img">
+                </div>
+                <div class="social-icons">
+                    <a href="#" class="social-link" title="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-link" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link" title="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <div class="header-right">
+                <button class="search-btn" id="searchBtn" title="Buscar">
+                    <i class="fas fa-search"></i>
+                </button>
+                <nav class="header-nav">
+                    <ul class="nav-list">
+                        <li><a href="#" class="nav-item special-link">Comunidad Anfibia</a></li>
+                        
+                        <!-- Textos dropdown -->
+                        <li class="nav-item-dropdown">
+                            <a href="#" class="nav-item">Textos <i class="fas fa-chevron-down nav-chevron"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Ambiente</a></li>
+                                <li><a href="#">Amor y Sexo</a></li>
+                                <li><a href="#">Cultura</a></li>
+                                <li><a href="#">Educación</a></li>
+                                <li><a href="#">Política y Economía</a></li>
+                                <li><a href="#">Salud</a></li>
+                                <li><a href="#">Tecnología</a></li>
+                                <li><a href="#">Rosario</a></li>
+                                <li><a href="#">Favoritos/Guardados</a></li>
+                            </ul>
+                        </li>
+                        
+                        <!-- Podcast dropdown -->
+                        <li class="nav-item-dropdown">
+                            <a href="#" class="nav-item">Podcast <i class="fas fa-chevron-down nav-chevron"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Todos los Podcasts</a></li>
+                            </ul>
+                        </li>
+                        
+                        <!-- Talleres dropdown -->
+                        <li class="nav-item-dropdown">
+                            <a href="#" class="nav-item">Talleres <i class="fas fa-chevron-down nav-chevron"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Ver más</a></li>
+                            </ul>
+                        </li>
+                        
+                        <!-- Maestria dropdown -->
+                        <li class="nav-item-dropdown">
+                            <a href="#" class="nav-item">Maestría <i class="fas fa-chevron-down nav-chevron"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Inscripción</a></li>
+                                <li><a href="#">Programa Completo</a></li>
+                            </ul>
+                        </li>
+
+                        
+                        <!-- Futuro Imperfecto 3 dropdown -->
+                        <li class="nav-item-dropdown">
+                            <a href="#" class="nav-item">Futuro Imperfecto 3 <i class="fas fa-chevron-down nav-chevron"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Volumen 1</a></li>
+                                <li><a href="#">Volumen 2</a></li>
+                                <li><a href="#">Volumen 3</a></li>
+                            </ul>
+                        </li>
+                        
+                        <!-- Favoritos -->
+                        <li><a href="#" class="nav-item">Favoritos</a></li>
+                        
+                        <!-- Historial -->
+                        <li><a href="#" class="nav-item">Historial</a></li>
+                        
+                        <!-- Tu Cuenta -->
+                        <li><a href="#" class="nav-item nav-item-account"><i class="far fa-user-circle"></i> Tu Cuenta</a></li>
+                    </ul>
+                </nav>
+                <button class="menu-toggle" id="menuToggle" title="Menú">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Left Floating Progress Gauge -->
+    <div class="vertical-progress-container">
+        <div class="vertical-progress-track">
+            <div class="vertical-progress-bar" id="verticalProgressBar"></div>
+            <div class="vertical-progress-handle" id="verticalProgressHandle"></div>
+        </div>
+    </div>
+
+    <!-- Search Overlay -->
+    <div class="search-overlay" id="searchOverlay">
+        <div class="search-box">
+            <input type="text" placeholder="Buscar crónicas, ensayos, autores..." id="searchInput">
+            <button class="close-search" id="closeSearch"><i class="fas fa-times"></i></button>
+        </div>
+    </div>
+
+    <!-- Mobile Menu Drawer -->
+    <div class="mobile-menu-drawer" id="mobileMenuDrawer">
+        <div class="mobile-menu-body">
+            <nav class="mobile-nav">
+                <ul class="mobile-nav-list">
+                    <!-- Textos dropdown -->
+                    <li class="mobile-nav-item-dropdown">
+                        <button class="mobile-dropdown-toggle">
+                            <span class="item-text">.Textos</span>
+                            <i class="fas fa-chevron-down toggle-icon"></i>
+                        </button>
+                        <ul class="mobile-dropdown-menu">
+                            <li><a href="#">Ambiente</a></li>
+                            <li><a href="#">Amor y Sexo</a></li>
+                            <li><a href="#">Cultura</a></li>
+                            <li><a href="#">Educación</a></li>
+                            <li><a href="#">Política y Economía</a></li>
+                            <li><a href="#">Salud</a></li>
+                            <li><a href="#">Tecnología</a></li>
+                            <li><a href="#">Rosario</a></li>
+                            <li><a href="#">Favoritos/Guardados</a></li>
+                        </ul>
+                    </li>
+                    
+                    <!-- Podcast dropdown -->
+                    <li class="mobile-nav-item-dropdown">
+                        <button class="mobile-dropdown-toggle">
+                            <span class="item-text">.Podcast</span>
+                            <i class="fas fa-chevron-down toggle-icon"></i>
+                        </button>
+                        <ul class="mobile-dropdown-menu">
+                            <li><a href="#">Todos los Podcasts</a></li>
+                        </ul>
+                    </li>
+                    
+                    <!-- Talleres dropdown -->
+                    <li class="mobile-nav-item-dropdown">
+                        <button class="mobile-dropdown-toggle">
+                            <span class="item-text">.Talleres</span>
+                            <i class="fas fa-chevron-down toggle-icon"></i>
+                        </button>
+                        <ul class="mobile-dropdown-menu">
+                            <li><a href="#">Ver mas</a></li>
+                        </ul>
+                    </li>
+                    
+                    <!-- Maestria dropdown -->
+                    <li class="mobile-nav-item-dropdown">
+                        <button class="mobile-dropdown-toggle">
+                            <span class="item-text">.Maestría</span>
+                            <i class="fas fa-chevron-down toggle-icon"></i>
+                        </button>
+                        <ul class="mobile-dropdown-menu">
+                            <li><a href="#">Inscripcion</a></li>
+                            <li><a href="#">Programa Completo</a></li>
+                        </ul>
+                    </li>
+
+                    
+                    <!-- Futuro Imperfecto 3 dropdown -->
+                    <li class="mobile-nav-item-dropdown">
+                        <button class="mobile-dropdown-toggle">
+                            <span class="item-text">.Futuro Imperfecto 3</span>
+                            <i class="fas fa-chevron-down toggle-icon"></i>
+                        </button>
+                        <ul class="mobile-dropdown-menu">
+                            <li><a href="#">Volumen 1</a></li>
+                            <li><a href="#">Volumen 2</a></li>
+                            <li><a href="#">Volumen 3</a></li>
+                        </ul>
+                    </li>
+                    
+                    <!-- Favoritos static -->
+                    <li class="mobile-nav-item-static">
+                        <a href="#" class="mobile-static-link">.Favoritos</a>
+                    </li>
+                    
+                    <!-- Historial static -->
+                    <li class="mobile-nav-item-static">
+                        <a href="#" class="mobile-static-link">.Historial</a>
+                    </li>
+
+                    <li class="mobile-nav-spacing"></li>
+                    
+                    <!-- Redes dropdown -->
+                    <li class="mobile-nav-item-dropdown">
+                        <button class="mobile-dropdown-toggle">
+                            <span class="item-text">.Redes</span>
+                            <i class="fas fa-chevron-down toggle-icon"></i>
+                        </button>
+                        <ul class="mobile-dropdown-menu">
+                            <li><a href="#">.Twitter</a></li>
+                            <li><a href="#">.Facebook</a></li>
+                            <li><a href="#">.Instagram</a></li>
+                            <li><a href="#">.YouTube</a></li>
+                        </ul>
+                    </li>
+                    
+                    <!-- Comunidad static -->
+                    <li class="mobile-nav-item-static">
+                        <a href="#" class="mobile-static-link">.Comunidad Anfibia</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="mobile-menu-footer-account">
+            <a href="#" class="mobile-account-btn">
+                <i class="far fa-user-circle"></i>
+                <span>Tu Cuenta Anfibia</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Mobile Menu Backdrop -->
+    <div class="menu-backdrop" id="menuBackdrop"></div>
+
+    <!-- Article Detail Container -->
+    <main class="article-detail-container">
+        <div class="article-header-section">
+            <span class="article-badge">ENSAYO</span>
+            <h1 class="article-kicker">EL BIEN Y EL MAL DEFINEN POR PENAL</h1>
+
+            <div class="article-title-divider"></div>
+
+            <h2 class="article-main-title">LA GEOPOLÍTICA DEL MUNDIAL 2026</h2>
+
+            <p class="article-lead">
+                Mientras la FIFA proclama que el fútbol une al mundo, los tres países anfitriones están en guerra comercial y fronteriza, una selección jugará en el territorio del país que lo bombardeó y los hinchas deportados por el ICE van a ver los partidos resguardados en México. Canadá abuchea el himno estadounidense, Trump amenaza con convertirla en el Estado 51 y los dos son sede de un Mundial que planearon juntos. La FIFA tiene más miembros que la ONU, su propio sistema judicial y el poder de hacer desaparecer a un país del mapa (futbolístico). Bienvenidos al Mundial más (geo)político de la historia.
+            </p>
+            <div class="article-credits-centered">
+                <span class="credit-label">Por:</span> <span class="credit-name">Alejandro Frenkel</span>
+                <span class="credit-bar">|</span>
+                <span class="credit-label">Arte:</span> <span class="credit-name">Agustín Solís</span>
+            </div>
+
+            <div class="article-featured-image-wrapper">
+                <img src="gege.png" alt="La Geopolítica del Mundial 2026" class="article-featured-image">
+            </div>
+        </div>
+    </main>
+
+    <!-- Article Body Section -->
+    <article class="article-body-container">
+        <!-- Active Reading Helper Card -->
+        <div class="active-reading-helper" id="readingHelper">
+            <button class="helper-close-btn" id="closeHelper" title="Ocultar indicador">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="helper-header">
+                <span class="helper-badge">Lectura Activa</span>
+                <h4 class="helper-title">Ensayo Interactivo</h4>
+            </div>
+            <p class="helper-desc">En Anfibia puedes interactuar con el texto de formas únicas. Prueba estas opciones en cualquier parte del relato:</p>
+            
+            <div class="helper-features-grid">
+                <div class="helper-feature-item">
+                    <span class="helper-feature-icon highlight-icon"><i class="fas fa-highlighter"></i></span>
+                    <div class="helper-feature-info">
+                        <strong>Resaltar</strong>
+                        <span>Selecciona cualquier texto con tu cursor y haz clic en "Resaltar" para guardarlo en tu sesión.</span>
+                    </div>
+                </div>
+                <div class="helper-feature-item">
+                    <span class="helper-feature-icon instagram-icon"><i class="fab fa-instagram"></i></span>
+                    <div class="helper-feature-info">
+                        <strong>Anotar e Instagram</strong>
+                        <span>Escribe tus reflexiones y descarga una postal diseñada especialmente para tus Stories.</span>
+                    </div>
+                </div>
+                <div class="helper-feature-item">
+                    <span class="helper-feature-icon comment-icon"><i class="fas fa-comments"></i></span>
+                    <div class="helper-feature-info">
+                        <strong>Comentar y Debatir</strong>
+                        <span>Publica anotaciones visibles como comentarios generales o vinculados directamente a fragmentos.</span>
+                    </div>
+                </div>
+            </div>
+            <div class="helper-footer">
+                <span class="helper-tip"><i class="fas fa-info-circle"></i> <strong>Tip:</strong> Selecciona cualquier fragmento de texto con tu cursor o dedo para comenzar.</span>
+            </div>
+        </div>
+
+        <p class="article-paragraph">El 5 de diciembre de 2025, en el Centro John F. Kennedy para las Artes Escénicas de Washington D.C., el titular de la FIFA, Gianni Infantino, encabezó el sorteo de la Copa del Mundo, distribuyendo los caminos de 48 selecciones. Tan solo dos meses más tarde, mientras las selecciones organizaban los preparativos para su estadía en el continente americano, aviones de combate estadounidenses e israelíes habían sobrevolado varias ciudades de Irán y bombardeado lo que los comunicados militares llaman, con peculiar pudor, “objetivos estratégicos”. Los muertos comenzaron a contarse de a miles, entre civiles, jerarcas gubernamentales y militares. El líder supremo, Alí Jameneí, también fue una de las bajas. Unos días después, Donald Trump escribió en su red social que quizás era mejor que la selección iraní no participara del Mundial "por su propia seguridad".</p>
+
+        <p class="article-paragraph">Irán quedó en el Grupo G. Sus tres partidos serán en Los Ángeles y Seattle, ciudades del país que dos semanas antes del sorteo había bombardeado su territorio. Una vez iniciada la guerra, Infantino aclaró que había hablado personalmente con Trump y que los partidos se jugarían donde el sorteo indicaba. A Trump, sin embargo, no pareció importarle demasiado. El gobierno estadounidense le negó a la delegación persa la posibilidad de alojarse en territorio norteamericano. El gobierno mexicano respondió ofreciéndole a Irán concentrar en Tijuana y cruzar la frontera para cada encuentro.</p>
+
+        <p class="article-paragraph">Traducido a imagen global, esto significa que el país que tiene restricciones para ingresar a Estados Unidos será recibido por el país al que Washington le exige militarizar su frontera. El Mundial produce, sin que nadie lo haya planificado así, una solidaridad involuntaria entre dos naciones amedrentadas por la prepotencia trumpista.</p>
+
+        <p class="article-paragraph">El conflicto en Medio Oriente combina las características de las guerras tradicionales en las que los beligerantes son Estados, los objetivos son geopolíticos o ideológicos y se utilizan Fuerzas Armadas regulares, con la plasticidad y la ambigüedad de las guerras del siglo XXI. Por caso, Estados Unidos nunca declaró formalmente la guerra a Irán. Hubo drones, misiles de precisión, comunicados del Pentágono hablando de “operaciones quirúrgicas sobre infraestructura militar”, pero no hubo discurso ante el Congreso, no hubo resolución ni aprobación legal. La guerra moderna se diagrama con Inteligencia Artificial, se lanza desde pantallas, se justifica con eufemismos técnicos y se da por terminada cuando el presidente le escribe una carta al Congreso diciendo que “las hostilidades han concluido”, mientras mantiene un bloqueo naval sobre el enemigo.</p>
+
+        <p class="article-paragraph">El gobierno de Suiza —país donde la FIFA tiene su sede, tributa sus impuestos y descansa su paraguas jurídico— calificó la ofensiva estadounidense como un caso de uso injustificado de la fuerza, contrario al derecho internacional. La casa madre del fútbol global, sin embargo, no emitió ningún comentario al respecto.</p>
+
+        <p class="article-paragraph">A esto se suman las incongruencias del sistema internacional: el mismo gobierno que ataca militarmente a un país está obligado, por contrato con un organismo internacional, a garantizar visas de entrada, seguridad operativa y cancha en condiciones para los jugadores del país agredido.</p>
+
+        <p class="article-paragraph">A su vez, la FIFA, que prohíbe en sus estatutos cualquier forma de “interferencia política” en el fútbol, negocia esas garantías con el Departamento de Estado de la potencia en guerra a la par que entrega a su presidente el Premio de La Paz de la FIFA.</p>
+
+        <h3 class="article-subheading">¿El fútbol une al mundo?</h3>
+
+        <p class="article-paragraph">La FIFA lanzó para este Mundial la campaña “El fútbol une al mundo”.</p>
+
+        <p class="article-paragraph">Hay un mito fundacional que da forma a ese eslogan. En la noche del 24 de diciembre de 1914, en la frontera entre Francia y Bélgica se desarrollan las batallas más sangrientas de la Primera Guerra Mundial. Soldados alemanes y británicos salen de sus trincheras, cruzan la “tierra de nadie” e improvisan, rodeados de cadáveres, alambrados y minas antipersona, un partido de fútbol. La tregua dura hasta la mañana del 26 de diciembre. Aunque la guerra continuó, el partido quedó en la memoria colectiva como un símbolo de que en el fútbol hay una confraternidad que antecede a las banderas y los tratados. Un lenguaje, una suerte de esencia humana que los Estados no pueden controlar.</p>
+
+        <p class="article-paragraph">La historia de la relación entre el fútbol y los conflictos armados es, sin embargo, un poco menos romántica. En julio de 1969, Honduras y El Salvador llevaban años acumulando tensiones por disputas territoriales y migratorias. Las eliminatorias para el Mundial de México 1970 actuaron como un disparador. Tres partidos, disturbios en las tribunas, muertos, ruptura de relaciones diplomáticas. El 14 de julio, cuatro días después del partido decisivo, El Salvador invadió Honduras. El conflicto dejó entre dos y cuatro mil muertos.</p>
+
+        <p class="article-paragraph">El periodista y escritor polaco, Ryszard Kapuscinski, llegó a Tegucigalpa horas antes de que comenzara la guerra y la convirtió en uno de los grandes reportajes del siglo XX. Tituló a su libro La Guerra del Fútbol.</p>
+
+        <p class="article-paragraph">Algo parecido sucedió en los estadios de Yugoslavia, a finales de los años ochenta. Las hinchadas del club serbio Estrella Roja y el croata Dinamo Zagreb se enfrentaban con una violencia que vaticinaba la guerra étnica que vendría. Željko Ražnatović, líder de la barra del Estrella Roja, se convertiría luego en el comandante de los “Tigres”, una unidad paramilitar acusada de cometer crímenes de guerra. El mismo Ražnatović declaró que la guerra civil no la iniciaron ni los políticos ni los militares, sino los hinchas en el partido contra el Dinamo. Al igual que en América Central, el fútbol fue el espacio donde la guerra tomó forma antes de ser guerra.</p>
+
+        <p class="article-paragraph">Otro caso que la taxonomía del fútbol y la política no puede ignorar es Argentina 1978. Es bien sabido que la Junta Militar usó el torneo como plataforma de legitimación internacional. El Mundial debía mostrarle al mundo un país ordenado, moderno y capaz. La selección argentina ganó el campeonato en un estadio a pocas cuadras de donde funcionaba la ESMA. La FIFA nunca dijo nada.</p>
+
+        <p class="article-paragraph">Así, el Mundial 78 mostró el arquetipo de un Estado que usa el deporte como pantalla para ocultar lo que le hace a su propia población. Más acá en el tiempo, el 7 de abril de 2017, las selecciones femeninas de Corea del Norte y Corea del Sur disputaron en Pyongyang el primer partido oficial entre ambos jugado en territorio norcoreano. Técnicamente, los dos países siguen en guerra, ya que el armisticio de 1953 nunca fue reemplazado por un tratado de paz. El estadio Kim Il Sung recibió a cuarenta mil personas. Por primera vez en la historia, la bandera de Corea del Sur fue izada en un escenario deportivo norcoreano. Esa misma semana, Pyongyang había lanzado un misil en aguas japonesas. Las autoridades surcoreanas declararon que “la seguridad de las jugadoras nunca se vio amenazada”. El partido terminó 1 a 1. El de las dos Coreas es el antecedente más directo que existe para lo que va a ocurrir en Los Ángeles en junio de 2026. Dos países en guerra y un partido oficial en territorio de uno de los contendientes.</p>
+
+        <div class="article-image-wrapper">
+            <img src="pelo.png" alt="La geopolítica del fútbol" class="article-body-image">
+        </div>
+
+        <h3 class="article-subheading">Make North America Great Again</h3>
+
+        <p class="article-paragraph">El Mundial 2026 tiene dos particularidades: es la primera vez en la historia que será organizado por tres países y el primero que tendrá 48 participantes.</p>
+
+        <p class="article-paragraph">En sintonía con el eslogan de “El fútbol une al mundo”, la candidatura conjunta de Estados Unidos, México y Canadá fue votada mayoritariamente en el Congreso de la FIFA de 2018 con el nombre oficial de “United 2026”. El eslogan pretendía dejar de manifiesto que los tres países comparten algo más que una región. Hay que remontarse treinta años atrás para entender los albores del proceso integracionista de América del Norte.</p>
+
+        <p class="article-paragraph">El 1 de enero de 1994, el mismo día en que el Ejército Zapatista de Liberación Nacional se levantaba en armas en Chiapas en protesta por lo que vendría, entró en vigor el Tratado de Libre Comercio de América del Norte (TLCAN-NAFTA). El presidente mexicano Carlos Salinas de Gortari lo celebró como “un logro pionero en negociaciones comerciales que establecerá tendencias futuras en la región y en el mundo”. Bill Clinton, que había peleado en el Congreso para conseguir los votos necesarios, sostuvo: “Nuestra seguridad nacional ahora será determinada por nuestra capacidad de derribar barreras comerciales extranjeras”. Una buena síntesis de la visión globalization friendly que primaba en los años de la posguerra fría.</p>
+
+        <p class="article-paragraph">Para México, la experiencia produjo, tres décadas después, una dependencia estructural que ningún canciller mexicano puede ignorar. El 80% de las exportaciones mexicanas van al mercado estadounidense. Más que un dato de comercio exterior, esa cifra marca el límite real de la autonomía azteca en el ámbito internacional. En buena medida, explica por qué México militarizó su frontera sur cuando Washington lo exigió, aunque eso implicara contener migrantes centroamericanos con los mismos métodos que denuncia en su propia frontera norte. Explica también por qué los presidentes del partido político MORENA —Andrés Manuel López Obrador y Claudia Sheinbaum— proclaman una política exterior más independiente, pero negocian con más cuidado que confrontación. Y explica también algo que transformó la geografía política de América Latina: al entrar definitivamente en la órbita de influencia estadounidense, México fue perdiendo su rol histórico de contrapeso regional y resistencia latinoamericanista.</p>
+
+        <p class="article-paragraph">Argentina perdió un aliado tradicional en sus disputas con Washington y en la moderación de la influencia brasileña en Sudamérica. Brasil, en consecuencia, respondió profundizando su proyecto de integración sudamericana, mediante el Mercosur y luego, con la Unasur. La premisa era que si México ya era parte indefectible de América del Norte, Sudamérica tenía que construir su propio bloque.</p>
+
+        <p class="article-paragraph">Trump llegó a la presidencia denunciando el mismo acuerdo que Clinton había celebrado. En su primer mandato, forzó a una renegociación del NAFTA, que pasaría a ser rebautizado como T-MEC. En su segunda presidencia volvería a la carga y denunciaría que México y Canadá “se han aprovechado de Estados Unidos por 40 años. (…) No pueden llegar aquí y robarse nuestro dinero, robarse nuestros empleos, tomar nuestras fábricas y tomar nuestros negocios y esperar que no sean castigados”. Los aranceles del 25% fueron su respuesta. En retrospectiva, la candidatura tripartita para organizar la Copa del Mundo terminó siendo el último acto de fe en un proyecto que está siendo dinamitado por su arquitecto.</p>
+
+        <p class="article-paragraph">El conflicto entre Estados Unidos y Canadá es aún más sorprendente, tanto por la intensidad del vínculo como por los elementos culturales en común. Además, la integración tiene una expresión deportiva perfecta: la Major League Soccer, que desde su fundación incluyó franquicias canadienses y estadounidenses compitiendo en la misma liga. Toronto FC, Vancouver Whitecaps y CF Montreal juegan contra New York City FC y LA Galaxy con la misma naturalidad con que comparten mercado y cultura popular. Un buen ejemplo de que “el fútbol une”. Todo eso cambió con una velocidad que desconcertó a los propios canadienses.</p>
+
+        <p class="article-paragraph">Los aranceles comerciales y la amenaza de convertir a Canadá en el “Estado 51” por parte de Trump fueron replicados con la aparición de etiquetas “Hecho en Canadá” como señal de identidad política y el abucheo del himno estadounidense en partidos de hockey de la NHL (otra liga en la que participan equipos de ambos países). Una encuesta de 2025 reveló que el porcentaje de canadienses que consideran a Estados Unidos una amenaza principal para su país se había triplicado desde 2019. El antiamericanismo que hoy prima en Canadá no tiene precedentes en la memoria de nadie que viva en ese país.</p>
+
+        <p class="article-paragraph">Cuando se aprobó la candidatura en 2018, pocos pensaron que el Mundial que iba a actuar como símbolo de la integración en América del Norte se terminaría jugando en el momento de mayor tensión histórica entre sus co-anfitriones.</p>
+
+        <h3 class="article-subheading">El Leviatán del fútbol</h3>
+
+        <p class="article-paragraph">La FIFA tiene 211 miembros. La ONU tiene 193. La casa madre del fútbol reconoce selecciones que existen en el mundo del fútbol antes de existir en el mundo de los tratados. Sumado a ello, la FIFA tiene su propio poder legislativo, ejecutivo y judicial, su propio código de ética y tributación reducida bajo el código civil suizo. No tiene ejército, pero sí el control monopólico sobre un bien simbólico que ningún Estado puede producir por sí solo. No hay fútbol internacional fuera de la FIFA. Y eso la vuelve un actor privado transnacional con enorme poder sobre las autoridades de sus Estados asociados. Por caso, cuando la casa madre suspende a un país, ese país desaparece del fútbol mundial con una completitud que ninguna sanción diplomática convencional puede igualar.</p>
+
+        <p class="article-paragraph">El principio está escrito en los artículos 15 y 19 de sus estatutos: las federaciones nacionales deben garantizar su “independencia y prevención de injerencias políticas” y actuar “sin la injerencia de terceros”. El incumplimiento puede derivar en desafiliación definitiva. Volviendo al mantra del Mundial, para la FIFA, la política no puede romper lo que ha sido unido por el fútbol.</p>
+
+        <p class="article-paragraph">Nigeria fue suspendida en 2010 porque el presidente del país sancionó al entrenador de la selección y en 2014 por un proceso judicial que limitó las capacidades de su federación. Sri Lanka fue suspendida en enero de 2023 por interferencia gubernamental en las elecciones de su comité ejecutivo. Zimbabue y Kenia fueron sancionadas simultáneamente en febrero de 2022 porque sus ministerios de deportes disolvieron las asociaciones nacionales. Cuando el gobierno de Javier Milei intentó imponer las Sociedades Anónimas Deportivas en el fútbol argentino, la FIFA le recordó que cualquier modificación estatutaria impuesta por el Estado podría derivar en la desafiliación inmediata. El gobierno retrocedió. El mecanismo funciona porque la amenaza es creíble.</p>
+
+        <p class="article-paragraph">Pero en la orbe del fútbol las calles son de doble mano. Por un lado, la FIFA les prohíbe a los gobiernos intervenir en el fútbol y, por otro, les exige condiciones que ningún Estado soberano aceptaría de otro Estado. Exenciones fiscales, cesión de jurisdicción a tribunales internacionales o modificación de normativas laborales son algunas de ellas. México firmó garantías de 93 páginas, en inglés, que conceden amplias exenciones fiscales a la FIFA y entidades vinculadas al Mundial 2026. Fue el único de los tres co-anfitriones que entregó exención fiscal total. Canadá negoció y Estados Unidos impuso sus condiciones. Aunque los tres aparecen en los afiches, publicidades y álbumes del Mundial, el precio que pagó cada uno fue distinto. Esto también se tradujo en los partidos que alberga cada país: mientras que en Estados Unidos se disputarán 78 encuentros (incluyendo los de eliminación directa y la gran final), México y Canadá organizarán 13 partidos cada uno.</p>
+
+        <p class="article-paragraph">El fútbol también refleja las asimetrías del poder global.</p>
+
+        <p class="article-paragraph">La secuencia de los Mundiales de Sudáfrica en 2010, Brasil en 2014 y Rusia en 2018 es, en ese sentido, elocuente. Tres países del grupo BRICS, tres economías emergentes que en la primera década del siglo XXI se volvieron emblemáticas de las transformaciones del orden internacional. Durante aquellos años, la Copa del Mundo se había vuelto el espejo de un mundo cada vez más multipolar.</p>
+
+        <p class="article-paragraph">Hay quienes sostienen que la irrupción de Trump es, en gran medida, una respuesta al ascenso de China y la pérdida de poder de Estados Unidos. In este marco, las guerras comerciales y el creciente uso del poder militar son indicadores de una potencia que busca retrasar (o revertir) su declive y su merma de competitividad en la economía global.</p>
+
+        <p class="article-paragraph">Que la Copa del Mundo vuelva a ser organizada por Estados Unidos puede ser leída en un doble sentido (geo) político: como una señal de la primacía global que pretende recuperar Estados Unidos; y también una señal sobre cómo funciona la FIFA en el sistema internacional. A diferencia de lo que ocurre con organismos como la ONU, donde el poder de los Estados se traduce directamente en capacidad de veto y de bloqueo, la FIFA opera, en teoría, de otra manera: permite a todos (grandes y pequeños, poderosos y débiles) sentarse a la misma mesa, con el mismo poder de voto, aunque en la práctica, grandes y pequeños, poderosos y débiles no son iguales. México firmó un contrato con condiciones que Estados Unidos nunca habría aceptado. De igual forma, que el FBI haya liderado la investigación que destapó el megaescándalo de corrupción conocido como FIFAgate en 2015 constituye un antecedente difícil de ignorar al analizar la posterior designación de Estados Unidos como sede principal del Mundial 2026 y la disparidad (organizativa y contractual) respecto de México y Canadá.</p>
+
+        <h3 class="article-subheading">El Mundial más geopolítico de la historia</h3>
+
+        <p class="article-paragraph">El 11 de junio de 2026, en el estadio Azteca de Ciudad de México, se jugará el partido inaugural. Es el único estadio del mundo donde se han disputado dos finales mundialistas. Es también el estadio donde Diego Maradona hizo el gol de todos los tiempos, cuatro años después de la Guerra de Malvinas, en el partido que todo el mundo recuerda como una revancha que el fútbol procesó de una manera que la diplomacia no podía. El Azteca sabe de fútbol y política.</p>
+
+        <p class="article-paragraph">Afuera del estadio habrá hinchas de todo el mundo. Iraníes que no pudieron entrar a territorio estadounidense. Canadienses que llegaron al país que intenta anexarlos. También algunos otros deportados por el ICE. Lo que esos hinchas van a compartir, sin saberlo del todo, es el producto final de un sistema en el que los Estados ceden soberanía a un organismo privado para obtener el derecho de existir en el imaginario global, en el que ese organismo proclama su neutralidad como herramienta de poder y en el que las jerarquías que el fútbol promete suspender reaparecen a la hora de organizar cada Mundial.</p>
+
+        <p class="article-paragraph">Ryszard Kapuscinski llegó a Tegucigalpa horas antes de que empezara la guerra y escribió sobre lo que el fútbol puede desatar cuando las tensiones ya no tienen otra salida. En 2026, el espacio es más grande, las cámaras son más numerosas y los intereses en juego son incomparablemente mayores. Lo que el Mundial va a encontrar cuando abra sus puertas en el Azteca es un mundo que no está esperando que el fútbol lo una. Está esperando, con distintos grados de esperanza y escepticismo, que lo que pase afuera de la cancha no dependa de hacia dónde salga la redonda.</p>
+    </article>
+
+    <!-- Comments & Active Readings Section -->
+    <section class="comments-section-container">
+        <div class="comments-inner">
+            <div class="comments-header">
+                <h2 class="comments-section-title"><i class="fas fa-comments"></i> Lectura Activa & Comentarios</h2>
+                <div class="comments-count" id="commentsCount">3 comentarios</div>
+            </div>
+
+            <!-- List of comments -->
+            <div class="comments-list" id="commentsList">
+                <!-- Seed Comment 1 -->
+                <div class="comment-card highlight-comment">
+                    <div class="comment-badge"><i class="fas fa-highlighter"></i> CITA DESTACADA</div>
+                    <blockquote class="comment-blockquote">
+                        "La FIFA tiene 211 miembros. La ONU tiene 193. La casa madre del fútbol reconoce selecciones que existen en el mundo del fútbol antes de existir en el mundo de los tratados."
+                    </blockquote>
+                    <div class="comment-header-meta">
+                        <span class="comment-author">Clara Szabo</span>
+                        <span class="comment-date">Hace 2 horas</span>
+                    </div>
+                    <div class="comment-body">
+                        Esta comparación de membresías con la ONU grafica perfectamente la soberanía deportiva. La FIFA opera verdaderamente como un Estado transnacional con más poder que muchas organizaciones globales.
+                    </div>
+                </div>
+
+                <!-- Seed Comment 2 -->
+                <div class="comment-card">
+                    <div class="comment-header-meta">
+                        <span class="comment-author">Sebastián Gomez</span>
+                        <span class="comment-date">Hace 5 horas</span>
+                    </div>
+                    <div class="comment-body">
+                        Increíble el dato sobre las 93 páginas de exención fiscal que firmó México. Muestra las asimetrías extremas entre los organizadores y cómo la FIFA impone condiciones brutales a los países en desarrollo.
+                    </div>
+                </div>
+
+                <!-- Seed Comment 3 -->
+                <div class="comment-card highlight-comment">
+                    <div class="comment-badge"><i class="fas fa-highlighter"></i> CITA DESTACADA</div>
+                    <blockquote class="comment-blockquote">
+                        "Bienvenidos al Mundial más (geo)político de la historia."
+                    </blockquote>
+                    <div class="comment-header-meta">
+                        <span class="comment-author">Mariana López</span>
+                        <span class="comment-date">Ayer</span>
+                    </div>
+                    <div class="comment-body">
+                        Excelente ensayo de Frenkel. La paradoja de Irán jugando en Seattle mientras es bombardeado por EE.UU. desmonta completamente el relato naif de que 'el fútbol une al mundo'.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Inline comment writer form -->
+            <div class="comment-form-container">
+                <h3 class="form-title">Sumar mi comentario</h3>
+                <p class="form-subtitle">También puedes resaltar fragmentos del texto de la crónica directamente con tu cursor para comentarlos o guardarlos.</p>
+
+                <div class="form-row">
+                    <div class="form-col">
+                        <input type="text" id="directCommentAuthor" placeholder="Tu Nombre">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <textarea id="directCommentText" rows="4" placeholder="Escribe un comentario general o una opinión..."></textarea>
+                </div>
+                <div class="form-row">
+                    <button class="submit-comment-btn" id="btnSubmitDirectComment">Enviar Comentario</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-branding">
+                <span class="footer-logo">Anfibia</span>
+                <p>Periodismo narrativo y comunicación científica.</p>
+            </div>
+            <div class="footer-copy">
+                &copy; 2026 Revista Anfibia / UNSAM. Rediseño experimental.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Selection Share Bar -->
+    <div class="selection-share-bar" id="selectionBar">
+        <button class="selection-btn" id="btnHighlight" title="Resaltar texto">
+            <i class="fas fa-highlighter"></i> Resaltar
+        </button>
+        <button class="selection-btn" id="btnAnnotate" title="Anotar cita">
+            <i class="fas fa-edit"></i> Anotar
+        </button>
+    </div>
+
+    <!-- Bottom-Right Floating Actions -->
+    <div class="bottom-right-floating-container">
+        <button class="floating-action-btn" id="floatLoveBtn" title="Guardar en favoritos">
+            <i class="far fa-heart"></i>
+        </button>
+        <button class="floating-action-btn" id="floatShareBtn" title="Compartir crónica">
+            <i class="fas fa-share-nodes"></i>
+        </button>
+        <button class="floating-action-btn" id="floatAnnotateBtn" title="Tomar anotación">
+            <i class="fas fa-pencil"></i>
+        </button>
+    </div>
+
+    <!-- Annotation & Instagram Share Modal -->
+    <div class="annotation-modal-overlay" id="annotationModal">
+        <div class="annotation-modal-card">
+            <button class="modal-close-btn" id="closeAnnotationModal" title="Cerrar">
+                <i class="fas fa-times"></i>
+            </button>
+
+            <div class="modal-body-grid">
+                <!-- Left: Instagram Preview Card -->
+                <div class="preview-column">
+                    <h3 class="column-title">Diseño de Cita (Instagram Story)</h3>
+                    <div class="ig-card-preview theme-peach" id="igCardPreview">
+                        <div class="ig-card-watermark">Revista Anfibia</div>
+                        <div class="ig-card-quotes"><i class="fas fa-quote-left"></i></div>
+                        <div class="ig-card-quote-text" id="previewQuoteText">"Aquí va el fragmento seleccionado de la crónica..."</div>
+                        <div class="ig-card-divider"></div>
+                        <div class="ig-card-note-text" id="previewNoteText">Escribe tus pensamientos en el formulario para ver tu anotación aquí...</div>
+                        <div class="ig-card-footer">
+                            <span class="ig-card-author" id="previewAuthor">Lector Anfibia</span>
+                            <span class="ig-card-url">revistaanfibia.org</span>
+                        </div>
+                    </div>
+
+                    <!-- Theme Selector -->
+                    <div class="theme-selector-container">
+                        <span class="selector-label">Elige un estilo:</span>
+                        <div class="theme-options">
+                            <button class="theme-dot theme-peach-btn active" data-theme="peach" title="Peach Sunset"></button>
+                            <button class="theme-dot theme-forest-btn" data-theme="forest" title="Patagonia Forest"></button>
+                            <button class="theme-dot theme-dark-btn" data-theme="dark" title="Classic Dark"></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Form Fields -->
+                <div class="form-column">
+                    <h3 class="column-title">Tu Lectura Activa</h3>
+
+                    <div class="form-group">
+                        <label>Cita Seleccionada</label>
+                        <blockquote class="selected-quote-box" id="modalQuoteDisplay">
+                            "Fragmento seleccionado..."
+                        </blockquote>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="annotationAuthorInput">Tu Nombre</label>
+                        <input type="text" id="annotationAuthorInput" placeholder="Lector Anónimo" value="Lector Anfibia">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="annotationTextInput">Tus Anotaciones / Comentarios</label>
+                        <textarea id="annotationTextInput" rows="5" placeholder="¿Qué te genera esta cita? Comparte tu análisis, pensamiento o reflexión..."></textarea>
+                    </div>
+
+                    <div class="modal-actions">
+                        <button class="modal-action-btn btn-secondary" id="btnSavePersonalNote">
+                            <i class="fas fa-bookmark"></i> Guardar Nota
+                        </button>
+                        <button class="modal-action-btn btn-primary" id="btnPublishComment">
+                            <i class="fas fa-comment-dots"></i> Publicar en Artículo
+                        </button>
+                    </div>
+
+                    <div class="instagram-export-container">
+                        <button class="ig-export-btn" id="btnDownloadIGCard">
+                            <i class="fab fa-instagram"></i> Descargar para Historia
+                        </button>
+                        <p class="export-help">Se descargará una imagen de alta calidad diseñada para subir directo a tu Instagram Story.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hidden Canvas for Instagram image generation -->
+    <canvas id="instagramStoryCanvas" width="1080" height="1920" style="display: none;"></canvas>
+
+    <!-- Toast Notification for Share / Interactive elements -->
+    <div class="toast-notification" id="toast">
+        <i class="fas fa-link"></i> <span id="toastMessage">Enlace copiado al portapapeles!</span>
+    </div>
+
+    <!-- Script for carousel and basic interactivity -->
+    <script src="script.js"></script>
+</body>
+
+</html>

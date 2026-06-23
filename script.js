@@ -428,17 +428,23 @@ document.addEventListener('DOMContentLoaded', () => {
         saveHighlightToLocalStorage(text);
     }
 
+    function getHighlightsKey() {
+        return window.location.pathname.includes('geopolitica.html') ? 'anfibia_highlights_geopolitica' : 'anfibia_highlights';
+    }
+
     function saveHighlightToLocalStorage(text) {
-        let saved = JSON.parse(localStorage.getItem('anfibia_highlights') || '[]');
+        const key = getHighlightsKey();
+        let saved = JSON.parse(localStorage.getItem(key) || '[]');
         if (!saved.includes(text)) {
             saved.push(text);
-            localStorage.setItem('anfibia_highlights', JSON.stringify(saved));
+            localStorage.setItem(key, JSON.stringify(saved));
         }
     }
 
     // Restore highlights from localStorage on load
     function restoreHighlights() {
-        const saved = JSON.parse(localStorage.getItem('anfibia_highlights') || '[]');
+        const key = getHighlightsKey();
+        const saved = JSON.parse(localStorage.getItem(key) || '[]');
         if (saved.length === 0) return;
 
         const paragraphs = document.querySelectorAll('.article-body-container p.article-paragraph, .article-body-container p.dialog-line');
@@ -588,9 +594,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 date: new Date().toLocaleDateString('es-ES')
             };
 
-            let savedNotes = JSON.parse(localStorage.getItem('anfibia_personal_notes') || '[]');
+            const notesKey = window.location.pathname.includes('geopolitica.html') ? 'anfibia_personal_notes_geopolitica' : 'anfibia_personal_notes';
+            let savedNotes = JSON.parse(localStorage.getItem(notesKey) || '[]');
             savedNotes.push(personalNote);
-            localStorage.setItem('anfibia_personal_notes', JSON.stringify(savedNotes));
+            localStorage.setItem(notesKey, JSON.stringify(savedNotes));
 
             // Also color text as highlighted
             if (currentSelectedRange) {
@@ -654,6 +661,10 @@ document.addEventListener('DOMContentLoaded', () => {
         commentsCountEl.textContent = `${total} comentario${total === 1 ? '' : 's'}`;
     }
 
+    function getCommentsKey() {
+        return window.location.pathname.includes('geopolitica.html') ? 'anfibia_comments_geopolitica' : 'anfibia_comments';
+    }
+
     // Publish Annotation as Comment
     if (btnPublishComment) {
         btnPublishComment.addEventListener('click', () => {
@@ -674,9 +685,10 @@ document.addEventListener('DOMContentLoaded', () => {
             };
 
             // Save to localStorage for persistence
-            let localComments = JSON.parse(localStorage.getItem('anfibia_comments') || '[]');
+            const commentsKey = getCommentsKey();
+            let localComments = JSON.parse(localStorage.getItem(commentsKey) || '[]');
             localComments.push(newComment);
-            localStorage.setItem('anfibia_comments', JSON.stringify(localComments));
+            localStorage.setItem(commentsKey, JSON.stringify(localComments));
 
             // Append to DOM
             addCommentToDOM(newComment, true);
@@ -720,9 +732,10 @@ document.addEventListener('DOMContentLoaded', () => {
             };
 
             // Save to localStorage
-            let localComments = JSON.parse(localStorage.getItem('anfibia_comments') || '[]');
+            const commentsKey = getCommentsKey();
+            let localComments = JSON.parse(localStorage.getItem(commentsKey) || '[]');
             localComments.push(newComment);
-            localStorage.setItem('anfibia_comments', JSON.stringify(localComments));
+            localStorage.setItem(commentsKey, JSON.stringify(localComments));
 
             // Append to DOM
             addCommentToDOM(newComment, true);
@@ -737,7 +750,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Load persistent comments
     function loadSavedComments() {
-        const localComments = JSON.parse(localStorage.getItem('anfibia_comments') || '[]');
+        const localComments = JSON.parse(localStorage.getItem(getCommentsKey()) || '[]');
         localComments.forEach(comment => {
             addCommentToDOM(comment);
         });
@@ -887,7 +900,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (floatLoveBtn) {
         // Restore favorite state from localStorage
-        const isFav = localStorage.getItem('anfibia_patagonia_fav') === 'true';
+        const pageKey = window.location.pathname.includes('geopolitica.html') ? 'anfibia_geopolitica_fav' : 'anfibia_patagonia_fav';
+        const isFav = localStorage.getItem(pageKey) === 'true';
         if (isFav) {
             floatLoveBtn.classList.add('active');
             const icon = floatLoveBtn.querySelector('i');
@@ -906,14 +920,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (icon) {
                     icon.className = 'fas fa-heart';
                 }
-                localStorage.setItem('anfibia_patagonia_fav', 'true');
+                localStorage.setItem(pageKey, 'true');
                 showToast("¡Añadido a favoritos!");
             } else {
                 floatLoveBtn.classList.remove('active');
                 if (icon) {
                     icon.className = 'far fa-heart';
                 }
-                localStorage.setItem('anfibia_patagonia_fav', 'false');
+                localStorage.setItem(pageKey, 'false');
                 showToast("Eliminado de favoritos.");
             }
         });
