@@ -946,11 +946,58 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 5. MOBILE MENU BUTTON ACTION
+    // 5. MOBILE MENU DRAWER LOGIC
     const menuToggle = document.getElementById('menuToggle');
-    if (menuToggle) {
-        menuToggle.addEventListener('click', () => {
-            showToast("Menú móvil: ¡Próximamente disponible en este prototipo!");
+    const mobileMenuDrawer = document.getElementById('mobileMenuDrawer');
+    const menuBackdrop = document.getElementById('menuBackdrop');
+
+    if (menuToggle && mobileMenuDrawer && menuBackdrop) {
+        // Toggle drawer open/close
+        menuToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            mobileMenuDrawer.classList.toggle('active');
+            menuBackdrop.classList.toggle('active');
+            
+            if (mobileMenuDrawer.classList.contains('active')) {
+                document.body.style.overflow = 'hidden'; // prevent page scroll
+            } else {
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Close drawer (clicking backdrop)
+        menuBackdrop.addEventListener('click', () => {
+            mobileMenuDrawer.classList.remove('active');
+            menuBackdrop.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+
+        // Close drawer (Escape key)
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && mobileMenuDrawer.classList.contains('active')) {
+                mobileMenuDrawer.classList.remove('active');
+                menuBackdrop.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Mobile Dropdown Accordion Toggle
+        const dropdownToggles = mobileMenuDrawer.querySelectorAll('.mobile-dropdown-toggle');
+        dropdownToggles.forEach(toggle => {
+            toggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const parent = toggle.closest('.mobile-nav-item-dropdown');
+                if (parent) {
+                    // Close other dropdowns (accordion style)
+                    mobileMenuDrawer.querySelectorAll('.mobile-nav-item-dropdown').forEach(item => {
+                        if (item !== parent) {
+                            item.classList.remove('open');
+                        }
+                    });
+                    
+                    parent.classList.toggle('open');
+                }
+            });
         });
     }
 

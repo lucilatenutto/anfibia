@@ -24,6 +24,7 @@
         <div class="header-container">
             <div class="header-left">
                 <a href="index.html" class="brand-logo">Anfibia</a>
+                <div class="header-divider"></div>
                 <div class="unsam-badge">
                     <img src="unsam.png" alt="UNSAM" class="unsam-logo-img">
                 </div>
@@ -35,29 +36,89 @@
                 </div>
             </div>
 
-            <nav class="header-nav">
-                <ul class="nav-list">
-                    <li><a href="#" class="nav-item special-link">Comunidad Anfibia</a></li>
-                    <li><a href="#" class="nav-item">Textos</a></li>
-                    <li><a href="#" class="nav-item">Podcast</a></li>
-                    <li><a href="#" class="nav-item">Talleres</a></li>
-                    <li><a href="#" class="nav-item">Maestría</a></li>
-                    <li><a href="#" class="nav-item">Diplomatura IA</a></li>
-                    <li><a href="#" class="nav-item">LPP</a></li>
-                    <li><a href="#" class="nav-item">Futuro Imperfecto 3</a></li>
-                </ul>
-            </nav>
-
             <div class="header-right">
                 <button class="search-btn" id="searchBtn" title="Buscar">
                     <i class="fas fa-search"></i>
                 </button>
+                <nav class="header-nav">
+                    <ul class="nav-list">
+                        <li><a href="#" class="nav-item special-link">Comunidad Anfibia</a></li>
+                        
+                        <!-- Textos dropdown -->
+                        <li class="nav-item-dropdown">
+                            <a href="#" class="nav-item">Textos <i class="fas fa-chevron-down nav-chevron"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Ambiente</a></li>
+                                <li><a href="#">Amor y Sexo</a></li>
+                                <li><a href="#">Cultura</a></li>
+                                <li><a href="#">Educación</a></li>
+                                <li><a href="#">Política y Economía</a></li>
+                                <li><a href="#">Salud</a></li>
+                                <li><a href="#">Tecnología</a></li>
+                                <li><a href="#">Rosario</a></li>
+                                <li><a href="#">Favoritos/Guardados</a></li>
+                            </ul>
+                        </li>
+                        
+                        <!-- Podcast dropdown -->
+                        <li class="nav-item-dropdown">
+                            <a href="#" class="nav-item">Podcast <i class="fas fa-chevron-down nav-chevron"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Todos los Podcasts</a></li>
+                            </ul>
+                        </li>
+                        
+                        <!-- Talleres dropdown -->
+                        <li class="nav-item-dropdown">
+                            <a href="#" class="nav-item">Talleres <i class="fas fa-chevron-down nav-chevron"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Ver más</a></li>
+                            </ul>
+                        </li>
+                        
+                        <!-- Maestria dropdown -->
+                        <li class="nav-item-dropdown">
+                            <a href="#" class="nav-item">Maestría <i class="fas fa-chevron-down nav-chevron"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Inscripción</a></li>
+                                <li><a href="#">Programa Completo</a></li>
+                            </ul>
+                        </li>
+                        
+                        <!-- Diplomatura IA dropdown -->
+                        <li class="nav-item-dropdown">
+                            <a href="#" class="nav-item">Diplomatura IA <i class="fas fa-chevron-down nav-chevron"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Periodismo Performativo</a></li>
+                            </ul>
+                        </li>
+                        
+                        <!-- LPP dropdown -->
+                        <li class="nav-item-dropdown">
+                            <a href="#" class="nav-item">LPP <i class="fas fa-chevron-down nav-chevron"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Ver más</a></li>
+                            </ul>
+                        </li>
+                        
+                        <!-- Futuro Imperfecto 3 dropdown -->
+                        <li class="nav-item-dropdown">
+                            <a href="#" class="nav-item">Futuro Imperfecto 3 <i class="fas fa-chevron-down nav-chevron"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Volumen 1</a></li>
+                                <li><a href="#">Volumen 2</a></li>
+                                <li><a href="#">Volumen 3</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
                 <button class="menu-toggle" id="menuToggle" title="Menú">
                     <i class="fas fa-bars"></i>
                 </button>
             </div>
         </div>
     </header>
+
 
     <!-- Search Overlay -->
     <div class="search-overlay" id="searchOverlay">
@@ -66,6 +127,144 @@
             <button class="close-search" id="closeSearch"><i class="fas fa-times"></i></button>
         </div>
     </div>
+
+    <!-- Mobile Menu Drawer -->
+    <div class="mobile-menu-drawer" id="mobileMenuDrawer">
+        <div class="mobile-menu-body">
+            <nav class="mobile-nav">
+                <ul class="mobile-nav-list">
+                    <!-- Textos dropdown -->
+                    <li class="mobile-nav-item-dropdown">
+                        <button class="mobile-dropdown-toggle">
+                            <span class="item-text">.Textos</span>
+                            <i class="fas fa-chevron-down toggle-icon"></i>
+                        </button>
+                        <ul class="mobile-dropdown-menu">
+                            <li><a href="#">Ambiente</a></li>
+                            <li><a href="#">Amor y Sexo</a></li>
+                            <li><a href="#">Cultura</a></li>
+                            <li><a href="#">Educación</a></li>
+                            <li><a href="#">Política y Economía</a></li>
+                            <li><a href="#">Salud</a></li>
+                            <li><a href="#">Tecnología</a></li>
+                            <li><a href="#">Rosario</a></li>
+                            <li><a href="#">Favoritos/Guardados</a></li>
+                        </ul>
+                    </li>
+                    
+                    <!-- Podcast dropdown -->
+                    <li class="mobile-nav-item-dropdown">
+                        <button class="mobile-dropdown-toggle">
+                            <span class="item-text">.Podcast</span>
+                            <i class="fas fa-chevron-down toggle-icon"></i>
+                        </button>
+                        <ul class="mobile-dropdown-menu">
+                            <li><a href="#">Todos los Podcasts</a></li>
+                        </ul>
+                    </li>
+                    
+                    <!-- Talleres dropdown -->
+                    <li class="mobile-nav-item-dropdown">
+                        <button class="mobile-dropdown-toggle">
+                            <span class="item-text">.Talleres</span>
+                            <i class="fas fa-chevron-down toggle-icon"></i>
+                        </button>
+                        <ul class="mobile-dropdown-menu">
+                            <li><a href="#">Ver mas</a></li>
+                        </ul>
+                    </li>
+                    
+                    <!-- Maestria dropdown -->
+                    <li class="mobile-nav-item-dropdown">
+                        <button class="mobile-dropdown-toggle">
+                            <span class="item-text">.Maestría</span>
+                            <i class="fas fa-chevron-down toggle-icon"></i>
+                        </button>
+                        <ul class="mobile-dropdown-menu">
+                            <li><a href="#">Inscripcion</a></li>
+                            <li><a href="#">Programa Completo</a></li>
+                        </ul>
+                    </li>
+                    
+                    <!-- Diplomatura IA dropdown -->
+                    <li class="mobile-nav-item-dropdown">
+                        <button class="mobile-dropdown-toggle">
+                            <span class="item-text">.Diplomatura IA</span>
+                            <i class="fas fa-chevron-down toggle-icon"></i>
+                        </button>
+                        <ul class="mobile-dropdown-menu">
+                            <li><a href="#">Periodismo Performativo</a></li>
+                        </ul>
+                    </li>
+                    
+                    <!-- LPP dropdown -->
+                    <li class="mobile-nav-item-dropdown">
+                        <button class="mobile-dropdown-toggle">
+                            <span class="item-text">.LPP</span>
+                            <i class="fas fa-chevron-down toggle-icon"></i>
+                        </button>
+                        <ul class="mobile-dropdown-menu">
+                            <li><a href="#">Ver mas</a></li>
+                        </ul>
+                    </li>
+                    
+                    <!-- Futuro Imperfecto 3 dropdown -->
+                    <li class="mobile-nav-item-dropdown">
+                        <button class="mobile-dropdown-toggle">
+                            <span class="item-text">.Futuro Imperfecto 3</span>
+                            <i class="fas fa-chevron-down toggle-icon"></i>
+                        </button>
+                        <ul class="mobile-dropdown-menu">
+                            <li><a href="#">Volumen 1</a></li>
+                            <li><a href="#">Volumen 2</a></li>
+                            <li><a href="#">Volumen 3</a></li>
+                        </ul>
+                    </li>
+                    
+                    <!-- Favoritos static -->
+                    <li class="mobile-nav-item-static">
+                        <a href="#" class="mobile-static-link">.Favoritos</a>
+                    </li>
+                    
+                    <!-- Historial static -->
+                    <li class="mobile-nav-item-static">
+                        <a href="#" class="mobile-static-link">.Historial</a>
+                    </li>
+
+                    <li class="mobile-nav-spacing"></li>
+                    
+                    <!-- Redes dropdown -->
+                    <li class="mobile-nav-item-dropdown">
+                        <button class="mobile-dropdown-toggle">
+                            <span class="item-text">.Redes</span>
+                            <i class="fas fa-chevron-down toggle-icon"></i>
+                        </button>
+                        <ul class="mobile-dropdown-menu">
+                            <li><a href="#">.Twitter</a></li>
+                            <li><a href="#">.Facebook</a></li>
+                            <li><a href="#">.Instagram</a></li>
+                            <li><a href="#">.YouTube</a></li>
+                        </ul>
+                    </li>
+                    
+                    <!-- Comunidad static -->
+                    <li class="mobile-nav-item-static">
+                        <a href="#" class="mobile-static-link">.Comunidad Anfibia</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="mobile-menu-footer-account">
+            <a href="#" class="mobile-account-btn">
+                <i class="far fa-user-circle"></i>
+                <span>Tu Cuenta Anfibia</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Mobile Menu Backdrop -->
+    <div class="menu-backdrop" id="menuBackdrop"></div>
 
     <!-- HERO SLIDER SECTION (Full screen width, controlled height) -->
     <section class="hero-slider-section" id="mainSlider">

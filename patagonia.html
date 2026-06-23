@@ -24,6 +24,7 @@
         <div class="header-container">
             <div class="header-left">
                 <a href="index.html" class="brand-logo">Anfibia</a>
+                <div class="header-divider"></div>
                 <div class="unsam-badge">
                     <img src="unsam.png" alt="UNSAM" class="unsam-logo-img">
                 </div>
@@ -35,29 +36,89 @@
                 </div>
             </div>
 
-            <nav class="header-nav">
-                <ul class="nav-list">
-                    <li><a href="#" class="nav-item special-link">Comunidad Anfibia</a></li>
-                    <li><a href="#" class="nav-item">Textos</a></li>
-                    <li><a href="#" class="nav-item">Podcast</a></li>
-                    <li><a href="#" class="nav-item">Talleres</a></li>
-                    <li><a href="#" class="nav-item">Maestría</a></li>
-                    <li><a href="#" class="nav-item">Diplomatura IA</a></li>
-                    <li><a href="#" class="nav-item">LPP</a></li>
-                    <li><a href="#" class="nav-item">Futuro Imperfecto 3</a></li>
-                </ul>
-            </nav>
-
             <div class="header-right">
                 <button class="search-btn" id="searchBtn" title="Buscar">
                     <i class="fas fa-search"></i>
                 </button>
+                <nav class="header-nav">
+                    <ul class="nav-list">
+                        <li><a href="#" class="nav-item special-link">Comunidad Anfibia</a></li>
+                        
+                        <!-- Textos dropdown -->
+                        <li class="nav-item-dropdown">
+                            <a href="#" class="nav-item">Textos <i class="fas fa-chevron-down nav-chevron"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Ambiente</a></li>
+                                <li><a href="#">Amor y Sexo</a></li>
+                                <li><a href="#">Cultura</a></li>
+                                <li><a href="#">Educación</a></li>
+                                <li><a href="#">Política y Economía</a></li>
+                                <li><a href="#">Salud</a></li>
+                                <li><a href="#">Tecnología</a></li>
+                                <li><a href="#">Rosario</a></li>
+                                <li><a href="#">Favoritos/Guardados</a></li>
+                            </ul>
+                        </li>
+                        
+                        <!-- Podcast dropdown -->
+                        <li class="nav-item-dropdown">
+                            <a href="#" class="nav-item">Podcast <i class="fas fa-chevron-down nav-chevron"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Todos los Podcasts</a></li>
+                            </ul>
+                        </li>
+                        
+                        <!-- Talleres dropdown -->
+                        <li class="nav-item-dropdown">
+                            <a href="#" class="nav-item">Talleres <i class="fas fa-chevron-down nav-chevron"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Ver más</a></li>
+                            </ul>
+                        </li>
+                        
+                        <!-- Maestria dropdown -->
+                        <li class="nav-item-dropdown">
+                            <a href="#" class="nav-item">Maestría <i class="fas fa-chevron-down nav-chevron"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Inscripción</a></li>
+                                <li><a href="#">Programa Completo</a></li>
+                            </ul>
+                        </li>
+                        
+                        <!-- Diplomatura IA dropdown -->
+                        <li class="nav-item-dropdown">
+                            <a href="#" class="nav-item">Diplomatura IA <i class="fas fa-chevron-down nav-chevron"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Periodismo Performativo</a></li>
+                            </ul>
+                        </li>
+                        
+                        <!-- LPP dropdown -->
+                        <li class="nav-item-dropdown">
+                            <a href="#" class="nav-item">LPP <i class="fas fa-chevron-down nav-chevron"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Ver más</a></li>
+                            </ul>
+                        </li>
+                        
+                        <!-- Futuro Imperfecto 3 dropdown -->
+                        <li class="nav-item-dropdown">
+                            <a href="#" class="nav-item">Futuro Imperfecto 3 <i class="fas fa-chevron-down nav-chevron"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Volumen 1</a></li>
+                                <li><a href="#">Volumen 2</a></li>
+                                <li><a href="#">Volumen 3</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
                 <button class="menu-toggle" id="menuToggle" title="Menú">
                     <i class="fas fa-bars"></i>
                 </button>
             </div>
         </div>
     </header>
+
     <!-- Left Floating Progress Gauge -->
     <div class="vertical-progress-container">
         <div class="vertical-progress-track">
@@ -72,6 +133,144 @@
             <button class="close-search" id="closeSearch"><i class="fas fa-times"></i></button>
         </div>
     </div>
+
+    <!-- Mobile Menu Drawer -->
+    <div class="mobile-menu-drawer" id="mobileMenuDrawer">
+        <div class="mobile-menu-body">
+            <nav class="mobile-nav">
+                <ul class="mobile-nav-list">
+                    <!-- Textos dropdown -->
+                    <li class="mobile-nav-item-dropdown">
+                        <button class="mobile-dropdown-toggle">
+                            <span class="item-text">.Textos</span>
+                            <i class="fas fa-chevron-down toggle-icon"></i>
+                        </button>
+                        <ul class="mobile-dropdown-menu">
+                            <li><a href="#">Ambiente</a></li>
+                            <li><a href="#">Amor y Sexo</a></li>
+                            <li><a href="#">Cultura</a></li>
+                            <li><a href="#">Educación</a></li>
+                            <li><a href="#">Política y Economía</a></li>
+                            <li><a href="#">Salud</a></li>
+                            <li><a href="#">Tecnología</a></li>
+                            <li><a href="#">Rosario</a></li>
+                            <li><a href="#">Favoritos/Guardados</a></li>
+                        </ul>
+                    </li>
+                    
+                    <!-- Podcast dropdown -->
+                    <li class="mobile-nav-item-dropdown">
+                        <button class="mobile-dropdown-toggle">
+                            <span class="item-text">.Podcast</span>
+                            <i class="fas fa-chevron-down toggle-icon"></i>
+                        </button>
+                        <ul class="mobile-dropdown-menu">
+                            <li><a href="#">Todos los Podcasts</a></li>
+                        </ul>
+                    </li>
+                    
+                    <!-- Talleres dropdown -->
+                    <li class="mobile-nav-item-dropdown">
+                        <button class="mobile-dropdown-toggle">
+                            <span class="item-text">.Talleres</span>
+                            <i class="fas fa-chevron-down toggle-icon"></i>
+                        </button>
+                        <ul class="mobile-dropdown-menu">
+                            <li><a href="#">Ver mas</a></li>
+                        </ul>
+                    </li>
+                    
+                    <!-- Maestria dropdown -->
+                    <li class="mobile-nav-item-dropdown">
+                        <button class="mobile-dropdown-toggle">
+                            <span class="item-text">.Maestría</span>
+                            <i class="fas fa-chevron-down toggle-icon"></i>
+                        </button>
+                        <ul class="mobile-dropdown-menu">
+                            <li><a href="#">Inscripcion</a></li>
+                            <li><a href="#">Programa Completo</a></li>
+                        </ul>
+                    </li>
+                    
+                    <!-- Diplomatura IA dropdown -->
+                    <li class="mobile-nav-item-dropdown">
+                        <button class="mobile-dropdown-toggle">
+                            <span class="item-text">.Diplomatura IA</span>
+                            <i class="fas fa-chevron-down toggle-icon"></i>
+                        </button>
+                        <ul class="mobile-dropdown-menu">
+                            <li><a href="#">Periodismo Performativo</a></li>
+                        </ul>
+                    </li>
+                    
+                    <!-- LPP dropdown -->
+                    <li class="mobile-nav-item-dropdown">
+                        <button class="mobile-dropdown-toggle">
+                            <span class="item-text">.LPP</span>
+                            <i class="fas fa-chevron-down toggle-icon"></i>
+                        </button>
+                        <ul class="mobile-dropdown-menu">
+                            <li><a href="#">Ver mas</a></li>
+                        </ul>
+                    </li>
+                    
+                    <!-- Futuro Imperfecto 3 dropdown -->
+                    <li class="mobile-nav-item-dropdown">
+                        <button class="mobile-dropdown-toggle">
+                            <span class="item-text">.Futuro Imperfecto 3</span>
+                            <i class="fas fa-chevron-down toggle-icon"></i>
+                        </button>
+                        <ul class="mobile-dropdown-menu">
+                            <li><a href="#">Volumen 1</a></li>
+                            <li><a href="#">Volumen 2</a></li>
+                            <li><a href="#">Volumen 3</a></li>
+                        </ul>
+                    </li>
+                    
+                    <!-- Favoritos static -->
+                    <li class="mobile-nav-item-static">
+                        <a href="#" class="mobile-static-link">.Favoritos</a>
+                    </li>
+                    
+                    <!-- Historial static -->
+                    <li class="mobile-nav-item-static">
+                        <a href="#" class="mobile-static-link">.Historial</a>
+                    </li>
+
+                    <li class="mobile-nav-spacing"></li>
+                    
+                    <!-- Redes dropdown -->
+                    <li class="mobile-nav-item-dropdown">
+                        <button class="mobile-dropdown-toggle">
+                            <span class="item-text">.Redes</span>
+                            <i class="fas fa-chevron-down toggle-icon"></i>
+                        </button>
+                        <ul class="mobile-dropdown-menu">
+                            <li><a href="#">.Twitter</a></li>
+                            <li><a href="#">.Facebook</a></li>
+                            <li><a href="#">.Instagram</a></li>
+                            <li><a href="#">.YouTube</a></li>
+                        </ul>
+                    </li>
+                    
+                    <!-- Comunidad static -->
+                    <li class="mobile-nav-item-static">
+                        <a href="#" class="mobile-static-link">.Comunidad Anfibia</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="mobile-menu-footer-account">
+            <a href="#" class="mobile-account-btn">
+                <i class="far fa-user-circle"></i>
+                <span>Tu Cuenta Anfibia</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Mobile Menu Backdrop -->
+    <div class="menu-backdrop" id="menuBackdrop"></div>
 
     <!-- Article Detail Container -->
     <main class="article-detail-container">
@@ -178,6 +377,19 @@
             afectadas por incendios forestales en la Comarca Andina y en Córdoba. Hablar y conectar con redes de apoyo
             vale, es evacuación emocional.</p>
 
+        <div class="article-image-wrapper">
+            <img src="3per.png" alt="Participantes del encuentro en Lago Puelo" class="article-body-image">
+        </div>
+
+        <h3 class="article-subheading">MINGA</h3>
+        <p class="article-paragraph">Del encuentro participamos cincuenta personas vinculadas a la ciencia, la comunicación, el territorio y las experiencias comunitarias. Investigadores, periodistas, brigadistas y activistas de la Comarca Andina del Paralelo 42 —la región donde se tocan Río Negro y Chubut—, atravesada por la ruta 40. Es un jueves de fines de mayo. Hace más frío en Buenos Aires que en Lago Puelo, donde el calor y el color de pasto parecen de primavera. Invitan un pool de organizaciones: Avina con iniciativa BASE, AcercAR, Alimentaris e InnContext.</p>
+
+        <p class="article-paragraph">La convocatoria busca recuperar la promesa que se hace la gente de la Comarca durante la emergencia (es decir, los incendios): ¡Tenemos que organizarnos mejor! Pero después del fuego, el impulso de la vida cotidiana se reconstruye desde las ruinas, no queda margen para más reuniones. Quizás, mirar para otro lado le da descanso al desafío colectivo que toca vivir. Pero esta mañana se inventa el tiempo. Desean sentir que esa contención comunitaria que aparece durante la emergencia es real, y que puede fortalecerse más allá de la adrenalina y el estrés.</p>
+
+        <div class="article-image-wrapper">
+            <img src="dest.png" alt="Minga y organización comunitaria" class="article-body-image">
+        </div>
+
         <p class="article-paragraph">Más que el taller de una ong, este encuentro parece una asamblea o, mejor, una
             minga. Se llama De la información a la acción porque la comunicación ocupará un lugar central, entendida más
             allá de la difusión o lo periodístico: como vínculo y estrategia para reconstruir una agenda común,
@@ -236,6 +448,10 @@
             forestales. Y que aumentó un 15 por ciento la intensidad del viento en febrero: las ráfagas son
             determinantes en la velocidad de propagación y el comportamiento del fuego.</p>
 
+        <div class="article-image-wrapper">
+            <img src="bomb.png" alt="Respuesta ante la emergencia de incendios" class="article-body-image">
+        </div>
+
         <h3 class="article-subheading">VIENTO</h3>
 
         <p class="dialog-line">—Cuando evacuamos, yo miraba por el espejo y pensaba ‘esto ya no lo vuelvo a ver’.</p>
@@ -250,6 +466,10 @@
             asusta.</p>
         <p class="dialog-line">—Cuando pasa el evento y volvés, parece que vivís en zona de guerra entre cenizas, humo
             constante, helicópteros y campamentos del Ejército.</p>
+
+        <div class="article-image-wrapper">
+            <img src="dest1.png" alt="Hongos y ecología del bosque" class="article-body-image">
+        </div>
 
         <h3 class="article-subheading">HONGOS</h3>
 
@@ -271,6 +491,10 @@
             como eventos extremos, obliga a diseñar nuevas estrategias de prevención, respuesta a la emergencia y
             recuperación de los paisajes afectados.</p>
 
+        <div class="article-image-wrapper">
+            <img src="hombre.png" alt="Hombre y la convivencia con el fuego" class="article-body-image">
+        </div>
+
         <p class="article-paragraph">¿Qué toca? Aprender a convivir con el fuego. Aceptar que se habita en un lugar con
             riesgo alto de padecer incendios forestales incontrolables. Que “se trata de una ruptura y no de una crisis”
             y hay que “diseñar alianzas con las tensiones, no contra las tensiones”, dicen los científicos de la
@@ -291,6 +515,10 @@
             social al interactuar con vecinos, puede inspirarnos y posiblemente también favorezca la reducción de la
             contaminación atmosférica y el ruido”, dice el libro Redescubriendo nuestro entorno, de Aldana Matellini y
             Nicolás Bondel.</p>
+
+        <div class="article-image-wrapper">
+            <img src="camrot.png" alt="Convivencia y riesgos en la zona de interfase" class="article-body-image">
+        </div>
 
         <p class="article-paragraph">Cada vez más personas (de afuera) quieren vivir en el bosque “abrazados a una
             lenga”, exageran los locales. Después de un incendio forestal, las fotos de las revistas de arquitectura y
@@ -351,6 +579,10 @@
             Tatiana es periodista, Guido matemático, Victoria es médica, Maximiliano es politólogo, Juanjo es contador,
             Eimí es desarrollóloga, Nehuén es geógrafo, Nicolás es Forestal, Martina es Ambientóloga, Marta es abogada,
             Guadalupe es obstetra.</p>
+
+        <div class="article-image-wrapper">
+            <img src="3per2.png" alt="Grupo local de la Comarca Andina" class="article-body-image">
+        </div>
 
         <p class="article-paragraph">Vistos desde los Objetivos de Desarrollo Sostenible para la agenda 2030, se
             apropian de los casilleros “resiliencia” y “medidas urgentes para combatir el cambio climático”, en
