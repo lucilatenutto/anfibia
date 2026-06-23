@@ -886,6 +886,31 @@
         </div>
     </div>
 
+    <!-- History Drawer Overlay -->
+    <div class="history-drawer-overlay" id="historyDrawerOverlay">
+        <div class="history-drawer" id="historyDrawer">
+            <div class="history-drawer-header">
+                <div class="history-drawer-title-row">
+                    <h3 class="history-drawer-title">Historial de Lectura</h3>
+                    <button class="btn-clear-all-history" id="btnClearAllHistory">Limpiar</button>
+                </div>
+                <button class="history-drawer-close" id="closeHistoryDrawer">&times;</button>
+            </div>
+            <div class="history-drawer-body">
+                <div class="history-list" id="historyList">
+                    <!-- Dynamic history will be listed here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scroll Restoration Toast -->
+    <div class="scroll-restore-toast" id="scrollRestoreToast">
+        <span id="scrollRestoreMsg">Restaurando tu lectura...</span>
+        <button class="btn-toast-restart" id="btnToastRestart">Ir al inicio</button>
+        <button class="close-toast" id="closeRestoreToast">&times;</button>
+    </div>
+
     <!-- Toast Notification for Share / Interactive elements -->
     <div class="toast-notification" id="toast">
         <i class="fas fa-link"></i> <span id="toastMessage">Enlace copiado al portapapeles!</span>

@@ -316,6 +316,34 @@
         </div>
     </section>
 
+    <!-- SECTION: CONTINÚA LEYENDO -->
+    <section class="continue-reading-section" id="continueReadingSection" style="display: none;">
+        <div class="continue-reading-container">
+            <div class="section-banner-black">
+                <div class="banner-line"></div>
+                <h2 class="banner-title">CONTINÚA LEYENDO</h2>
+                <div class="banner-line"></div>
+            </div>
+            <div class="continue-reading-grid" id="continueReadingGrid">
+                <!-- Dynamically populated by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: TU HISTORIAL DE LECTURA (HOMEPAGE) -->
+    <section class="continue-reading-section" id="homeHistorySection" style="display: none; background-color: #fafafb; border-top: none;">
+        <div class="continue-reading-container">
+            <div class="section-banner-black">
+                <div class="banner-line"></div>
+                <h2 class="banner-title">TU HISTORIAL</h2>
+                <div class="banner-line"></div>
+            </div>
+            <div class="continue-reading-grid" id="homeHistoryGrid">
+                <!-- Dynamically populated by JS -->
+            </div>
+        </div>
+    </section>
+
     <!-- SECTION: SUB-HERO CAROUSEL (LAS DESPEDIDAS SON ESOS DOLORES DULCES) -->
     <section class="subhero-carousel-section">
         <div class="subhero-container">
@@ -897,6 +925,31 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <!-- History Drawer Overlay -->
+    <div class="history-drawer-overlay" id="historyDrawerOverlay">
+        <div class="history-drawer" id="historyDrawer">
+            <div class="history-drawer-header">
+                <div class="history-drawer-title-row">
+                    <h3 class="history-drawer-title">Historial de Lectura</h3>
+                    <button class="btn-clear-all-history" id="btnClearAllHistory">Limpiar</button>
+                </div>
+                <button class="history-drawer-close" id="closeHistoryDrawer">&times;</button>
+            </div>
+            <div class="history-drawer-body">
+                <div class="history-list" id="historyList">
+                    <!-- Dynamic history will be listed here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scroll Restoration Toast -->
+    <div class="scroll-restore-toast" id="scrollRestoreToast">
+        <span id="scrollRestoreMsg">Restaurando tu lectura...</span>
+        <button class="btn-toast-restart" id="btnToastRestart">Ir al inicio</button>
+        <button class="close-toast" id="closeRestoreToast">&times;</button>
     </div>
 
     <!-- Toast Notification for Share / Interactive elements -->

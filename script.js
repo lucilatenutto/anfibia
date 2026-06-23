@@ -1138,6 +1138,13 @@ document.addEventListener('DOMContentLoaded', () => {
     function handleComenzar() {
         closeAuthModal();
         syncAllFavoriteButtons(); // Sync UI after login/register
+        
+        // History updates after login
+        if (typeof renderHistoryList === 'function') renderHistoryList();
+        if (typeof renderContinueReading === 'function') renderContinueReading();
+        if (typeof renderHomeHistory === 'function') renderHomeHistory();
+        if (typeof checkAndRestoreScroll === 'function') checkAndRestoreScroll();
+
         if (pendingAction) {
             const actionToRun = pendingAction;
             pendingAction = null;
@@ -1526,6 +1533,15 @@ document.addEventListener('DOMContentLoaded', () => {
                     updateAccountUI();
                     syncAllFavoriteButtons();
                     closeFavoritesDrawerFunc();
+                    
+                    // History resets on logout
+                    closeHistoryDrawerFunc();
+                    if (continueReadingSection) continueReadingSection.style.display = 'none';
+                    const homeHistorySection = document.getElementById('homeHistorySection');
+                    if (homeHistorySection) homeHistorySection.style.display = 'none';
+                    const scrollRestoreToast = document.getElementById('scrollRestoreToast');
+                    if (scrollRestoreToast) scrollRestoreToast.classList.remove('active');
+                    
                     showToast("Sesión cerrada correctamente.");
                 }
             } else {
@@ -1546,14 +1562,392 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (text.includes('favoritos')) {
                         openFavoritesDrawer();
                     } else {
-                        showToast("Cargando tu historial de lectura...");
+                        openHistoryDrawer();
                     }
                 });
             });
         }
     });
 
+    // ==========================================================================
+    // 10. READING HISTORY & CONTINUE READING CONTROLLER
+    // ==========================================================================
+    const historyDrawerOverlay = document.getElementById('historyDrawerOverlay');
+    const closeHistoryDrawer = document.getElementById('closeHistoryDrawer');
+    const historyList = document.getElementById('historyList');
+    const btnClearAllHistory = document.getElementById('btnClearAllHistory');
+    const continueReadingSection = document.getElementById('continueReadingSection');
+    const continueReadingGrid = document.getElementById('continueReadingGrid');
+
+    function openHistoryDrawer() {
+        if (!historyDrawerOverlay) return;
+        renderHistoryList();
+        historyDrawerOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeHistoryDrawerFunc() {
+        if (!historyDrawerOverlay) return;
+        historyDrawerOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    if (closeHistoryDrawer) {
+        closeHistoryDrawer.addEventListener('click', closeHistoryDrawerFunc);
+    }
+
+    if (historyDrawerOverlay) {
+        historyDrawerOverlay.addEventListener('click', (e) => {
+            if (e.target === historyDrawerOverlay) {
+                closeHistoryDrawerFunc();
+            }
+        });
+    }
+
+    if (btnClearAllHistory) {
+        btnClearAllHistory.addEventListener('click', () => {
+            if (confirm("¿Estás seguro de que deseas limpiar todo tu historial de lectura?")) {
+                clearAllHistory();
+                showToast("Historial limpio.");
+                renderHistoryList();
+                renderContinueReading();
+                renderHomeHistory();
+            }
+        });
+    }
+
+    function getHistoryKey() {
+        const username = localStorage.getItem('anfibia_username') || 'global';
+        return `anfibia_history_${username}`;
+    }
+
+    function getHistory() {
+        if (localStorage.getItem('anfibia_logged_in') !== 'true') return [];
+        return JSON.parse(localStorage.getItem(getHistoryKey()) || '[]');
+    }
+
+    function saveHistoryItem(articleData, progress, scrollY) {
+        if (localStorage.getItem('anfibia_logged_in') !== 'true') return;
+        let history = getHistory();
+        history = history.filter(item => item.id !== articleData.id);
+        
+        history.unshift({
+            ...articleData,
+            progress: Math.round(progress),
+            scrollY: scrollY,
+            lastRead: new Date().toISOString()
+        });
+
+        if (history.length > 20) {
+            history = history.slice(0, 20);
+        }
+
+        localStorage.setItem(getHistoryKey(), JSON.stringify(history));
+    }
+
+    function removeHistoryItem(id) {
+        if (localStorage.getItem('anfibia_logged_in') !== 'true') return;
+        let history = getHistory();
+        history = history.filter(item => item.id !== id);
+        localStorage.setItem(getHistoryKey(), JSON.stringify(history));
+    }
+
+    function clearAllHistory() {
+        if (localStorage.getItem('anfibia_logged_in') !== 'true') return;
+        localStorage.removeItem(getHistoryKey());
+    }
+
+    function getCurrentArticleData() {
+        const container = document.querySelector('.article-header-section');
+        if (!container) return null;
+
+        const titleEl = container.querySelector('.article-main-title');
+        const title = titleEl ? titleEl.textContent.trim() : "";
+
+        const kickerEl = container.querySelector('.article-kicker');
+        const kicker = kickerEl ? kickerEl.textContent.trim() : "";
+
+        const badgeEl = container.querySelector('.article-badge');
+        const badge = badgeEl ? badgeEl.textContent.trim() : "";
+
+        const imgEl = container.querySelector('.article-featured-image');
+        const image = imgEl ? imgEl.getAttribute('src') : "";
+
+        const path = window.location.pathname.split('/').pop() || "index.html";
+        const url = path.includes('.html') ? path : path + '.html';
+
+        const authorEl = container.querySelector('.credit-name');
+        const author = authorEl ? authorEl.textContent.trim() : "";
+
+        const id = url.replace('.html', '');
+
+        return { id, title, kicker, url, image, badge, author };
+    }
+
+    function renderHistoryList() {
+        if (!historyList) return;
+        
+        const history = getHistory();
+        
+        if (history.length === 0) {
+            historyList.innerHTML = `
+                <div class="history-empty-state">
+                    <i class="far fa-clock"></i>
+                    <p>No tienes artículos en tu historial de lectura.</p>
+                    <span style="font-size: 0.75rem; opacity: 0.7; text-align: center;">¡Tus artículos comenzados aparecerán aquí!</span>
+                </div>
+            `;
+            return;
+        }
+        
+        let html = '';
+        history.forEach(item => {
+            const displayUrl = item.url && item.url !== '#' ? item.url : '#';
+            const displayImg = item.image || 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=150';
+            
+            let progressText = `${item.progress}% leído`;
+            if (item.progress >= 95) {
+                progressText = '<span style="color: #4cd2ff; font-weight: bold;"><i class="fas fa-check-circle"></i> Completado</span>';
+            }
+            
+            html += `
+                <div class="history-item-card" data-id="${item.id}">
+                    <div class="history-item-img-container">
+                        <img src="${displayImg}" alt="${item.title}" class="history-item-img">
+                    </div>
+                    <div class="history-item-info">
+                        <div class="history-item-top">
+                            <span class="history-item-kicker">${item.kicker || item.badge || 'Artículo'}</span>
+                            <h4 class="history-item-title"><a href="${displayUrl}">${item.title}</a></h4>
+                        </div>
+                        <div class="reading-progress-container">
+                            <div class="progress-label-row">
+                                <span>Progreso</span>
+                                <span class="progress-pct-value">${progressText}</span>
+                            </div>
+                            <div class="progress-bar-track">
+                                <div class="progress-bar-fill" style="width: ${item.progress}%"></div>
+                            </div>
+                        </div>
+                        <div class="history-item-footer">
+                            <span class="history-item-date">${item.author ? 'Por ' + item.author : ''}</span>
+                            <button class="history-remove-btn" data-id="${item.id}" title="Eliminar del historial">
+                                <i class="fas fa-trash-can"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+        
+        historyList.innerHTML = html;
+        
+        const removeBtns = historyList.querySelectorAll('.history-remove-btn');
+        removeBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                const id = btn.getAttribute('data-id');
+                removeHistoryItem(id);
+                renderHistoryList();
+                renderContinueReading();
+                renderHomeHistory();
+            });
+        });
+    }
+
+    function renderContinueReading() {
+        if (!continueReadingSection || !continueReadingGrid) return;
+        
+        const history = getHistory();
+        const inProgress = history.filter(item => item.progress >= 5 && item.progress < 95);
+        
+        if (inProgress.length === 0) {
+            continueReadingSection.style.display = 'none';
+            return;
+        }
+        
+        continueReadingSection.style.display = 'block';
+        
+        let html = '';
+        inProgress.forEach(item => {
+            const displayUrl = item.url && item.url !== '#' ? item.url : '#';
+            
+            html += `
+                <article class="continue-fav-card">
+                    <div>
+                        <div class="progress-label-row">
+                            <span style="color: var(--color-anfibia-peach); font-weight: 700;">${item.badge || 'ARTÍCULO'}</span>
+                        </div>
+                        <h3 class="card-headline" style="font-size: 1.6rem; margin: 8px 0 12px 0; line-height: 1.15; font-family: var(--font-heading);">
+                            <a href="${displayUrl}" style="color: var(--color-black); text-decoration: none; transition: color 0.2s ease;">${item.title}</a>
+                        </h3>
+                        <p style="font-family: var(--font-literary); font-size: 0.85rem; color: #555; margin-bottom: 16px;">
+                            ${item.kicker || ''}
+                        </p>
+                    </div>
+                    <div>
+                        <div class="reading-progress-container">
+                            <div class="progress-label-row">
+                                <span>Progreso de lectura</span>
+                                <span class="progress-pct-value">${item.progress}%</span>
+                            </div>
+                            <div class="progress-bar-track">
+                                <div class="progress-bar-fill" style="width: ${item.progress}%"></div>
+                            </div>
+                        </div>
+                        <a href="${displayUrl}" class="btn-resume-reading">Retomar lectura</a>
+                    </div>
+                </article>
+            `;
+        });
+        
+        continueReadingGrid.innerHTML = html;
+    }
+
+    function renderHomeHistory() {
+        const homeHistorySection = document.getElementById('homeHistorySection');
+        const homeHistoryGrid = document.getElementById('homeHistoryGrid');
+        if (!homeHistorySection || !homeHistoryGrid) return;
+        
+        const history = getHistory();
+        // Exclude items that are already shown in "Continúa Leyendo" (5% to 95%)
+        const nonInProgress = history.filter(item => item.progress < 5 || item.progress >= 95);
+        
+        if (nonInProgress.length === 0) {
+            homeHistorySection.style.display = 'none';
+            return;
+        }
+        
+        homeHistorySection.style.display = 'block';
+        
+        let html = '';
+        nonInProgress.slice(0, 6).forEach(item => {
+            const displayUrl = item.url && item.url !== '#' ? item.url : '#';
+            
+            let btnText = "Retomar lectura";
+            let progressText = `${item.progress}% leído`;
+            if (item.progress >= 95) {
+                btnText = "Volver a leer";
+                progressText = '<span style="color: #5856d6; font-weight: bold;"><i class="fas fa-check-circle"></i> Completado</span>';
+            }
+            
+            html += `
+                <article class="continue-fav-card">
+                    <div>
+                        <div class="progress-label-row">
+                            <span style="color: var(--color-anfibia-peach); font-weight: 700;">${item.badge || 'ARTÍCULO'}</span>
+                        </div>
+                        <h3 class="card-headline" style="font-size: 1.6rem; margin: 8px 0 12px 0; line-height: 1.15; font-family: var(--font-heading);">
+                            <a href="${displayUrl}" style="color: var(--color-black); text-decoration: none; transition: color 0.2s ease;">${item.title}</a>
+                        </h3>
+                        <p style="font-family: var(--font-literary); font-size: 0.85rem; color: #555; margin-bottom: 16px;">
+                            ${item.kicker || ''}
+                        </p>
+                    </div>
+                    <div>
+                        <div class="reading-progress-container">
+                            <div class="progress-label-row">
+                                <span>Progreso de lectura</span>
+                                <span class="progress-pct-value">${progressText}</span>
+                            </div>
+                            <div class="progress-bar-track">
+                                <div class="progress-bar-fill" style="width: ${item.progress}%"></div>
+                            </div>
+                        </div>
+                        <a href="${displayUrl}" class="btn-resume-reading">${btnText}</a>
+                    </div>
+                </article>
+            `;
+        });
+        
+        homeHistoryGrid.innerHTML = html;
+    }
+
+    function trackScrollProgress() {
+        if (!isUserLoggedIn()) return;
+        const articleData = getCurrentArticleData();
+        if (!articleData) return;
+
+        const scrollTop = window.scrollY || document.documentElement.scrollTop;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        if (docHeight <= 0) return;
+
+        const progress = Math.min((scrollTop / docHeight) * 100, 100);
+        saveHistoryItem(articleData, progress, scrollTop);
+    }
+
+    function checkAndRestoreScroll() {
+        if (!isUserLoggedIn()) return;
+        const articleData = getCurrentArticleData();
+        if (!articleData) return;
+
+        const history = getHistory();
+        const saved = history.find(item => item.id === articleData.id);
+        if (saved && saved.scrollY > 100 && saved.progress < 95) {
+            setTimeout(() => {
+                window.scrollTo({
+                    top: saved.scrollY,
+                    behavior: 'smooth'
+                });
+                showScrollRestoreToast(saved.progress);
+            }, 800);
+        }
+    }
+
+    function showScrollRestoreToast(progress) {
+        const scrollRestoreToast = document.getElementById('scrollRestoreToast');
+        const scrollRestoreMsg = document.getElementById('scrollRestoreMsg');
+        const btnToastRestart = document.getElementById('btnToastRestart');
+        const closeRestoreToast = document.getElementById('closeRestoreToast');
+
+        if (!scrollRestoreToast) return;
+        if (scrollRestoreMsg) {
+            scrollRestoreMsg.innerHTML = `<i class="fas fa-redo"></i> Lectura retomada al <strong>${progress}%</strong>`;
+        }
+        scrollRestoreToast.classList.add('active');
+
+        const autoDismiss = setTimeout(() => {
+            scrollRestoreToast.classList.remove('active');
+        }, 6000);
+
+        if (closeRestoreToast) {
+            closeRestoreToast.onclick = () => {
+                clearTimeout(autoDismiss);
+                scrollRestoreToast.classList.remove('active');
+            };
+        }
+
+        if (btnToastRestart) {
+            btnToastRestart.onclick = () => {
+                clearTimeout(autoDismiss);
+                scrollRestoreToast.classList.remove('active');
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+                const articleData = getCurrentArticleData();
+                if (articleData) {
+                    saveHistoryItem(articleData, 0, 0);
+                }
+            };
+        }
+    }
+
+    // Bind scroll progress tracker
+    let scrollTimeout;
+    window.addEventListener('scroll', () => {
+        if (scrollTimeout) clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(() => {
+            trackScrollProgress();
+        }, 500);
+    });
+
     // Run UI update on load
     updateAccountUI();
     syncAllFavoriteButtons();
+    renderContinueReading();
+    renderHomeHistory();
+    renderHistoryList();
+    checkAndRestoreScroll();
 });
