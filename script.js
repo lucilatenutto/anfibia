@@ -167,32 +167,34 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             e.stopPropagation();
 
-            const card = btn.closest('.grid-card, .compact-card, .anfibia-card');
-            let articleTitle = "Artículo";
-            if (card) {
-                const titleEl = card.querySelector('.card-title, .compact-title, .card-headline');
-                if (titleEl) {
-                    articleTitle = titleEl.textContent.trim();
+            requireAuth(() => {
+                const card = btn.closest('.grid-card, .compact-card, .anfibia-card');
+                let articleTitle = "Artículo";
+                if (card) {
+                    const titleEl = card.querySelector('.card-title, .compact-title, .card-headline');
+                    if (titleEl) {
+                        articleTitle = titleEl.textContent.trim();
+                    }
                 }
-            }
 
-            // Toggle active state
-            btn.classList.toggle('loved');
-            const icon = btn.querySelector('i');
+                // Toggle active state
+                btn.classList.toggle('loved');
+                const icon = btn.querySelector('i');
 
-            if (btn.classList.contains('loved')) {
-                if (icon) {
-                    icon.classList.remove('far');
-                    icon.classList.add('fas');
+                if (btn.classList.contains('loved')) {
+                    if (icon) {
+                        icon.classList.remove('far');
+                        icon.classList.add('fas');
+                    }
+                    showToast(`Agregado a favoritos: "${articleTitle}"`);
+                } else {
+                    if (icon) {
+                        icon.classList.remove('fas');
+                        icon.classList.add('far');
+                    }
+                    showToast(`Eliminado de favoritos: "${articleTitle}"`);
                 }
-                showToast(`Agregado a favoritos: "${articleTitle}"`);
-            } else {
-                if (icon) {
-                    icon.classList.remove('fas');
-                    icon.classList.add('far');
-                }
-                showToast(`Eliminado de favoritos: "${articleTitle}"`);
-            }
+            });
         });
     });
 
@@ -668,46 +670,48 @@ document.addEventListener('DOMContentLoaded', () => {
     // Publish Annotation as Comment
     if (btnPublishComment) {
         btnPublishComment.addEventListener('click', () => {
-            const author = annotationAuthorInput.value.trim() || "Lector Anónimo";
-            const note = annotationTextInput.value.trim();
+            requireAuth(() => {
+                const author = annotationAuthorInput.value.trim() || "Lector Anónimo";
+                const note = annotationTextInput.value.trim();
 
-            if (!note) {
-                showToast("Por favor, escribe una anotación antes de comentar.");
-                return;
-            }
-
-            const newComment = {
-                id: Date.now(),
-                author: author,
-                date: 'Hace un momento',
-                body: note,
-                quote: currentSelectedText
-            };
-
-            // Save to localStorage for persistence
-            const commentsKey = getCommentsKey();
-            let localComments = JSON.parse(localStorage.getItem(commentsKey) || '[]');
-            localComments.push(newComment);
-            localStorage.setItem(commentsKey, JSON.stringify(localComments));
-
-            // Append to DOM
-            addCommentToDOM(newComment, true);
-
-            // If selected text was fresh selection, apply highlight
-            if (currentSelectedRange) {
-                highlightRange(currentSelectedRange, currentSelectedText);
-            }
-
-            // Close modal & scroll to comments
-            annotationModal.classList.remove('active');
-            showToast("¡Anotación publicada como comentario!");
-
-            setTimeout(() => {
-                const commentSec = document.querySelector('.comments-section-container');
-                if (commentSec) {
-                    commentSec.scrollIntoView({ behavior: 'smooth' });
+                if (!note) {
+                    showToast("Por favor, escribe una anotación antes de comentar.");
+                    return;
                 }
-            }, 400);
+
+                const newComment = {
+                    id: Date.now(),
+                    author: author,
+                    date: 'Hace un momento',
+                    body: note,
+                    quote: currentSelectedText
+                };
+
+                // Save to localStorage for persistence
+                const commentsKey = getCommentsKey();
+                let localComments = JSON.parse(localStorage.getItem(commentsKey) || '[]');
+                localComments.push(newComment);
+                localStorage.setItem(commentsKey, JSON.stringify(localComments));
+
+                // Append to DOM
+                addCommentToDOM(newComment, true);
+
+                // If selected text was fresh selection, apply highlight
+                if (currentSelectedRange) {
+                    highlightRange(currentSelectedRange, currentSelectedText);
+                }
+
+                // Close modal & scroll to comments
+                annotationModal.classList.remove('active');
+                showToast("¡Anotación publicada como comentario!");
+
+                setTimeout(() => {
+                    const commentSec = document.querySelector('.comments-section-container');
+                    if (commentSec) {
+                        commentSec.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }, 400);
+            });
         });
     }
 
@@ -715,36 +719,38 @@ document.addEventListener('DOMContentLoaded', () => {
     if (btnSubmitDirectComment && directCommentText) {
         btnSubmitDirectComment.addEventListener('click', (e) => {
             e.preventDefault();
-            const author = (directCommentAuthor && directCommentAuthor.value.trim()) || "Lector Anónimo";
-            const body = directCommentText.value.trim();
+            requireAuth(() => {
+                const author = (directCommentAuthor && directCommentAuthor.value.trim()) || "Lector Anónimo";
+                const body = directCommentText.value.trim();
 
-            if (!body) {
-                showToast("Por favor, escribe un mensaje para comentar.");
-                return;
-            }
+                if (!body) {
+                    showToast("Por favor, escribe un mensaje para comentar.");
+                    return;
+                }
 
-            const newComment = {
-                id: Date.now(),
-                author: author,
-                date: 'Hace un momento',
-                body: body,
-                quote: null
-            };
+                const newComment = {
+                    id: Date.now(),
+                    author: author,
+                    date: 'Hace un momento',
+                    body: body,
+                    quote: null
+                };
 
-            // Save to localStorage
-            const commentsKey = getCommentsKey();
-            let localComments = JSON.parse(localStorage.getItem(commentsKey) || '[]');
-            localComments.push(newComment);
-            localStorage.setItem(commentsKey, JSON.stringify(localComments));
+                // Save to localStorage
+                const commentsKey = getCommentsKey();
+                let localComments = JSON.parse(localStorage.getItem(commentsKey) || '[]');
+                localComments.push(newComment);
+                localStorage.setItem(commentsKey, JSON.stringify(localComments));
 
-            // Append to DOM
-            addCommentToDOM(newComment, true);
+                // Append to DOM
+                addCommentToDOM(newComment, true);
 
-            // Clear inputs
-            directCommentText.value = "";
-            if (directCommentAuthor) directCommentAuthor.value = "";
+                // Clear inputs
+                directCommentText.value = "";
+                if (directCommentAuthor) directCommentAuthor.value = "";
 
-            showToast("¡Comentario enviado con éxito!");
+                showToast("¡Comentario enviado con éxito!");
+            });
         });
     }
 
@@ -760,132 +766,134 @@ document.addEventListener('DOMContentLoaded', () => {
     // Draw and download beautiful 9:16 Instagram Story card
     if (btnDownloadIGCard && instagramStoryCanvas) {
         btnDownloadIGCard.addEventListener('click', () => {
-            const author = annotationAuthorInput.value.trim() || "Lector Anfibia";
-            const note = annotationTextInput.value.trim() || "Notas de lectura en Revista Anfibia";
-            const quote = currentSelectedText || "Fragmento de la crónica";
+            requireAuth(() => {
+                const author = annotationAuthorInput.value.trim() || "Lector Anfibia";
+                const note = annotationTextInput.value.trim() || "Notas de lectura en Revista Anfibia";
+                const quote = currentSelectedText || "Fragmento de la crónica";
 
-            const ctx = instagramStoryCanvas.getContext('2d');
-            const width = 1080;
-            const height = 1920;
+                const ctx = instagramStoryCanvas.getContext('2d');
+                const width = 1080;
+                const height = 1920;
 
-            // 1. Draw Theme Background Gradient
-            const gradient = ctx.createLinearGradient(0, 0, 0, height);
-            if (selectedTheme === "peach") {
-                gradient.addColorStop(0, '#f15a24');
-                gradient.addColorStop(0.5, '#ff7543');
-                gradient.addColorStop(1, '#072113');
-            } else if (selectedTheme === "forest") {
-                gradient.addColorStop(0, '#072113');
-                gradient.addColorStop(0.6, '#17422c');
-                gradient.addColorStop(1, '#08100b');
-            } else { // dark
-                gradient.addColorStop(0, '#151515');
-                gradient.addColorStop(0.5, '#2a2a2a');
-                gradient.addColorStop(1, '#050505');
-            }
-            ctx.fillStyle = gradient;
-            ctx.fillRect(0, 0, width, height);
+                // 1. Draw Theme Background Gradient
+                const gradient = ctx.createLinearGradient(0, 0, 0, height);
+                if (selectedTheme === "peach") {
+                    gradient.addColorStop(0, '#f15a24');
+                    gradient.addColorStop(0.5, '#ff7543');
+                    gradient.addColorStop(1, '#072113');
+                } else if (selectedTheme === "forest") {
+                    gradient.addColorStop(0, '#072113');
+                    gradient.addColorStop(0.6, '#17422c');
+                    gradient.addColorStop(1, '#08100b');
+                } else { // dark
+                    gradient.addColorStop(0, '#151515');
+                    gradient.addColorStop(0.5, '#2a2a2a');
+                    gradient.addColorStop(1, '#050505');
+                }
+                ctx.fillStyle = gradient;
+                ctx.fillRect(0, 0, width, height);
 
-            // 2. Draw Subtle Graphic Accents
-            // Draw Anfibia Header Watermark
-            ctx.fillStyle = 'rgba(255, 255, 255, 0.35)';
-            ctx.font = '800 80px "Bebas Neue", sans-serif';
-            ctx.textAlign = 'center';
-            ctx.fillText('REVISTA ANFIBIA', width / 2, 230);
+                // 2. Draw Subtle Graphic Accents
+                // Draw Anfibia Header Watermark
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.35)';
+                ctx.font = '800 80px "Bebas Neue", sans-serif';
+                ctx.textAlign = 'center';
+                ctx.fillText('REVISTA ANFIBIA', width / 2, 230);
 
-            // Word wrap helper inside canvas
-            function wrapTextCanvas(context, text, x, y, maxWidth, lineHeight) {
-                const words = text.split(' ');
-                let line = '';
-                let currentY = y;
-                for (let n = 0; n < words.length; n++) {
-                    let testLine = line + words[n] + ' ';
-                    let metrics = context.measureText(testLine);
-                    let testWidth = metrics.width;
-                    if (testWidth > maxWidth && n > 0) {
-                        context.fillText(line, x, currentY);
-                        line = words[n] + ' ';
-                        currentY += lineHeight;
-                    } else {
-                        line = testLine;
+                // Word wrap helper inside canvas
+                function wrapTextCanvas(context, text, x, y, maxWidth, lineHeight) {
+                    const words = text.split(' ');
+                    let line = '';
+                    let currentY = y;
+                    for (let n = 0; n < words.length; n++) {
+                        let testLine = line + words[n] + ' ';
+                        let metrics = context.measureText(testLine);
+                        let testWidth = metrics.width;
+                        if (testWidth > maxWidth && n > 0) {
+                            context.fillText(line, x, currentY);
+                            line = words[n] + ' ';
+                            currentY += lineHeight;
+                        } else {
+                            line = testLine;
+                        }
                     }
-                }
-                context.fillText(line, x, currentY);
-                return currentY + lineHeight;
-            }
-
-            let nextY = 520;
-
-            if (quote && quote.trim() !== "") {
-                // Draw Quotes Graphic
-                ctx.fillStyle = 'rgba(255, 255, 255, 0.25)';
-                ctx.font = 'italic 180px "Lora", Georgia, serif';
-                ctx.textAlign = 'left';
-                ctx.fillText('“', 120, 470);
-
-                // 3. Draw Selected Quote Text
-                ctx.fillStyle = 'rgba(255, 255, 255, 0.95)';
-                ctx.font = 'italic 44px "Lora", Georgia, serif';
-                ctx.textAlign = 'left';
-
-                // Truncate quote if too long to prevent overflowing
-                let truncatedQuote = quote;
-                if (truncatedQuote.length > 280) {
-                    truncatedQuote = truncatedQuote.substring(0, 275) + '...';
+                    context.fillText(line, x, currentY);
+                    return currentY + lineHeight;
                 }
 
-                nextY = wrapTextCanvas(ctx, `"${truncatedQuote}"`, 120, 520, 840, 68);
+                let nextY = 520;
 
-                // 4. Draw Divider Line
-                ctx.strokeStyle = 'rgba(255, 255, 255, 0.3)';
-                ctx.lineWidth = 3;
+                if (quote && quote.trim() !== "") {
+                    // Draw Quotes Graphic
+                    ctx.fillStyle = 'rgba(255, 255, 255, 0.25)';
+                    ctx.font = 'italic 180px "Lora", Georgia, serif';
+                    ctx.textAlign = 'left';
+                    ctx.fillText('“', 120, 470);
+
+                    // 3. Draw Selected Quote Text
+                    ctx.fillStyle = 'rgba(255, 255, 255, 0.95)';
+                    ctx.font = 'italic 44px "Lora", Georgia, serif';
+                    ctx.textAlign = 'left';
+
+                    // Truncate quote if too long to prevent overflowing
+                    let truncatedQuote = quote;
+                    if (truncatedQuote.length > 280) {
+                        truncatedQuote = truncatedQuote.substring(0, 275) + '...';
+                    }
+
+                    nextY = wrapTextCanvas(ctx, `"${truncatedQuote}"`, 120, 520, 840, 68);
+
+                    // 4. Draw Divider Line
+                    ctx.strokeStyle = 'rgba(255, 255, 255, 0.3)';
+                    ctx.lineWidth = 3;
+                    ctx.beginPath();
+                    ctx.moveTo(120, nextY + 30);
+                    ctx.lineTo(240, nextY + 30);
+                    ctx.stroke();
+
+                    nextY = nextY + 130;
+                }
+
+                // 5. Draw User's Personal Note
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
+                ctx.font = '500 38px "Montserrat", sans-serif';
+                ctx.textAlign = 'left';
+                wrapTextCanvas(ctx, note, 120, nextY, 840, 58);
+
+                // 6. Draw Footer Branding & Credits
+                // Divider above footer
+                ctx.strokeStyle = 'rgba(255, 255, 255, 0.2)';
+                ctx.lineWidth = 2;
                 ctx.beginPath();
-                ctx.moveTo(120, nextY + 30);
-                ctx.lineTo(240, nextY + 30);
+                ctx.moveTo(120, 1690);
+                ctx.lineTo(960, 1690);
                 ctx.stroke();
 
-                nextY = nextY + 130;
-            }
+                // Footer Text
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+                ctx.font = '700 28px "Montserrat", sans-serif';
+                ctx.textAlign = 'left';
+                ctx.fillText(author.toUpperCase(), 120, 1755);
 
-            // 5. Draw User's Personal Note
-            ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
-            ctx.font = '500 38px "Montserrat", sans-serif';
-            ctx.textAlign = 'left';
-            wrapTextCanvas(ctx, note, 120, nextY, 840, 58);
+                ctx.textAlign = 'right';
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
+                ctx.fillText('REVISTAANFIBIA.ORG', 960, 1755);
 
-            // 6. Draw Footer Branding & Credits
-            // Divider above footer
-            ctx.strokeStyle = 'rgba(255, 255, 255, 0.2)';
-            ctx.lineWidth = 2;
-            ctx.beginPath();
-            ctx.moveTo(120, 1690);
-            ctx.lineTo(960, 1690);
-            ctx.stroke();
-
-            // Footer Text
-            ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
-            ctx.font = '700 28px "Montserrat", sans-serif';
-            ctx.textAlign = 'left';
-            ctx.fillText(author.toUpperCase(), 120, 1755);
-
-            ctx.textAlign = 'right';
-            ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
-            ctx.fillText('REVISTAANFIBIA.ORG', 960, 1755);
-
-            // 7. Trigger Direct Image Download
-            try {
-                const dataURL = instagramStoryCanvas.toDataURL('image/png');
-                const link = document.createElement('a');
-                link.download = `anfibia-lectura-${Date.now()}.png`;
-                link.href = dataURL;
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-                showToast("¡Historia de Instagram descargada! Súbela a tus Stories.");
-            } catch (err) {
-                console.error("Canvas export failed:", err);
-                showToast("Error al exportar la imagen. Inténtalo de nuevo.");
-            }
+                // 7. Trigger Direct Image Download
+                try {
+                    const dataURL = instagramStoryCanvas.toDataURL('image/png');
+                    const link = document.createElement('a');
+                    link.download = `anfibia-lectura-${Date.now()}.png`;
+                    link.href = dataURL;
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    showToast("¡Historia de Instagram descargada! Súbela a tus Stories.");
+                } catch (err) {
+                    console.error("Canvas export failed:", err);
+                    showToast("Error al exportar la imagen. Inténtalo de nuevo.");
+                }
+            });
         });
     }
 
@@ -912,24 +920,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
         floatLoveBtn.addEventListener('click', (e) => {
             e.preventDefault();
-            const currentlyFav = floatLoveBtn.classList.contains('active');
-            const icon = floatLoveBtn.querySelector('i');
+            requireAuth(() => {
+                const currentlyFav = floatLoveBtn.classList.contains('active');
+                const icon = floatLoveBtn.querySelector('i');
 
-            if (!currentlyFav) {
-                floatLoveBtn.classList.add('active');
-                if (icon) {
-                    icon.className = 'fas fa-heart';
+                if (!currentlyFav) {
+                    floatLoveBtn.classList.add('active');
+                    if (icon) {
+                        icon.className = 'fas fa-heart';
+                    }
+                    localStorage.setItem(pageKey, 'true');
+                    showToast("¡Añadido a favoritos!");
+                } else {
+                    floatLoveBtn.classList.remove('active');
+                    if (icon) {
+                        icon.className = 'far fa-heart';
+                    }
+                    localStorage.setItem(pageKey, 'false');
+                    showToast("Eliminado de favoritos.");
                 }
-                localStorage.setItem(pageKey, 'true');
-                showToast("¡Añadido a favoritos!");
-            } else {
-                floatLoveBtn.classList.remove('active');
-                if (icon) {
-                    icon.className = 'far fa-heart';
-                }
-                localStorage.setItem(pageKey, 'false');
-                showToast("Eliminado de favoritos.");
-            }
+            });
         });
     }
 
@@ -1031,4 +1041,227 @@ document.addEventListener('DOMContentLoaded', () => {
             showToast("Indicador de lectura ocultado. No volverá a mostrarse.");
         });
     }
+
+    // ==========================================================================
+    // 7. USER AUTHENTICATION & RESTRICTIONS SYSTEM
+    // ==========================================================================
+    
+    let pendingAction = null;
+
+    // DOM Elements for Auth
+    const authModal = document.getElementById('authModal');
+    const closeAuthModalLogin = document.getElementById('closeAuthModalLogin');
+    const closeAuthModalRegister = document.getElementById('closeAuthModalRegister');
+    const btnGoToRegister = document.getElementById('btnGoToRegister');
+    const btnGoToLogin = document.getElementById('btnGoToLogin');
+    
+    const btnSubmitLogin = document.getElementById('btnSubmitLogin');
+    const btnSubmitRegister = document.getElementById('btnSubmitRegister');
+    const btnStartSession = document.getElementById('btnStartSession');
+    const btnStartRegister = document.getElementById('btnStartRegister');
+    
+    const authLoginUser = document.getElementById('authLoginUser');
+    const authLoginPassword = document.getElementById('authLoginPassword');
+    const authRegisterUsername = document.getElementById('authRegisterUsername');
+    const authRegisterEmail = document.getElementById('authRegisterEmail');
+    const authRegisterPassword = document.getElementById('authRegisterPassword');
+
+    const authPanels = {
+        login: document.getElementById('authPanelLogin'),
+        register: document.getElementById('authPanelRegister'),
+        loginSuccess: document.getElementById('authPanelLoginSuccess'),
+        registerSuccess: document.getElementById('authPanelRegisterSuccess')
+    };
+
+    function openAuthModal(panelName = 'login') {
+        if (!authModal) return;
+        authModal.classList.add('active');
+        
+        // Hide all panels, show the requested one
+        Object.keys(authPanels).forEach(key => {
+            if (authPanels[key]) {
+                if (key === panelName) {
+                    authPanels[key].classList.add('active');
+                } else {
+                    authPanels[key].classList.remove('active');
+                }
+            }
+        });
+    }
+
+    function closeAuthModal() {
+        if (!authModal) return;
+        authModal.classList.remove('active');
+        // Reset forms
+        if (authLoginUser) authLoginUser.value = "";
+        if (authLoginPassword) authLoginPassword.value = "";
+        if (authRegisterUsername) authRegisterUsername.value = "";
+        if (authRegisterEmail) authRegisterEmail.value = "";
+        if (authRegisterPassword) authRegisterPassword.value = "";
+    }
+
+    // Bind Close Buttons
+    if (closeAuthModalLogin) closeAuthModalLogin.addEventListener('click', closeAuthModal);
+    if (closeAuthModalRegister) closeAuthModalRegister.addEventListener('click', closeAuthModal);
+    
+    // Toggle between login and register
+    if (btnGoToRegister) {
+        btnGoToRegister.addEventListener('click', (e) => {
+            e.preventDefault();
+            openAuthModal('register');
+        });
+    }
+    if (btnGoToLogin) {
+        btnGoToLogin.addEventListener('click', (e) => {
+            e.preventDefault();
+            openAuthModal('login');
+        });
+    }
+
+    // Simulated Authentication Logic
+    function isUserLoggedIn() {
+        return localStorage.getItem('anfibia_logged_in') === 'true';
+    }
+
+    function requireAuth(actionCallback) {
+        if (isUserLoggedIn()) {
+            actionCallback();
+        } else {
+            pendingAction = actionCallback;
+            openAuthModal('login');
+        }
+    }
+
+    // Submit Login Form
+    if (btnSubmitLogin) {
+        btnSubmitLogin.addEventListener('click', (e) => {
+            e.preventDefault();
+            const userVal = authLoginUser.value.trim();
+            const passVal = authLoginPassword.value.trim();
+            
+            if (!userVal || !passVal) {
+                showToast("Por favor complete todos los campos.");
+                return;
+            }
+            if (passVal.length < 4) {
+                showToast("La contraseña debe tener al menos 4 caracteres.");
+                return;
+            }
+
+            // Simulate successful login
+            localStorage.setItem('anfibia_logged_in', 'true');
+            localStorage.setItem('anfibia_username', userVal.split('@')[0]);
+            updateAccountUI();
+            openAuthModal('loginSuccess');
+        });
+    }
+
+    // Submit Register Form
+    if (btnSubmitRegister) {
+        btnSubmitRegister.addEventListener('click', (e) => {
+            e.preventDefault();
+            const userVal = authRegisterUsername.value.trim();
+            const emailVal = authRegisterEmail.value.trim();
+            const passVal = authRegisterPassword.value.trim();
+            
+            if (!userVal || !emailVal || !passVal) {
+                showToast("Por favor complete todos los campos.");
+                return;
+            }
+            if (!emailVal.includes('@')) {
+                showToast("Ingrese un correo electrónico válido.");
+                return;
+            }
+            if (passVal.length < 4) {
+                showToast("La contraseña debe tener al menos 4 caracteres.");
+                return;
+            }
+
+            // Simulate successful registration
+            localStorage.setItem('anfibia_logged_in', 'true');
+            localStorage.setItem('anfibia_username', userVal);
+            updateAccountUI();
+            openAuthModal('registerSuccess');
+        });
+    }
+
+    // Comenzar buttons
+    function handleComenzar() {
+        closeAuthModal();
+        if (pendingAction) {
+            const actionToRun = pendingAction;
+            pendingAction = null;
+            setTimeout(actionToRun, 300);
+        }
+    }
+
+    if (btnStartSession) btnStartSession.addEventListener('click', handleComenzar);
+    if (btnStartRegister) btnStartRegister.addEventListener('click', handleComenzar);
+
+    // Update Account UI text dynamically
+    function updateAccountUI() {
+        const desktopAccountLinks = document.querySelectorAll('.nav-item-account');
+        const mobileAccountLinks = document.querySelectorAll('.mobile-account-btn');
+        const isLoggedIn = isUserLoggedIn();
+        const username = localStorage.getItem('anfibia_username') || "Usuario";
+        
+        desktopAccountLinks.forEach(link => {
+            if (isLoggedIn) {
+                link.innerHTML = `<i class="far fa-user-circle"></i> Hola, ${username}`;
+            } else {
+                link.innerHTML = `<i class="far fa-user-circle"></i> Tu Cuenta`;
+            }
+        });
+
+        mobileAccountLinks.forEach(link => {
+            if (isLoggedIn) {
+                const textSpan = link.querySelector('span');
+                if (textSpan) textSpan.textContent = `Hola, ${username.toUpperCase()}`;
+            } else {
+                const textSpan = link.querySelector('span');
+                if (textSpan) textSpan.textContent = "Tu Cuenta Anfibia";
+            }
+        });
+    }
+
+    // Intercept Account clicks (Logout option if logged in)
+    const allAccountLinks = document.querySelectorAll('.nav-item-account, .mobile-account-btn');
+    allAccountLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            if (isUserLoggedIn()) {
+                if (confirm("¿Deseas cerrar tu sesión de Revista Anfibia?")) {
+                    localStorage.removeItem('anfibia_logged_in');
+                    localStorage.removeItem('anfibia_username');
+                    updateAccountUI();
+                    showToast("Sesión cerrada correctamente.");
+                }
+            } else {
+                openAuthModal('login');
+            }
+        });
+    });
+
+    // Intercept Favoritos and Historial links
+    const allLinks = document.querySelectorAll('a');
+    allLinks.forEach(link => {
+        const text = link.textContent.trim().toLowerCase();
+        if (text === 'favoritos' || text === '.favoritos' || text === 'historial' || text === '.historial') {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                requireAuth(() => {
+                    if (text.includes('favoritos')) {
+                        showToast("Mostrando tus artículos favoritos...");
+                    } else {
+                        showToast("Cargando tu historial de lectura...");
+                    }
+                });
+            });
+        }
+    });
+
+    // Run UI update on load
+    updateAccountUI();
 });

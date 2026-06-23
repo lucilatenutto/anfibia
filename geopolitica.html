@@ -579,6 +579,104 @@
     <!-- Hidden Canvas for Instagram image generation -->
     <canvas id="instagramStoryCanvas" width="1080" height="1920" style="display: none;"></canvas>
 
+    <!-- Authentication Modal Overlay -->
+    <div class="auth-modal-overlay" id="authModal">
+        <div class="auth-modal-card">
+            <div class="auth-modal-grid">
+                
+                <!-- Left/Form Column -->
+                <div class="auth-modal-form-col">
+                    
+                    <!-- Panel 1: Login Form -->
+                    <div class="auth-panel active" id="authPanelLogin">
+                        <div class="auth-header">
+                            <h3 class="auth-header-title">Inicia tu sesión Anfibia</h3>
+                            <button class="auth-close-btn" id="closeAuthModalLogin">&times;</button>
+                        </div>
+                        <div class="auth-body">
+                            <div class="auth-form-group">
+                                <label class="auth-label" for="authLoginUser">Gmail o Nombre de Usuario:</label>
+                                <input type="text" class="auth-input" id="authLoginUser" placeholder="ejemplo@gmail.com">
+                            </div>
+                            <div class="auth-form-group">
+                                <label class="auth-label" for="authLoginPassword">Contraseña:</label>
+                                <input type="password" class="auth-input" id="authLoginPassword" placeholder="••••••••">
+                            </div>
+                            <a href="#" class="auth-forgot-link">Olvidadte tu contraseña?</a>
+                            
+                            <div class="auth-action-row">
+                                <button class="auth-btn-primary" id="btnSubmitLogin">Ingresar</button>
+                            </div>
+                            
+                            <div class="auth-divider-container">
+                                <div class="auth-divider"></div>
+                                <div class="auth-divider-label">Aún no tienes tu cuenta?</div>
+                                <button class="auth-btn-secondary" id="btnGoToRegister">Creá tu cuenta Anfibia</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Panel 2: Register Form -->
+                    <div class="auth-panel" id="authPanelRegister">
+                        <div class="auth-header">
+                            <h3 class="auth-header-title">Crea tu cuenta Anfibia</h3>
+                            <button class="auth-close-btn" id="closeAuthModalRegister">&times;</button>
+                        </div>
+                        <div class="auth-body">
+                            <div class="auth-form-group">
+                                <label class="auth-label" for="authRegisterUsername">Nombre de Usuario:</label>
+                                <input type="text" class="auth-input" id="authRegisterUsername" placeholder="TuUsuario">
+                            </div>
+                            <div class="auth-form-group">
+                                <label class="auth-label" for="authRegisterEmail">Gmail:</label>
+                                <input type="email" class="auth-input" id="authRegisterEmail" placeholder="usuario@gmail.com">
+                            </div>
+                            <div class="auth-form-group">
+                                <label class="auth-label" for="authRegisterPassword">Contraseña:</label>
+                                <input type="password" class="auth-input" id="authRegisterPassword" placeholder="••••••••">
+                            </div>
+                            
+                            <div class="auth-action-row">
+                                <button class="auth-btn-primary" id="btnSubmitRegister">Registrarse</button>
+                            </div>
+                            
+                            <div style="text-align: center; margin-top: 10px;">
+                                <a href="#" class="auth-switch-link" id="btnGoToLogin">Ya tengo cuenta, iniciar sesión</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Panel 3: Login Success (Frame 100) -->
+                    <div class="auth-panel" id="authPanelLoginSuccess">
+                        <div class="auth-success-panel">
+                            <h2 class="auth-success-title">Bienvenido de nuevo</h2>
+                            <p class="auth-success-subtitle">Esperamos tus comentarios y anotaciones</p>
+                            <button class="auth-btn-success" id="btnStartSession">Comenzar</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Panel 4: Register Success (Frame 102) -->
+                    <div class="auth-panel" id="authPanelRegisterSuccess">
+                        <div class="auth-success-panel">
+                            <h2 class="auth-success-title">Gracias por registrarte</h2>
+                            <p class="auth-success-subtitle">Esperamos tus comentarios y anotaciones</p>
+                            <button class="auth-btn-success" id="btnStartRegister">Comenzar</button>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+                <!-- Right/Sidebar Column (Desktop Only) -->
+                <div class="auth-modal-sidebar-col">
+                    <div class="auth-sidebar-logo">Anfibia</div>
+                    <img src="unsam.png" alt="UNSAM" class="auth-sidebar-unsam">
+                    <p class="auth-sidebar-text">El periodismo narrativo y la ciencia se encuentran en tu cuenta. Regístrate para comentar, debatir y guardar tus lecturas favoritas.</p>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
     <!-- Toast Notification for Share / Interactive elements -->
     <div class="toast-notification" id="toast">
         <i class="fas fa-link"></i> <span id="toastMessage">Enlace copiado al portapapeles!</span>
