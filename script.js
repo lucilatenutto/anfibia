@@ -168,32 +168,8 @@ document.addEventListener('DOMContentLoaded', () => {
             e.stopPropagation();
 
             requireAuth(() => {
-                const card = btn.closest('.grid-card, .compact-card, .anfibia-card');
-                let articleTitle = "Artículo";
-                if (card) {
-                    const titleEl = card.querySelector('.card-title, .compact-title, .card-headline');
-                    if (titleEl) {
-                        articleTitle = titleEl.textContent.trim();
-                    }
-                }
-
-                // Toggle active state
-                btn.classList.toggle('loved');
-                const icon = btn.querySelector('i');
-
-                if (btn.classList.contains('loved')) {
-                    if (icon) {
-                        icon.classList.remove('far');
-                        icon.classList.add('fas');
-                    }
-                    showToast(`Agregado a favoritos: "${articleTitle}"`);
-                } else {
-                    if (icon) {
-                        icon.classList.remove('fas');
-                        icon.classList.add('far');
-                    }
-                    showToast(`Eliminado de favoritos: "${articleTitle}"`);
-                }
+                const articleData = extractCardData(btn);
+                toggleFavorite(articleData);
             });
         });
     });
@@ -907,38 +883,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const floatAnnotateBtn = document.getElementById('floatAnnotateBtn');
 
     if (floatLoveBtn) {
-        // Restore favorite state from localStorage
-        const pageKey = window.location.pathname.includes('geopolitica.html') ? 'anfibia_geopolitica_fav' : 'anfibia_patagonia_fav';
-        const isFav = localStorage.getItem(pageKey) === 'true';
-        if (isFav) {
-            floatLoveBtn.classList.add('active');
-            const icon = floatLoveBtn.querySelector('i');
-            if (icon) {
-                icon.className = 'fas fa-heart';
-            }
-        }
-
         floatLoveBtn.addEventListener('click', (e) => {
             e.preventDefault();
             requireAuth(() => {
-                const currentlyFav = floatLoveBtn.classList.contains('active');
-                const icon = floatLoveBtn.querySelector('i');
-
-                if (!currentlyFav) {
-                    floatLoveBtn.classList.add('active');
-                    if (icon) {
-                        icon.className = 'fas fa-heart';
-                    }
-                    localStorage.setItem(pageKey, 'true');
-                    showToast("¡Añadido a favoritos!");
-                } else {
-                    floatLoveBtn.classList.remove('active');
-                    if (icon) {
-                        icon.className = 'far fa-heart';
-                    }
-                    localStorage.setItem(pageKey, 'false');
-                    showToast("Eliminado de favoritos.");
-                }
+                const articleData = extractActivePageData();
+                toggleFavorite(articleData);
             });
         });
     }
@@ -1188,6 +1137,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Comenzar buttons
     function handleComenzar() {
         closeAuthModal();
+        syncAllFavoriteButtons(); // Sync UI after login/register
         if (pendingAction) {
             const actionToRun = pendingAction;
             pendingAction = null;
@@ -1224,6 +1174,345 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // ==========================================================================
+    // 8. FAVORITES DRAWER & SYNC CONTROLLER
+    // ==========================================================================
+    const favoritesDrawerOverlay = document.getElementById('favoritesDrawerOverlay');
+    const closeFavoritesDrawer = document.getElementById('closeFavoritesDrawer');
+    const favoritesList = document.getElementById('favoritesList');
+
+    function openFavoritesDrawer() {
+        if (!favoritesDrawerOverlay) return;
+        renderFavoritesList();
+        favoritesDrawerOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeFavoritesDrawerFunc() {
+        if (!favoritesDrawerOverlay) return;
+        favoritesDrawerOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    if (closeFavoritesDrawer) {
+        closeFavoritesDrawer.addEventListener('click', closeFavoritesDrawerFunc);
+    }
+
+    if (favoritesDrawerOverlay) {
+        favoritesDrawerOverlay.addEventListener('click', (e) => {
+            if (e.target === favoritesDrawerOverlay) {
+                closeFavoritesDrawerFunc();
+            }
+        });
+    }
+
+    function getFavoritesKey() {
+        const username = localStorage.getItem('anfibia_username') || 'global';
+        return `anfibia_favorites_${username}`;
+    }
+
+    function getFavorites() {
+        if (localStorage.getItem('anfibia_logged_in') !== 'true') return [];
+        return JSON.parse(localStorage.getItem(getFavoritesKey()) || '[]');
+    }
+
+    function saveFavorites(favorites) {
+        localStorage.setItem(getFavoritesKey(), JSON.stringify(favorites));
+    }
+
+    function extractCardData(btn) {
+        const card = btn.closest('.anfibia-card, .compact-card, .grid-card, .subhero-card, .community-fav-card');
+        if (!card) return null;
+
+        if (card.classList.contains('community-fav-card')) {
+            const titleEl = card.querySelector('.community-fav-title a');
+            const title = titleEl ? titleEl.textContent.trim() : "Artículo";
+            const url = titleEl ? titleEl.getAttribute('href') : "#";
+            
+            const imgEl = card.querySelector('.community-fav-img-wrapper img');
+            const image = imgEl ? imgEl.getAttribute('src') : "";
+
+            const kickerEl = card.querySelector('.community-fav-kicker');
+            const kicker = kickerEl ? kickerEl.textContent.trim() : "";
+
+            const badge = "CRÓNICA";
+
+            const authorEl = card.querySelector('.community-fav-author');
+            let author = "";
+            if (authorEl) {
+                author = authorEl.textContent.replace(/Por:\s*/i, '').trim();
+            }
+
+            const id = card.getAttribute('data-article-id') || (url && url !== '#' ? url.replace('.html', '') : title.toLowerCase().replace(/[^a-z0-9]+/g, '-'));
+
+            return { id, title, kicker, url, image, badge, author };
+        }
+
+        const titleEl = card.querySelector('.card-headline a, .card-title a, .compact-title a, .subhero-card-title a');
+        const title = titleEl ? titleEl.textContent.trim() : "Artículo";
+        const url = titleEl ? titleEl.getAttribute('href') : "#";
+        
+        const imgEl = card.querySelector('.card-image, .subhero-card-img, img');
+        const image = imgEl ? imgEl.getAttribute('src') : "";
+
+        const kickerEl = card.querySelector('.card-kicker, .subhero-card-kicker');
+        const kicker = kickerEl ? kickerEl.textContent.trim() : "";
+
+        const badgeEl = card.querySelector('.card-badge-flush');
+        const badge = badgeEl ? badgeEl.textContent.trim() : (card.querySelector('.badge-ensayo') ? "ENSAYO" : "CRÓNICA");
+
+        const creditsEl = card.querySelector('.card-credits, .subhero-card-credits');
+        let author = "";
+        if (creditsEl) {
+            const authorEl = creditsEl.querySelector('.credit-author, .credit-author-white');
+            if (authorEl) {
+                author = authorEl.textContent.trim();
+            } else {
+                const match = creditsEl.textContent.match(/Por:\s*([^|]+)/i);
+                author = match ? match[1].trim() : creditsEl.textContent.trim();
+            }
+        }
+        
+        const id = url && url !== '#' ? url.replace('.html', '') : title.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+
+        return { id, title, kicker, url, image, badge, author };
+    }
+
+    function extractActivePageData() {
+        const titleEl = document.querySelector('.article-main-title');
+        if (!titleEl) return null;
+
+        const title = titleEl.textContent.trim();
+        const url = window.location.pathname.split('/').pop() || "index.html";
+        
+        const imgEl = document.querySelector('.article-featured-image');
+        const image = imgEl ? imgEl.getAttribute('src') : "";
+
+        const kickerEl = document.querySelector('.article-kicker');
+        const kicker = kickerEl ? kickerEl.textContent.trim() : "";
+
+        const badgeEl = document.querySelector('.article-badge');
+        const badge = badgeEl ? badgeEl.textContent.trim() : "ARTÍCULO";
+
+        const authorEl = document.querySelector('.article-credits-centered .credit-name');
+        const author = authorEl ? authorEl.textContent.trim() : "";
+
+        const id = url.replace('.html', '');
+
+        return { id, title, kicker, url, image, badge, author };
+    }
+
+    function toggleFavorite(articleData) {
+        if (!articleData) return;
+        
+        let favorites = getFavorites();
+        const index = favorites.findIndex(item => item.id === articleData.id);
+        
+        if (index === -1) {
+            favorites.push(articleData);
+            saveFavorites(favorites);
+            showToast(`Agregado a favoritos: "${articleData.title}"`);
+        } else {
+            favorites.splice(index, 1);
+            saveFavorites(favorites);
+            showToast(`Eliminado de favoritos: "${articleData.title}"`);
+        }
+        
+        syncAllFavoriteButtons();
+        if (favoritesDrawerOverlay && favoritesDrawerOverlay.classList.contains('active')) {
+            renderFavoritesList();
+        }
+    }
+
+    function syncAllFavoriteButtons() {
+        const loggedIn = isUserLoggedIn();
+        const favorites = getFavorites();
+        const favIds = favorites.map(item => item.id);
+        
+        // Sync normal card love buttons
+        const loveBtns = document.querySelectorAll('.love-btn:not(.community-fav-card .love-btn)');
+        loveBtns.forEach(btn => {
+            const data = extractCardData(btn);
+            const icon = btn.querySelector('i');
+            if (!loggedIn || !data || !favIds.includes(data.id)) {
+                btn.classList.remove('loved');
+                if (icon) {
+                    icon.classList.remove('fas');
+                    icon.classList.add('far');
+                }
+            } else {
+                btn.classList.add('loved');
+                if (icon) {
+                    icon.classList.remove('far');
+                    icon.classList.add('fas');
+                }
+            }
+        });
+
+        // Sync community favorites counts and buttons
+        const communityFavCards = document.querySelectorAll('.community-fav-card');
+        communityFavCards.forEach(card => {
+            const id = card.getAttribute('data-article-id');
+            const countEl = card.querySelector('.fav-count');
+            const btn = card.querySelector('.love-btn');
+            const icon = btn.querySelector('i');
+            
+            let baseCount = 0;
+            if (id === 'patagonia') baseCount = 2154;
+            else if (id === 'geopolitica') baseCount = 1421;
+            else if (id === 'con-el-indio-se-murio-mi-juventud') baseCount = 892;
+            
+            if (loggedIn && favIds.includes(id)) {
+                if (countEl) countEl.textContent = (baseCount + 1).toLocaleString('es-ES');
+                btn.classList.add('loved');
+                if (icon) {
+                    icon.classList.remove('far');
+                    icon.classList.add('fas');
+                }
+            } else {
+                if (countEl) countEl.textContent = baseCount.toLocaleString('es-ES');
+                btn.classList.remove('loved');
+                if (icon) {
+                    icon.classList.remove('fas');
+                    icon.classList.add('far');
+                }
+            }
+        });
+        
+        const floatLoveBtn = document.getElementById('floatLoveBtn');
+        if (floatLoveBtn) {
+            const data = extractActivePageData();
+            const icon = floatLoveBtn.querySelector('i');
+            if (!loggedIn || !data || !favIds.includes(data.id)) {
+                floatLoveBtn.classList.remove('active');
+                if (icon) {
+                    icon.classList.remove('fas');
+                    icon.classList.add('far');
+                }
+            } else {
+                floatLoveBtn.classList.add('active');
+                if (icon) {
+                    icon.classList.remove('far');
+                    icon.classList.add('fas');
+                }
+            }
+        }
+    }
+
+    // ==========================================================================
+    // 9. COMMUNITY ANNOTATIONS & POPOVER CONTROLLER
+    // ==========================================================================
+    function openCommunityPopover(el, author, note) {
+        let popover = document.getElementById('communityPopover');
+        if (!popover) {
+            popover = document.createElement('div');
+            popover.className = 'community-popover';
+            popover.id = 'communityPopover';
+            popover.innerHTML = `
+                <div class="popover-header">
+                    <span class="popover-author"></span>
+                    <button class="popover-close">&times;</button>
+                </div>
+                <div class="popover-body"></div>
+            `;
+            document.body.appendChild(popover);
+            
+            popover.querySelector('.popover-close').addEventListener('click', () => {
+                popover.classList.remove('active');
+            });
+        }
+        
+        popover.querySelector('.popover-author').innerHTML = `<i class="fas fa-user-pen"></i> Lectura de ${author}`;
+        popover.querySelector('.popover-body').textContent = `"${note}"`;
+        
+        const rect = el.getBoundingClientRect();
+        const scrollX = window.scrollX || window.pageXOffset;
+        const scrollY = window.scrollY || window.pageYOffset;
+        
+        popover.style.left = `${rect.left + rect.width / 2 + scrollX}px`;
+        popover.style.top = `${rect.top + scrollY - 10}px`;
+        
+        popover.classList.add('active');
+    }
+
+    // Attach listeners to community highlights
+    const commHighlights = document.querySelectorAll('.community-highlight');
+    commHighlights.forEach(el => {
+        el.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const author = el.getAttribute('data-author') || "Lectura Anfibia";
+            const note = el.getAttribute('data-note') || "";
+            openCommunityPopover(el, author, note);
+        });
+    });
+
+    // Close popover when clicking elsewhere
+    document.addEventListener('mousedown', (e) => {
+        const popover = document.getElementById('communityPopover');
+        if (popover && !popover.contains(e.target) && !e.target.closest('.community-highlight')) {
+            popover.classList.remove('active');
+        }
+    });
+
+    function renderFavoritesList() {
+        if (!favoritesList) return;
+        
+        const favorites = getFavorites();
+        
+        if (favorites.length === 0) {
+            favoritesList.innerHTML = `
+                <div class="favorites-empty-state">
+                    <i class="far fa-heart"></i>
+                    <p>No tienes artículos guardados en favoritos.</p>
+                    <span style="font-size: 0.75rem; opacity: 0.7; text-align: center;">¡Explora nuestras crónicas y agrégalas!</span>
+                </div>
+            `;
+            return;
+        }
+        
+        let html = '';
+        favorites.forEach(item => {
+            const displayUrl = item.url && item.url !== '#' ? item.url : '#';
+            const displayImg = item.image || 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=150';
+            
+            html += `
+                <div class="favorite-item-card" data-id="${item.id}">
+                    <div class="favorite-item-img-container">
+                        <img src="${displayImg}" alt="${item.title}" class="favorite-item-img">
+                    </div>
+                    <div class="favorite-item-info">
+                        <div class="favorite-item-top">
+                            <span class="favorite-item-kicker">${item.kicker || item.badge || 'Artículo'}</span>
+                            <h4 class="favorite-item-title"><a href="${displayUrl}">${item.title}</a></h4>
+                        </div>
+                        <div class="favorite-item-footer">
+                            <span class="favorite-item-author">${item.author ? 'Por ' + item.author : ''}</span>
+                            <button class="favorite-remove-btn" data-id="${item.id}" title="Eliminar de favoritos">
+                                <i class="fas fa-trash-can"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+        
+        favoritesList.innerHTML = html;
+        
+        const removeBtns = favoritesList.querySelectorAll('.favorite-remove-btn');
+        removeBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                const id = btn.getAttribute('data-id');
+                const favorites = getFavorites();
+                const article = favorites.find(item => item.id === id);
+                if (article) {
+                    toggleFavorite(article);
+                }
+            });
+        });
+    }
+
     // Intercept Account clicks (Logout option if logged in)
     const allAccountLinks = document.querySelectorAll('.nav-item-account, .mobile-account-btn');
     allAccountLinks.forEach(link => {
@@ -1235,6 +1524,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     localStorage.removeItem('anfibia_logged_in');
                     localStorage.removeItem('anfibia_username');
                     updateAccountUI();
+                    syncAllFavoriteButtons();
+                    closeFavoritesDrawerFunc();
                     showToast("Sesión cerrada correctamente.");
                 }
             } else {
@@ -1247,13 +1538,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const allLinks = document.querySelectorAll('a');
     allLinks.forEach(link => {
         const text = link.textContent.trim().toLowerCase();
-        if (text === 'favoritos' || text === '.favoritos' || text === 'historial' || text === '.historial') {
+        if (text === 'favoritos' || text === '.favoritos' || text === 'favoritos/guardados' || text === 'historial' || text === '.historial') {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
                 e.stopPropagation();
                 requireAuth(() => {
                     if (text.includes('favoritos')) {
-                        showToast("Mostrando tus artículos favoritos...");
+                        openFavoritesDrawer();
                     } else {
                         showToast("Cargando tu historial de lectura...");
                     }
@@ -1264,4 +1555,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Run UI update on load
     updateAccountUI();
+    syncAllFavoriteButtons();
 });
