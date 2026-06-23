@@ -2024,7 +2024,7 @@ button {
 
 /* Article Body Content Styles */
 .article-body-container {
-    max-width: 680px;
+    max-width: 840px;
     margin: 64px auto 96px auto;
     padding: 0 24px;
     text-align: left;
@@ -2733,7 +2733,7 @@ button {
 }
 
 .comments-inner {
-    max-width: 680px;
+    max-width: 840px;
     margin: 0 auto;
 }
 
