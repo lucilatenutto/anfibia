@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Textos — Revista Anfibia</title>
+    <!-- Google Fonts: Bebas Neue, Montserrat, Lora -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lora:ital,wght@0,400..700;1,400..700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom Style -->
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .category-panel {
+            display: none; /* Controlled by JS tab switching */
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header / Navbar -->
+    <header class="main-header">
+        <div class="header-container">
+            <div class="header-left">
+                <a href="index.html" class="brand-logo">Anfibia</a>
+                <div class="header-divider"></div>
+                <div class="unsam-badge">
+                    <img src="unsam.png" alt="UNSAM" class="unsam-logo-img">
+                </div>
+                <div class="social-icons">
+                    <a href="#" class="social-link" title="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-link" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link" title="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <div class="header-right">
+                <button class="search-btn" id="searchBtn" title="Buscar">
+                    <i class="fas fa-search"></i>
+                </button>
+                <nav class="header-nav">
+                    <ul class="nav-list">
+                        <li><a href="#" class="nav-item special-link">Comunidad Anfibia</a></li>
+                        
+                        <!-- Textos dropdown -->
+                        <li class="nav-item-dropdown">
+                            <a href="textos.html" class="nav-item active">Textos <i class="fas fa-chevron-down nav-chevron"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="textos.html?cat=ambiente">Ambiente</a></li>
+                                <li><a href="textos.html?cat=amor-y-sexo">Amor y Sexo</a></li>
+                                <li><a href="textos.html?cat=culturas">Cultura</a></li>
+                                <li><a href="textos.html?cat=educacion">Educación</a></li>
+                                <li><a href="textos.html?cat=politica-y-economia">Política y Economía</a></li>
+                                <li><a href="textos.html?cat=salud">Salud</a></li>
+                                <li><a href="textos.html?cat=tecnologias">Tecnología</a></li>
+                                <li><a href="textos.html?cat=ambiente">Rosario</a></li>
+                                <li><a href="#" class="nav-item nav-item-saved">Favoritos/Guardados</a></li>
+                            </ul>
+                        </li>
+                        
+                        <!-- Podcast dropdown -->
+                        <li class="nav-item-dropdown">
+                            <a href="#" class="nav-item">Podcast <i class="fas fa-chevron-down nav-chevron"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Todos los Podcasts</a></li>
+                            </ul>
+                        </li>
+                        
+                        <!-- Talleres dropdown -->
+                        <li class="nav-item-dropdown">
+                            <a href="#" class="nav-item">Talleres <i class="fas fa-chevron-down nav-chevron"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Ver más</a></li>
+                            </ul>
+                        </li>
+                        
+                        <!-- Maestria dropdown -->
+                        <li class="nav-item-dropdown">
+                            <a href="#" class="nav-item">Maestría <i class="fas fa-chevron-down nav-chevron"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Inscripción</a></li>
+                                <li><a href="#">Programa Completo</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- Futuro Imperfecto 3 dropdown -->
+                        <li class="nav-item-dropdown">
+                            <a href="#" class="nav-item">Futuro Imperfecto 3 <i class="fas fa-chevron-down nav-chevron"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Volumen 1</a></li>
+                                <li><a href="#">Volumen 2</a></li>
+                                <li><a href="#">Volumen 3</a></li>
+                            </ul>
+                        </li>
+                        
+                        <!-- Favoritos -->
+                        <li><a href="#" class="nav-item nav-item-saved">Favoritos</a></li>
+                        
+                        <!-- Historial -->
+                        <li><a href="#" class="nav-item nav-item-history">Historial</a></li>
+                        
+                        <!-- Tu Cuenta -->
+                        <li><a href="#" class="nav-item nav-item-account"><i class="far fa-user-circle"></i> Tu Cuenta</a></li>
+                    </ul>
+                </nav>
+                <button class="menu-toggle" id="menuToggle" title="Menú">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Search Overlay -->
+    <div class="search-overlay" id="searchOverlay">
+        <div class="search-box">
+            <input type="text" placeholder="Buscar crónicas, ensayos, autores..." id="searchInput">
+            <button class="close-search" id="closeSearch"><i class="fas fa-times"></i></button>
+        </div>
+    </div>
+
+    <!-- Mobile Menu Drawer -->
+    <div class="mobile-menu-drawer" id="mobileMenuDrawer">
+        <div class="mobile-menu-body">
+            <nav class="mobile-nav">
+                <ul class="mobile-nav-list">
+                    <!-- Textos dropdown -->
+                    <li class="mobile-nav-item-dropdown">
+                        <button class="mobile-dropdown-toggle">
+                            <span class="item-text">.Textos</span>
+                            <i class="fas fa-chevron-down toggle-icon"></i>
+                        </button>
+                        <ul class="mobile-dropdown-menu">
+                            <li><a href="textos.html?cat=ambiente">Ambiente</a></li>
+                            <li><a href="textos.html?cat=amor-y-sexo">Amor y Sexo</a></li>
+                            <li><a href="textos.html?cat=culturas">Cultura</a></li>
+                            <li><a href="textos.html?cat=educacion">Educación</a></li>
+                            <li><a href="textos.html?cat=politica-y-economia">Política y Economía</a></li>
+                            <li><a href="textos.html?cat=salud">Salud</a></li>
+                            <li><a href="textos.html?cat=tecnologias">Tecnología</a></li>
+                            <li><a href="textos.html?cat=ambiente">Rosario</a></li>
+                            <li><a href="#" class="nav-item-saved">Favoritos/Guardados</a></li>
+                        </ul>
+                    </li>
+                    
+                    <!-- Podcast dropdown -->
+                    <li class="mobile-nav-item-dropdown">
+                        <button class="mobile-dropdown-toggle">
+                            <span class="item-text">.Podcast</span>
+                            <i class="fas fa-chevron-down toggle-icon"></i>
+                        </button>
+                        <ul class="mobile-dropdown-menu">
+                            <li><a href="#">Todos los Podcasts</a></li>
+                        </ul>
+                    </li>
+                    
+                    <!-- Talleres dropdown -->
+                    <li class="mobile-nav-item-dropdown">
+                        <button class="mobile-dropdown-toggle">
+                            <span class="item-text">.Talleres</span>
+                            <i class="fas fa-chevron-down toggle-icon"></i>
+                        </button>
+                        <ul class="mobile-dropdown-menu">
+                            <li><a href="#">Ver mas</a></li>
+                        </ul>
+                    </li>
+                    
+                    <!-- Maestria dropdown -->
+                    <li class="mobile-nav-item-dropdown">
+                        <button class="mobile-dropdown-toggle">
+                            <span class="item-text">.Maestría</span>
+                            <i class="fas fa-chevron-down toggle-icon"></i>
+                        </button>
+                        <ul class="mobile-dropdown-menu">
+                            <li><a href="#">Inscripcion</a></li>
+                            <li><a href="#">Programa Completo</a></li>
+                        </ul>
+                    </li>
+                    
+                    <!-- Futuro Imperfecto 3 dropdown -->
+                    <li class="mobile-nav-item-dropdown">
+                        <button class="mobile-dropdown-toggle">
+                            <span class="item-text">.Futuro Imperfecto 3</span>
+                            <i class="fas fa-chevron-down toggle-icon"></i>
+                        </button>
+                        <ul class="mobile-dropdown-menu">
+                            <li><a href="#">Volumen 1</a></li>
+                            <li><a href="#">Volumen 2</a></li>
+                            <li><a href="#">Volumen 3</a></li>
+                        </ul>
+                    </li>
+                    
+                    <!-- Favoritos static -->
+                    <li class="mobile-nav-item-static">
+                        <a href="#" class="mobile-static-link nav-item-saved">.Favoritos</a>
+                    </li>
+                    
+                    <!-- Historial static -->
+                    <li class="mobile-nav-item-static">
+                        <a href="#" class="mobile-static-link nav-item-history">.Historial</a>
+                    </li>
+
+                    <li class="mobile-nav-spacing"></li>
+                    
+                    <!-- Redes dropdown -->
+                    <li class="mobile-nav-item-dropdown">
+                        <button class="mobile-dropdown-toggle">
+                            <span class="item-text">.Redes</span>
+                            <i class="fas fa-chevron-down toggle-icon"></i>
+                        </button>
+                        <ul class="mobile-dropdown-menu">
+                            <li><a href="#">.Twitter</a></li>
+                            <li><a href="#">.Facebook</a></li>
+                            <li><a href="#">.Instagram</a></li>
+                            <li><a href="#">.YouTube</a></li>
+                        </ul>
+                    </li>
+                    
+                    <!-- Comunidad static -->
+                    <li class="mobile-nav-item-static">
+                        <a href="#" class="mobile-static-link">.Comunidad Anfibia</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="mobile-menu-footer-account">
+            <a href="#" class="mobile-account-btn">
+                <i class="far fa-user-circle"></i>
+                <span>Tu Cuenta Anfibia</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Mobile Menu Backdrop -->
+    <div class="menu-backdrop" id="menuBackdrop"></div>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Pink/Peach Category Header -->
+        <section class="category-header-section">
+            <h1 class="category-main-title" id="categoryTitle">Ambiente</h1>
+            <div class="category-nav-wrapper">
+                <ul class="category-nav-list">
+                    <li><button class="category-nav-btn active" data-category="ambiente">Ambiente</button></li>
+                    <li><button class="category-nav-btn" data-category="amor-y-sexo">Amor y Sexo</button></li>
+                    <li><button class="category-nav-btn" data-category="culturas">Culturas</button></li>
+                    <li><button class="category-nav-btn" data-category="educacion">Educación</button></li>
+                    <li><button class="category-nav-btn" data-category="politica-y-economia">Política y Economía</button></li>
+                    <li><button class="category-nav-btn" data-category="politicas-de-generos">Políticas de Géneros</button></li>
+                    <li><button class="category-nav-btn" data-category="salud">Salud</button></li>
+                    <li><button class="category-nav-btn" data-category="tecnologias">Tecnologías</button></li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Articles Grid Section -->
+        <section class="anfibia-grid-section" style="max-width: 1400px; margin: 48px auto; padding: 0 24px;">
+            
+            <!-- PANEL: AMBIENTE -->
+            <div class="anfibia-grid category-panel" id="panel-ambiente">
+                <!-- Card 1 -->
+                <article class="anfibia-card">
+                    <div class="card-img-container">
+                        <a href="#">
+                            <img src="aiargentina.png" alt="AI, Argentina" class="card-image">
+                        </a>
+                        <span class="card-badge-flush badge-ensayo">ENSAYO</span>
+                    </div>
+                    <div class="card-info">
+                        <span class="card-kicker">Avanza el súper RIGI</span>
+                        <h3 class="card-headline"><a href="#">¡AI, ARGENTINA!</a></h3>
+                        <div class="card-divider-peach"></div>
+                        <div class="card-meta-footer">
+                            <div class="card-credits">
+                                Por: <span class="credit-author">Mariano Caputo, Juan Ballestrin</span> <span class="credit-separator">|</span> Arte: <span class="credit-artist">María Elizagaray Estrada</span>
+                            </div>
+                            <div class="card-actions">
+                                <button class="action-btn love-btn" title="Me gusta"><i class="far fa-heart"></i></button>
+                                <button class="action-btn share-btn" title="Compartir"><i class="fas fa-share-alt"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 2 -->
+                <article class="anfibia-card">
+                    <div class="card-img-container">
+                        <a href="patagonia.html">
+                            <img src="patagonia.png" alt="Patagonia" class="card-image">
+                        </a>
+                        <span class="card-badge-flush badge-cronica">CRÓNICA</span>
+                    </div>
+                    <div class="card-info">
+                        <span class="card-kicker">Patagonia: ¿cómo hacemos de las ruinas un hogar?</span>
+                        <h3 class="card-headline"><a href="patagonia.html">ADAPTARSE AL FUEGO</a></h3>
+                        <div class="card-divider-peach"></div>
+                        <div class="card-meta-footer">
+                            <div class="card-credits">
+                                Por: <span class="credit-author">María Mansilla</span> <span class="credit-separator">|</span> Arte: <span class="credit-artist">Marcos Huisman</span>
+                            </div>
+                            <div class="card-actions">
+                                <button class="action-btn love-btn" title="Me gusta"><i class="far fa-heart"></i></button>
+                                <button class="action-btn share-btn" title="Compartir"><i class="fas fa-share-alt"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 3 -->
+                <article class="anfibia-card">
+                    <div class="card-img-container">
+                        <a href="#">
+                            <img src="alien.png" alt="Periodistas" class="card-image">
+                        </a>
+                        <span class="card-badge-flush badge-cronica">CRÓNICA</span>
+                    </div>
+                    <div class="card-info">
+                        <span class="card-kicker">Vuelve Futuro Imperfecto Vol. 3</span>
+                        <h3 class="card-headline"><a href="#">POR QUÉ AMAR LO SUFICIENTE A LOS PERIODISTAS</a></h3>
+                        <div class="card-divider-peach"></div>
+                        <div class="card-meta-footer">
+                            <div class="card-credits">
+                                Por: <span class="credit-author">María Mansilla</span> <span class="credit-separator">|</span> Arte: <span class="credit-artist">yai salinas</span>
+                            </div>
+                            <div class="card-actions">
+                                <button class="action-btn love-btn" title="Me gusta"><i class="far fa-heart"></i></button>
+                                <button class="action-btn share-btn" title="Compartir"><i class="fas fa-share-alt"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 4 -->
+                <article class="anfibia-card more-textos-card" style="display: none;">
+                    <div class="card-img-container">
+                        <a href="#">
+                            <img src="retirada.png" alt="La retirada de YPF" class="card-image">
+                        </a>
+                        <span class="card-badge-flush badge-ensayo">ENSAYO</span>
+                    </div>
+                    <div class="card-info">
+                        <span class="card-kicker">La nueva estrategia petrolera</span>
+                        <h3 class="card-headline"><a href="#">LA RETIRADA DE YPF</a></h3>
+                        <div class="card-divider-peach"></div>
+                        <div class="card-meta-footer">
+                            <div class="card-credits">
+                                Por: <span class="credit-author">Ignacio Cretini</span> <span class="credit-separator">|</span> Arte: <span class="credit-artist">Francesca Cantore</span>
+                            </div>
+                            <div class="card-actions">
+                                <button class="action-btn love-btn" title="Me gusta"><i class="far fa-heart"></i></button>
+                                <button class="action-btn share-btn" title="Compartir"><i class="fas fa-share-alt"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 5 -->
+                <article class="anfibia-card more-textos-card" style="display: none;">
+                    <div class="card-img-container">
+                        <a href="#">
+                            <img src="fuego.png" alt="Desigualdad inflamable" class="card-image">
+                        </a>
+                        <span class="card-badge-flush badge-ensayo">ENSAYO</span>
+                    </div>
+                    <div class="card-info">
+                        <span class="card-kicker">Radiografía del fuego</span>
+                        <h3 class="card-headline"><a href="#">LA DESIGUALDAD ES INFLAMABLE</a></h3>
+                        <div class="card-divider-peach"></div>
+                        <div class="card-meta-footer">
+                            <div class="card-credits">
+                                Por: <span class="credit-author">Maristella Svampa</span> <span class="credit-separator">|</span> Arte: <span class="credit-artist">Sebastián Angresano</span>
+                            </div>
+                            <div class="card-actions">
+                                <button class="action-btn love-btn" title="Me gusta"><i class="far fa-heart"></i></button>
+                                <button class="action-btn share-btn" title="Compartir"><i class="fas fa-share-alt"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 6 -->
+                <article class="anfibia-card more-textos-card" style="display: none;">
+                    <div class="card-img-container">
+                        <a href="#">
+                            <img src="pensar.png" alt="El CONICET en el fondo del mar" class="card-image">
+                        </a>
+                        <span class="card-badge-flush badge-cronica">CRÓNICA</span>
+                    </div>
+                    <div class="card-info">
+                        <span class="card-kicker">El CONICET en el fondo del mar</span>
+                        <h3 class="card-headline"><a href="#">YO ME ESTOY AHOGANDO Y VOS ME DESCRIBÍS EL AGUA</a></h3>
+                        <div class="card-divider-peach"></div>
+                        <div class="card-meta-footer">
+                            <div class="card-credits">
+                                Por: <span class="credit-author">Emilia Holstein</span> <span class="credit-separator">|</span> Arte: <span class="credit-artist">Revista Anfibia</span>
+                            </div>
+                            <div class="card-actions">
+                                <button class="action-btn love-btn" title="Me gusta"><i class="far fa-heart"></i></button>
+                                <button class="action-btn share-btn" title="Compartir"><i class="fas fa-share-alt"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Related Card 1 -->
+                <article class="anfibia-card related-textos-card" style="display: none;">
+                    <div class="card-img-container">
+                        <a href="#">
+                            <img src="tanino.png" alt="Minería de árboles" class="card-image">
+                        </a>
+                        <span class="card-badge-flush badge-cronica">CRÓNICA</span>
+                    </div>
+                    <div class="card-info">
+                        <span class="card-kicker">EXTRACCIÓN DE TANINO EN EL GRAN CHACO</span>
+                        <h3 class="card-headline"><a href="#">MINERÍA DE ÁRBOLES CHAQUEÑOS PARA VESTIR A LOS RICOS DEL MUNDO</a></h3>
+                        <div class="card-divider-peach"></div>
+                        <div class="card-meta-footer">
+                            <div class="card-credits">
+                                Por: <span class="credit-author">Irupé Tentorio, Marta Facchini</span> <span class="credit-separator">|</span> Arte: <span class="credit-artist">Sofía López Mañán</span>
+                            </div>
+                            <div class="card-actions">
+                                <button class="action-btn love-btn" title="Me gusta"><i class="far fa-heart"></i></button>
+                                <button class="action-btn share-btn" title="Compartir"><i class="fas fa-share-alt"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Related Card 2 -->
+                <article class="anfibia-card related-textos-card" style="display: none;">
+                    <div class="card-img-container">
+                        <a href="#">
+                            <img src="cartoneros.png" alt="Feos, sucios y malos" class="card-image">
+                        </a>
+                        <span class="card-badge-flush badge-cronica">CRÓNICA</span>
+                    </div>
+                    <div class="card-info">
+                        <span class="card-kicker">LA RESISTENCIA DE LOS CARTONEROS PORTEÑOS</span>
+                        <h3 class="card-headline"><a href="#">FEOS, SUCIOS Y MALOS</a></h3>
+                        <div class="card-divider-peach"></div>
+                        <div class="card-meta-footer">
+                            <div class="card-credits">
+                                Por: <span class="credit-author">Gabriela Saidon</span> <span class="credit-separator">|</span> Arte: <span class="credit-artist">Tomás Francisco Cuesta</span>
+                            </div>
+                            <div class="card-actions">
+                                <button class="action-btn love-btn" title="Me gusta"><i class="far fa-heart"></i></button>
+                                <button class="action-btn share-btn" title="Compartir"><i class="fas fa-share-alt"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Related Card 3 -->
+                <article class="anfibia-card related-textos-card" style="display: none;">
+                    <div class="card-img-container">
+                        <a href="#">
+                            <img src="algarrobo.png" alt="La leyenda del algarrobo caminante" class="card-image">
+                        </a>
+                        <span class="card-badge-flush badge-cronica">CRÓNICA</span>
+                    </div>
+                    <div class="card-info">
+                        <span class="card-kicker">RESISTENCIA A LA MINERÍA EN ANDALGALÁ</span>
+                        <h3 class="card-headline"><a href="#">LA LEYENDA DEL ALGARROBO CAMINANTE</a></h3>
+                        <div class="card-divider-peach"></div>
+                        <div class="card-meta-footer">
+                            <div class="card-credits">
+                                Por: <span class="credit-author">Allison Lang</span> <span class="credit-separator">|</span> Arte: <span class="credit-artist">María Elizagaray Estrada</span>
+                            </div>
+                            <div class="card-actions">
+                                <button class="action-btn love-btn" title="Me gusta"><i class="far fa-heart"></i></button>
+                                <button class="action-btn share-btn" title="Compartir"><i class="fas fa-share-alt"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <!-- PANEL: AMOR Y SEXO -->
+            <div class="anfibia-grid category-panel" id="panel-amor-y-sexo">
+                <article class="anfibia-card">
+                    <div class="card-img-container">
+                        <a href="#">
+                            <img src="noti3.png" alt="Yopitalismo" class="card-image">
+                        </a>
+                        <span class="card-badge-flush badge-cronica">CRÓNICA</span>
+                    </div>
+                    <div class="card-info">
+                        <span class="card-kicker">Amor y consumo en la era digital</span>
+                        <h3 class="card-headline"><a href="#">YOPITALISMO</a></h3>
+                        <div class="card-divider-peach"></div>
+                        <div class="card-meta-footer">
+                            <div class="card-credits">
+                                Por: <span class="credit-author">María Mansilla</span> <span class="credit-separator">|</span> Arte: <span class="credit-artist">Marcos Huisman</span>
+                            </div>
+                            <div class="card-actions">
+                                <button class="action-btn love-btn" title="Me gusta"><i class="far fa-heart"></i></button>
+                                <button class="action-btn share-btn" title="Compartir"><i class="fas fa-share-alt"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="anfibia-card">
+                    <div class="card-img-container">
+                        <a href="#">
+                            <img src="noti2.png" alt="Deudas" class="card-image">
+                        </a>
+                        <span class="card-badge-flush badge-ensayo">ENSAYO</span>
+                    </div>
+                    <div class="card-info">
+                        <span class="card-kicker">El sueldo se me va en pagar deudas</span>
+                        <h3 class="card-headline"><a href="#">EL SUELDO SE ME VA EN PAGAR DEUDAS</a></h3>
+                        <div class="card-divider-peach"></div>
+                        <div class="card-meta-footer">
+                            <div class="card-credits">
+                                Por: <span class="credit-author">Ignacio Cretini</span> <span class="credit-separator">|</span> Arte: <span class="credit-artist">Francesca Cantore</span>
+                            </div>
+                            <div class="card-actions">
+                                <button class="action-btn love-btn" title="Me gusta"><i class="far fa-heart"></i></button>
+                                <button class="action-btn share-btn" title="Compartir"><i class="fas fa-share-alt"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="anfibia-card">
+                    <div class="card-img-container">
+                        <a href="#">
+                            <img src="baila.png" alt="Pogo bestial" class="card-image">
+                        </a>
+                        <span class="card-badge-flush badge-cronica">CRÓNICA</span>
+                    </div>
+                    <div class="card-info">
+                        <span class="card-kicker">El pogo más grande del mundo</span>
+                        <h3 class="card-headline"><a href="#">EL ÚLTIMO POGO BESTIAL CON JIJIJI</a></h3>
+                        <div class="card-divider-peach"></div>
+                        <div class="card-meta-footer">
+                            <div class="card-credits">
+                                Por: <span class="credit-author">Redacción Anfibia</span> <span class="credit-separator">|</span> Arte: <span class="credit-artist">Arte Anfibia</span>
+                            </div>
+                            <div class="card-actions">
+                                <button class="action-btn love-btn" title="Me gusta"><i class="far fa-heart"></i></button>
+                                <button class="action-btn share-btn" title="Compartir"><i class="fas fa-share-alt"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <!-- PANEL: CULTURAS -->
+            <div class="anfibia-grid category-panel" id="panel-culturas">
+                <article class="anfibia-card">
+                    <div class="card-img-container">
+                        <a href="#">
+                            <img src="indio1.png" alt="Indio 1" class="card-image">
+                        </a>
+                        <span class="card-badge-flush badge-cronica">CRÓNICA</span>
+                    </div>
+                    <div class="card-info">
+                        <span class="card-kicker">Con el Indio se murió mi juventud</span>
+                        <h3 class="card-headline"><a href="#">CON EL INDIO SE MURIÓ MI JUVENTUD</a></h3>
+                        <div class="card-divider-peach"></div>
+                        <div class="card-meta-footer">
+                            <div class="card-credits">
+                                Por: <span class="credit-author">Redacción Anfibia</span> <span class="credit-separator">|</span> Arte: <span class="credit-artist">Arte Anfibia</span>
+                            </div>
+                            <div class="card-actions">
+                                <button class="action-btn love-btn" title="Me gusta"><i class="far fa-heart"></i></button>
+                                <button class="action-btn share-btn" title="Compartir"><i class="fas fa-share-alt"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="anfibia-card">
+                    <div class="card-img-container">
+                        <a href="#">
+                            <img src="indio2.png" alt="Indio 2" class="card-image">
+                        </a>
+                        <span class="card-badge-flush badge-cronica">CRÓNICA</span>
+                    </div>
+                    <div class="card-info">
+                        <span class="card-kicker">El Indio nos dio un código</span>
+                        <h3 class="card-headline"><a href="#">EL INDIO NOS DIO UN CÓDIGO</a></h3>
+                        <div class="card-divider-peach"></div>
+                        <div class="card-meta-footer">
+                            <div class="card-credits">
+                                Por: <span class="credit-author">Redacción Anfibia</span> <span class="credit-separator">|</span> Arte: <span class="credit-artist">Arte Anfibia</span>
+                            </div>
+                            <div class="card-actions">
+                                <button class="action-btn love-btn" title="Me gusta"><i class="far fa-heart"></i></button>
+                                <button class="action-btn share-btn" title="Compartir"><i class="fas fa-share-alt"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="anfibia-card">
+                    <div class="card-img-container">
+                        <a href="#">
+                            <img src="indio3.png" alt="Indio 3" class="card-image">
+                        </a>
+                        <span class="card-badge-flush badge-cronica">CRÓNICA</span>
+                    </div>
+                    <div class="card-info">
+                        <span class="card-kicker">La dicha no es una cosa alegre</span>
+                        <h3 class="card-headline"><a href="#">LA DICHA NO ES UNA COSA ALEGRE</a></h3>
+                        <div class="card-divider-peach"></div>
+                        <div class="card-meta-footer">
+                            <div class="card-credits">
+                                Por: <span class="credit-author">Redacción Anfibia</span> <span class="credit-separator">|</span> Arte: <span class="credit-artist">Arte Anfibia</span>
+                            </div>
+                            <div class="card-actions">
+                                <button class="action-btn love-btn" title="Me gusta"><i class="far fa-heart"></i></button>
+                                <button class="action-btn share-btn" title="Compartir"><i class="fas fa-share-alt"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <!-- PANEL: EDUCACION -->
+            <div class="anfibia-grid category-panel" id="panel-educacion">
+                <article class="anfibia-card">
+                    <div class="card-img-container">
+                        <a href="#">
+                            <img src="gorro.png" alt="Sí hay plata" class="card-image">
+                        </a>
+                        <span class="card-badge-flush badge-ensayo">ENSAYO</span>
+                    </div>
+                    <div class="card-info">
+                        <span class="card-kicker">Presupuesto universitario</span>
+                        <h3 class="card-headline"><a href="#">SÍ HAY PLATA</a></h3>
+                        <div class="card-divider-peach"></div>
+                        <div class="card-meta-footer">
+                            <div class="card-credits">
+                                Por: <span class="credit-author">Mariano Caputo</span> <span class="credit-separator">|</span> Arte: <span class="credit-artist">Arte Anfibia</span>
+                            </div>
+                            <div class="card-actions">
+                                <button class="action-btn love-btn" title="Me gusta"><i class="far fa-heart"></i></button>
+                                <button class="action-btn share-btn" title="Compartir"><i class="fas fa-share-alt"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="anfibia-card">
+                    <div class="card-img-container">
+                        <a href="#">
+                            <img src="much.png" alt="Aulas" class="card-image">
+                        </a>
+                        <span class="card-badge-flush badge-cronica">CRÓNICA</span>
+                    </div>
+                    <div class="card-info">
+                        <span class="card-kicker">Las aulas de la resistencia</span>
+                        <h3 class="card-headline"><a href="#">LAS AULAS DE LA RESISTENCIA</a></h3>
+                        <div class="card-divider-peach"></div>
+                        <div class="card-meta-footer">
+                            <div class="card-credits">
+                                Por: <span class="credit-author">Redacción Anfibia</span> <span class="credit-separator">|</span> Arte: <span class="credit-artist">Arte Anfibia</span>
+                            </div>
+                            <div class="card-actions">
+                                <button class="action-btn love-btn" title="Me gusta"><i class="far fa-heart"></i></button>
+                                <button class="action-btn share-btn" title="Compartir"><i class="fas fa-share-alt"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <!-- PANEL: POLITICA Y ECONOMIA -->
+            <div class="anfibia-grid category-panel" id="panel-politica-y-economia">
+                <article class="anfibia-card">
+                    <div class="card-img-container">
+                        <a href="geopolitica.html">
+                            <img src="gege.png" alt="Geopolitica" class="card-image">
+                        </a>
+                        <span class="card-badge-flush badge-cronica">CRÓNICA</span>
+                    </div>
+                    <div class="card-info">
+                        <span class="card-kicker">La geopolítica del Mundial 2026</span>
+                        <h3 class="card-headline"><a href="geopolitica.html">LA GEOPOLÍTICA DEL MUNDIAL 2026</a></h3>
+                        <div class="card-divider-peach"></div>
+                        <div class="card-meta-footer">
+                            <div class="card-credits">
+                                Por: <span class="credit-author">Redacción Anfibia</span> <span class="credit-separator">|</span> Arte: <span class="credit-artist">Arte Anfibia</span>
+                            </div>
+                            <div class="card-actions">
+                                <button class="action-btn love-btn" title="Me gusta"><i class="far fa-heart"></i></button>
+                                <button class="action-btn share-btn" title="Compartir"><i class="fas fa-share-alt"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="anfibia-card">
+                    <div class="card-img-container">
+                        <a href="#">
+                            <img src="man.png" alt="Decepción" class="card-image">
+                        </a>
+                        <span class="card-badge-flush badge-ensayo">ENSAYO</span>
+                    </div>
+                    <div class="card-info">
+                        <span class="card-kicker">La decepción de lo idílico</span>
+                        <h3 class="card-headline"><a href="#">LA DECEPCIÓN DE LO IDÍLICO</a></h3>
+                        <div class="card-divider-peach"></div>
+                        <div class="card-meta-footer">
+                            <div class="card-credits">
+                                Por: <span class="credit-author">Redacción Anfibia</span> <span class="credit-separator">|</span> Arte: <span class="credit-artist">Arte Anfibia</span>
+                            </div>
+                            <div class="card-actions">
+                                <button class="action-btn love-btn" title="Me gusta"><i class="far fa-heart"></i></button>
+                                <button class="action-btn share-btn" title="Compartir"><i class="fas fa-share-alt"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <!-- PANEL: POLITICAS DE GENEROS -->
+            <div class="anfibia-grid category-panel" id="panel-politicas-de-generos">
+                <article class="anfibia-card">
+                    <div class="card-img-container">
+                        <a href="#">
+                            <img src="hombre.png" alt="Géneros" class="card-image">
+                        </a>
+                        <span class="card-badge-flush badge-ensayo">ENSAYO</span>
+                    </div>
+                    <div class="card-info">
+                        <span class="card-kicker">Políticas de género y debate</span>
+                        <h3 class="card-headline"><a href="#">EL DEBATE PENDIENTE</a></h3>
+                        <div class="card-divider-peach"></div>
+                        <div class="card-meta-footer">
+                            <div class="card-credits">
+                                Por: <span class="credit-author">Redacción Anfibia</span> <span class="credit-separator">|</span> Arte: <span class="credit-artist">Arte Anfibia</span>
+                            </div>
+                            <div class="card-actions">
+                                <button class="action-btn love-btn" title="Me gusta"><i class="far fa-heart"></i></button>
+                                <button class="action-btn share-btn" title="Compartir"><i class="fas fa-share-alt"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <!-- PANEL: SALUD -->
+            <div class="anfibia-grid category-panel" id="panel-salud">
+                <article class="anfibia-card">
+                    <div class="card-img-container">
+                        <a href="#">
+                            <img src="hospi.png" alt="Enfermos" class="card-image">
+                        </a>
+                        <span class="card-badge-flush badge-ensayo">ENSAYO</span>
+                    </div>
+                    <div class="card-info">
+                        <span class="card-kicker">El sistema de salud actual</span>
+                        <h3 class="card-headline"><a href="#">ENFERMOS</a></h3>
+                        <div class="card-divider-peach"></div>
+                        <div class="card-meta-footer">
+                            <div class="card-credits">
+                                Por: <span class="credit-author">Redacción Anfibia</span> <span class="credit-separator">|</span> Arte: <span class="credit-artist">Arte Anfibia</span>
+                            </div>
+                            <div class="card-actions">
+                                <button class="action-btn love-btn" title="Me gusta"><i class="far fa-heart"></i></button>
+                                <button class="action-btn share-btn" title="Compartir"><i class="fas fa-share-alt"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="anfibia-card">
+                    <div class="card-img-container">
+                        <a href="#">
+                            <img src="agua.png" alt="Vivir cien años" class="card-image">
+                        </a>
+                        <span class="card-badge-flush badge-cronica">CRÓNICA</span>
+                    </div>
+                    <div class="card-info">
+                        <span class="card-kicker">Preparate para vivir cien años</span>
+                        <h3 class="card-headline"><a href="#">PREPARATE PARA VIVIR CIEN AÑOS</a></h3>
+                        <div class="card-divider-peach"></div>
+                        <div class="card-meta-footer">
+                            <div class="card-credits">
+                                Por: <span class="credit-author">Redacción Anfibia</span> <span class="credit-separator">|</span> Arte: <span class="credit-artist">Arte Anfibia</span>
+                            </div>
+                            <div class="card-actions">
+                                <button class="action-btn love-btn" title="Me gusta"><i class="far fa-heart"></i></button>
+                                <button class="action-btn share-btn" title="Compartir"><i class="fas fa-share-alt"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <!-- PANEL: TECNOLOGIAS -->
+            <div class="anfibia-grid category-panel" id="panel-tecnologias">
+                <article class="anfibia-card">
+                    <div class="card-img-container">
+                        <a href="#">
+                            <img src="ojo.png" alt="Gemelo Digital" class="card-image">
+                        </a>
+                        <span class="card-badge-flush badge-ensayo">ENSAYO</span>
+                    </div>
+                    <div class="card-info">
+                        <span class="card-kicker">Inteligencia Artificial y Sociedad</span>
+                        <h3 class="card-headline"><a href="#">GEMELO DIGITAL</a></h3>
+                        <div class="card-divider-peach"></div>
+                        <div class="card-meta-footer">
+                            <div class="card-credits">
+                                Por: <span class="credit-author">Redacción Anfibia</span> <span class="credit-separator">|</span> Arte: <span class="credit-artist">Arte Anfibia</span>
+                            </div>
+                            <div class="card-actions">
+                                <button class="action-btn love-btn" title="Me gusta"><i class="far fa-heart"></i></button>
+                                <button class="action-btn share-btn" title="Compartir"><i class="fas fa-share-alt"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="anfibia-card">
+                    <div class="card-img-container">
+                        <a href="#">
+                            <img src="estatua.png" alt="IA Latinoamericana" class="card-image">
+                        </a>
+                        <span class="card-badge-flush badge-ensayo">ENSAYO</span>
+                    </div>
+                    <div class="card-info">
+                        <span class="card-kicker">Desarrollo tecnológico regional</span>
+                        <h3 class="card-headline"><a href="#">UNA IA LATINOAMERICANA ES POSIBLE</a></h3>
+                        <div class="card-divider-peach"></div>
+                        <div class="card-meta-footer">
+                            <div class="card-credits">
+                                Por: <span class="credit-author">Redacción Anfibia</span> <span class="credit-separator">|</span> Arte: <span class="credit-artist">Arte Anfibia</span>
+                            </div>
+                            <div class="card-actions">
+                                <button class="action-btn love-btn" title="Me gusta"><i class="far fa-heart"></i></button>
+                                <button class="action-btn share-btn" title="Compartir"><i class="fas fa-share-alt"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            
+            <!-- Load More -->
+            <div class="load-more-container">
+                <button class="load-more-btn">Ver Más</button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-branding">
+                <span class="footer-logo">Anfibia</span>
+                <p>Periodismo narrativo y comunicación científica.</p>
+            </div>
+            <div class="footer-copy">
+                &copy; 2026 Revista Anfibia / UNSAM. Rediseño experimental.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Authentication Modal Overlay -->
+    <div class="auth-modal-overlay" id="authModal">
+        <div class="auth-modal-card">
+            <div class="auth-modal-grid">
+                <!-- Left/Form Column -->
+                <div class="auth-modal-form-col">
+                    <!-- Panel 1: Login Form -->
+                    <div class="auth-panel active" id="authPanelLogin">
+                        <div class="auth-header">
+                            <h3 class="auth-header-title">Inicia tu sesión Anfibia</h3>
+                            <button class="auth-close-btn" id="closeAuthModalLogin">&times;</button>
+                        </div>
+                        <div class="auth-body">
+                            <div class="auth-form-group">
+                                <label class="auth-label" for="authLoginUser">Gmail o Nombre de Usuario:</label>
+                                <input type="text" class="auth-input" id="authLoginUser" placeholder="ejemplo@gmail.com">
+                            </div>
+                            <div class="auth-form-group">
+                                <label class="auth-label" for="authLoginPassword">Contraseña:</label>
+                                <input type="password" class="auth-input" id="authLoginPassword" placeholder="••••••••">
+                            </div>
+                            <a href="#" class="auth-forgot-link">Olvidadte tu contraseña?</a>
+                            <div class="auth-action-row">
+                                <button class="auth-btn-primary" id="btnSubmitLogin">Ingresar</button>
+                            </div>
+                            <div class="auth-divider-container">
+                                <div class="auth-divider"></div>
+                                <div class="auth-divider-label">Aún no tienes tu cuenta?</div>
+                                <button class="auth-btn-secondary" id="btnGoToRegister">Creá tu cuenta Anfibia</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Panel 2: Register Form -->
+                    <div class="auth-panel" id="authPanelRegister">
+                        <div class="auth-header">
+                            <h3 class="auth-header-title">Crea tu cuenta Anfibia</h3>
+                            <button class="auth-close-btn" id="closeAuthModalRegister">&times;</button>
+                        </div>
+                        <div class="auth-body">
+                            <div class="auth-form-group">
+                                <label class="auth-label" for="authRegisterUsername">Nombre de Usuario:</label>
+                                <input type="text" class="auth-input" id="authRegisterUsername" placeholder="TuUsuario">
+                            </div>
+                            <div class="auth-form-group">
+                                <label class="auth-label" for="authRegisterEmail">Gmail:</label>
+                                <input type="email" class="auth-input" id="authRegisterEmail" placeholder="usuario@gmail.com">
+                            </div>
+                            <div class="auth-form-group">
+                                <label class="auth-label" for="authRegisterPassword">Contraseña:</label>
+                                <input type="password" class="auth-input" id="authRegisterPassword" placeholder="••••••••">
+                            </div>
+                            <div class="auth-action-row">
+                                <button class="auth-btn-primary" id="btnSubmitRegister">Registrarse</button>
+                            </div>
+                            <div style="text-align: center; margin-top: 10px;">
+                                <a href="#" class="auth-switch-link" id="btnGoToLogin">Ya tengo cuenta, iniciar sesión</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Panel 3: Login Success -->
+                    <div class="auth-panel" id="authPanelLoginSuccess">
+                        <div class="auth-success-panel">
+                            <h2 class="auth-success-title">Bienvenido de nuevo</h2>
+                            <p class="auth-success-subtitle">Esperamos tus comentarios y anotaciones</p>
+                            <button class="auth-btn-success" id="btnStartSession">Comenzar</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Panel 4: Register Success -->
+                    <div class="auth-panel" id="authPanelRegisterSuccess">
+                        <div class="auth-success-panel">
+                            <h2 class="auth-success-title">Gracias por registrarte</h2>
+                            <p class="auth-success-subtitle">Esperamos tus comentarios y anotaciones</p>
+                            <button class="auth-btn-success" id="btnStartRegister">Comenzar</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Right/Sidebar Column (Desktop Only) -->
+                <div class="auth-modal-sidebar-col">
+                    <div class="auth-sidebar-logo">Anfibia</div>
+                    <img src="unsam.png" alt="UNSAM" class="auth-sidebar-unsam">
+                    <p class="auth-sidebar-text">El periodismo narrativo y la ciencia se encuentran en tu cuenta. Regístrate para comentar, debatir y guardar tus lecturas favoritas.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Favorites Drawer Overlay -->
+    <div class="favorites-drawer-overlay" id="favoritesDrawerOverlay">
+        <div class="favorites-drawer" id="favoritesDrawer">
+            <div class="favorites-drawer-header">
+                <h3 class="favorites-drawer-title">Mis Favoritos</h3>
+                <button class="favorites-drawer-close" id="closeFavoritesDrawer">&times;</button>
+            </div>
+            <div class="favorites-drawer-body">
+                <div class="favorites-list" id="favoritesList">
+                    <!-- Dynamic favorites listed here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- History Drawer Overlay -->
+    <div class="history-drawer-overlay" id="historyDrawerOverlay">
+        <div class="history-drawer" id="historyDrawer">
+            <div class="history-drawer-header">
+                <div class="history-drawer-title-row">
+                    <h3 class="history-drawer-title">Historial de Lectura</h3>
+                    <button class="btn-clear-all-history" id="btnClearAllHistory">Limpiar</button>
+                </div>
+                <button class="history-drawer-close" id="closeHistoryDrawer">&times;</button>
+            </div>
+            <div class="history-drawer-body">
+                <div class="history-list" id="historyList">
+                    <!-- Dynamic history listed here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scroll Restoration Toast -->
+    <div class="scroll-restore-toast" id="scrollRestoreToast">
+        <span id="scrollRestoreMsg">Restaurando tu lectura...</span>
+        <button class="btn-toast-restart" id="btnToastRestart">Ir al inicio</button>
+        <button class="close-toast" id="closeRestoreToast">&times;</button>
+    </div>
+
+    <!-- Toast Notification for Share / Interactive elements -->
+    <div class="toast-notification" id="toast">
+        <i class="fas fa-link"></i> <span id="toastMessage">Enlace copiado al portapapeles!</span>
+    </div>
+
+    <!-- Script for carousel and basic interactivity -->
+    <script src="script.js"></script>
+
+    <!-- Page Specific Script for Tab-Switching & Load More -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const categoryPanels = document.querySelectorAll('.category-panel');
+            const categoryButtons = document.querySelectorAll('.category-nav-btn');
+            const categoryTitle = document.getElementById('categoryTitle');
+            const loadMoreContainer = document.querySelector('.load-more-container');
+            const loadMoreBtn = document.querySelector('.load-more-btn');
+
+            function showCategory(category) {
+                // Hide all panels
+                categoryPanels.forEach(panel => {
+                    panel.style.display = 'none';
+                });
+
+                // Show active panel
+                const activePanel = document.getElementById(`panel-${category}`);
+                if (activePanel) {
+                    activePanel.style.display = 'grid';
+
+                    // Reset hidden cards
+                    const hiddenCards = activePanel.querySelectorAll('.more-textos-card');
+                    hiddenCards.forEach(card => {
+                        card.style.display = 'none';
+                        card.style.opacity = '0';
+                    });
+
+                    // Reset related cards
+                    const relatedCards = activePanel.querySelectorAll('.related-textos-card');
+                    relatedCards.forEach(card => {
+                        card.style.display = 'none';
+                        card.style.opacity = '0';
+                    });
+
+                    // Toggle Visibility of the "Ver Más" Button
+                    if (hiddenCards.length > 0 || relatedCards.length > 0) {
+                        loadMoreContainer.style.display = 'flex';
+                        loadMoreBtn.textContent = 'Ver Más';
+                    } else {
+                        loadMoreContainer.style.display = 'none';
+                    }
+                }
+
+                // Update active state in nav buttons
+                categoryButtons.forEach(btn => {
+                    const btnCat = btn.getAttribute('data-category');
+                    if (btnCat === category) {
+                        btn.classList.add('active');
+                        categoryTitle.textContent = btn.textContent;
+                    } else {
+                        btn.classList.remove('active');
+                    }
+                });
+            }
+
+            // Load More button click logic
+            if (loadMoreBtn) {
+                loadMoreBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const activePanel = document.querySelector('.category-panel[style*="display: grid"]');
+                    if (!activePanel) return;
+
+                    const hiddenCards = activePanel.querySelectorAll('.more-textos-card');
+                    const relatedCards = activePanel.querySelectorAll('.related-textos-card');
+                    const currentText = loadMoreBtn.textContent.trim();
+
+                    if (currentText === 'Ver Más') {
+                        // Stage 1 -> 2: Show middle cards (4, 5, 6)
+                        if (hiddenCards.length > 0) {
+                            hiddenCards.forEach(card => {
+                                card.style.display = 'flex';
+                                setTimeout(() => {
+                                    card.style.opacity = '1';
+                                }, 10);
+                            });
+                        }
+                        
+                        // Determine next text
+                        if (relatedCards.length > 0) {
+                            loadMoreBtn.textContent = 'Ver Crónicas Relacionadas';
+                        } else {
+                            loadMoreBtn.textContent = 'Ver Menos';
+                        }
+                        
+                        if (typeof showToast === 'function') {
+                            showToast("Mostrando artículos adicionales");
+                        }
+                    } else if (currentText === 'Ver Crónicas Relacionadas') {
+                        // Stage 2 -> 3: Show related cards (7, 8, 9)
+                        if (relatedCards.length > 0) {
+                            relatedCards.forEach(card => {
+                                card.style.display = 'flex';
+                                setTimeout(() => {
+                                    card.style.opacity = '1';
+                                }, 10);
+                            });
+                        }
+                        
+                        loadMoreBtn.textContent = 'Cerrar Archivo';
+                        
+                        if (typeof showToast === 'function') {
+                            showToast("Abriendo crónicas relacionadas");
+                        }
+                    } else {
+                        // Stage 3/2 (Ver Menos / Cerrar Archivo) -> 1: Collapse all and reset
+                        if (hiddenCards.length > 0) {
+                            hiddenCards.forEach(card => {
+                                card.style.display = 'none';
+                                card.style.opacity = '0';
+                            });
+                        }
+                        if (relatedCards.length > 0) {
+                            relatedCards.forEach(card => {
+                                card.style.display = 'none';
+                                card.style.opacity = '0';
+                            });
+                        }
+                        
+                        loadMoreBtn.textContent = 'Ver Más';
+                        
+                        if (typeof showToast === 'function') {
+                            showToast("Cerrando archivo");
+                        }
+                    }
+                });
+            }
+
+            // Add click events to buttons
+            categoryButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const category = btn.getAttribute('data-category');
+                    showCategory(category);
+                    
+                    // Update URL parameter without reload
+                    const url = new URL(window.location);
+                    url.searchParams.set('cat', category);
+                    window.history.pushState({}, '', url);
+                });
+            });
+
+            // Read query parameter
+            const params = new URLSearchParams(window.location.search);
+            const initialCategory = params.get('cat') || 'ambiente';
+            showCategory(initialCategory);
+        });
+    </script>
+</body>
+
+</html>

@@ -203,34 +203,64 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // "Ver Más" Button for TEXTOS section
+    // "Ver Más" Button for TEXTOS section (3-stage toggle flow)
     const loadMoreTextos = document.getElementById('loadMoreTextos');
     if (loadMoreTextos) {
         loadMoreTextos.addEventListener('click', (e) => {
             e.preventDefault();
             const hiddenCards = document.querySelectorAll('.more-textos-card');
-            if (hiddenCards.length === 0) return;
+            const relatedCards = document.querySelectorAll('.related-textos-card');
+            const currentText = loadMoreTextos.textContent.trim();
 
-            // Check display of first card to toggle state
-            const isCurrentlyHidden = hiddenCards[0].style.display === 'none';
-
-            if (isCurrentlyHidden) {
-                hiddenCards.forEach(card => {
-                    card.style.display = 'flex';
-                    card.style.opacity = '0';
-                    card.style.transition = 'opacity 0.4s ease';
-                    setTimeout(() => {
-                        card.style.opacity = '1';
-                    }, 10);
-                });
-                loadMoreTextos.textContent = 'Ver Menos';
+            if (currentText === 'Ver Más') {
+                // Stage 1 -> 2: Show middle cards
+                if (hiddenCards.length > 0) {
+                    hiddenCards.forEach(card => {
+                        card.style.display = 'flex';
+                        card.style.opacity = '0';
+                        card.style.transition = 'opacity 0.4s ease';
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                        }, 10);
+                    });
+                }
+                
+                if (relatedCards.length > 0) {
+                    loadMoreTextos.textContent = 'Ver Crónicas Relacionadas';
+                } else {
+                    loadMoreTextos.textContent = 'Ver Menos';
+                }
                 showToast("Mostrando más ensayos de TEXTOS");
+            } else if (currentText === 'Ver Crónicas Relacionadas') {
+                // Stage 2 -> 3: Show related cards
+                if (relatedCards.length > 0) {
+                    relatedCards.forEach(card => {
+                        card.style.display = 'flex';
+                        card.style.opacity = '0';
+                        card.style.transition = 'opacity 0.4s ease';
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                        }, 10);
+                    });
+                }
+                loadMoreTextos.textContent = 'Cerrar Archivo';
+                showToast("Abriendo crónicas relacionadas");
             } else {
-                hiddenCards.forEach(card => {
-                    card.style.display = 'none';
-                });
+                // Stage 3 -> 1: Collapse all and reset
+                if (hiddenCards.length > 0) {
+                    hiddenCards.forEach(card => {
+                        card.style.display = 'none';
+                        card.style.opacity = '0';
+                    });
+                }
+                if (relatedCards.length > 0) {
+                    relatedCards.forEach(card => {
+                        card.style.display = 'none';
+                        card.style.opacity = '0';
+                    });
+                }
                 loadMoreTextos.textContent = 'Ver Más';
-                showToast("Ocultando ensayos adicionales");
+                showToast("Cerrando archivo de TEXTOS");
             }
         });
     }
@@ -284,9 +314,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const vertProgressBar = document.getElementById('verticalProgressBar');
     const vertProgressHandle = document.getElementById('verticalProgressHandle');
     const vertProgressTrack = document.querySelector('.vertical-progress-track');
+    const vertProgressContainer = document.querySelector('.vertical-progress-container');
 
     if (vertProgressBar && vertProgressHandle && vertProgressTrack) {
         let tickData = [];
+        let scrollTimeout;
 
         // Function to create section ticks dynamically
         function setupTicks() {
@@ -355,6 +387,15 @@ document.addEventListener('DOMContentLoaded', () => {
                         tick.element.classList.remove('active');
                     }
                 });
+
+                // Show progress bar on scroll and fade out after 2s of inactivity
+                if (vertProgressContainer) {
+                    vertProgressContainer.classList.add('visible');
+                    clearTimeout(scrollTimeout);
+                    scrollTimeout = setTimeout(() => {
+                        vertProgressContainer.classList.remove('visible');
+                    }, 2000);
+                }
             }
         }
 
