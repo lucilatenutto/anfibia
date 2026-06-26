@@ -1,10 +1,7 @@
-/* ==========================================================================
-   REVISTA ANFIBIA REDESIGN - INTERACTIVITY SCRIPT
-   ========================================================================== */
+﻿
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    // 1. CAROUSEL / SLIDER LOGIC
         const slides = document.querySelectorAll('.slide');
     const dots = document.querySelectorAll('.dot');
     const prevBtn = document.getElementById('sliderPrev');
@@ -14,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let slideInterval;
 
     function showSlide(index) {
-        // Handle out of bounds indexes
+
         if (index >= slides.length) {
             currentSlide = 0;
         } else if (index < 0) {
@@ -23,7 +20,6 @@ document.addEventListener('DOMContentLoaded', () => {
             currentSlide = index;
         }
 
-        // Toggle active classes on slides
         slides.forEach((slide, idx) => {
             if (idx === currentSlide) {
                 slide.classList.add('active');
@@ -32,7 +28,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Toggle active classes on dot indicators
         dots.forEach((dot, idx) => {
             if (idx === currentSlide) {
                 dot.classList.add('active');
@@ -41,7 +36,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Scroll the wrapper to the active slide on mobile
         if (sliderWrapper && sliderWrapper.scrollWidth > sliderWrapper.clientWidth) {
             const activeSlide = slides[currentSlide];
             if (activeSlide) {
@@ -61,18 +55,15 @@ document.addEventListener('DOMContentLoaded', () => {
         showSlide(currentSlide - 1);
     }
 
-    // Auto rotate every 6 seconds
     function startSlideShow() {
         slideInterval = setInterval(nextSlide, 6000);
     }
 
-    // Reset slide show timer
     function resetSlideShow() {
         clearInterval(slideInterval);
         startSlideShow();
     }
 
-    // Event listeners for prev/next buttons
     if (prevBtn && nextBtn) {
         prevBtn.addEventListener('click', () => {
             prevSlide();
@@ -85,7 +76,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Event listeners for dots indicators
     dots.forEach((dot, idx) => {
         dot.addEventListener('click', () => {
             showSlide(idx);
@@ -93,7 +83,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Sync swipe gestures on mobile slider to update dots
     if (sliderWrapper) {
         let isScrolling;
         sliderWrapper.addEventListener('scroll', () => {
@@ -105,7 +94,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (newSlideIndex !== currentSlide) {
                         currentSlide = newSlideIndex;
 
-                        // Update active classes on slides
                         slides.forEach((slide, idx) => {
                             if (idx === currentSlide) {
                                 slide.classList.add('active');
@@ -114,7 +102,6 @@ document.addEventListener('DOMContentLoaded', () => {
                             }
                         });
 
-                        // Update active classes on dots
                         dots.forEach((dot, idx) => {
                             if (idx === currentSlide) {
                                 dot.classList.add('active');
@@ -130,13 +117,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Start slideshow on load if slides exist
     if (slides.length > 0) {
         startSlideShow();
     }
 
-
-    // 2. SEARCH OVERLAY TOGGLE
     const searchBtn = document.getElementById('searchBtn');
     const searchOverlay = document.getElementById('searchOverlay');
     const closeSearch = document.getElementById('closeSearch');
@@ -152,7 +136,6 @@ document.addEventListener('DOMContentLoaded', () => {
             searchOverlay.classList.remove('active');
         });
 
-        // Close search on Escape key
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && searchOverlay.classList.contains('active')) {
                 searchOverlay.classList.remove('active');
@@ -160,8 +143,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-
-    // 3. TOAST NOTIFICATION & SHARE CLICK HANDLING
     const toast = document.getElementById('toast');
     const toastMessage = document.getElementById('toastMessage');
 
@@ -170,20 +151,17 @@ document.addEventListener('DOMContentLoaded', () => {
         toastMessage.textContent = message;
         toast.classList.add('show');
 
-        // Hide after 3 seconds
         setTimeout(() => {
             toast.classList.remove('show');
         }, 3000);
     }
 
-    // Attach to all share buttons (supporting new anfibia-card, subhero-card, and classic grids)
     const shareBtns = document.querySelectorAll('.share-btn, .share-btn-compact');
     shareBtns.forEach(btn => {
         btn.addEventListener('click', (e) => {
             e.preventDefault();
             e.stopPropagation();
 
-            // Find the closest card title
             const card = btn.closest('.grid-card, .compact-card, .anfibia-card, .subhero-card');
             let articleTitle = "Artículo";
             if (card) {
@@ -193,17 +171,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
 
-            // Simulate copy to clipboard
             navigator.clipboard.writeText(window.location.href).then(() => {
                 showToast(`Enlace copiado: "${articleTitle}"`);
             }).catch(() => {
-                // Fallback if clipboard fails
+
                 showToast(`Enlace simulado para "${articleTitle}"`);
             });
         });
     });
 
-    // "Ver Más" Button for TEXTOS section (3-stage toggle flow)
     const loadMoreTextos = document.getElementById('loadMoreTextos');
     if (loadMoreTextos) {
         loadMoreTextos.addEventListener('click', (e) => {
@@ -213,7 +189,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const currentText = loadMoreTextos.textContent.trim();
 
             if (currentText === 'Ver Más') {
-                // Stage 1 -> 2: Show middle cards
+
                 if (hiddenCards.length > 0) {
                     hiddenCards.forEach(card => {
                         card.style.display = 'flex';
@@ -232,7 +208,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
                 showToast("Mostrando más ensayos de TEXTOS");
             } else if (currentText === 'Ver Crónicas Relacionadas') {
-                // Stage 2 -> 3: Show related cards
+
                 if (relatedCards.length > 0) {
                     relatedCards.forEach(card => {
                         card.style.display = 'flex';
@@ -246,7 +222,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 loadMoreTextos.textContent = 'Cerrar Archivo';
                 showToast("Abriendo crónicas relacionadas");
             } else {
-                // Stage 3 -> 1: Collapse all and reset
+
                 if (hiddenCards.length > 0) {
                     hiddenCards.forEach(card => {
                         card.style.display = 'none';
@@ -265,7 +241,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Toggle the mini-section for related subhero chronicles
     const subheroMoreTrigger = document.getElementById('subheroMoreTrigger');
     const subheroMoreSection = document.getElementById('subheroMoreSection');
 
@@ -295,7 +270,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Attach to all love buttons
     const loveBtns = document.querySelectorAll('.love-btn');
     loveBtns.forEach(btn => {
         btn.addEventListener('click', (e) => {
@@ -309,8 +283,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-
-    // 3.5. READING PROGRESS BAR FOR ARTICLES (VERTICAL GAUGE WITH HANDLE & SECTION TICKS)
     const vertProgressBar = document.getElementById('verticalProgressBar');
     const vertProgressHandle = document.getElementById('verticalProgressHandle');
     const vertProgressTrack = document.querySelector('.vertical-progress-track');
@@ -320,9 +292,8 @@ document.addEventListener('DOMContentLoaded', () => {
         let tickData = [];
         let scrollTimeout;
 
-        // Function to create section ticks dynamically
         function setupTicks() {
-            // Remove any old ticks first
+
             const oldTicks = vertProgressTrack.querySelectorAll('.progress-tick');
             oldTicks.forEach(t => t.remove());
             tickData = [];
@@ -333,23 +304,20 @@ document.addEventListener('DOMContentLoaded', () => {
             if (docHeight <= 0) return;
 
             subheadings.forEach((heading) => {
-                // Get absolute position of the subheading minus offset for sticky header (72px + breathing room = ~90px)
+
                 const headingTop = heading.getBoundingClientRect().top + window.scrollY;
                 const targetScroll = headingTop - 90;
                 const percent = Math.max(0, Math.min(100, (targetScroll / docHeight) * 100));
 
-                // Create tick element
                 const tick = document.createElement('div');
                 tick.className = 'progress-tick';
                 tick.style.top = percent + '%';
 
-                // Create tooltip
                 const tooltip = document.createElement('span');
                 tooltip.className = 'progress-tooltip';
                 tooltip.textContent = heading.textContent.replace(/::after/g, '').trim();
                 tick.appendChild(tooltip);
 
-                // Click to scroll smoothly
                 tick.addEventListener('click', (e) => {
                     e.stopPropagation();
                     window.scrollTo({
@@ -367,7 +335,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        // Update progress height, handle, and ticks active states
         function updateProgress() {
             const scrollTop = window.scrollY || document.documentElement.scrollTop;
             const docHeight = document.documentElement.scrollHeight - window.innerHeight;
@@ -375,11 +342,9 @@ document.addEventListener('DOMContentLoaded', () => {
             if (docHeight > 0) {
                 const scrollPercent = Math.min((scrollTop / docHeight) * 100, 100);
 
-                // Update bar height and handle position
                 vertProgressBar.style.height = scrollPercent + '%';
                 vertProgressHandle.style.top = scrollPercent + '%';
 
-                // Highlight active ticks
                 tickData.forEach(tick => {
                     if (scrollPercent >= tick.targetPercent - 1) { // 1% buffer
                         tick.element.classList.add('active');
@@ -388,7 +353,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 });
 
-                // Show progress bar on scroll and fade out after 2s of inactivity
                 if (vertProgressContainer) {
                     vertProgressContainer.classList.add('visible');
                     clearTimeout(scrollTimeout);
@@ -399,11 +363,9 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        // Initialize ticks on load and when images are loaded
         setupTicks();
         window.addEventListener('load', setupTicks);
 
-        // Handle scroll and resize events
         window.addEventListener('scroll', updateProgress);
         window.addEventListener('resize', () => {
             setupTicks();
@@ -411,33 +373,27 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-
-    // 4. ACTIVE READING TOOL (TEXT HIGHLIGHTS, ANNOTATIONS MODAL, CANVAS INSTAGRAM GENERATOR, COMMENTS)
     const selectionBar = document.getElementById('selectionBar');
     const btnHighlight = document.getElementById('btnHighlight');
     const btnAnnotate = document.getElementById('btnAnnotate');
     const annotationModal = document.getElementById('annotationModal');
     const closeAnnotationModal = document.getElementById('closeAnnotationModal');
 
-    // Modal Form Elements
     const modalQuoteDisplay = document.getElementById('modalQuoteDisplay');
     const annotationAuthorInput = document.getElementById('annotationAuthorInput');
     const annotationTextInput = document.getElementById('annotationTextInput');
 
-    // Preview Elements
     const igCardPreview = document.getElementById('igCardPreview');
     const previewQuoteText = document.getElementById('previewQuoteText');
     const previewNoteText = document.getElementById('previewNoteText');
     const previewAuthor = document.getElementById('previewAuthor');
     const themeDots = document.querySelectorAll('.theme-dot');
 
-    // Action Buttons in Modal
     const btnSavePersonalNote = document.getElementById('btnSavePersonalNote');
     const btnPublishComment = document.getElementById('btnPublishComment');
     const btnDownloadIGCard = document.getElementById('btnDownloadIGCard');
     const instagramStoryCanvas = document.getElementById('instagramStoryCanvas');
 
-    // Comments elements
     const commentsList = document.getElementById('commentsList');
     const commentsCountEl = document.getElementById('commentsCount');
     const directCommentAuthor = document.getElementById('directCommentAuthor');
@@ -448,22 +404,19 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentSelectedRange = null;
     let selectedTheme = "peach"; // default theme
 
-    // Hide selection bar
     function hideSelectionBar() {
         if (selectionBar) {
             selectionBar.classList.remove('active');
         }
     }
 
-    // Listening for text selection in the document
     if (selectionBar) {
         document.addEventListener('mouseup', handleTextSelection);
         document.addEventListener('touchend', handleTextSelection);
 
-        // Hide selection bar if clicked elsewhere
         document.addEventListener('mousedown', (e) => {
             if (selectionBar.contains(e.target)) return;
-            // If click is outside selection bar and not selecting text
+
             setTimeout(() => {
                 const sel = window.getSelection();
                 if (sel.isCollapsed) {
@@ -480,7 +433,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (!articleBody) return;
 
-        // Ensure we selected something longer than 5 chars, and it's inside the article body
         if (selectedText.length > 5 && selection.rangeCount > 0) {
             const range = selection.getRangeAt(0);
 
@@ -488,10 +440,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 currentSelectedText = selectedText;
                 currentSelectedRange = range.cloneRange();
 
-                // Position selection bar above selection
                 const rects = range.getClientRects();
                 if (rects.length > 0) {
-                    // Use the first rect to position the bar above it
+
                     const rect = rects[0];
                     const barWidth = 180; // approximate width of the bar
 
@@ -504,7 +455,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 hideSelectionBar();
             }
         } else {
-            // Only hide selection bar if user actually clicked elsewhere and cleared selection
+
             setTimeout(() => {
                 if (window.getSelection().isCollapsed) {
                     hideSelectionBar();
@@ -513,7 +464,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Highlight text event
     if (btnHighlight) {
         btnHighlight.addEventListener('mousedown', (e) => {
             e.preventDefault();
@@ -527,7 +477,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Wrap selection in a highlight span
     function highlightRange(range, text) {
         const span = document.createElement('span');
         span.className = 'article-highlight';
@@ -536,19 +485,17 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             range.surroundContents(span);
         } catch (e) {
-            // Fallback for complex cross-element selections
+
             const fragment = range.extractContents();
             span.appendChild(fragment);
             range.insertNode(span);
         }
 
-        // Click to open annotation modal on an existing highlight
         span.addEventListener('click', (e) => {
             e.stopPropagation();
             openAnnotationModalWithText(text);
         });
 
-        // Persistent save of highlighted text strings
         saveHighlightToLocalStorage(text);
     }
 
@@ -565,7 +512,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Restore highlights from localStorage on load
     function restoreHighlights() {
         const key = getHighlightsKey();
         const saved = JSON.parse(localStorage.getItem(key) || '[]');
@@ -576,7 +522,7 @@ document.addEventListener('DOMContentLoaded', () => {
             let html = p.innerHTML;
             saved.forEach(text => {
                 if (html.includes(text) && !html.includes(`class="article-highlight"`)) {
-                    // Safe wrap to avoid messing up existing tags (works for raw text matches)
+
                     const escapedText = text.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
                     const regex = new RegExp(`(${escapedText})`, 'g');
                     html = html.replace(regex, `<span class="article-highlight" title="Cita destacada. Haz clic para anotar.">$1</span>`);
@@ -585,7 +531,6 @@ document.addEventListener('DOMContentLoaded', () => {
             p.innerHTML = html;
         });
 
-        // Reattach click events to newly generated highlight spans
         document.querySelectorAll('.article-highlight').forEach(span => {
             span.addEventListener('click', (e) => {
                 e.stopPropagation();
@@ -594,7 +539,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Trigger Annotate from selection bar
     if (btnAnnotate) {
         btnAnnotate.addEventListener('mousedown', (e) => {
             e.preventDefault();
@@ -610,7 +554,6 @@ document.addEventListener('DOMContentLoaded', () => {
     function openAnnotationModalWithText(text) {
         currentSelectedText = text || "";
 
-        // Populate fields
         if (modalQuoteDisplay) {
             if (currentSelectedText) {
                 modalQuoteDisplay.textContent = `"${currentSelectedText}"`;
@@ -644,7 +587,6 @@ document.addEventListener('DOMContentLoaded', () => {
             previewNoteText.textContent = "Escribe tus pensamientos en el formulario para ver tu anotación aquí...";
         }
 
-        // Restore saved author name
         const savedAuthor = localStorage.getItem('anfibia_author');
         if (savedAuthor && annotationAuthorInput) {
             annotationAuthorInput.value = savedAuthor;
@@ -656,14 +598,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Close Modal
     if (closeAnnotationModal) {
         closeAnnotationModal.addEventListener('click', () => {
             annotationModal.classList.remove('active');
         });
     }
 
-    // Real-time Card Preview binding
     if (annotationAuthorInput) {
         annotationAuthorInput.addEventListener('input', () => {
             const authorVal = annotationAuthorInput.value.trim() || "Lector Anfibia";
@@ -683,7 +623,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // IG Theme selection
     themeDots.forEach(dot => {
         dot.addEventListener('click', () => {
             themeDots.forEach(d => d.classList.remove('active'));
@@ -691,14 +630,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
             selectedTheme = dot.getAttribute('data-theme');
 
-            // Update preview card theme class
             if (igCardPreview) {
                 igCardPreview.className = `ig-card-preview theme-${selectedTheme}`;
             }
         });
     });
 
-    // Save Personal Note (Local storage only)
     if (btnSavePersonalNote) {
         btnSavePersonalNote.addEventListener('click', () => {
             const author = annotationAuthorInput.value.trim() || "Lector Anfibia";
@@ -723,7 +660,6 @@ document.addEventListener('DOMContentLoaded', () => {
             savedNotes.push(personalNote);
             localStorage.setItem(notesKey, JSON.stringify(savedNotes));
 
-            // Also color text as highlighted
             if (currentSelectedRange) {
                 highlightRange(currentSelectedRange, currentSelectedText);
             }
@@ -733,7 +669,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Post comment dynamically
     function addCommentToDOM(comment, animate = false) {
         if (!commentsList) return;
 
@@ -789,7 +724,6 @@ document.addEventListener('DOMContentLoaded', () => {
         return window.location.pathname.includes('geopolitica.html') ? 'anfibia_comments_geopolitica' : 'anfibia_comments';
     }
 
-    // Publish Annotation as Comment
     if (btnPublishComment) {
         btnPublishComment.addEventListener('click', () => {
             requireAuth(() => {
@@ -809,21 +743,17 @@ document.addEventListener('DOMContentLoaded', () => {
                     quote: currentSelectedText
                 };
 
-                // Save to localStorage for persistence
                 const commentsKey = getCommentsKey();
                 let localComments = JSON.parse(localStorage.getItem(commentsKey) || '[]');
                 localComments.push(newComment);
                 localStorage.setItem(commentsKey, JSON.stringify(localComments));
 
-                // Append to DOM
                 addCommentToDOM(newComment, true);
 
-                // If selected text was fresh selection, apply highlight
                 if (currentSelectedRange) {
                     highlightRange(currentSelectedRange, currentSelectedText);
                 }
 
-                // Close modal & scroll to comments
                 annotationModal.classList.remove('active');
                 showToast("¡Anotación publicada como comentario!");
 
@@ -837,7 +767,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Submit direct comment
     if (btnSubmitDirectComment && directCommentText) {
         btnSubmitDirectComment.addEventListener('click', (e) => {
             e.preventDefault();
@@ -858,16 +787,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     quote: null
                 };
 
-                // Save to localStorage
                 const commentsKey = getCommentsKey();
                 let localComments = JSON.parse(localStorage.getItem(commentsKey) || '[]');
                 localComments.push(newComment);
                 localStorage.setItem(commentsKey, JSON.stringify(localComments));
 
-                // Append to DOM
                 addCommentToDOM(newComment, true);
 
-                // Clear inputs
                 directCommentText.value = "";
                 if (directCommentAuthor) directCommentAuthor.value = "";
 
@@ -876,7 +802,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Load persistent comments
     function loadSavedComments() {
         const localComments = JSON.parse(localStorage.getItem(getCommentsKey()) || '[]');
         localComments.forEach(comment => {
@@ -885,7 +810,6 @@ document.addEventListener('DOMContentLoaded', () => {
         updateCommentsCount();
     }
 
-    // Draw and download beautiful 9:16 Instagram Story card
     if (btnDownloadIGCard && instagramStoryCanvas) {
         btnDownloadIGCard.addEventListener('click', () => {
             requireAuth(() => {
@@ -897,7 +821,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 const width = 1080;
                 const height = 1920;
 
-                // 1. Draw Theme Background Gradient
                 const gradient = ctx.createLinearGradient(0, 0, 0, height);
                 if (selectedTheme === "peach") {
                     gradient.addColorStop(0, '#f15a24');
@@ -915,14 +838,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 ctx.fillStyle = gradient;
                 ctx.fillRect(0, 0, width, height);
 
-                // 2. Draw Subtle Graphic Accents
-                // Draw Anfibia Header Watermark
                 ctx.fillStyle = 'rgba(255, 255, 255, 0.35)';
                 ctx.font = '800 80px "Bebas Neue", sans-serif';
                 ctx.textAlign = 'center';
                 ctx.fillText('REVISTA ANFIBIA', width / 2, 230);
 
-                // Word wrap helper inside canvas
                 function wrapTextCanvas(context, text, x, y, maxWidth, lineHeight) {
                     const words = text.split(' ');
                     let line = '';
@@ -946,18 +866,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 let nextY = 520;
 
                 if (quote && quote.trim() !== "") {
-                    // Draw Quotes Graphic
+
                     ctx.fillStyle = 'rgba(255, 255, 255, 0.25)';
                     ctx.font = 'italic 180px "Lora", Georgia, serif';
                     ctx.textAlign = 'left';
                     ctx.fillText('“', 120, 470);
 
-                    // 3. Draw Selected Quote Text
                     ctx.fillStyle = 'rgba(255, 255, 255, 0.95)';
                     ctx.font = 'italic 44px "Lora", Georgia, serif';
                     ctx.textAlign = 'left';
 
-                    // Truncate quote if too long to prevent overflowing
                     let truncatedQuote = quote;
                     if (truncatedQuote.length > 280) {
                         truncatedQuote = truncatedQuote.substring(0, 275) + '...';
@@ -965,7 +883,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     nextY = wrapTextCanvas(ctx, `"${truncatedQuote}"`, 120, 520, 840, 68);
 
-                    // 4. Draw Divider Line
                     ctx.strokeStyle = 'rgba(255, 255, 255, 0.3)';
                     ctx.lineWidth = 3;
                     ctx.beginPath();
@@ -976,14 +893,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     nextY = nextY + 130;
                 }
 
-                // 5. Draw User's Personal Note
                 ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
                 ctx.font = '500 38px "Montserrat", sans-serif';
                 ctx.textAlign = 'left';
                 wrapTextCanvas(ctx, note, 120, nextY, 840, 58);
 
-                // 6. Draw Footer Branding & Credits
-                // Divider above footer
                 ctx.strokeStyle = 'rgba(255, 255, 255, 0.2)';
                 ctx.lineWidth = 2;
                 ctx.beginPath();
@@ -991,7 +905,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 ctx.lineTo(960, 1690);
                 ctx.stroke();
 
-                // Footer Text
                 ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
                 ctx.font = '700 28px "Montserrat", sans-serif';
                 ctx.textAlign = 'left';
@@ -1001,7 +914,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
                 ctx.fillText('REVISTAANFIBIA.ORG', 960, 1755);
 
-                // 7. Trigger Direct Image Download
                 try {
                     const dataURL = instagramStoryCanvas.toDataURL('image/png');
                     const link = document.createElement('a');
@@ -1019,11 +931,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Initialize Active Reading features
     restoreHighlights();
     loadSavedComments();
 
-    // 4.5. BOTTOM-RIGHT FLOATING BUTTONS CONTROLLER
     const floatLoveBtn = document.getElementById('floatLoveBtn');
     const floatShareBtn = document.getElementById('floatShareBtn');
     const floatAnnotateBtn = document.getElementById('floatAnnotateBtn');
@@ -1049,14 +959,12 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-
-    // 5. MOBILE MENU DRAWER LOGIC
     const menuToggle = document.getElementById('menuToggle');
     const mobileMenuDrawer = document.getElementById('mobileMenuDrawer');
     const menuBackdrop = document.getElementById('menuBackdrop');
 
     if (menuToggle && mobileMenuDrawer && menuBackdrop) {
-        // Toggle drawer open/close
+
         menuToggle.addEventListener('click', (e) => {
             e.stopPropagation();
             mobileMenuDrawer.classList.toggle('active');
@@ -1069,14 +977,12 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Close drawer (clicking backdrop)
         menuBackdrop.addEventListener('click', () => {
             mobileMenuDrawer.classList.remove('active');
             menuBackdrop.classList.remove('active');
             document.body.style.overflow = '';
         });
 
-        // Close drawer (Escape key)
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && mobileMenuDrawer.classList.contains('active')) {
                 mobileMenuDrawer.classList.remove('active');
@@ -1085,14 +991,13 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Mobile Dropdown Accordion Toggle
         const dropdownToggles = mobileMenuDrawer.querySelectorAll('.mobile-dropdown-toggle');
         dropdownToggles.forEach(toggle => {
             toggle.addEventListener('click', (e) => {
                 e.stopPropagation();
                 const parent = toggle.closest('.mobile-nav-item-dropdown');
                 if (parent) {
-                    // Close other dropdowns (accordion style)
+
                     mobileMenuDrawer.querySelectorAll('.mobile-nav-item-dropdown').forEach(item => {
                         if (item !== parent) {
                             item.classList.remove('open');
@@ -1105,14 +1010,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-
-    // ==========================================================================
-    // 7. USER AUTHENTICATION & RESTRICTIONS SYSTEM
-    // ==========================================================================
     
     let pendingAction = null;
 
-    // DOM Elements for Auth
     const authModal = document.getElementById('authModal');
     const closeAuthModalLogin = document.getElementById('closeAuthModalLogin');
     const closeAuthModalRegister = document.getElementById('closeAuthModalRegister');
@@ -1140,8 +1040,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function openAuthModal(panelName = 'login') {
         if (!authModal) return;
         authModal.classList.add('active');
-        
-        // Hide all panels, show the requested one
+
         Object.keys(authPanels).forEach(key => {
             if (authPanels[key]) {
                 if (key === panelName) {
@@ -1156,7 +1055,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function closeAuthModal() {
         if (!authModal) return;
         authModal.classList.remove('active');
-        // Reset forms
+
         if (authLoginUser) authLoginUser.value = "";
         if (authLoginPassword) authLoginPassword.value = "";
         if (authRegisterUsername) authRegisterUsername.value = "";
@@ -1164,11 +1063,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (authRegisterPassword) authRegisterPassword.value = "";
     }
 
-    // Bind Close Buttons
     if (closeAuthModalLogin) closeAuthModalLogin.addEventListener('click', closeAuthModal);
     if (closeAuthModalRegister) closeAuthModalRegister.addEventListener('click', closeAuthModal);
-    
-    // Toggle between login and register
+
     if (btnGoToRegister) {
         btnGoToRegister.addEventListener('click', (e) => {
             e.preventDefault();
@@ -1182,7 +1079,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Simulated Authentication Logic
     function isUserLoggedIn() {
         return localStorage.getItem('anfibia_logged_in') === 'true';
     }
@@ -1196,7 +1092,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Submit Login Form
     if (btnSubmitLogin) {
         btnSubmitLogin.addEventListener('click', (e) => {
             e.preventDefault();
@@ -1212,7 +1107,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            // Simulate successful login
             localStorage.setItem('anfibia_logged_in', 'true');
             localStorage.setItem('anfibia_username', userVal.split('@')[0]);
             updateAccountUI();
@@ -1220,7 +1114,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Submit Register Form
     if (btnSubmitRegister) {
         btnSubmitRegister.addEventListener('click', (e) => {
             e.preventDefault();
@@ -1241,7 +1134,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            // Simulate successful registration
             localStorage.setItem('anfibia_logged_in', 'true');
             localStorage.setItem('anfibia_username', userVal);
             updateAccountUI();
@@ -1249,12 +1141,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Comenzar buttons
     function handleComenzar() {
         closeAuthModal();
         syncAllFavoriteButtons(); // Sync UI after login/register
-        
-        // History updates after login
+
         if (typeof renderHistoryList === 'function') renderHistoryList();
         if (typeof renderContinueReading === 'function') renderContinueReading();
         if (typeof renderHomeHistory === 'function') renderHomeHistory();
@@ -1270,7 +1160,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (btnStartSession) btnStartSession.addEventListener('click', handleComenzar);
     if (btnStartRegister) btnStartRegister.addEventListener('click', handleComenzar);
 
-    // Update Account UI text dynamically
     function updateAccountUI() {
         const desktopAccountLinks = document.querySelectorAll('.nav-item-account');
         const mobileAccountLinks = document.querySelectorAll('.mobile-account-btn');
@@ -1296,9 +1185,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ==========================================================================
-    // 8. FAVORITES DRAWER & SYNC CONTROLLER
-    // ==========================================================================
     const favoritesDrawerOverlay = document.getElementById('favoritesDrawerOverlay');
     const closeFavoritesDrawer = document.getElementById('closeFavoritesDrawer');
     const favoritesList = document.getElementById('favoritesList');
@@ -1450,8 +1336,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const loggedIn = isUserLoggedIn();
         const favorites = getFavorites();
         const favIds = favorites.map(item => item.id);
-        
-        // Sync normal card love buttons
+
         const loveBtns = document.querySelectorAll('.love-btn:not(.community-fav-card .love-btn)');
         loveBtns.forEach(btn => {
             const data = extractCardData(btn);
@@ -1471,7 +1356,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Sync community favorites counts and buttons
         const communityFavCards = document.querySelectorAll('.community-fav-card');
         communityFavCards.forEach(card => {
             const id = card.getAttribute('data-article-id');
@@ -1521,9 +1405,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // ==========================================================================
-    // 9. COMMUNITY ANNOTATIONS & POPOVER CONTROLLER
-    // ==========================================================================
     function openCommunityPopover(el, author, note) {
         let popover = document.getElementById('communityPopover');
         if (!popover) {
@@ -1565,19 +1446,16 @@ document.addEventListener('DOMContentLoaded', () => {
         popover.classList.add('active');
     }
 
-    // Attach hover listeners to community highlights and assign color themes (peach, purple, teal)
     const commHighlights = document.querySelectorAll('.community-highlight');
     const themes = ['theme-peach', 'theme-purple', 'theme-teal'];
     let hoverTimeout = null;
 
     commHighlights.forEach((el, index) => {
         el.setAttribute('data-index', index);
-        
-        // Dynamically add color theme class based on index
+
         const theme = themes[index % themes.length];
         el.classList.add(theme);
-        
-        // Show tooltip on hover (mouseenter)
+
         el.addEventListener('mouseenter', (e) => {
             if (!document.body.classList.contains('show-highlights')) return;
             if (hoverTimeout) {
@@ -1589,7 +1467,6 @@ document.addEventListener('DOMContentLoaded', () => {
             openCommunityPopover(el, author, note);
         });
 
-        // Hide tooltip when mouse leaves the highlighted span (mouseleave)
         el.addEventListener('mouseleave', () => {
             hoverTimeout = setTimeout(() => {
                 const popover = document.getElementById('communityPopover');
@@ -1600,7 +1477,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Keep popover open if user hovers directly over the popover container
     document.addEventListener('mouseover', (e) => {
         const popover = document.getElementById('communityPopover');
         if (popover && popover.contains(e.target)) {
@@ -1611,7 +1487,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Close popover when mouse leaves the popover container
     document.addEventListener('mouseout', (e) => {
         const popover = document.getElementById('communityPopover');
         if (popover && popover.contains(e.target)) {
@@ -1624,7 +1499,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Close community popover when clicking elsewhere (fallback support)
     document.addEventListener('mousedown', (e) => {
         const popover = document.getElementById('communityPopover');
         if (popover && !popover.contains(e.target) && !e.target.closest('.community-highlight')) {
@@ -1636,7 +1510,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const floatAnnotateBtn = document.getElementById('floatAnnotateBtn');
         if (!floatAnnotateBtn) return;
 
-        // Enable community highlights by default on load
         document.body.classList.add('show-highlights');
         floatAnnotateBtn.classList.add('active');
 
@@ -1651,7 +1524,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 showToast("Destacados de la comunidad visibles");
             } else {
                 showToast("Destacados ocultos (Lectura Limpia)");
-                // Force close popover if active
+
                 const popover = document.getElementById('communityPopover');
                 if (popover) {
                     popover.classList.remove('active');
@@ -1733,7 +1606,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Intercept Account clicks (Logout option if logged in)
     const allAccountLinks = document.querySelectorAll('.nav-item-account, .mobile-account-btn');
     allAccountLinks.forEach(link => {
         link.addEventListener('click', (e) => {
@@ -1746,8 +1618,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     updateAccountUI();
                     syncAllFavoriteButtons();
                     closeFavoritesDrawerFunc();
-                    
-                    // History resets on logout
+
                     closeHistoryDrawerFunc();
                     if (continueReadingSection) continueReadingSection.style.display = 'none';
                     const homeHistorySection = document.getElementById('homeHistorySection');
@@ -1763,7 +1634,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Intercept Favoritos and Historial links
     const allLinks = document.querySelectorAll('a');
     allLinks.forEach(link => {
         const text = link.textContent.trim().toLowerCase();
@@ -1782,9 +1652,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // ==========================================================================
-    // 10. READING HISTORY & CONTINUE READING CONTROLLER
-    // ==========================================================================
     const historyDrawerOverlay = document.getElementById('historyDrawerOverlay');
     const closeHistoryDrawer = document.getElementById('closeHistoryDrawer');
     const historyList = document.getElementById('historyList');
@@ -2024,7 +1891,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!homeHistorySection || !homeHistoryGrid) return;
         
         const history = getHistory();
-        // Exclude items that are already shown in "Continúa Leyendo" (5% to 95%)
+
         const nonInProgress = history.filter(item => item.progress < 5 || item.progress >= 95);
         
         if (nonInProgress.length === 0) {
@@ -2147,7 +2014,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Bind scroll progress tracker
     let scrollTimeout;
     window.addEventListener('scroll', () => {
         if (scrollTimeout) clearTimeout(scrollTimeout);
@@ -2156,9 +2022,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 500);
     });
 
-    // ==========================================================================
-    // 10. CUSTOM ADD COMMENT MODAL CONTROLLER
-    // ==========================================================================
     const floatAddCommentBtn = document.getElementById('floatAddCommentBtn');
     const addCommentModal = document.getElementById('addCommentModal');
     const closeAddCommentModal = document.getElementById('closeAddCommentModal');
@@ -2171,7 +2034,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const commentSuccessView = document.getElementById('commentSuccessView');
     const btnDeNadaComment = document.getElementById('btnDeNadaComment');
 
-    // Restore saved username if logged in or saved previously
     if (commentAuthorInput) {
         const savedAuthor = localStorage.getItem('anfibia_author') || "";
         if (savedAuthor) {
@@ -2202,7 +2064,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Close on overlay click
     if (addCommentModal) {
         addCommentModal.addEventListener('click', (e) => {
             if (e.target === addCommentModal) {
@@ -2211,11 +2072,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Dropdown suggestions for Quote input
     if (commentQuoteInput && quoteDropdown) {
         const populateDropdown = () => {
             quoteDropdown.innerHTML = '';
-            // Fetch unique community highlights and user highlights
+
             const uniqueQuotes = Array.from(new Set(
                 Array.from(document.querySelectorAll('.community-highlight, .article-highlight')).map(el => el.textContent.replace(/\s+/g, ' ').trim())
             )).filter(q => q.length > 0);
@@ -2248,7 +2108,6 @@ document.addEventListener('DOMContentLoaded', () => {
             quoteDropdown.classList.add('active');
         });
 
-        // Close dropdown on click outside
         document.addEventListener('click', (e) => {
             if (!commentQuoteInput.contains(e.target) && !quoteDropdown.contains(e.target)) {
                 quoteDropdown.classList.remove('active');
@@ -2256,7 +2115,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Form submit Cargar
     if (btnCargarComment) {
         btnCargarComment.addEventListener('click', () => {
             const author = commentAuthorInput ? commentAuthorInput.value.trim() : "Lector Anónimo";
@@ -2268,7 +2126,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            // Save author name preference
             if (author) {
                 localStorage.setItem('anfibia_author', author);
             }
@@ -2280,20 +2137,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 date: "Hace unos instantes"
             };
 
-            // Post comment to DOM and LocalStorage
             addCommentToDOM(comment, true);
             const key = getCommentsKey();
             const localComments = JSON.parse(localStorage.getItem(key) || '[]');
             localComments.push(comment);
             localStorage.setItem(key, JSON.stringify(localComments));
 
-            // Switch to success view
             if (commentFormView) commentFormView.style.display = 'none';
             if (commentSuccessView) commentSuccessView.style.display = 'block';
         });
     }
 
-    // Success button De nada close
     if (btnDeNadaComment && addCommentModal) {
         btnDeNadaComment.addEventListener('click', () => {
             if (commentFormView) commentFormView.style.display = 'block';
@@ -2302,7 +2156,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Run UI update on load
     updateAccountUI();
     syncAllFavoriteButtons();
     renderContinueReading();

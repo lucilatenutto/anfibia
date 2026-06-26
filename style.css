@@ -1,8 +1,5 @@
-/* ==========================================================================
-   REVISTA ANFIBIA REDESIGN - CORE STYLES
-   ========================================================================== */
+﻿
 
-/* Design Tokens & Custom Variables */
 :root {
     --color-black: #050505;
     --color-dark-gray: #121212;
@@ -11,23 +8,22 @@
     --color-border-gray: #e5e5e7;
     --color-white: #ffffff;
 
-    /* Brand Accents */
+    
     --color-anfibia-peach: #f15a24;
     --color-anfibia-peach-hover: #ff7543;
     --color-anfibia-purple: #5856d6;
     --color-anfibia-purple-hover: #4543b5;
 
-    /* Typography */
+    
     --font-heading: 'Bebas Neue', sans-serif;
     --font-ui: 'Montserrat', sans-serif;
     --font-literary: 'Lora', Georgia, serif;
 
-    /* Transitions */
+    
     --transition-smooth: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     --transition-fast: all 0.15s ease;
 }
 
-/* Global Resets */
 *,
 *::before,
 *::after {
@@ -60,9 +56,6 @@ button {
     transition: var(--transition-fast);
 }
 
-/* ==========================================================================
-   HEADER / NAVIGATION BAR
-   ========================================================================== */
 .main-header {
     background-color: var(--color-black);
     color: var(--color-white);
@@ -82,7 +75,6 @@ button {
     justify-content: space-between;
 }
 
-/* Brand & Badges */
 .header-left {
     display: flex;
     align-items: center;
@@ -123,12 +115,11 @@ button {
     width: 1px;
     height: 20px;
     background-color: #ffbba6;
-    /* Peach matching mobile menu drawer */
+    
     margin: 0 12px;
     opacity: 0.8;
 }
 
-/* Social circles matching first image */
 .social-icons {
     display: flex;
     gap: 8px;
@@ -142,9 +133,9 @@ button {
     width: 26px;
     height: 26px;
     background-color: #ffbba6;
-    /* Peach matching mobile menu drawer */
+    
     color: var(--color-black);
-    /* Dark icon color matching original screenshot */
+    
     border-radius: 50%;
     font-size: 0.75rem;
     transition: var(--transition-smooth);
@@ -156,7 +147,6 @@ button {
     transform: translateY(-2px);
 }
 
-/* Nav Links */
 .header-nav {
     height: 100%;
 }
@@ -180,8 +170,6 @@ button {
     display: inline-flex;
     align-items: center;
 }
-
-
 
 .nav-item::after {
     content: '';
@@ -216,7 +204,6 @@ button {
     background-color: var(--color-white);
 }
 
-/* Header Action Buttons */
 .header-right {
     display: flex;
     align-items: center;
@@ -240,9 +227,6 @@ button {
     transform: scale(1.15);
 }
 
-/* ==========================================================================
-   SEARCH OVERLAY
-   ========================================================================== */
 .search-overlay {
     position: fixed;
     top: 0;
@@ -293,9 +277,6 @@ button {
     color: var(--color-anfibia-peach);
 }
 
-/* ==========================================================================
-   EDITORIAL CONTAINER & GRID LAYOUT
-   ========================================================================== */
 .editorial-container {
     max-width: 1400px;
     margin: 32px auto;
@@ -305,8 +286,6 @@ button {
     gap: 48px;
 }
 
-/* Cover Grid System: Split Layout for Main Slider & Compact Sidebar */
-/* FEATURED TRIPTYCH COVER GRID */
 .hero-slider-section {
     position: relative;
     background-color: var(--color-black);
@@ -367,7 +346,6 @@ button {
     transform: scale(1.08);
 }
 
-/* Gradient overlay for text legibility, matching Anfibia dark dramatic tones */
 .slide-overlay {
     position: absolute;
     top: 0;
@@ -397,7 +375,6 @@ button {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
-/* Slide Texts */
 .slide-content {
     position: relative;
     z-index: 3;
@@ -444,7 +421,6 @@ button {
     color: var(--color-medium-gray);
 }
 
-/* Slider Controls (Recreating First Image Arrows) */
 .slider-btn {
     position: absolute;
     top: 50%;
@@ -499,11 +475,6 @@ button {
     transform: scale(1.3);
 }
 
-/* (Sidebar styles removed - layout is now full-width grid) */
-
-/* ==========================================================================
-   BOTTOM GRID: THE REST OF STORIES (Second Image grid layout)
-   ========================================================================== */
 .bottom-grid-section {
     margin-top: 16px;
 }
@@ -535,7 +506,6 @@ button {
     gap: 24px;
 }
 
-/* Grid Card Design */
 .grid-card {
     background-color: var(--color-white);
     border-radius: 8px;
@@ -557,7 +527,7 @@ button {
     position: relative;
     width: 100%;
     padding-top: 56.25%;
-    /* 16:9 Aspect Ratio */
+    
     background-color: var(--color-dark-gray);
     overflow: hidden;
 }
@@ -654,9 +624,6 @@ button {
     transform: scale(1.15);
 }
 
-/* ==========================================================================
-   FOOTER
-   ========================================================================== */
 .main-footer {
     background-color: #0c100e;
     color: var(--color-white);
@@ -676,7 +643,6 @@ button {
     gap: 32px;
 }
 
-/* Left Block: Social & Navigation */
 .footer-left-block {
     display: flex;
     flex-direction: column;
@@ -697,8 +663,8 @@ button {
     width: 36px;
     height: 36px;
     border-radius: 50%;
-    background-color: #ffb2a7; /* Light rose-peach color from mockup */
-    color: #0c100e; /* Matches footer background */
+    background-color: #ffb2a7; 
+    color: #0c100e; 
     font-size: 1.1rem;
     text-decoration: none;
     transition: transform 0.2s ease, background-color 0.2s ease;
@@ -721,7 +687,7 @@ button {
 }
 
 .footer-nav-links a {
-    color: #ffb2a7; /* Peach color links as shown in mockup */
+    color: #ffb2a7; 
     text-decoration: none;
     font-size: 0.85rem;
     font-weight: 700;
@@ -733,13 +699,12 @@ button {
 }
 
 .footer-nav-links .link-sep {
-    color: var(--color-white); /* White/gray pipes as in mockup */
+    color: var(--color-white); 
     opacity: 0.6;
     font-weight: 300;
     font-size: 0.85rem;
 }
 
-/* Center Block: Legal Info */
 .footer-center-block {
     flex: 1;
     max-width: 480px;
@@ -749,11 +714,10 @@ button {
 .footer-legal-info {
     font-size: 0.75rem;
     line-height: 1.4;
-    color: var(--color-white); /* White text as in mockup */
+    color: var(--color-white); 
     opacity: 0.9;
 }
 
-/* Right Block: Logos */
 .footer-right-logos-block {
     display: flex;
     align-items: center;
@@ -829,7 +793,6 @@ button {
     margin-top: 2px;
 }
 
-/* Responsive Footer */
 @media (max-width: 1100px) {
     .footer-new-wide-container {
         flex-direction: column;
@@ -869,9 +832,6 @@ button {
     }
 }
 
-/* ==========================================================================
-   TOAST NOTIFICATION
-   ========================================================================== */
 .toast-notification {
     position: fixed;
     bottom: 30px;
@@ -898,9 +858,6 @@ button {
     opacity: 1;
 }
 
-/* ==========================================================================
-   KEYFRAME ANIMATIONS
-   ========================================================================== */
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -930,9 +887,6 @@ button {
     }
 }
 
-/* ==========================================================================
-   SUB-HERO CAROUSEL (LAS DESPEDIDAS SON ESOS DOLORES DULCES)
-   ========================================================================== */
 .subhero-carousel-section {
     background-color: var(--color-black);
     color: var(--color-white);
@@ -961,7 +915,7 @@ button {
 .subhero-title-divider {
     height: 1.5px;
     background-color: #f88a70;
-    /* Peach/coral from mockup */
+    
     width: 100%;
     margin-top: 16px;
     margin-bottom: 40px;
@@ -970,7 +924,7 @@ button {
 .subhero-carousel-wrapper {
     position: relative;
     padding: 0 50px;
-    /* space for absolute navigation arrows */
+    
 }
 
 .subhero-track {
@@ -979,7 +933,6 @@ button {
     gap: 32px;
 }
 
-/* Card Style */
 .subhero-card {
     display: flex;
     flex-direction: column;
@@ -991,7 +944,7 @@ button {
     position: relative;
     width: 100%;
     aspect-ratio: 1 / 1;
-    /* Square aspect ratio from image */
+    
     overflow: hidden;
     background-color: #121212;
 }
@@ -1020,7 +973,7 @@ button {
     font-size: 0.72rem;
     font-weight: 700;
     color: #f88a70;
-    /* Peach/coral kicker */
+    
     margin-bottom: 8px;
     line-height: 1.3;
     letter-spacing: 0.5px;
@@ -1049,7 +1002,7 @@ button {
     opacity: 0.6;
     width: 100%;
     margin-top: auto;
-    /* Push divider and footer to bottom */
+    
     margin-bottom: 12px;
 }
 
@@ -1091,11 +1044,10 @@ button {
     box-shadow: 0 4px 12px rgba(248, 138, 112, 0.3);
 }
 
-/* absolute control arrows matching image */
 .subhero-ctrl {
     position: absolute;
     top: calc(50% - 25px);
-    /* vertically center */
+    
     width: 40px;
     height: 50px;
     display: flex;
@@ -1108,7 +1060,6 @@ button {
     z-index: 15;
 }
 
-/* Left button is dark/semi-transparent */
 .subhero-ctrl.prev {
     left: 0;
     background-color: rgba(28, 27, 53, 0.7);
@@ -1121,7 +1072,6 @@ button {
     transform: scale(1.05);
 }
 
-/* Right button is light blue/purple with dark icon */
 .subhero-ctrl.next {
     right: 0;
     background-color: #d1cfff;
@@ -1134,7 +1084,6 @@ button {
     transform: scale(1.05);
 }
 
-/* Centered Trigger Button for expandable related section */
 .subhero-more-trigger-wrapper {
     display: flex;
     justify-content: center;
@@ -1175,15 +1124,11 @@ button {
     transform: rotate(180deg);
 }
 
-/* ==========================================================================
-   ANFIBIA PREMIUM SECTIONS (TEXTOS & IA)
-   ========================================================================== */
 .anfibia-section {
     width: 100%;
     margin-bottom: 64px;
 }
 
-/* Black Banner with centered title and horizontal lines */
 .section-banner-black {
     background-color: var(--color-black);
     color: var(--color-white);
@@ -1214,7 +1159,6 @@ button {
     opacity: 0.8;
 }
 
-/* Premium 3-column Grid for Desktop */
 .anfibia-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -1222,7 +1166,6 @@ button {
     margin-bottom: 40px;
 }
 
-/* Card layout matching the mock-up */
 .anfibia-card {
     display: flex;
     flex-direction: column;
@@ -1250,7 +1193,6 @@ button {
     transform: scale(1.05);
 }
 
-/* Badge flush in top left */
 .card-badge-flush {
     position: absolute;
     top: 0;
@@ -1267,15 +1209,14 @@ button {
 
 .badge-cronica {
     background-color: #f88a70;
-    /* soft peach/coral color from image */
+    
 }
 
 .badge-ensayo {
     background-color: #5856d6;
-    /* blue/purple color from image */
+    
 }
 
-/* Card details styling */
 .card-info {
     padding: 16px 0 0 0;
     display: flex;
@@ -1309,18 +1250,16 @@ button {
     color: #5856d6;
 }
 
-/* Thin red/durazno divider above credits */
 .card-divider-peach {
     height: 1.5px;
     background-color: #f15a24;
-    /* Peach/coral separator */
+    
     width: 100%;
     margin-top: auto;
-    /* Push divider and footer to bottom */
+    
     margin-bottom: 12px;
 }
 
-/* Footer layout */
 .card-meta-footer {
     display: flex;
     justify-content: space-between;
@@ -1346,7 +1285,6 @@ button {
     margin: 0 4px;
 }
 
-/* Actions with purple circular buttons */
 .card-actions {
     display: flex;
     gap: 8px;
@@ -1382,7 +1320,6 @@ button {
     background-color: #f15a24;
 }
 
-/* More Button Outline for TEXTOS */
 .section-more-wrapper {
     display: flex;
     justify-content: center;
@@ -1402,9 +1339,6 @@ button {
     display: inline-block;
 }
 
-/* ==========================================================================
-   DESKTOP DROPDOWN NAVIGATION STYLES
-   ========================================================================== */
 .nav-item-dropdown {
     position: relative;
     height: 100%;
@@ -1424,11 +1358,10 @@ button {
     color: #ffbba6;
 }
 
-/* Dropdown Menu Container */
 .nav-item-dropdown .dropdown-menu {
     position: absolute;
     top: 100%;
-    /* Sits right at the bottom of the header */
+    
     left: 50%;
     transform: translateX(-50%) translateY(10px);
     background-color: var(--color-anfibia-purple);
@@ -1452,7 +1385,6 @@ button {
     transform: translateX(-50%) translateY(0);
 }
 
-/* Dropdown Items */
 .nav-item-dropdown .dropdown-menu li {
     width: 100%;
 }
@@ -1474,10 +1406,9 @@ button {
     color: var(--color-black);
     background-color: #ffbba6;
     padding-left: 24px;
-    /* subtle slide effect */
+    
 }
 
-/* Nav Icons (Heart and History clock) */
 .nav-icon {
     font-size: 0.9rem;
     transition: var(--transition-fast);
@@ -1487,18 +1418,12 @@ button {
     color: var(--color-anfibia-peach);
 }
 
-/* ==========================================================================
-   DESKTOP HEADER SCALING & MOBILE DRAWER STYLES
-   ========================================================================== */
-
-/* Hide header social links on medium/small desktop to prevent overlap */
 @media (max-width: 1350px) {
     .header-left .social-icons {
         display: none !important;
     }
 }
 
-/* Reduce link spacing on medium desktops */
 @media (max-width: 1350px) and (min-width: 1151px) {
     .nav-list {
         gap: 10px;
@@ -1509,7 +1434,6 @@ button {
     }
 }
 
-/* Collapse desktop navigation and show hamburger at tablet width */
 @media (min-width: 1151px) {
     .header-nav {
         display: block;
@@ -1530,20 +1454,19 @@ button {
     }
 }
 
-/* Mobile Menu Drawer Styling (Mockup Accurate) */
 .mobile-menu-drawer {
     position: fixed;
     top: 72px;
-    /* Positioned directly below the header */
+    
     right: 0;
     width: 290px;
-    /* Width of the panel */
+    
     height: calc(100vh - 72px);
-    /* Takes the remaining height */
+    
     background-color: #ffbba6;
-    /* Peach background matching mockup */
+    
     z-index: 101;
-    /* Above page content, below header */
+    
     box-shadow: -5px 5px 20px rgba(0, 0, 0, 0.12);
     display: flex;
     flex-direction: column;
@@ -1569,13 +1492,11 @@ button {
     margin: 0;
 }
 
-/* Individual Item Container */
 .mobile-nav-item-dropdown,
 .mobile-nav-item-static {
     border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 
-/* Toggles & Static Links */
 .mobile-dropdown-toggle,
 .mobile-static-link {
     width: 100%;
@@ -1607,27 +1528,24 @@ button {
     opacity: 0.7;
 }
 
-/* When active, rotate chevron */
 .mobile-nav-item-dropdown.open .toggle-icon {
     transform: rotate(180deg);
 }
 
-/* Dropdown Menu (Blue container) */
 .mobile-dropdown-menu {
     list-style: none;
     padding: 0;
     margin: 0;
     background-color: var(--color-anfibia-purple);
-    /* Blue/Purple matching mockup */
+    
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
-/* When dropdown is open */
 .mobile-nav-item-dropdown.open .mobile-dropdown-menu {
     max-height: 500px;
-    /* Large enough value to show contents */
+    
 }
 
 .mobile-dropdown-menu li a {
@@ -1649,13 +1567,11 @@ button {
     background-color: rgba(255, 255, 255, 0.1);
 }
 
-/* Spacing item inside list */
 .mobile-nav-spacing {
     height: 24px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 
-/* Account button in footer */
 .mobile-menu-footer-account {
     background-color: var(--color-black);
     padding: 0;
@@ -1671,7 +1587,7 @@ button {
     font-size: 0.8rem;
     font-weight: 700;
     color: #4cc2ff;
-    /* Light blue accent text matching mockup button */
+    
     text-transform: uppercase;
     letter-spacing: 0.8px;
     transition: background-color 0.2s ease;
@@ -1687,11 +1603,10 @@ button {
     background-color: rgba(255, 255, 255, 0.05);
 }
 
-/* Backdrop */
 .menu-backdrop {
     position: fixed;
     top: 72px;
-    /* Sits below header */
+    
     left: 0;
     width: 100vw;
     height: calc(100vh - 72px);
@@ -1707,9 +1622,6 @@ button {
     pointer-events: auto;
 }
 
-/* ==========================================================================
-   RESPONSIVE LAYOUTS
-   ========================================================================== */
 @media (max-width: 1200px) {
     .slide-title {
         font-size: 3.2rem;
@@ -1718,7 +1630,7 @@ button {
 
 @media (max-width: 1024px) {
 
-    /* Collapse Cover Grid to 1 column on tablets */
+    
     .cover-grid {
         grid-template-columns: 1fr;
         min-height: auto;
@@ -1733,7 +1645,7 @@ button {
         max-height: 400px;
     }
 
-    /* Collapse Bottom Grid to 2 columns */
+    
     .articles-grid {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -1770,7 +1682,7 @@ button {
         padding: 24px;
     }
 
-    /* Collapse Bottom Grid to 1 column */
+    
     .articles-grid {
         grid-template-columns: 1fr;
     }
@@ -1782,15 +1694,15 @@ button {
 
     .subhero-carousel-wrapper {
         padding: 0 !important;
-        margin: 0 -24px 20px -24px !important; /* Bleed out to edges of viewport with bottom margin */
+        margin: 0 -24px 20px -24px !important; 
         overflow-x: auto !important;
         scroll-snap-type: x mandatory !important;
-        scrollbar-width: none !important; /* Hide scrollbar Firefox */
-        -ms-overflow-style: none !important;  /* Hide scrollbar IE/Edge */
+        scrollbar-width: none !important; 
+        -ms-overflow-style: none !important;  
         -webkit-overflow-scrolling: touch;
     }
     .subhero-carousel-wrapper::-webkit-scrollbar {
-        display: none !important; /* Hide scrollbar Chrome/Safari */
+        display: none !important; 
     }
 
     .subhero-track {
@@ -1849,7 +1761,7 @@ button {
         margin: 48px auto;
     }
 
-    /* Slider optimizations (Natively swipeable cover on mobile) */
+    
     .hero-slider-section {
         height: 400px !important;
         min-height: auto;
@@ -1861,11 +1773,11 @@ button {
         scroll-behavior: smooth !important;
         -webkit-overflow-scrolling: touch;
         height: 100% !important;
-        scrollbar-width: none !important; /* Firefox */
-        -ms-overflow-style: none !important;  /* IE/Edge */
+        scrollbar-width: none !important; 
+        -ms-overflow-style: none !important;  
     }
     .slider-wrapper::-webkit-scrollbar {
-        display: none !important; /* Chrome, Safari, Opera */
+        display: none !important; 
     }
     .slide {
         position: relative !important;
@@ -1887,12 +1799,12 @@ button {
         bottom: 16px;
     }
 
-    /* Padding alignment to keep text aligned on mobile */
+    
     .comments-section-container {
         padding: 40px 24px !important;
     }
 
-    /* Scrollable Modals for short screens */
+    
     .annotation-modal-overlay, .auth-modal-overlay {
         align-items: flex-start !important;
         overflow-y: auto !important;
@@ -1902,19 +1814,19 @@ button {
         margin: 20px auto !important;
     }
 
-    /* Comment card padding optimization */
+    
     .comment-card {
         padding: 16px !important;
     }
 
-    /* Center cards and limit their maximum width on mobile screens to prevent stretch and right alignment issues */
+    
     .anfibia-card, .community-fav-card {
         max-width: 500px !important;
         margin: 0 auto !important;
         width: 100% !important;
     }
 
-    /* Community favorites stacking and badge positioning to prevent overlaps and right-alignment issues on mobile */
+    
     .community-fav-card {
         padding: 16px !important;
     }
@@ -1940,7 +1852,7 @@ button {
         font-size: 1.25rem !important;
     }
 
-    /* Mobile font-size scaling for cleaner layout */
+    
     .card-headline, .subhero-card-title {
         font-size: 1.75rem !important;
     }
@@ -1957,7 +1869,7 @@ button {
         font-size: 1.4rem !important;
     }
     
-    /* Article typography scaling */
+    
     .article-main-title {
         font-size: 3.0rem !important;
         line-height: 0.95 !important;
@@ -1978,29 +1890,29 @@ button {
         line-height: 1.65 !important;
     }
     
-    /* Popover adjustments for mobile screen */
+    
     .community-popover {
         width: 290px !important;
     }
 }
 
 @media (max-width: 480px) {
-    /* Hide UNSAM logo badge and header divider to prevent header crowding */
+    
     .unsam-badge, .header-left .header-divider {
         display: none !important;
     }
 
-    /* Header Brand logo adjustments */
+    
     .brand-logo {
         font-size: 1.8rem;
     }
 
-    /* Mobile drawer safe width */
+    
     .mobile-menu-drawer {
         max-width: 100% !important;
     }
 
-    /* Hero Slide content compression */
+    
     .slide-title {
         font-size: 2.0rem;
     }
@@ -2015,7 +1927,7 @@ button {
         font-size: 0.85rem;
     }
 
-    /* Section Banner shrinking */
+    
     .section-banner-black {
         padding: 0 10px;
         gap: 10px;
@@ -2027,12 +1939,12 @@ button {
         letter-spacing: 1px;
     }
 
-    /* Typography scaling for cards to fit nicely */
+    
     .card-headline, .subhero-card-title {
         font-size: 1.6rem !important;
     }
 
-    /* Stacking card footer elements vertically to prevent text squashing */
+    
     .card-meta-footer {
         flex-direction: column !important;
         align-items: flex-start !important;
@@ -2051,7 +1963,7 @@ button {
         align-self: flex-end !important;
     }
 
-    /* Article title wrap safety */
+    
     .article-main-title {
         font-size: 2.2rem !important;
         margin-bottom: 16px;
@@ -2086,9 +1998,6 @@ button {
     }
 }
 
-/* ==========================================================================
-   ARTICLE DETAIL PAGE (PATAGONIA - ADAPTARSE AL FUEGO)
-   ========================================================================== */
 .article-detail-container {
     max-width: 1000px;
     margin: 80px auto;
@@ -2108,7 +2017,7 @@ button {
 
 .article-badge {
     background-color: #f88a70;
-    /* Coral/peach */
+    
     color: var(--color-white);
     font-family: var(--font-ui);
     font-size: 0.75rem;
@@ -2143,7 +2052,7 @@ button {
     font-size: 7rem;
     line-height: 0.92;
     color: #072113;
-    /* Very dark green from image */
+    
     margin: 0 auto 36px auto;
     letter-spacing: 0.5px;
     text-transform: uppercase;
@@ -2202,7 +2111,6 @@ button {
     object-fit: cover;
 }
 
-/* Article Body Content Styles */
 .article-body-container {
     max-width: 840px;
     margin: 64px auto 96px auto;
@@ -2227,7 +2135,7 @@ button {
     padding-left: 24px;
     text-indent: -24px;
     font-style: italic;
-    /* conversational quote style */
+    
 }
 
 .article-subheading {
@@ -2237,7 +2145,7 @@ button {
     margin-top: 56px;
     margin-bottom: 24px;
     color: #072113;
-    /* Very dark green */
+    
     display: flex;
     align-items: center;
     gap: 16px;
@@ -2272,14 +2180,13 @@ button {
 .article-list li::before {
     content: "•";
     color: #f15a24;
-    /* Coral bullet */
+    
     font-weight: bold;
     position: absolute;
     left: 0;
     font-size: 1.2rem;
 }
 
-/* Left Floating Progress Gauge */
 .vertical-progress-container {
     position: fixed;
     left: 30px;
@@ -2317,9 +2224,9 @@ button {
 
 .vertical-progress-track {
     width: 10px;
-    /* Thicker track */
+    
     height: 340px;
-    /* Taller track */
+    
     background-color: rgba(5, 5, 5, 0.07);
     border-radius: 20px;
     position: relative;
@@ -2329,7 +2236,7 @@ button {
 .vertical-progress-bar {
     width: 100%;
     height: 0%;
-    /* Fills from top to bottom */
+    
     background: linear-gradient(180deg, #f15a24 0%, #ff7543 100%);
     border-radius: 20px;
     position: absolute;
@@ -2340,7 +2247,7 @@ button {
 
 .vertical-progress-handle {
     width: 24px;
-    /* Large, notable handle */
+    
     height: 24px;
     background-color: #f15a24;
     border: 4px solid var(--color-white);
@@ -2348,15 +2255,14 @@ button {
     position: absolute;
     left: 50%;
     transform: translate(-50%, -50%);
-    /* Center handle on the track */
+    
     top: 0%;
-    /* Moves from 0% to 100% */
+    
     box-shadow: 0 4px 12px rgba(241, 90, 36, 0.45);
     transition: top 0.1s cubic-bezier(0.25, 0.8, 0.25, 1);
     z-index: 94;
 }
 
-/* Ticks along the progress bar for sections */
 .progress-tick {
     position: absolute;
     left: 50%;
@@ -2418,7 +2324,6 @@ button {
     transform: translateY(-50%) translateX(0);
 }
 
-/* Adapt vertical progress bar for smaller screens instead of hiding it */
 @media (max-width: 1100px) {
     .vertical-progress-container {
         left: 6px;
@@ -2431,7 +2336,7 @@ button {
         transform: translateY(-50%) scale(1);
     }
     .vertical-progress-track {
-        height: 220px; /* Shorter track for mobile */
+        height: 220px; 
         width: 6px;
     }
     .vertical-progress-handle {
@@ -2444,16 +2349,12 @@ button {
         height: 12px;
         border-width: 1px;
     }
-    /* Hide tooltips on mobile screens as hover space is limited */
+    
     .progress-tooltip {
         display: none !important;
     }
 }
 
-
-/* ==========================================================================
-   ARTICLE BODY IMAGE STYLES
-   ========================================================================== */
 .article-image-wrapper {
     width: 100%;
     margin: 48px 0;
@@ -2469,7 +2370,6 @@ button {
     object-fit: cover;
 }
 
-/* Enlarge the image beyond the narrow 760px article column on wider screens */
 @media (min-width: 1000px) {
     .article-image-wrapper {
         width: calc(100% + 200px);
@@ -2484,9 +2384,6 @@ button {
     }
 }
 
-/* ==========================================================================
-   ACTIVE READING TOOL & HIGHLIGHTS
-   ========================================================================== */
 .article-highlight {
     background-color: rgba(241, 90, 36, 0.22);
     border-bottom: 2px dashed rgba(241, 90, 36, 0.65);
@@ -2500,7 +2397,6 @@ button {
     background-color: rgba(241, 90, 36, 0.35);
 }
 
-/* Floating Selection Bar */
 .selection-share-bar {
     position: absolute;
     z-index: 1000;
@@ -2561,9 +2457,6 @@ button {
     color: var(--color-anfibia-peach-hover);
 }
 
-/* ==========================================================================
-   ANNOTATIONS MODAL (Instagram Share & Notes)
-   ========================================================================== */
 .annotation-modal-overlay {
     position: fixed;
     top: 0;
@@ -2628,7 +2521,6 @@ button {
     padding: 40px;
 }
 
-/* Left: Instagram Preview Card */
 .preview-column {
     display: flex;
     flex-direction: column;
@@ -2660,7 +2552,6 @@ button {
     transition: background 0.4s ease;
 }
 
-/* IG Themes */
 .ig-card-preview.theme-peach {
     background: linear-gradient(135deg, #f15a24 0%, #ff7543 50%, #072113 100%);
 }
@@ -2701,7 +2592,7 @@ button {
     max-height: 140px;
     overflow-y: auto;
     margin-bottom: 16px;
-    /* Custom scrollbar for preview */
+    
     scrollbar-width: none;
 }
 
@@ -2756,7 +2647,6 @@ button {
     color: rgba(255, 255, 255, 0.6);
 }
 
-/* Theme Dot Selector */
 .theme-selector-container {
     margin-top: 20px;
     display: flex;
@@ -2802,7 +2692,6 @@ button {
     background: linear-gradient(135deg, #2a2a2a, #050505);
 }
 
-/* Right: Form Column */
 .form-column {
     display: flex;
     flex-direction: column;
@@ -2863,9 +2752,6 @@ button {
     margin-bottom: 24px;
 }
 
-/* ============================================================
-   NEW MODAL ACTION PILLS
-   ============================================================ */
 .modal-actions-new {
     display: flex;
     flex-direction: column;
@@ -2878,7 +2764,6 @@ button {
     gap: 10px;
 }
 
-/* Divider between note actions and export action */
 .action-export-divider {
     display: flex;
     align-items: center;
@@ -2973,7 +2858,6 @@ button {
     letter-spacing: 0.2px;
 }
 
-/* Instagram button */
 .action-pill--ig {
     background: linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
     box-shadow: 0 4px 20px rgba(220, 39, 67, 0.35);
@@ -2989,7 +2873,6 @@ button {
     filter: brightness(1.08);
 }
 
-/* Publicar Comentario button */
 .action-pill--comment {
     background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
     border: 1px solid rgba(100, 160, 255, 0.3);
@@ -3007,7 +2890,6 @@ button {
     box-shadow: 0 10px 28px rgba(60, 100, 255, 0.4) !important;
 }
 
-/* Guardar Nota button */
 .action-pill--save {
     background: linear-gradient(135deg, #0d1f14 0%, #12281a 100%);
     border: 1px solid rgba(80, 200, 120, 0.3);
@@ -3025,7 +2907,6 @@ button {
     box-shadow: 0 10px 28px rgba(60, 180, 80, 0.4) !important;
 }
 
-/* Download button below preview card */
 .preview-download-btn {
     width: 100%;
     margin-top: 14px;
@@ -3107,9 +2988,6 @@ button {
     text-align: center;
 }
 
-/* ==========================================================================
-   COMMENTS SECTION
-   ========================================================================== */
 .comments-section-container {
     background-color: var(--color-white);
     padding: 80px 24px;
@@ -3130,7 +3008,6 @@ button {
     margin-bottom: 40px;
 }
 
-/* Collapsible Active Reading Guide */
 .active-reading-guide-collapsible {
     background-color: var(--color-light-gray);
     border: 1px solid var(--color-border-gray);
@@ -3351,7 +3228,6 @@ button {
     color: #2b2b2b;
 }
 
-/* Comment Form */
 .comment-form-container {
     border-top: 1px solid var(--color-border-gray);
     padding-top: 48px;
@@ -3416,7 +3292,6 @@ button {
     transform: translateY(-2px);
 }
 
-/* Responsive modal tweaks */
 @media (max-width: 800px) {
     .modal-body-grid {
         grid-template-columns: 1fr;
@@ -3428,13 +3303,10 @@ button {
 
     .preview-column {
         display: none;
-        /* Hide complex preview on mobile screens to save space */
+        
     }
 }
 
-/* ==========================================================================
-   BOTTOM-RIGHT FLOATING ACTION BUTTONS
-   ========================================================================== */
 .bottom-right-floating-container {
     position: fixed;
     right: 30px;
@@ -3449,7 +3321,7 @@ button {
     width: 56px;
     height: 56px;
     background-color: var(--color-anfibia-purple);
-    /* #5856d6 */
+    
     color: var(--color-white);
     border-radius: 50%;
     display: flex;
@@ -3465,7 +3337,7 @@ button {
 
 .floating-action-btn:hover {
     background-color: var(--color-anfibia-purple-hover);
-    /* #4543b5 */
+    
     transform: translateY(-4px) scale(1.06);
     box-shadow: 0 8px 25px rgba(88, 86, 214, 0.55);
 }
@@ -3494,9 +3366,6 @@ button {
     }
 }
 
-/* ==========================================================================
-   ACTIVE READING HELPER BANNER (CRÓNICA INTERACTIVA)
-   ========================================================================== */
 .active-reading-helper {
     background-color: var(--color-white);
     border: 1px solid var(--color-border-gray);
@@ -3662,7 +3531,6 @@ button {
     color: var(--color-anfibia-peach);
 }
 
-/* Responsive adjustments for helper */
 @media (max-width: 900px) {
     .helper-features-grid {
         grid-template-columns: 1fr;
@@ -3673,10 +3541,6 @@ button {
         padding: 20px;
     }
 }
-
-/* ==========================================================================
-   AUTHENTICATION MODAL STYLES (MOCKUP ALIGNED)
-   ========================================================================== */
 
 .auth-modal-overlay {
     position: fixed;
@@ -3707,7 +3571,7 @@ button {
     border-radius: 16px;
     width: 100%;
     max-width: 440px;
-    /* Default for mobile */
+    
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
     position: relative;
     overflow: hidden;
@@ -3719,7 +3583,6 @@ button {
     transform: scale(1);
 }
 
-/* Two-column grid on desktop */
 @media (min-width: 768px) {
     .auth-modal-card {
         max-width: 860px;
@@ -3739,7 +3602,6 @@ button {
     background-color: #e5e5e7;
 }
 
-/* Sidebar Column (Desktop only) */
 .auth-modal-sidebar-col {
     display: none;
     background: linear-gradient(135deg, #5856d6, #3b3a9a);
@@ -3780,7 +3642,6 @@ button {
     color: rgba(255, 255, 255, 0.9);
 }
 
-/* Headers and Panels */
 .auth-header {
     background-color: #ffbba6;
     padding: 16px 24px;
@@ -3819,7 +3680,6 @@ button {
     background-color: #4543b5;
 }
 
-/* Form Styles */
 .auth-body {
     padding: 30px 24px;
     flex-grow: 1;
@@ -3873,7 +3733,6 @@ button {
     color: #4543b5;
 }
 
-/* Buttons */
 .auth-action-row {
     display: flex;
     justify-content: flex-end;
@@ -3952,7 +3811,6 @@ button {
     color: #4543b5;
 }
 
-/* Success Panels (Frame 100 & 102 style) */
 .auth-success-panel {
     background-color: #ffbba6;
     padding: 48px 32px;
@@ -4019,7 +3877,6 @@ button {
     box-shadow: 0 6px 20px rgba(88, 86, 214, 0.45);
 }
 
-/* Panel Switching Control */
 .auth-panel {
     display: none;
     height: 100%;
@@ -4029,10 +3886,6 @@ button {
     display: flex;
     flex-direction: column;
 }
-
-/* ==========================================================================
-   FAVORITES DRAWER STYLES
-   ========================================================================== */
 
 .favorites-drawer-overlay {
     position: fixed;
@@ -4113,7 +3966,6 @@ button {
     padding: 24px;
 }
 
-/* Empty State */
 .favorites-empty-state {
     text-align: center;
     padding: 40px 20px;
@@ -4131,14 +3983,12 @@ button {
     color: rgba(255, 255, 255, 0.2);
 }
 
-/* Favorite Card List */
 .favorites-list {
     display: flex;
     flex-direction: column;
     gap: 18px;
 }
 
-/* Individual Favorite Item Card */
 .favorite-item-card {
     display: flex;
     background-color: #1e1e1e;
@@ -4240,10 +4090,6 @@ button {
     transform: scale(1.2);
     color: #ff3366;
 }
-
-/* ==========================================================================
-   COMMUNITY FEATURES STYLES (FAVORITOS DE LA COMUNIDAD & HIGHLIGHTS)
-   ========================================================================== */
 
 .section-subtitle-center {
     font-family: var(--font-ui);
@@ -4399,7 +4245,6 @@ button {
     margin-left: 6px;
 }
 
-/* Community Highlights in texts - permanently visible with specific themes */
 .community-highlight {
     border-radius: 2px;
     padding: 1px 2px;
@@ -4411,7 +4256,6 @@ button {
     cursor: pointer;
 }
 
-/* Peach theme (Highlight 1 / index 0) */
 .show-highlights .community-highlight.theme-peach {
     background-color: rgba(241, 90, 36, 0.12);
     border-bottom: 2px dashed rgba(241, 90, 36, 0.45);
@@ -4421,7 +4265,6 @@ button {
     border-bottom-color: rgba(241, 90, 36, 0.8) !important;
 }
 
-/* Purple theme (Highlight 2 / index 1) */
 .show-highlights .community-highlight.theme-purple {
     background-color: rgba(88, 86, 214, 0.12);
     border-bottom: 2px dashed rgba(88, 86, 214, 0.45);
@@ -4431,7 +4274,6 @@ button {
     border-bottom-color: rgba(88, 86, 214, 0.8) !important;
 }
 
-/* Teal theme (Highlight 3 / index 2) */
 .show-highlights .community-highlight.theme-teal {
     background-color: rgba(0, 180, 160, 0.12);
     border-bottom: 2px dashed rgba(0, 180, 160, 0.45);
@@ -4441,7 +4283,6 @@ button {
     border-bottom-color: rgba(0, 180, 160, 0.8) !important;
 }
 
-/* Community Popover Tooltip */
 .community-popover {
     position: absolute;
     z-index: 1000;
@@ -4517,7 +4358,6 @@ button {
     color: rgba(255, 255, 255, 0.9);
 }
 
-/* Tablet and mobile collapsing */
 @media (max-width: 1024px) {
     .community-favorites-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -4541,10 +4381,6 @@ button {
         justify-content: center;
     }
 }
-
-/* ==========================================================================
-   LECTURA ACTIVA HOMEPAGE SECTION STYLES
-   ========================================================================== */
 
 .active-reading-intro {
     max-width: 800px;
@@ -4747,18 +4583,13 @@ button {
     }
 }
 
-/* ==========================================================================
-   CONTINUE READING & HISTORY STYLES
-   ========================================================================== */
-
-/* Homepage Section */
 .continue-reading-section {
     background-color: #f6f6f8;
     border-top: 1.5px solid var(--color-border-gray);
     border-bottom: 1.5px solid var(--color-border-gray);
     padding: 40px 24px;
     margin-bottom: 0px;
-    /* Sits right under hero slider */
+    
 }
 
 .continue-reading-container {
@@ -4796,7 +4627,6 @@ button {
     border-color: rgba(88, 86, 214, 0.2);
 }
 
-/* Reading Progress Bar elements */
 .reading-progress-container {
     margin-top: 12px;
     margin-bottom: 12px;
@@ -4854,7 +4684,6 @@ button {
     transform: translateY(-1px);
 }
 
-/* History Drawer Styles */
 .history-drawer-overlay {
     position: fixed;
     top: 0;
@@ -4959,7 +4788,6 @@ button {
     padding: 24px;
 }
 
-/* Empty State */
 .history-empty-state {
     text-align: center;
     padding: 40px 20px;
@@ -5081,7 +4909,6 @@ button {
     color: #e0245e;
 }
 
-/* Scroll Restoration Toast */
 .scroll-restore-toast {
     position: fixed;
     bottom: 30px;
@@ -5153,7 +4980,6 @@ button {
     }
 }
 
-/* Expandable Subhero More Section Styles (Mini-Sección) */
 .subhero-more-section {
     padding-top: 40px;
     padding-bottom: 20px;
@@ -5256,7 +5082,6 @@ button {
     color: rgba(255, 255, 255, 0.6);
 }
 
-/* Tablet & Mobile responsive styles for the expandable section */
 @media (max-width: 1024px) {
     .subhero-more-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -5276,11 +5101,8 @@ button {
     }
 }
 
-/* ==========================================================================
-   CATEGORY INDEX / TEXTOS PAGE STYLES
-   ========================================================================== */
 .category-header-section {
-    background-color: #ffb2a7; /* Pink/peach background from screenshot */
+    background-color: #ffb2a7; 
     padding: 64px 24px;
     text-align: center;
     border-bottom: 1px solid rgba(0, 0, 0, 0.08);
@@ -5319,7 +5141,7 @@ button {
     font-size: 0.85rem;
     font-weight: 800;
     color: var(--color-white);
-    background-color: #5856d6; /* Purple/blue background from screenshot */
+    background-color: #5856d6; 
     border: none;
     padding: 10px 20px;
     cursor: pointer;
@@ -5338,7 +5160,6 @@ button {
     cursor: default;
 }
 
-/* Ver Más Button */
 .load-more-container {
     display: flex;
     justify-content: center;
@@ -5364,7 +5185,6 @@ button {
     color: var(--color-white);
 }
 
-/* Tablet & Mobile tweaks for Category Page */
 @media (max-width: 768px) {
     .category-header-section {
         padding: 40px 16px;
@@ -5376,7 +5196,7 @@ button {
     }
     
     .category-nav-wrapper {
-        justify-content: flex-start; /* Enable scrolling on smaller screens */
+        justify-content: flex-start; 
         padding-left: 8px;
         padding-right: 8px;
     }
@@ -5387,9 +5207,6 @@ button {
     }
 }
 
-/* ==========================================================================
-   PROMOTIONAL BANNERS SECTION
-   ========================================================================== */
 .promotional-banners-section {
     max-width: 1400px;
     margin: 32px auto;
@@ -5421,7 +5238,6 @@ button {
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
 }
 
-/* Banner 1: Anfibix */
 .banner-anfibix {
     background-color: #2d1734;
     color: var(--color-white);
@@ -5498,7 +5314,6 @@ button {
     margin-top: -2px;
 }
 
-/* Banner 2: Talleres */
 .banner-talleres {
     background-color: #584cf4;
     color: var(--color-white);
@@ -5570,7 +5385,6 @@ button {
     text-transform: uppercase;
 }
 
-/* Banner 3: Vidas de J.M. */
 .banner-vidas {
     background-color: #1452f5;
     color: var(--color-white);
@@ -5692,7 +5506,6 @@ button {
     color: var(--color-white);
 }
 
-/* Responsive adjustments */
 @media (max-width: 1200px) {
     .banner-anfibix .promo-banner-media {
         right: 200px;
@@ -5753,9 +5566,6 @@ button {
     }
 }
 
-/* ==========================================================================
-   AMBIENTE FILTER TABS
-   ========================================================================== */
 .ambiente-filter-container {
     display: flex;
     justify-content: flex-start;
@@ -5782,15 +5592,13 @@ button {
     text-align: center;
 }
 
-/* Active State (Cronicas in screenshot) */
 .filter-tab.active {
     background-color: var(--color-anfibia-purple);
     color: var(--color-white);
 }
 
-/* Inactive State (Ensayo, Nota in screenshot) */
 .filter-tab:not(.active) {
-    background-color: #9b98ff; /* Nice light purple/lavender color matching the screenshot */
+    background-color: #9b98ff; 
     color: var(--color-black);
 }
 
@@ -5798,9 +5606,6 @@ button {
     background-color: #8986ef;
 }
 
-/* ==========================================================================
-   TALLERES SECTION
-   ========================================================================== */
 .talleres-section {
     max-width: 1400px;
     margin: 64px auto;
@@ -5829,7 +5634,7 @@ button {
 .taller-square {
     width: 75%;
     margin: 0 auto;
-    aspect-ratio: 1; /* Make it perfectly square */
+    aspect-ratio: 1; 
     position: relative;
     border-radius: 8px;
     overflow: hidden;
@@ -5877,7 +5682,6 @@ button {
     margin: 0;
 }
 
-/* Responsive Talleres Grid */
 @media (max-width: 992px) {
     .talleres-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -5892,9 +5696,6 @@ button {
     }
 }
 
-/* ==========================================================================
-   PUBLICACIONES SECTION (BOOKS SECTION AT BOTTOM)
-   ========================================================================== */
 .publicaciones-section {
     max-width: 1400px;
     margin: 64px auto;
@@ -5933,7 +5734,6 @@ button {
     transform: scale(1.05);
 }
 
-/* Responsive Publicaciones */
 @media (max-width: 1200px) {
     .publicaciones-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -5951,10 +5751,6 @@ button {
     }
 }
 
-
-/* ==========================================================================
-   RELATED CONTENT SECTION
-   ========================================================================== */
 .related-content-section {
     background-color: var(--color-light-gray);
     padding: 80px 24px;
@@ -6107,10 +5903,6 @@ button {
     color: var(--color-black);
 }
 
-
-/* ==========================================================================
-   CUSTOM ADD COMMENT MODAL
-   ========================================================================== */
 .custom-comment-modal-overlay {
     position: fixed;
     top: 0;
@@ -6135,7 +5927,7 @@ button {
 .custom-comment-modal-card {
     width: 90%;
     max-width: 440px;
-    background-color: #e5e5e7; /* Light gray background matching the mockup */
+    background-color: #e5e5e7; 
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
@@ -6148,7 +5940,7 @@ button {
 }
 
 .custom-comment-modal-header {
-    background-color: #ffb2a7; /* Peach banner color */
+    background-color: #ffb2a7; 
     padding: 14px 20px;
     display: flex;
     justify-content: space-between;
@@ -6167,7 +5959,7 @@ button {
 .custom-comment-modal-close {
     width: 32px;
     height: 32px;
-    background-color: var(--color-anfibia-purple); /* Blue/Purple button */
+    background-color: var(--color-anfibia-purple); 
     color: var(--color-white);
     border: none;
     border-radius: 4px;
@@ -6226,7 +6018,7 @@ button {
     top: 100%;
     left: 0;
     width: 100%;
-    background-color: #1e1e1e; /* Dark background matching Panel 2/3 */
+    background-color: #1e1e1e; 
     border: 1px solid #444;
     border-radius: 4px;
     max-height: 180px;
@@ -6285,13 +6077,12 @@ button {
     transform: translateY(-2px);
 }
 
-/* Success View Styles */
 .custom-comment-success-view {
     padding: 10px 0;
 }
 
 .success-box {
-    background-color: #ffb2a7; /* Peach box */
+    background-color: #ffb2a7; 
     padding: 24px;
     border-radius: 6px;
     text-align: center;
