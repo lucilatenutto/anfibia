@@ -1,4 +1,4 @@
-﻿
+
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -580,11 +580,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (divider) divider.style.display = "none";
             }
         }
+        let existingNote = "";
+        if (currentSelectedText) {
+            const notesKey = window.location.pathname.includes('geopolitica.html') ? 'anfibia_personal_notes_geopolitica' : 'anfibia_personal_notes';
+            const savedNotes = JSON.parse(localStorage.getItem(notesKey) || '[]');
+            const found = savedNotes.find(n => n.quote === currentSelectedText);
+            if (found) {
+                existingNote = found.note;
+            }
+        }
+
         if (annotationTextInput) {
-            annotationTextInput.value = "";
+            annotationTextInput.value = existingNote;
         }
         if (previewNoteText) {
-            previewNoteText.textContent = "Escribe tus pensamientos en el formulario para ver tu anotación aquí...";
+            previewNoteText.textContent = existingNote || "Escribe tus pensamientos en el formulario para ver tu anotación aquí...";
         }
 
         const savedAuthor = localStorage.getItem('anfibia_author');
@@ -657,7 +667,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const notesKey = window.location.pathname.includes('geopolitica.html') ? 'anfibia_personal_notes_geopolitica' : 'anfibia_personal_notes';
             let savedNotes = JSON.parse(localStorage.getItem(notesKey) || '[]');
-            savedNotes.push(personalNote);
+            const existingIndex = savedNotes.findIndex(n => n.quote === currentSelectedText);
+            if (existingIndex !== -1) {
+                savedNotes[existingIndex].note = note;
+                savedNotes[existingIndex].author = author;
+                savedNotes[existingIndex].theme = selectedTheme;
+                savedNotes[existingIndex].date = new Date().toLocaleDateString('es-ES');
+            } else {
+                savedNotes.push(personalNote);
+            }
             localStorage.setItem(notesKey, JSON.stringify(savedNotes));
 
             if (currentSelectedRange) {
