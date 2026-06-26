@@ -593,6 +593,17 @@
                             <button class="theme-dot theme-dark-btn" data-theme="dark" title="Classic Dark"></button>
                         </div>
                     </div>
+
+                    <!-- Download button below card -->
+                    <button class="action-pill action-pill--ig preview-download-btn" id="btnDownloadIGCard">
+                        <span class="action-pill__icon">
+                            <i class="fab fa-instagram"></i>
+                        </span>
+                        <span class="action-pill__label">
+                            <strong>Descargar Story</strong>
+                            <small>Guardar imagen para subir a IG</small>
+                        </span>
+                    </button>
                 </div>
 
                 <!-- Right: Form Fields -->
@@ -616,21 +627,28 @@
                         <textarea id="annotationTextInput" rows="5" placeholder="¿Qué te genera esta cita? Comparte tu análisis, pensamiento o reflexión..."></textarea>
                     </div>
 
-                    <div class="modal-actions">
-                        <button class="modal-action-btn btn-secondary" id="btnSavePersonalNote">
-                            <i class="fas fa-bookmark"></i> Guardar Nota
+                    <!-- Action buttons: note actions -->
+                    <div class="action-pills-row">
+                        <button class="action-pill action-pill--save" id="btnSavePersonalNote">
+                            <span class="action-pill__icon">
+                                <i class="fas fa-bookmark"></i>
+                            </span>
+                            <span class="action-pill__label">
+                                <strong>Guardar</strong>
+                                <small>Nota Privada</small>
+                            </span>
                         </button>
-                        <button class="modal-action-btn btn-primary" id="btnPublishComment">
-                            <i class="fas fa-comment-dots"></i> Publicar en Artículo
+                        <button class="action-pill action-pill--comment" id="btnPublishComment">
+                            <span class="action-pill__icon">
+                                <i class="fas fa-comment-dots"></i>
+                            </span>
+                            <span class="action-pill__label">
+                                <strong>Publicar</strong>
+                                <small>en Artículo</small>
+                            </span>
                         </button>
                     </div>
 
-                    <div class="instagram-export-container">
-                        <button class="ig-export-btn" id="btnDownloadIGCard">
-                            <i class="fab fa-instagram"></i> Descargar para Historia
-                        </button>
-                        <p class="export-help">Se descargará una imagen de alta calidad diseñada para subir directo a tu Instagram Story.</p>
-                    </div>
                 </div>
             </div>
         </div>

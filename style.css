@@ -2863,6 +2863,176 @@ button {
     margin-bottom: 24px;
 }
 
+/* ============================================================
+   NEW MODAL ACTION PILLS
+   ============================================================ */
+.modal-actions-new {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 4px;
+}
+
+.action-pills-row {
+    display: flex;
+    gap: 10px;
+}
+
+/* Divider between note actions and export action */
+.action-export-divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 14px 0 6px;
+}
+
+.action-export-divider::before,
+.action-export-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.action-export-divider span {
+    font-family: var(--font-ui);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.action-pill {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 18px;
+    border-radius: 14px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    font-family: var(--font-ui);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.action-pill::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.08);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.action-pill:hover::before {
+    opacity: 1;
+}
+
+.action-pill:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.action-pill:active {
+    transform: translateY(-1px);
+}
+
+.action-pill__icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    flex-shrink: 0;
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.action-pill__label {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.action-pill__label strong {
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    color: #fff;
+}
+
+.action-pill__label small {
+    font-size: 0.72rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.65);
+    letter-spacing: 0.2px;
+}
+
+/* Instagram button */
+.action-pill--ig {
+    background: linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    box-shadow: 0 4px 20px rgba(220, 39, 67, 0.35);
+}
+
+.action-pill--ig .action-pill__icon {
+    background: rgba(255, 255, 255, 0.2);
+    font-size: 1.5rem;
+}
+
+.action-pill--ig:hover {
+    box-shadow: 0 10px 35px rgba(220, 39, 67, 0.55) !important;
+    filter: brightness(1.08);
+}
+
+/* Publicar Comentario button */
+.action-pill--comment {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    border: 1px solid rgba(100, 160, 255, 0.3);
+    box-shadow: 0 4px 16px rgba(60, 100, 255, 0.2);
+    flex: 1;
+}
+
+.action-pill--comment .action-pill__icon {
+    background: rgba(100, 160, 255, 0.2);
+    color: #7eb8ff;
+}
+
+.action-pill--comment:hover {
+    border-color: rgba(100, 160, 255, 0.6) !important;
+    box-shadow: 0 10px 28px rgba(60, 100, 255, 0.4) !important;
+}
+
+/* Guardar Nota button */
+.action-pill--save {
+    background: linear-gradient(135deg, #0d1f14 0%, #12281a 100%);
+    border: 1px solid rgba(80, 200, 120, 0.3);
+    box-shadow: 0 4px 16px rgba(60, 180, 80, 0.2);
+    flex: 1;
+}
+
+.action-pill--save .action-pill__icon {
+    background: rgba(80, 200, 120, 0.2);
+    color: #7ee8a2;
+}
+
+.action-pill--save:hover {
+    border-color: rgba(80, 200, 120, 0.6) !important;
+    box-shadow: 0 10px 28px rgba(60, 180, 80, 0.4) !important;
+}
+
+/* Download button below preview card */
+.preview-download-btn {
+    width: 100%;
+    margin-top: 14px;
+    padding: 12px 16px;
+    border-radius: 12px;
+}
+
 .modal-action-btn {
     flex: 1;
     padding: 12px 18px;

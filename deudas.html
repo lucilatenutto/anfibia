@@ -723,6 +723,17 @@
                             <button class="theme-dot theme-dark-btn" data-theme="dark" title="Classic Dark"></button>
                         </div>
                     </div>
+
+                    <!-- Download button below card -->
+                    <button class="action-pill action-pill--ig preview-download-btn" id="btnDownloadCard">
+                        <span class="action-pill__icon">
+                            <i class="fab fa-instagram"></i>
+                        </span>
+                        <span class="action-pill__label">
+                            <strong>Descargar Story</strong>
+                            <small>Guardar imagen para subir a IG</small>
+                        </span>
+                    </button>
                 </div>
 
                 <!-- Right: Form Fields -->
@@ -748,18 +759,29 @@
                             placeholder="¿Qué te sugiere este fragmento? Escribe tu nota para debatir con la comunidad..."></textarea>
                     </div>
 
-                    <!-- Action buttons -->
-                    <div class="modal-actions">
-                        <button class="btn-modal-action btn-ig-download" id="btnDownloadCard">
-                            <i class="fab fa-instagram"></i> Exportar a IG
+                    <!-- Action buttons: note actions -->
+                    <div class="action-pills-row">
+                        <button class="action-pill action-pill--comment" id="btnPublishAnnotation">
+                            <span class="action-pill__icon">
+                                <i class="fas fa-paper-plane"></i>
+                            </span>
+                            <span class="action-pill__label">
+                                <strong>Publicar</strong>
+                                <small>Comentario</small>
+                            </span>
                         </button>
-                        <button class="btn-modal-action btn-publish" id="btnPublishAnnotation">
-                            <i class="fas fa-paper-plane"></i> Publicar Comentario
-                        </button>
-                        <button class="btn-modal-action btn-save-private" id="btnSaveAnnotation">
-                            <i class="fas fa-bookmark"></i> Guardar Nota
+                        <button class="action-pill action-pill--save" id="btnSaveAnnotation">
+                            <span class="action-pill__icon">
+                                <i class="fas fa-bookmark"></i>
+                            </span>
+                            <span class="action-pill__label">
+                                <strong>Guardar</strong>
+                                <small>Nota Privada</small>
+                            </span>
                         </button>
                     </div>
+
+
                 </div>
             </div>
         </div>
