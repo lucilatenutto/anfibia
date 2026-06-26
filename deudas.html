@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El sueldo se me va en pagar las deudas — Revista Anfibia</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lora:ital,wght@0,400..700;1,400..700&family=Montserrat:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom Style -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Header / Navbar -->
+    <header class="main-header">
+        <div class="header-container">
+            <div class="header-left">
+                <a href="index.html" class="brand-logo">Anfibia</a>
+                <div class="header-divider"></div>
+                <div class="unsam-badge">
+                    <img src="img/unsam.png" alt="UNSAM" class="unsam-logo-img">
+                </div>
+                <div class="social-icons">
+                    <a href="#" class="social-link" title="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-link" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link" title="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <div class="header-right">
+                <button class="search-btn" id="searchBtn" title="Buscar">
+                    <i class="fas fa-search"></i>
+                </button>
+                <nav class="header-nav">
+                    <ul class="nav-list">
+                        <li><a href="#" class="nav-item special-link">Comunidad Anfibia</a></li>
+
+                        <!-- Textos dropdown -->
+                        <li class="nav-item-dropdown">
+                            <a href="textos.html" class="nav-item">Textos <i
+                                    class="fas fa-chevron-down nav-chevron"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="textos.html?cat=ambiente">Ambiente</a></li>
+                                <li><a href="textos.html?cat=amor-y-sexo">Amor y Sexo</a></li>
+                                <li><a href="textos.html?cat=culturas">Cultura</a></li>
+                                <li><a href="textos.html?cat=educacion">Educación</a></li>
+                                <li><a href="textos.html?cat=politica-y-economia">Política y Economía</a></li>
+                                <li><a href="textos.html?cat=salud">Salud</a></li>
+                                <li><a href="textos.html?cat=tecnologias">Tecnología</a></li>
+                                <li><a href="textos.html?cat=ambiente">Rosario</a></li>
+                                <li><a href="#" class="nav-item nav-item-saved">Favoritos/Guardados</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- Podcast dropdown -->
+                        <li class="nav-item-dropdown">
+                            <a href="#" class="nav-item">Podcast <i class="fas fa-chevron-down nav-chevron"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Todos los Podcasts</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- Talleres dropdown -->
+                        <li class="nav-item-dropdown">
+                            <a href="#" class="nav-item">Talleres <i class="fas fa-chevron-down nav-chevron"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Ver más</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- Maestria dropdown -->
+                        <li class="nav-item-dropdown">
+                            <a href="#" class="nav-item">Maestría <i class="fas fa-chevron-down nav-chevron"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Inscripción</a></li>
+                                <li><a href="#">Programa Completo</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- Futuro Imperfecto 3 dropdown -->
+                        <li class="nav-item-dropdown">
+                            <a href="#" class="nav-item">Futuro Imperfecto 3 <i
+                                    class="fas fa-chevron-down nav-chevron"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Volumen 1</a></li>
+                                <li><a href="#">Volumen 2</a></li>
+                                <li><a href="#">Volumen 3</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- Favoritos -->
+                        <li><a href="#" class="nav-item nav-item-saved">Favoritos</a></li>
+
+                        <!-- Historial -->
+                        <li><a href="#" class="nav-item nav-item-history">Historial</a></li>
+
+                        <!-- Tu Cuenta -->
+                        <li><a href="#" class="nav-item nav-item-account"><i class="far fa-user-circle"></i> Tu
+                                Cuenta</a></li>
+                    </ul>
+                </nav>
+                <button class="menu-toggle" id="menuToggle" title="Menú">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Left Floating Progress Gauge -->
+    <div class="vertical-progress-container">
+        <div class="vertical-progress-track">
+            <div class="vertical-progress-bar" id="verticalProgressBar"></div>
+            <div class="vertical-progress-handle" id="verticalProgressHandle"></div>
+        </div>
+    </div>
+
+    <!-- Search Overlay -->
+    <div class="search-overlay" id="searchOverlay">
+        <div class="search-box">
+            <input type="text" placeholder="Buscar crónicas, essays, autores..." id="searchInput">
+            <button class="close-search" id="closeSearch"><i class="fas fa-times"></i></button>
+        </div>
+    </div>
+
+    <!-- Mobile Menu Drawer -->
+    <div class="mobile-menu-drawer" id="mobileMenuDrawer">
+        <div class="mobile-menu-body">
+            <nav class="mobile-nav">
+                <ul class="mobile-nav-list">
+                    <!-- Textos dropdown -->
+                    <li class="mobile-nav-item-dropdown">
+                        <button class="mobile-dropdown-toggle">
+                            <span class="item-text">.Textos</span>
+                            <i class="fas fa-chevron-down toggle-icon"></i>
+                        </button>
+                        <ul class="mobile-dropdown-menu">
+                            <li><a href="textos.html?cat=ambiente">Ambiente</a></li>
+                            <li><a href="textos.html?cat=amor-y-sexo">Amor y Sexo</a></li>
+                            <li><a href="textos.html?cat=culturas">Cultura</a></li>
+                            <li><a href="textos.html?cat=educacion">Educación</a></li>
+                            <li><a href="textos.html?cat=politica-y-economia">Política y Economía</a></li>
+                            <li><a href="textos.html?cat=salud">Salud</a></li>
+                            <li><a href="textos.html?cat=tecnologias">Tecnología</a></li>
+                            <li><a href="textos.html?cat=ambiente">Rosario</a></li>
+                            <li><a href="#" class="nav-item-saved">Favoritos/Guardados</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- Podcast dropdown -->
+                    <li class="mobile-nav-item-dropdown">
+                        <button class="mobile-dropdown-toggle">
+                            <span class="item-text">.Podcast</span>
+                            <i class="fas fa-chevron-down toggle-icon"></i>
+                        </button>
+                        <ul class="mobile-dropdown-menu">
+                            <li><a href="#">Todos los Podcasts</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- Talleres dropdown -->
+                    <li class="mobile-nav-item-dropdown">
+                        <button class="mobile-dropdown-toggle">
+                            <span class="item-text">.Talleres</span>
+                            <i class="fas fa-chevron-down toggle-icon"></i>
+                        </button>
+                        <ul class="mobile-dropdown-menu">
+                            <li><a href="#">Ver mas</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- Maestria dropdown -->
+                    <li class="mobile-nav-item-dropdown">
+                        <button class="mobile-dropdown-toggle">
+                            <span class="item-text">.Maestría</span>
+                            <i class="fas fa-chevron-down toggle-icon"></i>
+                        </button>
+                        <ul class="mobile-dropdown-menu">
+                            <li><a href="#">Inscripcion</a></li>
+                            <li><a href="#">Programa Completo</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- Futuro Imperfecto 3 dropdown -->
+                    <li class="mobile-nav-item-dropdown">
+                        <button class="mobile-dropdown-toggle">
+                            <span class="item-text">.Futuro Imperfecto 3</span>
+                            <i class="fas fa-chevron-down toggle-icon"></i>
+                        </button>
+                        <ul class="mobile-dropdown-menu">
+                            <li><a href="#">Volumen 1</a></li>
+                            <li><a href="#">Volumen 2</a></li>
+                            <li><a href="#">Volumen 3</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- Favoritos static -->
+                    <li class="mobile-nav-item-static">
+                        <a href="#" class="mobile-static-link nav-item-saved">.Favoritos</a>
+                    </li>
+
+                    <!-- Historial static -->
+                    <li class="mobile-nav-item-static">
+                        <a href="#" class="mobile-static-link nav-item-history">.Historial</a>
+                    </li>
+
+                    <li class="mobile-nav-spacing"></li>
+
+                    <!-- Redes dropdown -->
+                    <li class="mobile-nav-item-dropdown">
+                        <button class="mobile-dropdown-toggle">
+                            <span class="item-text">.Redes</span>
+                            <i class="fas fa-chevron-down toggle-icon"></i>
+                        </button>
+                        <ul class="mobile-dropdown-menu">
+                            <li><a href="#">.Twitter</a></li>
+                            <li><a href="#">.Facebook</a></li>
+                            <li><a href="#">.Instagram</a></li>
+                            <li><a href="#">.YouTube</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- Comunidad static -->
+                    <li class="mobile-nav-item-static">
+                        <a href="#" class="mobile-static-link">.Comunidad Anfibia</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="mobile-menu-footer-account">
+            <a href="#" class="mobile-account-btn">
+                <i class="far fa-user-circle"></i>
+                <span>Tu Cuenta Anfibia</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Mobile Menu Backdrop -->
+    <div class="menu-backdrop" id="menuBackdrop"></div>
+
+    <!-- Article Detail Container -->
+    <main class="article-detail-container">
+        <div class="article-header-section">
+            <span class="article-badge badge-ensayo">ENSAYO</span>
+            <h1 class="article-kicker">Economía familiar, política y democracia</h1>
+
+            <div class="article-title-divider"></div>
+
+            <h2 class="article-main-title">El sueldo se me va en pagar las deudas</h2>
+
+            <p class="article-lead">
+                En el último año se triplicó la cantidad de hogares argentinos que no llegan a pagar sus créditos. Es la
+                “deuda de sacrificio”, interpreta Ariel Wilkis, autor de Una historia de cómo nos endeudamos (Siglo
+                XXI), desde las ciencias sociales, esa que no lleva a ningún lado, que es el precio de sobrevivir. Pero
+                cuando organizar la vida familiar se vuelve incompatible con la dignidad, la energía acumulada por las
+                expectativas traicionadas busca salida política. Nuestra historia lo vivió con cacerolazos y votos
+                inesperados. Lo más complejo: esa frustración no interpela a un presidente sino a la democracia misma.
+            </p>
+            <div class="article-credits-centered">
+                <span class="credit-label">Por:</span> <span class="credit-name">Ariel Wilkis</span>
+                <span class="credit-bar">|</span>
+                <span class="credit-label">Arte:</span> <span class="credit-name">Flora Dunand</span>
+            </div>
+
+            <div class="article-featured-image-wrapper">
+                <img src="img/noti2.png" alt="Deudas" class="article-featured-image">
+            </div>
+        </div>
+    </main>
+
+    <!-- Article Body Section -->
+    <article class="article-body-container">
+        <p class="article-paragraph">Cada vez que una familia argentina no puede pagar lo que debe, pasa algo más que un
+            número en rojo en su presupuesto. Pasa algo político. Se activa una pregunta que estuvo suspendida, que
+            muchas veces se evitó formular, pero que en algún momento encuentra su camino: ¿quién tiene la culpa de que
+            yo no pueda pagar?</p>
+
+        <p class="article-paragraph">El Banco Central de la República Argentina publicó un dato que pronto repercutió en
+            los medios. La mora en el financiamiento pasó de 2,5% en diciembre de 2024 a 9,3% en diciembre de 2025. En
+            marzo de 2026 —el registro más reciente— trepó al 11,5%: una cifra que no se observaba desde hace más de
+            veinte años. En doce meses, la irregularidad de los créditos a hogares se triplicó, con un incremento de 8,3
+            puntos porcentuales. Los préstamos personales concentran el mayor nivel de incumplimiento en quince años. Y
+            el deterioro no se limita al sistema bancario: en las billeteras virtuales y entidades financieras no
+            bancarias —a las que recurren quienes el banco ya no les presta— la morosidad supera el 30%.</p>
+
+        <p class="article-paragraph">Los datos de mora de las familias argentinas durante el gobierno de Javier Milei
+            siguen una curva que los economistas registran con sus instrumentos pero que las ciencias sociales deben
+            interpretar con otros. No alcanza con decir que sube la morosidad en tarjetas, que se acumulan deudas de
+            expensas y servicios, que los planes de pago se estiran hasta el absurdo. Lo que hay que entender es qué
+            tipo de deuda es esa. Porque no todas las deudas son iguales, y la historia argentina lo demuestra con
+            claridad: cada régimen político produjo su propio régimen de endeudamiento familiar, con sus promesas, sus
+            trampas y sus consecuencias electorales.
+        </p>
+
+        <h3 class="article-subheading">El trampolín</h3>
+
+        <p class="article-paragraph">Para entender la trampa, hay que entender primero el trampolín.</p>
+
+        <p class="article-paragraph">Milei llegó al poder montado sobre un estado de ánimo colectivo que tenía nombre
+            propio en las encuestas: agotamiento moral. No era simplemente la pobreza, ni la inflación sola, ni la
+            devaluación. Era algo más preciso: la sensación de haber hecho todo bien —trabajar, ahorrar, sacrificarse— y
+            que aun así no alcanzara. La percepción de correr en el lugar, de esforzarse sin que el esfuerzo rindiera
+            fruto.</p>
+
+        <p class="article-paragraph">En 2023, cuando se medían las intenciones de voto, ocho de cada diez argentinos
+            acordaban con una afirmación demoledora: "Ante los problemas de la inflación, dependemos de nuestro esfuerzo
+            y sacrificio." Casi la misma proporción sostenía que se mataban de tanto trabajar y la inflación de todas
+            formas no les permitía llegar a fin de mes. Estos números eran más altos entre quienes ya habían votado a
+            Milei en las primarias.</p>
+
+        <div class="article-image-wrapper">
+            <img src="img/nena.png" alt="Electorado y sacrificio" class="article-body-image">
+        </div>
+
+        <p class="article-paragraph">El electorado de Milei es más complejo que cualquier retrato unívoco: cruzó clases
+            sociales, generaciones y geografías. No se puede trazar una línea directa entre quién debía y quién votó.
+            <span class="community-highlight" data-author="Ricardo Gomez"
+                data-note="Excelente distinción teórica: la deuda de sacrificio no es para adquirir activos, sino la penalidad de permanecer a flote en un sistema inflacionario.">
+                La deuda de sacrificio no produce votos: produce un estado de ánimo, una plausibilidad moral.
+            </span> Vuelve
+            pensable lo que antes parecía impensable. Y lo que las encuestas de 2023 mostraban con consistencia es que
+            ese estado de ánimo estaba extendido transversalmente: personas que habían pedido prestado para comer y
+            personas de clase media que habían visto multiplicarse sus cuotas hipotecarias sin control compartían algo
+            más profundo que una condición económica. Compartían la sensación de que el esfuerzo propio no encontraba
+            retorno institucional. Que las deudas que cargaban no eran el precio de algo —no eran el escalón hacia
+            ningún lugar. Eran simplemente el precio de permanecer en el lugar. Para no caer.
+        </p>
+
+        <p class="article-paragraph">Eso es la deuda de sacrificio: deuda sin aspiración. Deuda que no te lleva a ningún
+            lado. Deuda que es el precio de sobrevivir.</p>
+
+        <h3 class="article-subheading">La previa</h3>
+
+        <p class="article-paragraph">Para leer la mora de hoy hay que hacer un ejercicio que los titulares económicos no
+            hacen: excavar. La deuda de sacrificio tiene capas. Cada una depositó algo que todavía está ahí, acumulado,
+            sin resolver.</p>
+
+        <p class="article-paragraph">
+            La primera capa es el macrismo. El crédito UVA —el instrumento hipotecario que
+            prometía hacer accesible la vivienda— fue la trampa más sofisticada de ese período. Diseñada para un mundo
+            de inflación baja y estable, explotó cuando el peso se derrumbó en 2018 y el FMI volvió con sus condiciones.
+            Entre 2016 y 2019, el índice que actualizaba esas hipotecas subió 227% mientras los salarios formales
+            crecían a la mitad de esa velocidad. Sandra había firmado su hipoteca en 2017 creyendo que la inflación
+            bajaría. No bajó.
+            <span class="community-highlight" data-author="Sandra Lozano"
+                data-note="Esta frase resume perfectamente la angustia del deudor actual: la imposibilidad de planificar debido a la indexación implacable de las obligaciones.">“Préstamos,
+                impuestos, colegio, mercado. No nos quedaba nada.”</span>
+            Carla, que había ahorrado ocho años para comprar su departamento, trabajaba quince horas diarias seis meses
+            después de firmar. "Pagamos pero debemos más." Esa deuda —la de la promesa traicionada— no desapareció con
+            el cambio de gobierno. Se sedimentó.
+        </p>
+
+        <p class="article-paragraph">La segunda capa es la pandemia. El aislamiento sanitario eliminó de un día para el
+            otro el ingreso de millones de trabajadores informales. El alquiler no esperó. La comida no esperó. Los
+            servicios no esperaron. El Estado asistió, pero con un margen fiscal ya comprometido por la deuda soberana
+            que renegociaba con el FMI. Lo que no cubrió la política lo cubrieron los hogares: con fiado en el almacén,
+            con préstamos entre familiares, con tarjetas giradas hasta el límite. Mónica pedía prestado a una agencia
+            estatal para pagar la fiada del almacén y así poder seguir comprando fiado la semana siguiente. "Un círculo
+            del que no se puede salir." La pandemia no creó la deuda de sacrificio, pero la volvió masiva. Convirtió una
+            tendencia en una condición estructural.</p>
+
+        <p class="article-paragraph">La tercera capa es la inflación del kirchnerismo tardío y el gobierno de Alberto
+            Fernández. Leonardo, docente, lo describe con precisión: había pasado de endeudarse para comprar
+            electrodomésticos —la vieja deuda de la inclusión que el kirchnerismo había promovido como símbolo de
+            pertenencia— a endeudarse para comprar comida. El mismo instrumento, la tarjeta, el crédito, había cambiado
+            de sentido. Ya no era el escalón hacia algo mejor. Era el parche para no caer. Ricardo, comerciante, llamaba
+            a sus deudas "deudas de empobrecimiento": lo opuesto de todo aquello para lo que había trabajado. Con una
+            inflación que superó el 90% en 2022 y el 200% en 2023, las deudas acumuladas en los años anteriores no se
+            disolvieron. Se compusieron.</p>
+
+        <p class="article-paragraph">Lo que define a este régimen de deuda no es solo su magnitud. Es su sentido
+            acumulado. La deuda aspiracional —la que te permite comprarte una heladera, pagar la cuota del auto,
+            planificar las vacaciones— crea un vínculo entre el esfuerzo presente y una promesa de futuro. La deuda de
+            sacrificio es exactamente lo contrario: no te lleva a ningún lado. Es el precio de permanecer en el lugar. Y
+            cuando esa experiencia se repite capa tras capa, gobierno tras gobierno, algo se rompe en la relación entre
+            los hogares y la política.</p>
+
+        <p class="article-paragraph">El deudor de sacrificio siente que hizo todo lo que se suponía que debía hacer y
+            que el Estado, la política, los gobernantes —todos, no uno en particular— no cumplieron su parte. Esa
+            asimetría genera algo más que frustración: genera una superioridad moral sobre la clase política. "Nosotros
+            nos arreglamos solos. Ellos no hicieron nada." Y esa superioridad moral es exactamente lo que Milei supo
+            leer, nombrar y capitalizar.</p>
+
+        <h3 class="article-subheading">El candidato</h3>
+
+        <p class="article-paragraph">La campaña de Milei fue, en el sentido más preciso de la palabra, una campaña sobre
+            el sacrificio. Tradujo en lenguaje político algo que los hogares argentinos vivían en su economía doméstica:
+            la sensación de que el sacrificio individual no encontraba contrapartida en el Estado, y de que ese Estado
+            era en sí mismo el obstáculo.</p>
+
+        <p class="article-paragraph">La propuesta de la motosierra no era solo un programa económico: era una promesa de
+            reciprocidad invertida. Si durante años las familias habían sacrificado mientras los políticos derrochaban,
+            ahora los políticos también iban a sacrificar. La casta pagaría. El ajuste sería hacia arriba.</p>
+
+        <p class="article-paragraph">Hay una lógica interna en ese argumento que no puede desestimarse. El sacrificio
+            vivido individualmente, sin retorno, sin reconocimiento, se convierte en política en una demanda: que otros
+            también sacrifiquen, empezando por el Estado y por quienes lo gobiernan. La deuda de sacrificio no determina
+            el voto —nada en política es tan lineal. Pero contribuye a moldear un paisaje moral en el que votar por la
+            ruptura radical deja de parecer una locura y empieza a parecer lo único razonable. Quien vivió años pagando
+            sin que nadie respondiera podía encontrar en la motosierra no un símbolo de crueldad sino de justicia: si
+            nosotros sacrificamos, que sacrifiquen ellos también.</p>
+
+        <p class="article-paragraph">La deuda de sacrificio fue el trampolín. No porque causara el voto —las cadenas
+            causales en política son siempre más enredadas que eso— sino porque instaló el estado de ánimo desde el cual
+            una propuesta de ruptura radical pudo volverse moralmente plausible antes de volverse políticamente viable.
+            La experiencia financiera acumulada de millones de hogares preparó el terreno. Milei lo leyó. No fue
+            irracionalidad. Fue una respuesta moralmente coherente a años de promesas incumplidas, encontrando su cauce
+            en la única opción que prometía romper con todo.</p>
+
+        <h3 class="article-subheading">La trampa</h3>
+
+        <p class="article-paragraph">Pero aquí empieza la trampa.</p>
+
+        <p class="article-paragraph">El gobierno de Milei heredó, como sus antecesores inmediatos, un régimen de deuda
+            de sacrificio. Y como todos sus antecesores, lo profundizó.</p>
+
+        <p class="article-paragraph">El ajuste fiscal se tradujo en quita de subsidios, aumento de tarifas y retracción
+            del salario real. Las familias que ya se endeudaban para sobrevivir se encontraron con que los números
+            empeoraban. La mora creció. Las tarjetas dejaron de alcanzar. Los planes de pago se multiplicaron. Los
+            bancos registraron aumentos en los índices de incumplimiento en créditos personales y prendarios. Los
+            informes de las cámaras de comercio minorista mostraron caída del consumo y aumento de la deuda impaga con
+            los proveedores.</p>
+
+        <p class="article-paragraph">La promesa implícita del sacrificio colectivo —que el ajuste sería compartido, que
+            la casta pagaría— chocó con una realidad más antigua y más dura: en los ajustes estructurales, quienes más
+            pagan son siempre los que menos tienen. Las familias que habían votado esperando que otros sacrificaran
+            descubrieron que el sacrificio seguía siendo, como siempre, el de ellas.</p>
+
+        <p class="article-paragraph">Hay algo particularmente cruel en esto. La deuda de sacrificio genera un tipo
+            específico de juicio moral: no está dirigida a un gobierno en particular, sino a la capacidad institucional
+            del Estado democrático de organizar la vida financiera de los hogares de manera compatible con su dignidad.
+            Cuando ese juicio ya está hecho, cuando la confianza en las instituciones democráticas ya se perdió, no hay
+            gobierno que pueda recuperarla fácilmente. Ni siquiera el que llegó prometiendo exactamente eso.</p>
+
+        <h3 class="article-subheading">Lo que los números no dicen</h3>
+
+        <p class="article-paragraph">Los datos de mora que circulan en los medios estas semanas se presentan como
+            indicadores económicos. Lo son. Pero son también otra cosa: son el registro de una ruptura moral que lleva
+            décadas construyéndose y que Milei, lejos de resolver, ha extendido bajo una nueva promesa. Su aparición
+            repentina en la agenda pública no es casual: cuando la deuda de los hogares sube hasta hacerse visible para
+            los medios, es porque ya hace tiempo que es insoportable para las familias. El debate público llega tarde.
+            La experiencia financiera cotidiana llegó antes.</p>
+
+        <div class="article-image-wrapper">
+            <img src="img/piernas.png" alt="Sociología de la deuda" class="article-body-image">
+        </div>
+
+        <p class="article-paragraph">La sociología de la deuda enseña algo que la economía tiende a olvidar: el momento
+            en que una familia no puede pagar no es solo un evento financiero. Es un momento en que se activa la
+            pregunta sobre la responsabilidad. ¿Quién tiene la culpa? ¿El deudor que no supo administrarse? ¿El gobierno
+            que no controló la inflación? ¿El sistema que prometió lo que no podía cumplir?</p>
+
+        <p class="article-paragraph">En la Argentina de hoy, esa pregunta vuelve a estar disponible. Los hogares que se
+            endeudaron para sobrevivir durante la pandemia, que esperaron que el ajuste de Milei trajera alguna
+            estabilidad, que ven cómo la mora se acumula sin que el horizonte se despeje, están en ese umbral moral: el
+            momento en que el sufrimiento privado busca una explicación pública y un responsable político.</p>
+
+        <h3 class="article-subheading">La advertencia</h3>
+
+        <p class="article-paragraph">Hay algo que conviene decir con claridad, porque suele perderse en el análisis
+            coyuntural: la deuda de sacrificio es anterior a Milei y le va a sobrevivir.</p>
+
+        <p class="article-paragraph">No la inventó él. La encontró ya instalada, la supo leer mejor que sus
+            competidores, y la transformó en capital electoral. Pero el régimen de deuda sacrificial que describe la
+            experiencia financiera de millones de hogares argentinos se construyó a lo largo de años —la pandemia, la
+            inflación crónica, los salarios que no alcanzan, la informalidad estructural— y no desaparecerá con un
+            cambio de gobierno.</p>
+
+        <p class="article-paragraph">Aquí está el verdadero desafío para el sistema político argentino en su conjunto, y
+            no solo para la gestión actual: ¿será capaz de interpretar lo que la deuda de sacrificio produce en términos
+            de juicio moral sobre las instituciones? ¿O seguirá cayendo, ciclo tras ciclo, en la misma trampa?</p>
+
+        <p class="article-paragraph">Cada régimen de deuda de los hogares
+            generó sus propias expectativas, y cuando esas expectativas fueron traicionadas, la energía acumulada buscó
+            una salida política. A veces fue una carta al presidente. A veces fue el cacerolazo. A veces fue un voto
+            inesperado. Pero siempre llegó.</p>
+
+        <p class="article-paragraph"><span class="community-highlight" data-author="Mariana Caputo"
+                data-note="El artículo de Wilkis toca un punto neurálgico: la frustración financiera rompe el contrato social democrático básico de que el trabajo asegura la subsistencia.">La
+                deuda de sacrificio, cuando no encuentra respuesta en la política democrática, no desaparece: se
+                radicaliza.</span> Genera la sensación de que el esfuerzo individual fue real pero la
+            contraparte institucional nunca existió. Y esa sensación —la de haber sido estafado por el sistema, no por
+            un gobierno— es la más corrosiva de todas, porque ya no interpela a un presidente sino a la democracia
+            misma.</p>
+
+        <p class="article-paragraph">La pregunta que queda abierta —y que los datos de mora de estas semanas vuelven
+            urgente— es si habrá una nueva respuesta la próxima vez, o si el ciclo se repetirá con otro nombre y otra
+            motosierra.</p>
+    </article>
+
+    <!-- Comments & Active Readings Section -->
+    <section class="comments-section-container">
+        <div class="comments-inner">
+            <div class="comments-header">
+                <h2 class="comments-section-title"><i class="fas fa-comments"></i> Lectura Activa & Comentarios</h2>
+                <div class="comments-count" id="commentsCount">3 comentarios</div>
+            </div>
+
+            <!-- List of comments -->
+            <div class="comments-list" id="commentsList">
+                <!-- Seed Comment 1 -->
+                <div class="comment-card highlight-comment">
+                    <div class="comment-badge"><i class="fas fa-highlighter"></i> CITA DESTACADA</div>
+                    <blockquote class="comment-blockquote">
+                        "Préstamos, impuestos, colegio, mercado. No nos quedaba nada."
+                    </blockquote>
+                    <div class="comment-header-meta">
+                        <span class="comment-author">Sandra Lozano</span>
+                        <span class="comment-date">Hace 2 horas</span>
+                    </div>
+                    <div class="comment-body">
+                        Esta frase resume perfectamente la angustia del deudor actual: la imposibilidad de planificar
+                        debido a la indexación implacable de las obligaciones.
+                    </div>
+                </div>
+
+                <!-- Seed Comment 2 -->
+                <div class="comment-card highlight-comment">
+                    <div class="comment-badge"><i class="fas fa-highlighter"></i> CITA DESTACADA</div>
+                    <blockquote class="comment-blockquote">
+                        "La deuda de sacrificio no produce votos: produce un estado de ánimo, una plausibilidad moral."
+                    </blockquote>
+                    <div class="comment-header-meta">
+                        <span class="comment-author">Ricardo Gomez</span>
+                        <span class="comment-date">Hace 4 horas</span>
+                    </div>
+                    <div class="comment-body">
+                        Excelente distinción teórica: la deuda de sacrificio no es para adquirir activos, sino la
+                        penalidad de permanecer a flote en un sistema inflacionario.
+                    </div>
+                </div>
+
+                <!-- Seed Comment 3 -->
+                <div class="comment-card highlight-comment">
+                    <div class="comment-badge"><i class="fas fa-highlighter"></i> CITA DESTACADA</div>
+                    <blockquote class="comment-blockquote">
+                        "La deuda de sacrificio, cuando no encuentra respuesta en la política democrática, no
+                        desaparece: se radicaliza."
+                    </blockquote>
+                    <div class="comment-header-meta">
+                        <span class="comment-author">Mariana Caputo</span>
+                        <span class="comment-date">Ayer</span>
+                    </div>
+                    <div class="comment-body">
+                        El artículo de Wilkis toca un punto neurálgico: la frustración financiera rompe el contrato
+                        social democrático básico de que el trabajo asegura la subsistencia.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Related Content Section -->
+    <section class="related-content-section">
+        <div class="related-content-inner">
+            <h2 class="related-section-title"><i class="fas fa-bookmark"></i> Contenido Relacionado</h2>
+            <div class="related-grid">
+                <!-- Related Card 1: Patagonia -->
+                <a href="patagonia.html" class="related-card">
+                    <div class="related-card-img-container">
+                        <img src="img/patagonia.png" alt="Adaptarse al fuego" class="related-card-image">
+                        <span class="related-card-badge badge-cronica"
+                            style="background-color: var(--color-anfibia-purple);">CRÓNICA</span>
+                    </div>
+                    <div class="related-card-info">
+                        <span class="related-card-kicker">Patagonia: ¿cómo hacemos de las ruinas un hogar?</span>
+                        <h3 class="related-card-headline">ADAPTARSE AL FUEGO</h3>
+                        <div class="related-card-divider"></div>
+                        <div class="related-card-credits">
+                            Por: <span class="credit-author">María Mansilla</span> <span
+                                class="credit-separator">|</span> Arte: <span class="credit-artist">Marcos
+                                Huisman</span>
+                        </div>
+                    </div>
+                </a>
+                <!-- Related Card 2: Geopolítica -->
+                <a href="geopolitica.html" class="related-card">
+                    <div class="related-card-img-container">
+                        <img src="img/gege.png" alt="La geopolítica del Mundial 2026" class="related-card-image">
+                        <span class="related-card-badge badge-ensayo"
+                            style="background-color: var(--color-anfibia-peach);">ENSAYO</span>
+                    </div>
+                    <div class="related-card-info">
+                        <span class="related-card-kicker">El bien y el mal definen por penal</span>
+                        <h3 class="related-card-headline">LA GEOPOLÍTICA DEL MUNDIAL 2026</h3>
+                        <div class="related-card-divider"></div>
+                        <div class="related-card-credits">
+                            Por: <span class="credit-author">Alejandro Frenkel</span> <span
+                                class="credit-separator">|</span> Arte: <span class="credit-artist">Agustín Solís</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-new-wide-container">
+            <!-- Left Block: Social & Navigation -->
+            <div class="footer-left-block">
+                <!-- Social Icons Row -->
+                <div class="footer-social-row">
+                    <a href="#" class="social-circle" title="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-circle" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-circle" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-circle" title="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+
+                <!-- Navigation Links List -->
+                <ul class="footer-nav-links font-ui">
+                    <li><a href="textos.html">Textos</a></li>
+                    <li class="link-sep">|</li>
+                    <li><a href="#">Podcast</a></li>
+                    <li class="link-sep">|</li>
+                    <li><a href="#">Talleres</a></li>
+                    <li class="link-sep">|</li>
+                    <li><a href="#">Periodismo Performático</a></li>
+                    <li class="link-sep">|</li>
+                    <li><a href="#">Qué es Anfibia</a></li>
+                    <li class="link-sep">|</li>
+                    <li><a href="#">Tienda</a></li>
+                </ul>
+            </div>
+
+            <!-- Center Block: Legal Info -->
+            <div class="footer-center-block">
+                <div class="footer-legal-info">
+                    UNSAM Campus Miguelete - 25 de Mayo y Francia (CP 1650) - San Martín, Prov. de Buenos Aires -
+                    Argentina - ISSN 2344-9365
+                </div>
+            </div>
+
+            <!-- Right Block: Logos -->
+            <div class="footer-right-logos-block">
+                <div class="footer-brand-logo font-literary">Anfibia</div>
+                <div class="footer-vertical-divider"></div>
+                <div class="footer-lectura-mundi">
+                    <i class="fa-regular fa-book-open"></i>
+                    <div class="lectura-mundi-text">
+                        <span class="title">Lectura Mundi</span>
+                        <span class="sub">UNSAM</span>
+                    </div>
+                </div>
+                <div class="footer-vertical-divider"></div>
+                <div class="footer-cronos">
+                    <span class="cronos-title font-ui">cronos</span>
+                    <span class="cronos-subtitle">LABORATORIO DE MEDIOS</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Selection Share Bar -->
+    <div class="selection-share-bar" id="selectionBar">
+        <button class="selection-btn" id="btnHighlight" title="Resaltar texto">
+            <i class="fas fa-highlighter"></i> Resaltar
+        </button>
+        <button class="selection-btn" id="btnAnnotate" title="Anotar cita">
+            <i class="fas fa-edit"></i> Anotar
+        </button>
+    </div>
+
+    <!-- Bottom-Right Floating Actions -->
+    <div class="bottom-right-floating-container">
+        <button class="floating-action-btn" id="floatLoveBtn" title="Guardar en favoritos">
+            <i class="far fa-heart"></i>
+        </button>
+        <button class="floating-action-btn" id="floatShareBtn" title="Compartir crónica">
+            <i class="fas fa-share-nodes"></i>
+        </button>
+        <button class="floating-action-btn" id="floatAnnotateBtn" title="Tomar anotación">
+            <i class="fas fa-pencil"></i>
+        </button>
+        <button class="floating-action-btn" id="floatAddCommentBtn" title="Agregar comentario"
+            style="background-color: var(--color-anfibia-purple);">
+            <i class="fa-regular fa-square-plus"></i>
+        </button>
+    </div>
+
+    <!-- Annotation & Instagram Share Modal -->
+    <div class="annotation-modal-overlay" id="annotationModal">
+        <div class="annotation-modal-card">
+            <button class="modal-close-btn" id="closeAnnotationModal" title="Cerrar">
+                <i class="fas fa-times"></i>
+            </button>
+
+            <div class="modal-body-grid">
+                <!-- Left: Instagram Preview Card -->
+                <div class="preview-column">
+                    <h3 class="column-title">Diseño de Cita (Instagram Story)</h3>
+                    <div class="ig-card-preview theme-peach" id="igCardPreview">
+                        <div class="ig-card-watermark">Revista Anfibia</div>
+                        <div class="ig-card-quotes"><i class="fas fa-quote-left"></i></div>
+                        <div class="ig-card-quote-text" id="previewQuoteText">"Aquí va el fragmento seleccionado de la
+                            crónica..."</div>
+                        <div class="ig-card-divider"></div>
+                        <div class="ig-card-note-text" id="previewNoteText">Escribe tus pensamientos en el formulario
+                            para ver tu anotación aquí...</div>
+                        <div class="ig-card-footer">
+                            <span class="ig-card-author" id="previewAuthor">Lector Anfibia</span>
+                            <span class="ig-card-url">revistaanfibia.org</span>
+                        </div>
+                    </div>
+
+                    <!-- Theme Selector -->
+                    <div class="theme-selector-container">
+                        <span class="selector-label">Elige un estilo:</span>
+                        <div class="theme-options">
+                            <button class="theme-dot theme-peach-btn active" data-theme="peach"
+                                title="Peach Sunset"></button>
+                            <button class="theme-dot theme-forest-btn" data-theme="forest"
+                                title="Patagonia Forest"></button>
+                            <button class="theme-dot theme-dark-btn" data-theme="dark" title="Classic Dark"></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Form Fields -->
+                <div class="form-column">
+                    <h3 class="column-title">Tu Lectura Activa</h3>
+
+                    <div class="form-group">
+                        <label>Cita Seleccionada</label>
+                        <blockquote class="selected-quote-box" id="modalQuoteDisplay">
+                            "Fragmento seleccionado..."
+                        </blockquote>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="annotationAuthorInput">Tu Nombre</label>
+                        <input type="text" id="annotationAuthorInput" placeholder="Lector Anónimo"
+                            value="Lector Anfibia">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="annotationTextInput">Tus Reflexiones</label>
+                        <textarea id="annotationTextInput" rows="4"
+                            placeholder="¿Qué te sugiere este fragmento? Escribe tu nota para debatir con la comunidad..."></textarea>
+                    </div>
+
+                    <!-- Action buttons -->
+                    <div class="modal-actions">
+                        <button class="btn-modal-action btn-ig-download" id="btnDownloadCard">
+                            <i class="fab fa-instagram"></i> Exportar a IG
+                        </button>
+                        <button class="btn-modal-action btn-publish" id="btnPublishAnnotation">
+                            <i class="fas fa-paper-plane"></i> Publicar Comentario
+                        </button>
+                        <button class="btn-modal-action btn-save-private" id="btnSaveAnnotation">
+                            <i class="fas fa-bookmark"></i> Guardar Nota
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom Add Comment Modal -->
+    <div class="custom-comment-modal-overlay" id="addCommentModal">
+        <div class="custom-comment-modal-card">
+            <!-- Modal Header Banner -->
+            <div class="custom-comment-modal-header">
+                <span class="custom-comment-modal-title">AGREGA TU COMENTARIO</span>
+                <button class="custom-comment-modal-close" id="closeAddCommentModal">&times;</button>
+            </div>
+
+            <!-- Modal Body Container -->
+            <div class="custom-comment-modal-body">
+                <!-- Form View -->
+                <div class="custom-comment-form-view" id="commentFormView">
+                    <div class="custom-form-group">
+                        <label class="custom-form-label" for="commentAuthorInput">NOMBRE:</label>
+                        <input type="text" id="commentAuthorInput" class="custom-form-input"
+                            placeholder="elige tu nombre">
+                    </div>
+
+                    <div class="custom-form-group" style="position: relative;">
+                        <label class="custom-form-label" for="commentQuoteInput">CITA:</label>
+                        <input type="text" id="commentQuoteInput" class="custom-form-input" placeholder="pegar sita"
+                            autocomplete="off">
+                        <!-- Auto-suggest Dropdown -->
+                        <div class="quote-dropdown" id="quoteDropdown">
+                            <!-- Dynamic list items will go here -->
+                        </div>
+                    </div>
+
+                    <div class="custom-form-group">
+                        <label class="custom-form-label" for="commentBodyInput">COMENTARIO:</label>
+                        <textarea id="commentBodyInput" class="custom-form-textarea" rows="5"
+                            placeholder="..."></textarea>
+                    </div>
+
+                    <div class="custom-comment-actions">
+                        <button class="btn-custom-cargar" id="btnCargarComment">Cargar</button>
+                    </div>
+                </div>
+
+                <!-- Success View -->
+                <div class="custom-comment-success-view" id="commentSuccessView" style="display: none;">
+                    <div class="success-box">
+                        <h3 class="success-title">GRACIAS POR TU COMENTARIO</h3>
+                        <button class="btn-success-close" id="btnDeNadaComment">De nada</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Authentication Modal Overlay -->
+    <div class="auth-modal-overlay" id="authModal">
+        <div class="auth-modal-card">
+            <div class="auth-modal-grid">
+
+                <!-- Left/Form Column -->
+                <div class="auth-modal-form-col">
+
+                    <!-- Panel 1: Login Form -->
+                    <div class="auth-panel active" id="authPanelLogin">
+                        <div class="auth-header">
+                            <h3 class="auth-header-title">Inicia tu sesión Anfibia</h3>
+                            <button class="auth-close-btn" id="closeAuthModalLogin">&times;</button>
+                        </div>
+                        <div class="auth-body">
+                            <div class="auth-form-group">
+                                <label class="auth-label" for="authLoginUser">Gmail o Nombre de Usuario:</label>
+                                <input type="text" class="auth-input" id="authLoginUser"
+                                    placeholder="ejemplo@gmail.com">
+                            </div>
+                            <div class="auth-form-group">
+                                <label class="auth-label" for="authLoginPassword">Contraseña:</label>
+                                <input type="password" class="auth-input" id="authLoginPassword" placeholder="••••••••">
+                            </div>
+                            <a href="#" class="auth-forgot-link">Olvidadte tu contraseña?</a>
+
+                            <div class="auth-action-row">
+                                <button class="auth-btn-primary" id="btnSubmitLogin">Ingresar</button>
+                            </div>
+
+                            <div class="auth-divider-container">
+                                <div class="auth-divider"></div>
+                                <div class="auth-divider-label">Aún no tienes tu cuenta?</div>
+                                <button class="auth-btn-secondary" id="btnGoToRegister">Creá tu cuenta Anfibia</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Panel 2: Register Form -->
+                    <div class="auth-panel" id="authPanelRegister">
+                        <div class="auth-header">
+                            <h3 class="auth-header-title">Crea tu cuenta Anfibia</h3>
+                            <button class="auth-close-btn" id="closeAuthModalRegister">&times;</button>
+                        </div>
+                        <div class="auth-body">
+                            <div class="auth-form-group">
+                                <label class="auth-label" for="authRegisterUsername">Nombre de Usuario:</label>
+                                <input type="text" class="auth-input" id="authRegisterUsername" placeholder="TuUsuario">
+                            </div>
+                            <div class="auth-form-group">
+                                <label class="auth-label" for="authRegisterEmail">Gmail:</label>
+                                <input type="email" class="auth-input" id="authRegisterEmail"
+                                    placeholder="usuario@gmail.com">
+                            </div>
+                            <div class="auth-form-group">
+                                <label class="auth-label" for="authRegisterPassword">Contraseña:</label>
+                                <input type="password" class="auth-input" id="authRegisterPassword"
+                                    placeholder="••••••••">
+                            </div>
+
+                            <div class="auth-action-row">
+                                <button class="auth-btn-primary" id="btnSubmitRegister">Registrarse</button>
+                            </div>
+
+                            <div style="text-align: center; margin-top: 10px;">
+                                <a href="#" class="auth-switch-link" id="btnGoToLogin">Ya tengo cuenta, iniciar
+                                    sesión</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Panel 3: Login Success (Frame 100) -->
+                    <div class="auth-panel" id="authPanelLoginSuccess">
+                        <div class="auth-success-panel">
+                            <h2 class="auth-success-title">Bienvenido de nuevo</h2>
+                            <p class="auth-success-subtitle">Esperamos tus comentarios y anotaciones</p>
+                            <button class="auth-btn-success" id="btnStartSession">Comenzar</button>
+                        </div>
+                    </div>
+
+                    <!-- Panel 4: Register Success (Frame 102) -->
+                    <div class="auth-panel" id="authPanelRegisterSuccess">
+                        <div class="auth-success-panel">
+                            <h2 class="auth-success-title">Gracias por registrarte</h2>
+                            <p class="auth-success-subtitle">Esperamos tus comentarios y anotaciones</p>
+                            <button class="auth-btn-success" id="btnStartRegister">Comenzar</button>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Right/Sidebar Column (Desktop Only) -->
+                <div class="auth-modal-sidebar-col">
+                    <div class="auth-sidebar-logo">Anfibia</div>
+                    <img src="img/unsam.png" alt="UNSAM" class="auth-sidebar-unsam">
+                    <p class="auth-sidebar-text">El periodismo narrativo y la ciencia se encuentran en tu cuenta.
+                        Regístrate para comentar, debatir y guardar tus lecturas favoritas.</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Favorites Drawer Overlay -->
+    <div class="favorites-drawer-overlay" id="favoritesDrawerOverlay">
+        <div class="favorites-drawer" id="favoritesDrawer">
+            <div class="favorites-drawer-header">
+                <h3 class="favorites-drawer-title">Mis Favoritos</h3>
+                <button class="favorites-drawer-close" id="closeFavoritesDrawer">&times;</button>
+            </div>
+            <div class="favorites-drawer-body">
+                <div class="favorites-list" id="favoritesList">
+                    <!-- Dynamic favorites will be listed here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- History Drawer Overlay -->
+    <div class="history-drawer-overlay" id="historyDrawerOverlay">
+        <div class="history-drawer" id="historyDrawer">
+            <div class="history-drawer-header">
+                <div class="history-drawer-title-row">
+                    <h3 class="history-drawer-title">Historial de Lectura</h3>
+                    <button class="btn-clear-all-history" id="btnClearAllHistory">Limpiar</button>
+                </div>
+                <button class="history-drawer-close" id="closeHistoryDrawer">&times;</button>
+            </div>
+            <div class="history-drawer-body">
+                <div class="history-list" id="historyList">
+                    <!-- Dynamic history will be listed here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scroll Restoration Toast -->
+    <div class="scroll-restore-toast" id="scrollRestoreToast">
+        <span id="scrollRestoreMsg">Restaurando tu lectura...</span>
+        <button class="btn-toast-restart" id="btnToastRestart">Ir al inicio</button>
+        <button class="close-toast" id="closeRestoreToast">&times;</button>
+    </div>
+
+    <!-- Toast Notification for Share / Interactive elements -->
+    <div class="toast-notification" id="toast">
+        <i class="fas fa-link"></i> <span id="toastMessage">Enlace copiado al portapapeles!</span>
+    </div>
+
+    <!-- Script for carousel and basic interactivity -->
+    <script src="script.js"></script>
+</body>
+
+</html>

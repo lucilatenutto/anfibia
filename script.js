@@ -2156,6 +2156,152 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 500);
     });
 
+    // ==========================================================================
+    // 10. CUSTOM ADD COMMENT MODAL CONTROLLER
+    // ==========================================================================
+    const floatAddCommentBtn = document.getElementById('floatAddCommentBtn');
+    const addCommentModal = document.getElementById('addCommentModal');
+    const closeAddCommentModal = document.getElementById('closeAddCommentModal');
+    const commentAuthorInput = document.getElementById('commentAuthorInput');
+    const commentQuoteInput = document.getElementById('commentQuoteInput');
+    const quoteDropdown = document.getElementById('quoteDropdown');
+    const commentBodyInput = document.getElementById('commentBodyInput');
+    const btnCargarComment = document.getElementById('btnCargarComment');
+    const commentFormView = document.getElementById('commentFormView');
+    const commentSuccessView = document.getElementById('commentSuccessView');
+    const btnDeNadaComment = document.getElementById('btnDeNadaComment');
+
+    // Restore saved username if logged in or saved previously
+    if (commentAuthorInput) {
+        const savedAuthor = localStorage.getItem('anfibia_author') || "";
+        if (savedAuthor) {
+            commentAuthorInput.value = savedAuthor;
+        } else {
+            const loggedInUser = localStorage.getItem('anfibia_user');
+            if (loggedInUser) {
+                commentAuthorInput.value = loggedInUser;
+            }
+        }
+    }
+
+    if (floatAddCommentBtn && addCommentModal) {
+        floatAddCommentBtn.addEventListener('click', () => {
+            requireAuth(() => {
+                addCommentModal.classList.add('active');
+                if (commentFormView) commentFormView.style.display = 'block';
+                if (commentSuccessView) commentSuccessView.style.display = 'none';
+                if (commentBodyInput) commentBodyInput.value = '';
+                if (commentQuoteInput) commentQuoteInput.value = '';
+            });
+        });
+    }
+
+    if (closeAddCommentModal && addCommentModal) {
+        closeAddCommentModal.addEventListener('click', () => {
+            addCommentModal.classList.remove('active');
+        });
+    }
+
+    // Close on overlay click
+    if (addCommentModal) {
+        addCommentModal.addEventListener('click', (e) => {
+            if (e.target === addCommentModal) {
+                addCommentModal.classList.remove('active');
+            }
+        });
+    }
+
+    // Dropdown suggestions for Quote input
+    if (commentQuoteInput && quoteDropdown) {
+        const populateDropdown = () => {
+            quoteDropdown.innerHTML = '';
+            // Fetch unique community highlights and user highlights
+            const uniqueQuotes = Array.from(new Set(
+                Array.from(document.querySelectorAll('.community-highlight, .article-highlight')).map(el => el.textContent.replace(/\s+/g, ' ').trim())
+            )).filter(q => q.length > 0);
+
+            if (uniqueQuotes.length > 0) {
+                uniqueQuotes.forEach(quote => {
+                    const item = document.createElement('div');
+                    item.className = 'quote-dropdown-item';
+                    item.textContent = quote.length > 80 ? quote.substring(0, 77) + '...' : quote;
+                    item.title = quote;
+                    item.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        commentQuoteInput.value = quote;
+                        quoteDropdown.classList.remove('active');
+                    });
+                    quoteDropdown.appendChild(item);
+                });
+            } else {
+                const item = document.createElement('div');
+                item.className = 'quote-dropdown-item';
+                item.textContent = "No hay citas sugeridas";
+                item.style.color = '#7b7b7b';
+                item.style.cursor = 'default';
+                quoteDropdown.appendChild(item);
+            }
+        };
+
+        commentQuoteInput.addEventListener('focus', () => {
+            populateDropdown();
+            quoteDropdown.classList.add('active');
+        });
+
+        // Close dropdown on click outside
+        document.addEventListener('click', (e) => {
+            if (!commentQuoteInput.contains(e.target) && !quoteDropdown.contains(e.target)) {
+                quoteDropdown.classList.remove('active');
+            }
+        });
+    }
+
+    // Form submit Cargar
+    if (btnCargarComment) {
+        btnCargarComment.addEventListener('click', () => {
+            const author = commentAuthorInput ? commentAuthorInput.value.trim() : "Lector Anónimo";
+            const quote = commentQuoteInput ? commentQuoteInput.value.trim() : "";
+            const body = commentBodyInput ? commentBodyInput.value.trim() : "";
+
+            if (!body) {
+                showToast("Por favor, escribe un comentario antes de cargar.");
+                return;
+            }
+
+            // Save author name preference
+            if (author) {
+                localStorage.setItem('anfibia_author', author);
+            }
+
+            const comment = {
+                author: author || "Lector Anónimo",
+                quote: quote || "",
+                body: body,
+                date: "Hace unos instantes"
+            };
+
+            // Post comment to DOM and LocalStorage
+            addCommentToDOM(comment, true);
+            const key = getCommentsKey();
+            const localComments = JSON.parse(localStorage.getItem(key) || '[]');
+            localComments.push(comment);
+            localStorage.setItem(key, JSON.stringify(localComments));
+
+            // Switch to success view
+            if (commentFormView) commentFormView.style.display = 'none';
+            if (commentSuccessView) commentSuccessView.style.display = 'block';
+        });
+    }
+
+    // Success button De nada close
+    if (btnDeNadaComment && addCommentModal) {
+        btnDeNadaComment.addEventListener('click', () => {
+            if (commentFormView) commentFormView.style.display = 'block';
+            if (commentSuccessView) commentSuccessView.style.display = 'none';
+            addCommentModal.classList.remove('active');
+        });
+    }
+
     // Run UI update on load
     updateAccountUI();
     syncAllFavoriteButtons();

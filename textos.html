@@ -29,7 +29,7 @@
                 <a href="index.html" class="brand-logo">Anfibia</a>
                 <div class="header-divider"></div>
                 <div class="unsam-badge">
-                    <img src="unsam.png" alt="UNSAM" class="unsam-logo-img">
+                    <img src="img/unsam.png" alt="UNSAM" class="unsam-logo-img">
                 </div>
                 <div class="social-icons">
                     <a href="#" class="social-link" title="Twitter"><i class="fab fa-twitter"></i></a>
@@ -261,13 +261,22 @@
         <!-- Articles Grid Section -->
         <section class="anfibia-grid-section" style="max-width: 1400px; margin: 48px auto; padding: 0 24px;">
             
+            <!-- FILTER: AMBIENTE -->
+            <div class="ambiente-filter-container" id="filter-ambiente" style="display: none;">
+                <div class="ambiente-filter-tabs">
+                    <button class="filter-tab active" data-type="cronicas">Cronicas</button>
+                    <button class="filter-tab" data-type="ensayo">Ensayo</button>
+                    <button class="filter-tab" data-type="nota">Nota</button>
+                </div>
+            </div>
+
             <!-- PANEL: AMBIENTE -->
             <div class="anfibia-grid category-panel" id="panel-ambiente">
                 <!-- Card 1 -->
                 <article class="anfibia-card">
                     <div class="card-img-container">
                         <a href="#">
-                            <img src="aiargentina.png" alt="AI, Argentina" class="card-image">
+                            <img src="img/aiargentina.png" alt="AI, Argentina" class="card-image">
                         </a>
                         <span class="card-badge-flush badge-ensayo">ENSAYO</span>
                     </div>
@@ -291,7 +300,7 @@
                 <article class="anfibia-card">
                     <div class="card-img-container">
                         <a href="patagonia.html">
-                            <img src="patagonia.png" alt="Patagonia" class="card-image">
+                            <img src="img/patagonia.png" alt="Patagonia" class="card-image">
                         </a>
                         <span class="card-badge-flush badge-cronica">CRÓNICA</span>
                     </div>
@@ -315,7 +324,7 @@
                 <article class="anfibia-card">
                     <div class="card-img-container">
                         <a href="#">
-                            <img src="alien.png" alt="Periodistas" class="card-image">
+                            <img src="img/alien.png" alt="Periodistas" class="card-image">
                         </a>
                         <span class="card-badge-flush badge-cronica">CRÓNICA</span>
                     </div>
@@ -339,7 +348,7 @@
                 <article class="anfibia-card more-textos-card" style="display: none;">
                     <div class="card-img-container">
                         <a href="#">
-                            <img src="retirada.png" alt="La retirada de YPF" class="card-image">
+                            <img src="img/retirada.png" alt="La retirada de YPF" class="card-image">
                         </a>
                         <span class="card-badge-flush badge-ensayo">ENSAYO</span>
                     </div>
@@ -363,7 +372,7 @@
                 <article class="anfibia-card more-textos-card" style="display: none;">
                     <div class="card-img-container">
                         <a href="#">
-                            <img src="fuego.png" alt="Desigualdad inflamable" class="card-image">
+                            <img src="img/fuego.png" alt="Desigualdad inflamable" class="card-image">
                         </a>
                         <span class="card-badge-flush badge-ensayo">ENSAYO</span>
                     </div>
@@ -387,7 +396,7 @@
                 <article class="anfibia-card more-textos-card" style="display: none;">
                     <div class="card-img-container">
                         <a href="#">
-                            <img src="pensar.png" alt="El CONICET en el fondo del mar" class="card-image">
+                            <img src="img/pensar.png" alt="El CONICET en el fondo del mar" class="card-image">
                         </a>
                         <span class="card-badge-flush badge-cronica">CRÓNICA</span>
                     </div>
@@ -411,7 +420,7 @@
                 <article class="anfibia-card related-textos-card" style="display: none;">
                     <div class="card-img-container">
                         <a href="#">
-                            <img src="tanino.png" alt="Minería de árboles" class="card-image">
+                            <img src="img/pies.png" alt="Minería de árboles" class="card-image">
                         </a>
                         <span class="card-badge-flush badge-cronica">CRÓNICA</span>
                     </div>
@@ -435,7 +444,7 @@
                 <article class="anfibia-card related-textos-card" style="display: none;">
                     <div class="card-img-container">
                         <a href="#">
-                            <img src="cartoneros.png" alt="Feos, sucios y malos" class="card-image">
+                            <img src="img/basura.png" alt="Feos, sucios y malos" class="card-image">
                         </a>
                         <span class="card-badge-flush badge-cronica">CRÓNICA</span>
                     </div>
@@ -459,7 +468,7 @@
                 <article class="anfibia-card related-textos-card" style="display: none;">
                     <div class="card-img-container">
                         <a href="#">
-                            <img src="algarrobo.png" alt="La leyenda del algarrobo caminante" class="card-image">
+                            <img src="img/arbol.png" alt="La leyenda del algarrobo caminante" class="card-image">
                         </a>
                         <span class="card-badge-flush badge-cronica">CRÓNICA</span>
                     </div>
@@ -478,6 +487,75 @@
                         </div>
                     </div>
                 </article>
+
+                <!-- Annotation Card 1 (Martina Ambientóloga) -->
+                <div class="annotation-card-home" style="display: none;">
+                    <div class="annotation-card-header">
+                        <span class="annotation-article-badge">CRÓNICA</span>
+                        <a href="patagonia.html" class="annotation-article-link">ADAPTARSE AL FUEGO <i class="fas fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                    <blockquote class="annotation-quote">
+                        "un buen cálculo para convivir con la naturaleza es el 3-30-300: ver al menos 3 árboles desde la ventana de tu casa..."
+                    </blockquote>
+                    <div class="annotation-user-comment">
+                        <div class="user-info">
+                            <i class="fas fa-user-pen"></i>
+                            <strong>Martina Ambientóloga</strong>
+                            <span class="user-role">Lectora</span>
+                        </div>
+                        <p class="user-note">"Excelente regla urbanística. Si logramos aplicar la regla del 3-30-300 en los asentamientos de interfase, no solo mejoramos la calidad de vida, sino que creamos cinturones de amortiguación natural contra los incendios."</p>
+                    </div>
+                    <div class="annotation-card-footer">
+                        <a href="patagonia.html#commentsList" class="btn-join-debate"><i class="fas fa-comments"></i> Unirse al debate</a>
+                        <button class="btn-ig-share" onclick="showToast('Cita guardada. Abre la crónica para exportarla a Instagram.')" title="Compartir en Instagram"><i class="fab fa-instagram"></i></button>
+                    </div>
+                </div>
+
+                <!-- Annotation Card 2 (Guido Vecchi) -->
+                <div class="annotation-card-home" style="display: none;">
+                    <div class="annotation-card-header">
+                        <span class="annotation-article-badge">CRÓNICA</span>
+                        <a href="patagonia.html" class="annotation-article-link">ADAPTARSE AL FUEGO <i class="fas fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                    <blockquote class="annotation-quote">
+                        "En los 'meses de paz', las comunidades indígenas trabajan en la restauración del suelo, podan las plantas..."
+                    </blockquote>
+                    <div class="annotation-user-comment">
+                        <div class="user-info">
+                            <i class="fas fa-user-pen"></i>
+                            <strong>Guido Vecchi</strong>
+                            <span class="user-role">Lector</span>
+                        </div>
+                        <p class="user-note">"Qué importante recuperar los saberes ancestrales sobre los ciclos naturales para la preparación y cuidado del suelo. La resiliencia no se trata de inventar todo de nuevo, sino de recordar lo que funcionaba antes."</p>
+                    </div>
+                    <div class="annotation-card-footer">
+                        <a href="patagonia.html#commentsList" class="btn-join-debate"><i class="fas fa-comments"></i> Unirse al debate</a>
+                        <button class="btn-ig-share" onclick="showToast('Cita guardada. Abre la crónica para exportarla a Instagram.')" title="Compartir en Instagram"><i class="fab fa-instagram"></i></button>
+                    </div>
+                </div>
+
+                <!-- Annotation Card 3 (Paula Rezzano) -->
+                <div class="annotation-card-home" style="display: none;">
+                    <div class="annotation-card-header">
+                        <span class="annotation-article-badge">CRÓNICA</span>
+                        <a href="patagonia.html" class="annotation-article-link">ADAPTARSE AL FUEGO <i class="fas fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                    <blockquote class="annotation-quote">
+                        "Cambió el sonido del viento. Desde la ventana de mi casa el viento se escuchaba como una ola..."
+                    </blockquote>
+                    <div class="annotation-user-comment">
+                        <div class="user-info">
+                            <i class="fas fa-user-pen"></i>
+                            <strong>Paula Rezzano</strong>
+                            <span class="user-role">Lectora</span>
+                        </div>
+                        <p class="user-note">"El viento en la Patagonia ha cambiado de sonido porque el desastre ecológico modificó la barrera física que constituían las copas de los árboles nativos. Qué doloroso leer esto."</p>
+                    </div>
+                    <div class="annotation-card-footer">
+                        <a href="patagonia.html#commentsList" class="btn-join-debate"><i class="fas fa-comments"></i> Unirse al debate</a>
+                        <button class="btn-ig-share" onclick="showToast('Cita guardada. Abre la crónica para exportarla a Instagram.')" title="Compartir en Instagram"><i class="fab fa-instagram"></i></button>
+                    </div>
+                </div>
             </div>
 
             <!-- PANEL: AMOR Y SEXO -->
@@ -485,7 +563,7 @@
                 <article class="anfibia-card">
                     <div class="card-img-container">
                         <a href="#">
-                            <img src="noti3.png" alt="Yopitalismo" class="card-image">
+                            <img src="img/noti3.png" alt="Yopitalismo" class="card-image">
                         </a>
                         <span class="card-badge-flush badge-cronica">CRÓNICA</span>
                     </div>
@@ -506,18 +584,18 @@
                 </article>
                 <article class="anfibia-card">
                     <div class="card-img-container">
-                        <a href="#">
-                            <img src="noti2.png" alt="Deudas" class="card-image">
+                        <a href="deudas.html">
+                            <img src="img/noti2.png" alt="Deudas" class="card-image">
                         </a>
                         <span class="card-badge-flush badge-ensayo">ENSAYO</span>
                     </div>
                     <div class="card-info">
-                        <span class="card-kicker">El sueldo se me va en pagar deudas</span>
-                        <h3 class="card-headline"><a href="#">EL SUELDO SE ME VA EN PAGAR DEUDAS</a></h3>
+                        <span class="card-kicker">Economía familiar, política y democracia</span>
+                        <h3 class="card-headline"><a href="deudas.html">EL SUELDO SE ME VA EN PAGAR LAS DEUDAS</a></h3>
                         <div class="card-divider-peach"></div>
                         <div class="card-meta-footer">
                             <div class="card-credits">
-                                Por: <span class="credit-author">Ignacio Cretini</span> <span class="credit-separator">|</span> Arte: <span class="credit-artist">Francesca Cantore</span>
+                                Por: <span class="credit-author">Ariel Wilkis</span> <span class="credit-separator">|</span> Arte: <span class="credit-artist">Flora Dunand</span>
                             </div>
                             <div class="card-actions">
                                 <button class="action-btn love-btn" title="Me gusta"><i class="far fa-heart"></i></button>
@@ -529,7 +607,7 @@
                 <article class="anfibia-card">
                     <div class="card-img-container">
                         <a href="#">
-                            <img src="baila.png" alt="Pogo bestial" class="card-image">
+                            <img src="img/baila.png" alt="Pogo bestial" class="card-image">
                         </a>
                         <span class="card-badge-flush badge-cronica">CRÓNICA</span>
                     </div>
@@ -555,7 +633,7 @@
                 <article class="anfibia-card">
                     <div class="card-img-container">
                         <a href="#">
-                            <img src="indio1.png" alt="Indio 1" class="card-image">
+                            <img src="img/indio1.png" alt="Indio 1" class="card-image">
                         </a>
                         <span class="card-badge-flush badge-cronica">CRÓNICA</span>
                     </div>
@@ -577,7 +655,7 @@
                 <article class="anfibia-card">
                     <div class="card-img-container">
                         <a href="#">
-                            <img src="indio2.png" alt="Indio 2" class="card-image">
+                            <img src="img/indio2.png" alt="Indio 2" class="card-image">
                         </a>
                         <span class="card-badge-flush badge-cronica">CRÓNICA</span>
                     </div>
@@ -599,7 +677,7 @@
                 <article class="anfibia-card">
                     <div class="card-img-container">
                         <a href="#">
-                            <img src="indio3.png" alt="Indio 3" class="card-image">
+                            <img src="img/indio3.png" alt="Indio 3" class="card-image">
                         </a>
                         <span class="card-badge-flush badge-cronica">CRÓNICA</span>
                     </div>
@@ -625,7 +703,7 @@
                 <article class="anfibia-card">
                     <div class="card-img-container">
                         <a href="#">
-                            <img src="gorro.png" alt="Sí hay plata" class="card-image">
+                            <img src="img/gorro.png" alt="Sí hay plata" class="card-image">
                         </a>
                         <span class="card-badge-flush badge-ensayo">ENSAYO</span>
                     </div>
@@ -647,7 +725,7 @@
                 <article class="anfibia-card">
                     <div class="card-img-container">
                         <a href="#">
-                            <img src="much.png" alt="Aulas" class="card-image">
+                            <img src="img/much.png" alt="Aulas" class="card-image">
                         </a>
                         <span class="card-badge-flush badge-cronica">CRÓNICA</span>
                     </div>
@@ -673,7 +751,7 @@
                 <article class="anfibia-card">
                     <div class="card-img-container">
                         <a href="geopolitica.html">
-                            <img src="gege.png" alt="Geopolitica" class="card-image">
+                            <img src="img/gege.png" alt="Geopolitica" class="card-image">
                         </a>
                         <span class="card-badge-flush badge-cronica">CRÓNICA</span>
                     </div>
@@ -695,7 +773,7 @@
                 <article class="anfibia-card">
                     <div class="card-img-container">
                         <a href="#">
-                            <img src="man.png" alt="Decepción" class="card-image">
+                            <img src="img/man.png" alt="Decepción" class="card-image">
                         </a>
                         <span class="card-badge-flush badge-ensayo">ENSAYO</span>
                     </div>
@@ -721,7 +799,7 @@
                 <article class="anfibia-card">
                     <div class="card-img-container">
                         <a href="#">
-                            <img src="hombre.png" alt="Géneros" class="card-image">
+                            <img src="img/hombre.png" alt="Géneros" class="card-image">
                         </a>
                         <span class="card-badge-flush badge-ensayo">ENSAYO</span>
                     </div>
@@ -747,7 +825,7 @@
                 <article class="anfibia-card">
                     <div class="card-img-container">
                         <a href="#">
-                            <img src="hospi.png" alt="Enfermos" class="card-image">
+                            <img src="img/hospi.png" alt="Enfermos" class="card-image">
                         </a>
                         <span class="card-badge-flush badge-ensayo">ENSAYO</span>
                     </div>
@@ -769,7 +847,7 @@
                 <article class="anfibia-card">
                     <div class="card-img-container">
                         <a href="#">
-                            <img src="agua.png" alt="Vivir cien años" class="card-image">
+                            <img src="img/agua.png" alt="Vivir cien años" class="card-image">
                         </a>
                         <span class="card-badge-flush badge-cronica">CRÓNICA</span>
                     </div>
@@ -795,7 +873,7 @@
                 <article class="anfibia-card">
                     <div class="card-img-container">
                         <a href="#">
-                            <img src="ojo.png" alt="Gemelo Digital" class="card-image">
+                            <img src="img/ojo.png" alt="Gemelo Digital" class="card-image">
                         </a>
                         <span class="card-badge-flush badge-ensayo">ENSAYO</span>
                     </div>
@@ -817,7 +895,7 @@
                 <article class="anfibia-card">
                     <div class="card-img-container">
                         <a href="#">
-                            <img src="estatua.png" alt="IA Latinoamericana" class="card-image">
+                            <img src="img/estatua.png" alt="IA Latinoamericana" class="card-image">
                         </a>
                         <span class="card-badge-flush badge-ensayo">ENSAYO</span>
                     </div>
@@ -847,13 +925,56 @@
 
     <!-- Footer -->
     <footer class="main-footer">
-        <div class="footer-container">
-            <div class="footer-branding">
-                <span class="footer-logo">Anfibia</span>
-                <p>Periodismo narrativo y comunicación científica.</p>
+        <div class="footer-new-wide-container">
+            <!-- Left Block: Social & Navigation -->
+            <div class="footer-left-block">
+                <!-- Social Icons Row -->
+                <div class="footer-social-row">
+                    <a href="#" class="social-circle" title="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-circle" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-circle" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-circle" title="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+
+                <!-- Navigation Links List -->
+                <ul class="footer-nav-links font-ui">
+                    <li><a href="textos.html">Textos</a></li>
+                    <li class="link-sep">|</li>
+                    <li><a href="#">Podcast</a></li>
+                    <li class="link-sep">|</li>
+                    <li><a href="#">Talleres</a></li>
+                    <li class="link-sep">|</li>
+                    <li><a href="#">Periodismo Performático</a></li>
+                    <li class="link-sep">|</li>
+                    <li><a href="#">Qué es Anfibia</a></li>
+                    <li class="link-sep">|</li>
+                    <li><a href="#">Tienda</a></li>
+                </ul>
             </div>
-            <div class="footer-copy">
-                &copy; 2026 Revista Anfibia / UNSAM. Rediseño experimental.
+
+            <!-- Center Block: Legal Info -->
+            <div class="footer-center-block">
+                <div class="footer-legal-info">
+                    UNSAM Campus Miguelete - 25 de Mayo y Francia (CP 1650) - San Martín, Prov. de Buenos Aires - Argentina - ISSN 2344-9365
+                </div>
+            </div>
+
+            <!-- Right Block: Logos -->
+            <div class="footer-right-logos-block">
+                <div class="footer-brand-logo font-literary">Anfibia</div>
+                <div class="footer-vertical-divider"></div>
+                <div class="footer-lectura-mundi">
+                    <i class="fa-regular fa-book-open"></i>
+                    <div class="lectura-mundi-text">
+                        <span class="title">Lectura Mundi</span>
+                        <span class="sub">UNSAM</span>
+                    </div>
+                </div>
+                <div class="footer-vertical-divider"></div>
+                <div class="footer-cronos">
+                    <span class="cronos-title font-ui">cronos</span>
+                    <span class="cronos-subtitle">LABORATORIO DE MEDIOS</span>
+                </div>
             </div>
         </div>
     </footer>
@@ -940,7 +1061,7 @@
                 <!-- Right/Sidebar Column (Desktop Only) -->
                 <div class="auth-modal-sidebar-col">
                     <div class="auth-sidebar-logo">Anfibia</div>
-                    <img src="unsam.png" alt="UNSAM" class="auth-sidebar-unsam">
+                    <img src="img/unsam.png" alt="UNSAM" class="auth-sidebar-unsam">
                     <p class="auth-sidebar-text">El periodismo narrativo y la ciencia se encuentran en tu cuenta. Regístrate para comentar, debatir y guardar tus lecturas favoritas.</p>
                 </div>
             </div>
@@ -1004,6 +1125,58 @@
             const loadMoreContainer = document.querySelector('.load-more-container');
             const loadMoreBtn = document.querySelector('.load-more-btn');
 
+            // Ambiente filter logic
+            const filterTabs = document.querySelectorAll('.filter-tab');
+
+            function applyFilter() {
+                const activeTab = document.querySelector('.filter-tab.active');
+                if (!activeTab) return;
+                const type = activeTab.getAttribute('data-type'); // 'cronicas', 'ensayo', 'nota'
+                
+                const panel = document.getElementById('panel-ambiente');
+                if (!panel) return;
+                
+                const cards = panel.querySelectorAll('.anfibia-card, .annotation-card-home');
+                cards.forEach(card => {
+                    let cardType = '';
+                    if (card.classList.contains('annotation-card-home')) {
+                        cardType = 'nota';
+                    } else {
+                        const badgeEl = card.querySelector('.card-badge-flush');
+                        const badgeText = badgeEl ? badgeEl.textContent.trim().toLowerCase() : '';
+                        
+                        if (badgeText.includes('crónica') || badgeText.includes('cronica')) {
+                            cardType = 'cronicas';
+                        } else if (badgeText.includes('ensayo')) {
+                            cardType = 'ensayo';
+                        } else if (badgeText.includes('nota')) {
+                            cardType = 'nota';
+                        }
+                    }
+                    
+                    if (cardType === type) {
+                        card.style.display = 'flex';
+                        card.style.opacity = '1';
+                    } else {
+                        card.style.display = 'none';
+                        card.style.opacity = '0';
+                    }
+                });
+
+                // Hide load more button when filtered
+                if (loadMoreContainer) {
+                    loadMoreContainer.style.display = 'none';
+                }
+            }
+
+            filterTabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    filterTabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+                    applyFilter();
+                });
+            });
+
             function showCategory(category) {
                 // Hide all panels
                 categoryPanels.forEach(panel => {
@@ -1048,6 +1221,15 @@
                         btn.classList.remove('active');
                     }
                 });
+
+                // Toggle filter bar visibility
+                const filterBar = document.getElementById('filter-ambiente');
+                if (filterBar) {
+                    filterBar.style.display = (category === 'ambiente') ? 'flex' : 'none';
+                    if (category === 'ambiente') {
+                        applyFilter();
+                    }
+                }
             }
 
             // Load More button click logic
