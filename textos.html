@@ -5,24 +5,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Textos — Revista Anfibia</title>
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lora:ital,wght@0,400..700;1,400..700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lora:ital,wght@0,400..700;1,400..700&family=Montserrat:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <link rel="stylesheet" href="style.css">
     <style>
         .category-panel {
-            display: none; /* Controlled by JS tab switching */
-        }
+            display: none;
     </style>
 </head>
 
 <body>
 
-    
+
     <header class="main-header">
         <div class="header-container">
             <div class="header-left">
@@ -46,10 +47,11 @@
                 <nav class="header-nav">
                     <ul class="nav-list">
                         <li><a href="#" class="nav-item special-link">Comunidad Anfibia</a></li>
-                        
-                        
+
+
                         <li class="nav-item-dropdown">
-                            <a href="textos.html" class="nav-item active">Textos <i class="fas fa-chevron-down nav-chevron"></i></a>
+                            <a href="textos.html" class="nav-item active">Textos <i
+                                    class="fas fa-chevron-down nav-chevron"></i></a>
                             <ul class="dropdown-menu">
                                 <li><a href="textos.html?cat=ambiente">Ambiente</a></li>
                                 <li><a href="textos.html?cat=amor-y-sexo">Amor y Sexo</a></li>
@@ -62,24 +64,24 @@
                                 <li><a href="#" class="nav-item nav-item-saved">Favoritos/Guardados</a></li>
                             </ul>
                         </li>
-                        
-                        
+
+
                         <li class="nav-item-dropdown">
                             <a href="#" class="nav-item">Podcast <i class="fas fa-chevron-down nav-chevron"></i></a>
                             <ul class="dropdown-menu">
                                 <li><a href="#">Todos los Podcasts</a></li>
                             </ul>
                         </li>
-                        
-                        
+
+
                         <li class="nav-item-dropdown">
                             <a href="#" class="nav-item">Talleres <i class="fas fa-chevron-down nav-chevron"></i></a>
                             <ul class="dropdown-menu">
                                 <li><a href="#">Ver más</a></li>
                             </ul>
                         </li>
-                        
-                        
+
+
                         <li class="nav-item-dropdown">
                             <a href="#" class="nav-item">Maestría <i class="fas fa-chevron-down nav-chevron"></i></a>
                             <ul class="dropdown-menu">
@@ -88,24 +90,26 @@
                             </ul>
                         </li>
 
-                        
+
                         <li class="nav-item-dropdown">
-                            <a href="#" class="nav-item">Futuro Imperfecto 3 <i class="fas fa-chevron-down nav-chevron"></i></a>
+                            <a href="#" class="nav-item">Futuro Imperfecto 3 <i
+                                    class="fas fa-chevron-down nav-chevron"></i></a>
                             <ul class="dropdown-menu">
                                 <li><a href="#">Volumen 1</a></li>
                                 <li><a href="#">Volumen 2</a></li>
                                 <li><a href="#">Volumen 3</a></li>
                             </ul>
                         </li>
-                        
-                        
+
+
                         <li><a href="#" class="nav-item nav-item-saved">Favoritos</a></li>
-                        
-                        
+
+
                         <li><a href="#" class="nav-item nav-item-history">Historial</a></li>
-                        
-                        
-                        <li><a href="#" class="nav-item nav-item-account"><i class="far fa-user-circle"></i> Tu Cuenta</a></li>
+
+
+                        <li><a href="#" class="nav-item nav-item-account"><i class="far fa-user-circle"></i> Tu
+                                Cuenta</a></li>
                     </ul>
                 </nav>
                 <button class="menu-toggle" id="menuToggle" title="Menú">
@@ -115,7 +119,7 @@
         </div>
     </header>
 
-    
+
     <div class="search-overlay" id="searchOverlay">
         <div class="search-box">
             <input type="text" placeholder="Buscar crónicas, ensayos, autores..." id="searchInput">
@@ -123,12 +127,12 @@
         </div>
     </div>
 
-    
+
     <div class="mobile-menu-drawer" id="mobileMenuDrawer">
         <div class="mobile-menu-body">
             <nav class="mobile-nav">
                 <ul class="mobile-nav-list">
-                    
+
                     <li class="mobile-nav-item-dropdown">
                         <button class="mobile-dropdown-toggle">
                             <span class="item-text">.Textos</span>
@@ -146,8 +150,8 @@
                             <li><a href="#" class="nav-item-saved">Favoritos/Guardados</a></li>
                         </ul>
                     </li>
-                    
-                    
+
+
                     <li class="mobile-nav-item-dropdown">
                         <button class="mobile-dropdown-toggle">
                             <span class="item-text">.Podcast</span>
@@ -157,8 +161,8 @@
                             <li><a href="#">Todos los Podcasts</a></li>
                         </ul>
                     </li>
-                    
-                    
+
+
                     <li class="mobile-nav-item-dropdown">
                         <button class="mobile-dropdown-toggle">
                             <span class="item-text">.Talleres</span>
@@ -168,8 +172,8 @@
                             <li><a href="#">Ver mas</a></li>
                         </ul>
                     </li>
-                    
-                    
+
+
                     <li class="mobile-nav-item-dropdown">
                         <button class="mobile-dropdown-toggle">
                             <span class="item-text">.Maestría</span>
@@ -180,8 +184,8 @@
                             <li><a href="#">Programa Completo</a></li>
                         </ul>
                     </li>
-                    
-                    
+
+
                     <li class="mobile-nav-item-dropdown">
                         <button class="mobile-dropdown-toggle">
                             <span class="item-text">.Futuro Imperfecto 3</span>
@@ -193,20 +197,20 @@
                             <li><a href="#">Volumen 3</a></li>
                         </ul>
                     </li>
-                    
-                    
+
+
                     <li class="mobile-nav-item-static">
                         <a href="#" class="mobile-static-link nav-item-saved">.Favoritos</a>
                     </li>
-                    
-                    
+
+
                     <li class="mobile-nav-item-static">
                         <a href="#" class="mobile-static-link nav-item-history">.Historial</a>
                     </li>
 
                     <li class="mobile-nav-spacing"></li>
-                    
-                    
+
+
                     <li class="mobile-nav-item-dropdown">
                         <button class="mobile-dropdown-toggle">
                             <span class="item-text">.Redes</span>
@@ -219,8 +223,8 @@
                             <li><a href="#">.YouTube</a></li>
                         </ul>
                     </li>
-                    
-                    
+
+
                     <li class="mobile-nav-item-static">
                         <a href="#" class="mobile-static-link">.Comunidad Anfibia</a>
                     </li>
@@ -236,12 +240,12 @@
         </div>
     </div>
 
-    
+
     <div class="menu-backdrop" id="menuBackdrop"></div>
 
-    
+
     <main>
-        
+
         <section class="category-header-section">
             <h1 class="category-main-title" id="categoryTitle">Ambiente</h1>
             <div class="category-nav-wrapper">
@@ -250,18 +254,20 @@
                     <li><button class="category-nav-btn" data-category="amor-y-sexo">Amor y Sexo</button></li>
                     <li><button class="category-nav-btn" data-category="culturas">Culturas</button></li>
                     <li><button class="category-nav-btn" data-category="educacion">Educación</button></li>
-                    <li><button class="category-nav-btn" data-category="politica-y-economia">Política y Economía</button></li>
-                    <li><button class="category-nav-btn" data-category="politicas-de-generos">Políticas de Géneros</button></li>
+                    <li><button class="category-nav-btn" data-category="politica-y-economia">Política y
+                            Economía</button></li>
+                    <li><button class="category-nav-btn" data-category="politicas-de-generos">Políticas de
+                            Géneros</button></li>
                     <li><button class="category-nav-btn" data-category="salud">Salud</button></li>
                     <li><button class="category-nav-btn" data-category="tecnologias">Tecnologías</button></li>
                 </ul>
             </div>
         </section>
 
-        
+
         <section class="anfibia-grid-section" style="max-width: 1400px; margin: 48px auto; padding: 0 24px;">
-            
-            
+
+
             <div class="ambiente-filter-container" id="filter-ambiente" style="display: none;">
                 <div class="ambiente-filter-tabs">
                     <button class="filter-tab active" data-type="cronicas">Cronicas</button>
@@ -270,9 +276,9 @@
                 </div>
             </div>
 
-            
+
             <div class="anfibia-grid category-panel" id="panel-ambiente">
-                
+
                 <article class="anfibia-card">
                     <div class="card-img-container">
                         <a href="#">
@@ -286,17 +292,21 @@
                         <div class="card-divider-peach"></div>
                         <div class="card-meta-footer">
                             <div class="card-credits">
-                                Por: <span class="credit-author">Mariano Caputo, Juan Ballestrin</span> <span class="credit-separator">|</span> Arte: <span class="credit-artist">María Elizagaray Estrada</span>
+                                Por: <span class="credit-author">Mariano Caputo, Juan Ballestrin</span> <span
+                                    class="credit-separator">|</span> Arte: <span class="credit-artist">María Elizagaray
+                                    Estrada</span>
                             </div>
                             <div class="card-actions">
-                                <button class="action-btn love-btn" title="Me gusta"><i class="far fa-heart"></i></button>
-                                <button class="action-btn share-btn" title="Compartir"><i class="fas fa-share-alt"></i></button>
+                                <button class="action-btn love-btn" title="Me gusta"><i
+                                        class="far fa-heart"></i></button>
+                                <button class="action-btn share-btn" title="Compartir"><i
+                                        class="fas fa-share-alt"></i></button>
                             </div>
                         </div>
                     </div>
                 </article>
 
-                
+
                 <article class="anfibia-card">
                     <div class="card-img-container">
                         <a href="patagonia.html">
@@ -310,17 +320,21 @@
                         <div class="card-divider-peach"></div>
                         <div class="card-meta-footer">
                             <div class="card-credits">
-                                Por: <span class="credit-author">María Mansilla</span> <span class="credit-separator">|</span> Arte: <span class="credit-artist">Marcos Huisman</span>
+                                Por: <span class="credit-author">María Mansilla</span> <span
+                                    class="credit-separator">|</span> Arte: <span class="credit-artist">Marcos
+                                    Huisman</span>
                             </div>
                             <div class="card-actions">
-                                <button class="action-btn love-btn" title="Me gusta"><i class="far fa-heart"></i></button>
-                                <button class="action-btn share-btn" title="Compartir"><i class="fas fa-share-alt"></i></button>
+                                <button class="action-btn love-btn" title="Me gusta"><i
+                                        class="far fa-heart"></i></button>
+                                <button class="action-btn share-btn" title="Compartir"><i
+                                        class="fas fa-share-alt"></i></button>
                             </div>
                         </div>
                     </div>
                 </article>
 
-                
+
                 <article class="anfibia-card">
                     <div class="card-img-container">
                         <a href="#">
@@ -334,17 +348,21 @@
                         <div class="card-divider-peach"></div>
                         <div class="card-meta-footer">
                             <div class="card-credits">
-                                Por: <span class="credit-author">María Mansilla</span> <span class="credit-separator">|</span> Arte: <span class="credit-artist">yai salinas</span>
+                                Por: <span class="credit-author">María Mansilla</span> <span
+                                    class="credit-separator">|</span> Arte: <span class="credit-artist">yai
+                                    salinas</span>
                             </div>
                             <div class="card-actions">
-                                <button class="action-btn love-btn" title="Me gusta"><i class="far fa-heart"></i></button>
-                                <button class="action-btn share-btn" title="Compartir"><i class="fas fa-share-alt"></i></button>
+                                <button class="action-btn love-btn" title="Me gusta"><i
+                                        class="far fa-heart"></i></button>
+                                <button class="action-btn share-btn" title="Compartir"><i
+                                        class="fas fa-share-alt"></i></button>
                             </div>
                         </div>
                     </div>
                 </article>
 
-                
+
                 <article class="anfibia-card more-textos-card" style="display: none;">
                     <div class="card-img-container">
                         <a href="#">
@@ -358,17 +376,21 @@
                         <div class="card-divider-peach"></div>
                         <div class="card-meta-footer">
                             <div class="card-credits">
-                                Por: <span class="credit-author">Ignacio Cretini</span> <span class="credit-separator">|</span> Arte: <span class="credit-artist">Francesca Cantore</span>
+                                Por: <span class="credit-author">Ignacio Cretini</span> <span
+                                    class="credit-separator">|</span> Arte: <span class="credit-artist">Francesca
+                                    Cantore</span>
                             </div>
                             <div class="card-actions">
-                                <button class="action-btn love-btn" title="Me gusta"><i class="far fa-heart"></i></button>
-                                <button class="action-btn share-btn" title="Compartir"><i class="fas fa-share-alt"></i></button>
+                                <button class="action-btn love-btn" title="Me gusta"><i
+                                        class="far fa-heart"></i></button>
+                                <button class="action-btn share-btn" title="Compartir"><i
+                                        class="fas fa-share-alt"></i></button>
                             </div>
                         </div>
                     </div>
                 </article>
 
-                
+
                 <article class="anfibia-card more-textos-card" style="display: none;">
                     <div class="card-img-container">
                         <a href="#">
@@ -382,17 +404,21 @@
                         <div class="card-divider-peach"></div>
                         <div class="card-meta-footer">
                             <div class="card-credits">
-                                Por: <span class="credit-author">Maristella Svampa</span> <span class="credit-separator">|</span> Arte: <span class="credit-artist">Sebastián Angresano</span>
+                                Por: <span class="credit-author">Maristella Svampa</span> <span
+                                    class="credit-separator">|</span> Arte: <span class="credit-artist">Sebastián
+                                    Angresano</span>
                             </div>
                             <div class="card-actions">
-                                <button class="action-btn love-btn" title="Me gusta"><i class="far fa-heart"></i></button>
-                                <button class="action-btn share-btn" title="Compartir"><i class="fas fa-share-alt"></i></button>
+                                <button class="action-btn love-btn" title="Me gusta"><i
+                                        class="far fa-heart"></i></button>
+                                <button class="action-btn share-btn" title="Compartir"><i
+                                        class="fas fa-share-alt"></i></button>
                             </div>
                         </div>
                     </div>
                 </article>
 
-                
+
                 <article class="anfibia-card more-textos-card" style="display: none;">
                     <div class="card-img-container">
                         <a href="#">
@@ -406,17 +432,21 @@
                         <div class="card-divider-peach"></div>
                         <div class="card-meta-footer">
                             <div class="card-credits">
-                                Por: <span class="credit-author">Emilia Holstein</span> <span class="credit-separator">|</span> Arte: <span class="credit-artist">Revista Anfibia</span>
+                                Por: <span class="credit-author">Emilia Holstein</span> <span
+                                    class="credit-separator">|</span> Arte: <span class="credit-artist">Revista
+                                    Anfibia</span>
                             </div>
                             <div class="card-actions">
-                                <button class="action-btn love-btn" title="Me gusta"><i class="far fa-heart"></i></button>
-                                <button class="action-btn share-btn" title="Compartir"><i class="fas fa-share-alt"></i></button>
+                                <button class="action-btn love-btn" title="Me gusta"><i
+                                        class="far fa-heart"></i></button>
+                                <button class="action-btn share-btn" title="Compartir"><i
+                                        class="fas fa-share-alt"></i></button>
                             </div>
                         </div>
                     </div>
                 </article>
 
-                
+
                 <article class="anfibia-card related-textos-card" style="display: none;">
                     <div class="card-img-container">
                         <a href="#">
@@ -426,21 +456,26 @@
                     </div>
                     <div class="card-info">
                         <span class="card-kicker">EXTRACCIÓN DE TANINO EN EL GRAN CHACO</span>
-                        <h3 class="card-headline"><a href="#">MINERÍA DE ÁRBOLES CHAQUEÑOS PARA VESTIR A LOS RICOS DEL MUNDO</a></h3>
+                        <h3 class="card-headline"><a href="#">MINERÍA DE ÁRBOLES CHAQUEÑOS PARA VESTIR A LOS RICOS DEL
+                                MUNDO</a></h3>
                         <div class="card-divider-peach"></div>
                         <div class="card-meta-footer">
                             <div class="card-credits">
-                                Por: <span class="credit-author">Irupé Tentorio, Marta Facchini</span> <span class="credit-separator">|</span> Arte: <span class="credit-artist">Sofía López Mañán</span>
+                                Por: <span class="credit-author">Irupé Tentorio, Marta Facchini</span> <span
+                                    class="credit-separator">|</span> Arte: <span class="credit-artist">Sofía López
+                                    Mañán</span>
                             </div>
                             <div class="card-actions">
-                                <button class="action-btn love-btn" title="Me gusta"><i class="far fa-heart"></i></button>
-                                <button class="action-btn share-btn" title="Compartir"><i class="fas fa-share-alt"></i></button>
+                                <button class="action-btn love-btn" title="Me gusta"><i
+                                        class="far fa-heart"></i></button>
+                                <button class="action-btn share-btn" title="Compartir"><i
+                                        class="fas fa-share-alt"></i></button>
                             </div>
                         </div>
                     </div>
                 </article>
 
-                
+
                 <article class="anfibia-card related-textos-card" style="display: none;">
                     <div class="card-img-container">
                         <a href="#">
@@ -454,17 +489,21 @@
                         <div class="card-divider-peach"></div>
                         <div class="card-meta-footer">
                             <div class="card-credits">
-                                Por: <span class="credit-author">Gabriela Saidon</span> <span class="credit-separator">|</span> Arte: <span class="credit-artist">Tomás Francisco Cuesta</span>
+                                Por: <span class="credit-author">Gabriela Saidon</span> <span
+                                    class="credit-separator">|</span> Arte: <span class="credit-artist">Tomás Francisco
+                                    Cuesta</span>
                             </div>
                             <div class="card-actions">
-                                <button class="action-btn love-btn" title="Me gusta"><i class="far fa-heart"></i></button>
-                                <button class="action-btn share-btn" title="Compartir"><i class="fas fa-share-alt"></i></button>
+                                <button class="action-btn love-btn" title="Me gusta"><i
+                                        class="far fa-heart"></i></button>
+                                <button class="action-btn share-btn" title="Compartir"><i
+                                        class="fas fa-share-alt"></i></button>
                             </div>
                         </div>
                     </div>
                 </article>
 
-                
+
                 <article class="anfibia-card related-textos-card" style="display: none;">
                     <div class="card-img-container">
                         <a href="#">
@@ -478,24 +517,30 @@
                         <div class="card-divider-peach"></div>
                         <div class="card-meta-footer">
                             <div class="card-credits">
-                                Por: <span class="credit-author">Allison Lang</span> <span class="credit-separator">|</span> Arte: <span class="credit-artist">María Elizagaray Estrada</span>
+                                Por: <span class="credit-author">Allison Lang</span> <span
+                                    class="credit-separator">|</span> Arte: <span class="credit-artist">María Elizagaray
+                                    Estrada</span>
                             </div>
                             <div class="card-actions">
-                                <button class="action-btn love-btn" title="Me gusta"><i class="far fa-heart"></i></button>
-                                <button class="action-btn share-btn" title="Compartir"><i class="fas fa-share-alt"></i></button>
+                                <button class="action-btn love-btn" title="Me gusta"><i
+                                        class="far fa-heart"></i></button>
+                                <button class="action-btn share-btn" title="Compartir"><i
+                                        class="fas fa-share-alt"></i></button>
                             </div>
                         </div>
                     </div>
                 </article>
 
-                
+
                 <div class="annotation-card-home" style="display: none;">
                     <div class="annotation-card-header">
                         <span class="annotation-article-badge">CRÓNICA</span>
-                        <a href="patagonia.html" class="annotation-article-link">ADAPTARSE AL FUEGO <i class="fas fa-arrow-up-right-from-square"></i></a>
+                        <a href="patagonia.html" class="annotation-article-link">ADAPTARSE AL FUEGO <i
+                                class="fas fa-arrow-up-right-from-square"></i></a>
                     </div>
                     <blockquote class="annotation-quote">
-                        "un buen cálculo para convivir con la naturaleza es el 3-30-300: ver al menos 3 árboles desde la ventana de tu casa..."
+                        "un buen cálculo para convivir con la naturaleza es el 3-30-300: ver al menos 3 árboles desde la
+                        ventana de tu casa..."
                     </blockquote>
                     <div class="annotation-user-comment">
                         <div class="user-info">
@@ -503,22 +548,29 @@
                             <strong>Martina Ambientóloga</strong>
                             <span class="user-role">Lectora</span>
                         </div>
-                        <p class="user-note">"Excelente regla urbanística. Si logramos aplicar la regla del 3-30-300 en los asentamientos de interfase, no solo mejoramos la calidad de vida, sino que creamos cinturones de amortiguación natural contra los incendios."</p>
+                        <p class="user-note">"Excelente regla urbanística. Si logramos aplicar la regla del 3-30-300 en
+                            los asentamientos de interfase, no solo mejoramos la calidad de vida, sino que creamos
+                            cinturones de amortiguación natural contra los incendios."</p>
                     </div>
                     <div class="annotation-card-footer">
-                        <a href="patagonia.html#commentsList" class="btn-join-debate"><i class="fas fa-comments"></i> Unirse al debate</a>
-                        <button class="btn-ig-share" onclick="showToast('Cita guardada. Abre la crónica para exportarla a Instagram.')" title="Compartir en Instagram"><i class="fab fa-instagram"></i></button>
+                        <a href="patagonia.html#commentsList" class="btn-join-debate"><i class="fas fa-comments"></i>
+                            Unirse al debate</a>
+                        <button class="btn-ig-share"
+                            onclick="showToast('Cita guardada. Abre la crónica para exportarla a Instagram.')"
+                            title="Compartir en Instagram"><i class="fab fa-instagram"></i></button>
                     </div>
                 </div>
 
-                
+
                 <div class="annotation-card-home" style="display: none;">
                     <div class="annotation-card-header">
                         <span class="annotation-article-badge">CRÓNICA</span>
-                        <a href="patagonia.html" class="annotation-article-link">ADAPTARSE AL FUEGO <i class="fas fa-arrow-up-right-from-square"></i></a>
+                        <a href="patagonia.html" class="annotation-article-link">ADAPTARSE AL FUEGO <i
+                                class="fas fa-arrow-up-right-from-square"></i></a>
                     </div>
                     <blockquote class="annotation-quote">
-                        "En los 'meses de paz', las comunidades indígenas trabajan en la restauración del suelo, podan las plantas..."
+                        "En los 'meses de paz', las comunidades indígenas trabajan en la restauración del suelo, podan
+                        las plantas..."
                     </blockquote>
                     <div class="annotation-user-comment">
                         <div class="user-info">
@@ -526,22 +578,29 @@
                             <strong>Guido Vecchi</strong>
                             <span class="user-role">Lector</span>
                         </div>
-                        <p class="user-note">"Qué importante recuperar los saberes ancestrales sobre los ciclos naturales para la preparación y cuidado del suelo. La resiliencia no se trata de inventar todo de nuevo, sino de recordar lo que funcionaba antes."</p>
+                        <p class="user-note">"Qué importante recuperar los saberes ancestrales sobre los ciclos
+                            naturales para la preparación y cuidado del suelo. La resiliencia no se trata de inventar
+                            todo de nuevo, sino de recordar lo que funcionaba antes."</p>
                     </div>
                     <div class="annotation-card-footer">
-                        <a href="patagonia.html#commentsList" class="btn-join-debate"><i class="fas fa-comments"></i> Unirse al debate</a>
-                        <button class="btn-ig-share" onclick="showToast('Cita guardada. Abre la crónica para exportarla a Instagram.')" title="Compartir en Instagram"><i class="fab fa-instagram"></i></button>
+                        <a href="patagonia.html#commentsList" class="btn-join-debate"><i class="fas fa-comments"></i>
+                            Unirse al debate</a>
+                        <button class="btn-ig-share"
+                            onclick="showToast('Cita guardada. Abre la crónica para exportarla a Instagram.')"
+                            title="Compartir en Instagram"><i class="fab fa-instagram"></i></button>
                     </div>
                 </div>
 
-                
+
                 <div class="annotation-card-home" style="display: none;">
                     <div class="annotation-card-header">
                         <span class="annotation-article-badge">CRÓNICA</span>
-                        <a href="patagonia.html" class="annotation-article-link">ADAPTARSE AL FUEGO <i class="fas fa-arrow-up-right-from-square"></i></a>
+                        <a href="patagonia.html" class="annotation-article-link">ADAPTARSE AL FUEGO <i
+                                class="fas fa-arrow-up-right-from-square"></i></a>
                     </div>
                     <blockquote class="annotation-quote">
-                        "Cambió el sonido del viento. Desde la ventana de mi casa el viento se escuchaba como una ola..."
+                        "Cambió el sonido del viento. Desde la ventana de mi casa el viento se escuchaba como una
+                        ola..."
                     </blockquote>
                     <div class="annotation-user-comment">
                         <div class="user-info">
@@ -549,16 +608,21 @@
                             <strong>Paula Rezzano</strong>
                             <span class="user-role">Lectora</span>
                         </div>
-                        <p class="user-note">"El viento en la Patagonia ha cambiado de sonido porque el desastre ecológico modificó la barrera física que constituían las copas de los árboles nativos. Qué doloroso leer esto."</p>
+                        <p class="user-note">"El viento en la Patagonia ha cambiado de sonido porque el desastre
+                            ecológico modificó la barrera física que constituían las copas de los árboles nativos. Qué
+                            doloroso leer esto."</p>
                     </div>
                     <div class="annotation-card-footer">
-                        <a href="patagonia.html#commentsList" class="btn-join-debate"><i class="fas fa-comments"></i> Unirse al debate</a>
-                        <button class="btn-ig-share" onclick="showToast('Cita guardada. Abre la crónica para exportarla a Instagram.')" title="Compartir en Instagram"><i class="fab fa-instagram"></i></button>
+                        <a href="patagonia.html#commentsList" class="btn-join-debate"><i class="fas fa-comments"></i>
+                            Unirse al debate</a>
+                        <button class="btn-ig-share"
+                            onclick="showToast('Cita guardada. Abre la crónica para exportarla a Instagram.')"
+                            title="Compartir en Instagram"><i class="fab fa-instagram"></i></button>
                     </div>
                 </div>
             </div>
 
-            
+
             <div class="anfibia-grid category-panel" id="panel-amor-y-sexo">
                 <article class="anfibia-card">
                     <div class="card-img-container">
@@ -573,11 +637,15 @@
                         <div class="card-divider-peach"></div>
                         <div class="card-meta-footer">
                             <div class="card-credits">
-                                Por: <span class="credit-author">María Mansilla</span> <span class="credit-separator">|</span> Arte: <span class="credit-artist">Marcos Huisman</span>
+                                Por: <span class="credit-author">María Mansilla</span> <span
+                                    class="credit-separator">|</span> Arte: <span class="credit-artist">Marcos
+                                    Huisman</span>
                             </div>
                             <div class="card-actions">
-                                <button class="action-btn love-btn" title="Me gusta"><i class="far fa-heart"></i></button>
-                                <button class="action-btn share-btn" title="Compartir"><i class="fas fa-share-alt"></i></button>
+                                <button class="action-btn love-btn" title="Me gusta"><i
+                                        class="far fa-heart"></i></button>
+                                <button class="action-btn share-btn" title="Compartir"><i
+                                        class="fas fa-share-alt"></i></button>
                             </div>
                         </div>
                     </div>
@@ -595,11 +663,15 @@
                         <div class="card-divider-peach"></div>
                         <div class="card-meta-footer">
                             <div class="card-credits">
-                                Por: <span class="credit-author">Ariel Wilkis</span> <span class="credit-separator">|</span> Arte: <span class="credit-artist">Flora Dunand</span>
+                                Por: <span class="credit-author">Ariel Wilkis</span> <span
+                                    class="credit-separator">|</span> Arte: <span class="credit-artist">Flora
+                                    Dunand</span>
                             </div>
                             <div class="card-actions">
-                                <button class="action-btn love-btn" title="Me gusta"><i class="far fa-heart"></i></button>
-                                <button class="action-btn share-btn" title="Compartir"><i class="fas fa-share-alt"></i></button>
+                                <button class="action-btn love-btn" title="Me gusta"><i
+                                        class="far fa-heart"></i></button>
+                                <button class="action-btn share-btn" title="Compartir"><i
+                                        class="fas fa-share-alt"></i></button>
                             </div>
                         </div>
                     </div>
@@ -617,18 +689,22 @@
                         <div class="card-divider-peach"></div>
                         <div class="card-meta-footer">
                             <div class="card-credits">
-                                Por: <span class="credit-author">Redacción Anfibia</span> <span class="credit-separator">|</span> Arte: <span class="credit-artist">Arte Anfibia</span>
+                                Por: <span class="credit-author">Redacción Anfibia</span> <span
+                                    class="credit-separator">|</span> Arte: <span class="credit-artist">Arte
+                                    Anfibia</span>
                             </div>
                             <div class="card-actions">
-                                <button class="action-btn love-btn" title="Me gusta"><i class="far fa-heart"></i></button>
-                                <button class="action-btn share-btn" title="Compartir"><i class="fas fa-share-alt"></i></button>
+                                <button class="action-btn love-btn" title="Me gusta"><i
+                                        class="far fa-heart"></i></button>
+                                <button class="action-btn share-btn" title="Compartir"><i
+                                        class="fas fa-share-alt"></i></button>
                             </div>
                         </div>
                     </div>
                 </article>
             </div>
 
-            
+
             <div class="anfibia-grid category-panel" id="panel-culturas">
                 <article class="anfibia-card">
                     <div class="card-img-container">
@@ -643,11 +719,15 @@
                         <div class="card-divider-peach"></div>
                         <div class="card-meta-footer">
                             <div class="card-credits">
-                                Por: <span class="credit-author">Redacción Anfibia</span> <span class="credit-separator">|</span> Arte: <span class="credit-artist">Arte Anfibia</span>
+                                Por: <span class="credit-author">Redacción Anfibia</span> <span
+                                    class="credit-separator">|</span> Arte: <span class="credit-artist">Arte
+                                    Anfibia</span>
                             </div>
                             <div class="card-actions">
-                                <button class="action-btn love-btn" title="Me gusta"><i class="far fa-heart"></i></button>
-                                <button class="action-btn share-btn" title="Compartir"><i class="fas fa-share-alt"></i></button>
+                                <button class="action-btn love-btn" title="Me gusta"><i
+                                        class="far fa-heart"></i></button>
+                                <button class="action-btn share-btn" title="Compartir"><i
+                                        class="fas fa-share-alt"></i></button>
                             </div>
                         </div>
                     </div>
@@ -665,11 +745,15 @@
                         <div class="card-divider-peach"></div>
                         <div class="card-meta-footer">
                             <div class="card-credits">
-                                Por: <span class="credit-author">Redacción Anfibia</span> <span class="credit-separator">|</span> Arte: <span class="credit-artist">Arte Anfibia</span>
+                                Por: <span class="credit-author">Redacción Anfibia</span> <span
+                                    class="credit-separator">|</span> Arte: <span class="credit-artist">Arte
+                                    Anfibia</span>
                             </div>
                             <div class="card-actions">
-                                <button class="action-btn love-btn" title="Me gusta"><i class="far fa-heart"></i></button>
-                                <button class="action-btn share-btn" title="Compartir"><i class="fas fa-share-alt"></i></button>
+                                <button class="action-btn love-btn" title="Me gusta"><i
+                                        class="far fa-heart"></i></button>
+                                <button class="action-btn share-btn" title="Compartir"><i
+                                        class="fas fa-share-alt"></i></button>
                             </div>
                         </div>
                     </div>
@@ -687,18 +771,22 @@
                         <div class="card-divider-peach"></div>
                         <div class="card-meta-footer">
                             <div class="card-credits">
-                                Por: <span class="credit-author">Redacción Anfibia</span> <span class="credit-separator">|</span> Arte: <span class="credit-artist">Arte Anfibia</span>
+                                Por: <span class="credit-author">Redacción Anfibia</span> <span
+                                    class="credit-separator">|</span> Arte: <span class="credit-artist">Arte
+                                    Anfibia</span>
                             </div>
                             <div class="card-actions">
-                                <button class="action-btn love-btn" title="Me gusta"><i class="far fa-heart"></i></button>
-                                <button class="action-btn share-btn" title="Compartir"><i class="fas fa-share-alt"></i></button>
+                                <button class="action-btn love-btn" title="Me gusta"><i
+                                        class="far fa-heart"></i></button>
+                                <button class="action-btn share-btn" title="Compartir"><i
+                                        class="fas fa-share-alt"></i></button>
                             </div>
                         </div>
                     </div>
                 </article>
             </div>
 
-            
+
             <div class="anfibia-grid category-panel" id="panel-educacion">
                 <article class="anfibia-card">
                     <div class="card-img-container">
@@ -713,11 +801,15 @@
                         <div class="card-divider-peach"></div>
                         <div class="card-meta-footer">
                             <div class="card-credits">
-                                Por: <span class="credit-author">Mariano Caputo</span> <span class="credit-separator">|</span> Arte: <span class="credit-artist">Arte Anfibia</span>
+                                Por: <span class="credit-author">Mariano Caputo</span> <span
+                                    class="credit-separator">|</span> Arte: <span class="credit-artist">Arte
+                                    Anfibia</span>
                             </div>
                             <div class="card-actions">
-                                <button class="action-btn love-btn" title="Me gusta"><i class="far fa-heart"></i></button>
-                                <button class="action-btn share-btn" title="Compartir"><i class="fas fa-share-alt"></i></button>
+                                <button class="action-btn love-btn" title="Me gusta"><i
+                                        class="far fa-heart"></i></button>
+                                <button class="action-btn share-btn" title="Compartir"><i
+                                        class="fas fa-share-alt"></i></button>
                             </div>
                         </div>
                     </div>
@@ -735,18 +827,22 @@
                         <div class="card-divider-peach"></div>
                         <div class="card-meta-footer">
                             <div class="card-credits">
-                                Por: <span class="credit-author">Redacción Anfibia</span> <span class="credit-separator">|</span> Arte: <span class="credit-artist">Arte Anfibia</span>
+                                Por: <span class="credit-author">Redacción Anfibia</span> <span
+                                    class="credit-separator">|</span> Arte: <span class="credit-artist">Arte
+                                    Anfibia</span>
                             </div>
                             <div class="card-actions">
-                                <button class="action-btn love-btn" title="Me gusta"><i class="far fa-heart"></i></button>
-                                <button class="action-btn share-btn" title="Compartir"><i class="fas fa-share-alt"></i></button>
+                                <button class="action-btn love-btn" title="Me gusta"><i
+                                        class="far fa-heart"></i></button>
+                                <button class="action-btn share-btn" title="Compartir"><i
+                                        class="fas fa-share-alt"></i></button>
                             </div>
                         </div>
                     </div>
                 </article>
             </div>
 
-            
+
             <div class="anfibia-grid category-panel" id="panel-politica-y-economia">
                 <article class="anfibia-card">
                     <div class="card-img-container">
@@ -761,11 +857,15 @@
                         <div class="card-divider-peach"></div>
                         <div class="card-meta-footer">
                             <div class="card-credits">
-                                Por: <span class="credit-author">Redacción Anfibia</span> <span class="credit-separator">|</span> Arte: <span class="credit-artist">Arte Anfibia</span>
+                                Por: <span class="credit-author">Redacción Anfibia</span> <span
+                                    class="credit-separator">|</span> Arte: <span class="credit-artist">Arte
+                                    Anfibia</span>
                             </div>
                             <div class="card-actions">
-                                <button class="action-btn love-btn" title="Me gusta"><i class="far fa-heart"></i></button>
-                                <button class="action-btn share-btn" title="Compartir"><i class="fas fa-share-alt"></i></button>
+                                <button class="action-btn love-btn" title="Me gusta"><i
+                                        class="far fa-heart"></i></button>
+                                <button class="action-btn share-btn" title="Compartir"><i
+                                        class="fas fa-share-alt"></i></button>
                             </div>
                         </div>
                     </div>
@@ -783,18 +883,22 @@
                         <div class="card-divider-peach"></div>
                         <div class="card-meta-footer">
                             <div class="card-credits">
-                                Por: <span class="credit-author">Redacción Anfibia</span> <span class="credit-separator">|</span> Arte: <span class="credit-artist">Arte Anfibia</span>
+                                Por: <span class="credit-author">Redacción Anfibia</span> <span
+                                    class="credit-separator">|</span> Arte: <span class="credit-artist">Arte
+                                    Anfibia</span>
                             </div>
                             <div class="card-actions">
-                                <button class="action-btn love-btn" title="Me gusta"><i class="far fa-heart"></i></button>
-                                <button class="action-btn share-btn" title="Compartir"><i class="fas fa-share-alt"></i></button>
+                                <button class="action-btn love-btn" title="Me gusta"><i
+                                        class="far fa-heart"></i></button>
+                                <button class="action-btn share-btn" title="Compartir"><i
+                                        class="fas fa-share-alt"></i></button>
                             </div>
                         </div>
                     </div>
                 </article>
             </div>
 
-            
+
             <div class="anfibia-grid category-panel" id="panel-politicas-de-generos">
                 <article class="anfibia-card">
                     <div class="card-img-container">
@@ -809,18 +913,22 @@
                         <div class="card-divider-peach"></div>
                         <div class="card-meta-footer">
                             <div class="card-credits">
-                                Por: <span class="credit-author">Redacción Anfibia</span> <span class="credit-separator">|</span> Arte: <span class="credit-artist">Arte Anfibia</span>
+                                Por: <span class="credit-author">Redacción Anfibia</span> <span
+                                    class="credit-separator">|</span> Arte: <span class="credit-artist">Arte
+                                    Anfibia</span>
                             </div>
                             <div class="card-actions">
-                                <button class="action-btn love-btn" title="Me gusta"><i class="far fa-heart"></i></button>
-                                <button class="action-btn share-btn" title="Compartir"><i class="fas fa-share-alt"></i></button>
+                                <button class="action-btn love-btn" title="Me gusta"><i
+                                        class="far fa-heart"></i></button>
+                                <button class="action-btn share-btn" title="Compartir"><i
+                                        class="fas fa-share-alt"></i></button>
                             </div>
                         </div>
                     </div>
                 </article>
             </div>
 
-            
+
             <div class="anfibia-grid category-panel" id="panel-salud">
                 <article class="anfibia-card">
                     <div class="card-img-container">
@@ -835,11 +943,15 @@
                         <div class="card-divider-peach"></div>
                         <div class="card-meta-footer">
                             <div class="card-credits">
-                                Por: <span class="credit-author">Redacción Anfibia</span> <span class="credit-separator">|</span> Arte: <span class="credit-artist">Arte Anfibia</span>
+                                Por: <span class="credit-author">Redacción Anfibia</span> <span
+                                    class="credit-separator">|</span> Arte: <span class="credit-artist">Arte
+                                    Anfibia</span>
                             </div>
                             <div class="card-actions">
-                                <button class="action-btn love-btn" title="Me gusta"><i class="far fa-heart"></i></button>
-                                <button class="action-btn share-btn" title="Compartir"><i class="fas fa-share-alt"></i></button>
+                                <button class="action-btn love-btn" title="Me gusta"><i
+                                        class="far fa-heart"></i></button>
+                                <button class="action-btn share-btn" title="Compartir"><i
+                                        class="fas fa-share-alt"></i></button>
                             </div>
                         </div>
                     </div>
@@ -857,18 +969,22 @@
                         <div class="card-divider-peach"></div>
                         <div class="card-meta-footer">
                             <div class="card-credits">
-                                Por: <span class="credit-author">Redacción Anfibia</span> <span class="credit-separator">|</span> Arte: <span class="credit-artist">Arte Anfibia</span>
+                                Por: <span class="credit-author">Redacción Anfibia</span> <span
+                                    class="credit-separator">|</span> Arte: <span class="credit-artist">Arte
+                                    Anfibia</span>
                             </div>
                             <div class="card-actions">
-                                <button class="action-btn love-btn" title="Me gusta"><i class="far fa-heart"></i></button>
-                                <button class="action-btn share-btn" title="Compartir"><i class="fas fa-share-alt"></i></button>
+                                <button class="action-btn love-btn" title="Me gusta"><i
+                                        class="far fa-heart"></i></button>
+                                <button class="action-btn share-btn" title="Compartir"><i
+                                        class="fas fa-share-alt"></i></button>
                             </div>
                         </div>
                     </div>
                 </article>
             </div>
 
-            
+
             <div class="anfibia-grid category-panel" id="panel-tecnologias">
                 <article class="anfibia-card">
                     <div class="card-img-container">
@@ -883,11 +999,15 @@
                         <div class="card-divider-peach"></div>
                         <div class="card-meta-footer">
                             <div class="card-credits">
-                                Por: <span class="credit-author">Redacción Anfibia</span> <span class="credit-separator">|</span> Arte: <span class="credit-artist">Arte Anfibia</span>
+                                Por: <span class="credit-author">Redacción Anfibia</span> <span
+                                    class="credit-separator">|</span> Arte: <span class="credit-artist">Arte
+                                    Anfibia</span>
                             </div>
                             <div class="card-actions">
-                                <button class="action-btn love-btn" title="Me gusta"><i class="far fa-heart"></i></button>
-                                <button class="action-btn share-btn" title="Compartir"><i class="fas fa-share-alt"></i></button>
+                                <button class="action-btn love-btn" title="Me gusta"><i
+                                        class="far fa-heart"></i></button>
+                                <button class="action-btn share-btn" title="Compartir"><i
+                                        class="fas fa-share-alt"></i></button>
                             </div>
                         </div>
                     </div>
@@ -905,30 +1025,34 @@
                         <div class="card-divider-peach"></div>
                         <div class="card-meta-footer">
                             <div class="card-credits">
-                                Por: <span class="credit-author">Redacción Anfibia</span> <span class="credit-separator">|</span> Arte: <span class="credit-artist">Arte Anfibia</span>
+                                Por: <span class="credit-author">Redacción Anfibia</span> <span
+                                    class="credit-separator">|</span> Arte: <span class="credit-artist">Arte
+                                    Anfibia</span>
                             </div>
                             <div class="card-actions">
-                                <button class="action-btn love-btn" title="Me gusta"><i class="far fa-heart"></i></button>
-                                <button class="action-btn share-btn" title="Compartir"><i class="fas fa-share-alt"></i></button>
+                                <button class="action-btn love-btn" title="Me gusta"><i
+                                        class="far fa-heart"></i></button>
+                                <button class="action-btn share-btn" title="Compartir"><i
+                                        class="fas fa-share-alt"></i></button>
                             </div>
                         </div>
                     </div>
                 </article>
             </div>
-            
-            
+
+
             <div class="load-more-container">
                 <button class="load-more-btn">Ver Más</button>
             </div>
         </section>
     </main>
 
-    
+
     <footer class="main-footer">
         <div class="footer-new-wide-container">
-            
+
             <div class="footer-left-block">
-                
+
                 <div class="footer-social-row">
                     <a href="#" class="social-circle" title="Twitter"><i class="fab fa-twitter"></i></a>
                     <a href="#" class="social-circle" title="Facebook"><i class="fab fa-facebook-f"></i></a>
@@ -936,7 +1060,7 @@
                     <a href="#" class="social-circle" title="YouTube"><i class="fab fa-youtube"></i></a>
                 </div>
 
-                
+
                 <ul class="footer-nav-links font-ui">
                     <li><a href="textos.html">Textos</a></li>
                     <li class="link-sep">|</li>
@@ -952,14 +1076,15 @@
                 </ul>
             </div>
 
-            
+
             <div class="footer-center-block">
                 <div class="footer-legal-info">
-                    UNSAM Campus Miguelete - 25 de Mayo y Francia (CP 1650) - San Martín, Prov. de Buenos Aires - Argentina - ISSN 2344-9365
+                    UNSAM Campus Miguelete - 25 de Mayo y Francia (CP 1650) - San Martín, Prov. de Buenos Aires -
+                    Argentina - ISSN 2344-9365
                 </div>
             </div>
 
-            
+
             <div class="footer-right-logos-block">
                 <div class="footer-brand-logo font-literary">Anfibia</div>
                 <div class="footer-vertical-divider"></div>
@@ -979,13 +1104,13 @@
         </div>
     </footer>
 
-    
+
     <div class="auth-modal-overlay" id="authModal">
         <div class="auth-modal-card">
             <div class="auth-modal-grid">
-                
+
                 <div class="auth-modal-form-col">
-                    
+
                     <div class="auth-panel active" id="authPanelLogin">
                         <div class="auth-header">
                             <h3 class="auth-header-title">Inicia tu sesión Anfibia</h3>
@@ -994,7 +1119,8 @@
                         <div class="auth-body">
                             <div class="auth-form-group">
                                 <label class="auth-label" for="authLoginUser">Gmail o Nombre de Usuario:</label>
-                                <input type="text" class="auth-input" id="authLoginUser" placeholder="ejemplo@gmail.com">
+                                <input type="text" class="auth-input" id="authLoginUser"
+                                    placeholder="ejemplo@gmail.com">
                             </div>
                             <div class="auth-form-group">
                                 <label class="auth-label" for="authLoginPassword">Contraseña:</label>
@@ -1011,8 +1137,8 @@
                             </div>
                         </div>
                     </div>
-                    
-                    
+
+
                     <div class="auth-panel" id="authPanelRegister">
                         <div class="auth-header">
                             <h3 class="auth-header-title">Crea tu cuenta Anfibia</h3>
@@ -1025,22 +1151,25 @@
                             </div>
                             <div class="auth-form-group">
                                 <label class="auth-label" for="authRegisterEmail">Gmail:</label>
-                                <input type="email" class="auth-input" id="authRegisterEmail" placeholder="usuario@gmail.com">
+                                <input type="email" class="auth-input" id="authRegisterEmail"
+                                    placeholder="usuario@gmail.com">
                             </div>
                             <div class="auth-form-group">
                                 <label class="auth-label" for="authRegisterPassword">Contraseña:</label>
-                                <input type="password" class="auth-input" id="authRegisterPassword" placeholder="••••••••">
+                                <input type="password" class="auth-input" id="authRegisterPassword"
+                                    placeholder="••••••••">
                             </div>
                             <div class="auth-action-row">
                                 <button class="auth-btn-primary" id="btnSubmitRegister">Registrarse</button>
                             </div>
                             <div style="text-align: center; margin-top: 10px;">
-                                <a href="#" class="auth-switch-link" id="btnGoToLogin">Ya tengo cuenta, iniciar sesión</a>
+                                <a href="#" class="auth-switch-link" id="btnGoToLogin">Ya tengo cuenta, iniciar
+                                    sesión</a>
                             </div>
                         </div>
                     </div>
-                    
-                    
+
+
                     <div class="auth-panel" id="authPanelLoginSuccess">
                         <div class="auth-success-panel">
                             <h2 class="auth-success-title">Bienvenido de nuevo</h2>
@@ -1048,8 +1177,8 @@
                             <button class="auth-btn-success" id="btnStartSession">Comenzar</button>
                         </div>
                     </div>
-                    
-                    
+
+
                     <div class="auth-panel" id="authPanelRegisterSuccess">
                         <div class="auth-success-panel">
                             <h2 class="auth-success-title">Gracias por registrarte</h2>
@@ -1058,17 +1187,18 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="auth-modal-sidebar-col">
                     <div class="auth-sidebar-logo">Anfibia</div>
                     <img src="img/unsam.png" alt="UNSAM" class="auth-sidebar-unsam">
-                    <p class="auth-sidebar-text">El periodismo narrativo y la ciencia se encuentran en tu cuenta. Regístrate para comentar, debatir y guardar tus lecturas favoritas.</p>
+                    <p class="auth-sidebar-text">El periodismo narrativo y la ciencia se encuentran en tu cuenta.
+                        Regístrate para comentar, debatir y guardar tus lecturas favoritas.</p>
                 </div>
             </div>
         </div>
     </div>
 
-    
+
     <div class="favorites-drawer-overlay" id="favoritesDrawerOverlay">
         <div class="favorites-drawer" id="favoritesDrawer">
             <div class="favorites-drawer-header">
@@ -1077,13 +1207,13 @@
             </div>
             <div class="favorites-drawer-body">
                 <div class="favorites-list" id="favoritesList">
-                    
+
                 </div>
             </div>
         </div>
     </div>
 
-    
+
     <div class="history-drawer-overlay" id="historyDrawerOverlay">
         <div class="history-drawer" id="historyDrawer">
             <div class="history-drawer-header">
@@ -1095,28 +1225,28 @@
             </div>
             <div class="history-drawer-body">
                 <div class="history-list" id="historyList">
-                    
+
                 </div>
             </div>
         </div>
     </div>
 
-    
+
     <div class="scroll-restore-toast" id="scrollRestoreToast">
         <span id="scrollRestoreMsg">Restaurando tu lectura...</span>
         <button class="btn-toast-restart" id="btnToastRestart">Ir al inicio</button>
         <button class="close-toast" id="closeRestoreToast">&times;</button>
     </div>
 
-    
+
     <div class="toast-notification" id="toast">
         <i class="fas fa-link"></i> <span id="toastMessage">Enlace copiado al portapapeles!</span>
     </div>
 
-    
+
     <script src="script.js"></script>
 
-    
+
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const categoryPanels = document.querySelectorAll('.category-panel');
@@ -1125,17 +1255,17 @@
             const loadMoreContainer = document.querySelector('.load-more-container');
             const loadMoreBtn = document.querySelector('.load-more-btn');
 
-            // Ambiente filter logic
+
             const filterTabs = document.querySelectorAll('.filter-tab');
 
             function applyFilter() {
                 const activeTab = document.querySelector('.filter-tab.active');
                 if (!activeTab) return;
-                const type = activeTab.getAttribute('data-type'); // 'cronicas', 'ensayo', 'nota'
-                
+                const type = activeTab.getAttribute('data-type');
+
                 const panel = document.getElementById('panel-ambiente');
                 if (!panel) return;
-                
+
                 const cards = panel.querySelectorAll('.anfibia-card, .annotation-card-home');
                 cards.forEach(card => {
                     let cardType = '';
@@ -1144,7 +1274,7 @@
                     } else {
                         const badgeEl = card.querySelector('.card-badge-flush');
                         const badgeText = badgeEl ? badgeEl.textContent.trim().toLowerCase() : '';
-                        
+
                         if (badgeText.includes('crónica') || badgeText.includes('cronica')) {
                             cardType = 'cronicas';
                         } else if (badgeText.includes('ensayo')) {
@@ -1153,7 +1283,7 @@
                             cardType = 'nota';
                         }
                     }
-                    
+
                     if (cardType === type) {
                         card.style.display = 'flex';
                         card.style.opacity = '1';
@@ -1163,7 +1293,6 @@
                     }
                 });
 
-                // Hide load more button when filtered
                 if (loadMoreContainer) {
                     loadMoreContainer.style.display = 'none';
                 }
@@ -1178,31 +1307,26 @@
             });
 
             function showCategory(category) {
-                // Hide all panels
                 categoryPanels.forEach(panel => {
                     panel.style.display = 'none';
                 });
 
-                // Show active panel
                 const activePanel = document.getElementById(`panel-${category}`);
                 if (activePanel) {
                     activePanel.style.display = 'grid';
 
-                    // Reset hidden cards
                     const hiddenCards = activePanel.querySelectorAll('.more-textos-card');
                     hiddenCards.forEach(card => {
                         card.style.display = 'none';
                         card.style.opacity = '0';
                     });
 
-                    // Reset related cards
                     const relatedCards = activePanel.querySelectorAll('.related-textos-card');
                     relatedCards.forEach(card => {
                         card.style.display = 'none';
                         card.style.opacity = '0';
                     });
 
-                    // Toggle Visibility of the "Ver Más" Button
                     if (hiddenCards.length > 0 || relatedCards.length > 0) {
                         loadMoreContainer.style.display = 'flex';
                         loadMoreBtn.textContent = 'Ver Más';
@@ -1211,7 +1335,6 @@
                     }
                 }
 
-                // Update active state in nav buttons
                 categoryButtons.forEach(btn => {
                     const btnCat = btn.getAttribute('data-category');
                     if (btnCat === category) {
@@ -1222,7 +1345,6 @@
                     }
                 });
 
-                // Toggle filter bar visibility
                 const filterBar = document.getElementById('filter-ambiente');
                 if (filterBar) {
                     filterBar.style.display = (category === 'ambiente') ? 'flex' : 'none';
@@ -1232,7 +1354,6 @@
                 }
             }
 
-            // Load More button click logic
             if (loadMoreBtn) {
                 loadMoreBtn.addEventListener('click', (e) => {
                     e.preventDefault();
@@ -1244,7 +1365,6 @@
                     const currentText = loadMoreBtn.textContent.trim();
 
                     if (currentText === 'Ver Más') {
-                        // Stage 1 -> 2: Show middle cards (4, 5, 6)
                         if (hiddenCards.length > 0) {
                             hiddenCards.forEach(card => {
                                 card.style.display = 'flex';
@@ -1253,19 +1373,17 @@
                                 }, 10);
                             });
                         }
-                        
-                        // Determine next text
+
                         if (relatedCards.length > 0) {
                             loadMoreBtn.textContent = 'Ver Crónicas Relacionadas';
                         } else {
                             loadMoreBtn.textContent = 'Ver Menos';
                         }
-                        
+
                         if (typeof showToast === 'function') {
                             showToast("Mostrando artículos adicionales");
                         }
                     } else if (currentText === 'Ver Crónicas Relacionadas') {
-                        // Stage 2 -> 3: Show related cards (7, 8, 9)
                         if (relatedCards.length > 0) {
                             relatedCards.forEach(card => {
                                 card.style.display = 'flex';
@@ -1274,14 +1392,13 @@
                                 }, 10);
                             });
                         }
-                        
+
                         loadMoreBtn.textContent = 'Cerrar Archivo';
-                        
+
                         if (typeof showToast === 'function') {
                             showToast("Abriendo crónicas relacionadas");
                         }
                     } else {
-                        // Stage 3/2 (Ver Menos / Cerrar Archivo) -> 1: Collapse all and reset
                         if (hiddenCards.length > 0) {
                             hiddenCards.forEach(card => {
                                 card.style.display = 'none';
@@ -1294,9 +1411,9 @@
                                 card.style.opacity = '0';
                             });
                         }
-                        
+
                         loadMoreBtn.textContent = 'Ver Más';
-                        
+
                         if (typeof showToast === 'function') {
                             showToast("Cerrando archivo");
                         }
@@ -1304,20 +1421,17 @@
                 });
             }
 
-            // Add click events to buttons
             categoryButtons.forEach(btn => {
                 btn.addEventListener('click', () => {
                     const category = btn.getAttribute('data-category');
                     showCategory(category);
-                    
-                    // Update URL parameter without reload
+
                     const url = new URL(window.location);
                     url.searchParams.set('cat', category);
                     window.history.pushState({}, '', url);
                 });
             });
 
-            // Read query parameter
             const params = new URLSearchParams(window.location.search);
             const initialCategory = params.get('cat') || 'ambiente';
             showCategory(initialCategory);

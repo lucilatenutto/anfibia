@@ -2,7 +2,7 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
-        const slides = document.querySelectorAll('.slide');
+    const slides = document.querySelectorAll('.slide');
     const dots = document.querySelectorAll('.dot');
     const prevBtn = document.getElementById('sliderPrev');
     const nextBtn = document.getElementById('sliderNext');
@@ -129,7 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (searchBtn && searchOverlay && closeSearch) {
         searchBtn.addEventListener('click', () => {
             searchOverlay.classList.add('active');
-            setTimeout(() => searchInput.focus(), 300); // Focus input after animation
+            setTimeout(() => searchInput.focus(), 300);
         });
 
         closeSearch.addEventListener('click', () => {
@@ -200,7 +200,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         }, 10);
                     });
                 }
-                
+
                 if (relatedCards.length > 0) {
                     loadMoreTextos.textContent = 'Ver Crónicas Relacionadas';
                 } else {
@@ -346,7 +346,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 vertProgressHandle.style.top = scrollPercent + '%';
 
                 tickData.forEach(tick => {
-                    if (scrollPercent >= tick.targetPercent - 1) { // 1% buffer
+                    if (scrollPercent >= tick.targetPercent - 1) {
                         tick.element.classList.add('active');
                     } else {
                         tick.element.classList.remove('active');
@@ -402,7 +402,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let currentSelectedText = "";
     let currentSelectedRange = null;
-    let selectedTheme = "peach"; // default theme
+    let selectedTheme = "peach";
 
     function hideSelectionBar() {
         if (selectionBar) {
@@ -444,7 +444,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (rects.length > 0) {
 
                     const rect = rects[0];
-                    const barWidth = 180; // approximate width of the bar
+                    const barWidth = 180;
 
                     const clampedViewportLeft = Math.max(barWidth / 2 + 10, Math.min(window.innerWidth - barWidth / 2 - 10, rect.left + rect.width / 2));
                     selectionBar.style.left = `${clampedViewportLeft + window.scrollX}px`;
@@ -969,9 +969,9 @@ document.addEventListener('DOMContentLoaded', () => {
             e.stopPropagation();
             mobileMenuDrawer.classList.toggle('active');
             menuBackdrop.classList.toggle('active');
-            
+
             if (mobileMenuDrawer.classList.contains('active')) {
-                document.body.style.overflow = 'hidden'; // prevent page scroll
+                document.body.style.overflow = 'hidden';
             } else {
                 document.body.style.overflow = '';
             }
@@ -1003,14 +1003,14 @@ document.addEventListener('DOMContentLoaded', () => {
                             item.classList.remove('open');
                         }
                     });
-                    
+
                     parent.classList.toggle('open');
                 }
             });
         });
     }
 
-    
+
     let pendingAction = null;
 
     const authModal = document.getElementById('authModal');
@@ -1018,12 +1018,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const closeAuthModalRegister = document.getElementById('closeAuthModalRegister');
     const btnGoToRegister = document.getElementById('btnGoToRegister');
     const btnGoToLogin = document.getElementById('btnGoToLogin');
-    
+
     const btnSubmitLogin = document.getElementById('btnSubmitLogin');
     const btnSubmitRegister = document.getElementById('btnSubmitRegister');
     const btnStartSession = document.getElementById('btnStartSession');
     const btnStartRegister = document.getElementById('btnStartRegister');
-    
+
     const authLoginUser = document.getElementById('authLoginUser');
     const authLoginPassword = document.getElementById('authLoginPassword');
     const authRegisterUsername = document.getElementById('authRegisterUsername');
@@ -1097,7 +1097,7 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             const userVal = authLoginUser.value.trim();
             const passVal = authLoginPassword.value.trim();
-            
+
             if (!userVal || !passVal) {
                 showToast("Por favor complete todos los campos.");
                 return;
@@ -1120,7 +1120,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const userVal = authRegisterUsername.value.trim();
             const emailVal = authRegisterEmail.value.trim();
             const passVal = authRegisterPassword.value.trim();
-            
+
             if (!userVal || !emailVal || !passVal) {
                 showToast("Por favor complete todos los campos.");
                 return;
@@ -1143,7 +1143,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function handleComenzar() {
         closeAuthModal();
-        syncAllFavoriteButtons(); // Sync UI after login/register
+        syncAllFavoriteButtons();
 
         if (typeof renderHistoryList === 'function') renderHistoryList();
         if (typeof renderContinueReading === 'function') renderContinueReading();
@@ -1165,7 +1165,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const mobileAccountLinks = document.querySelectorAll('.mobile-account-btn');
         const isLoggedIn = isUserLoggedIn();
         const username = localStorage.getItem('anfibia_username') || "Usuario";
-        
+
         desktopAccountLinks.forEach(link => {
             if (isLoggedIn) {
                 link.innerHTML = `<i class="far fa-user-circle"></i> Hola, ${username}`;
@@ -1236,7 +1236,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const titleEl = card.querySelector('.community-fav-title a');
             const title = titleEl ? titleEl.textContent.trim() : "Artículo";
             const url = titleEl ? titleEl.getAttribute('href') : "#";
-            
+
             const imgEl = card.querySelector('.community-fav-img-wrapper img');
             const image = imgEl ? imgEl.getAttribute('src') : "";
 
@@ -1259,7 +1259,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const titleEl = card.querySelector('.card-headline a, .card-title a, .compact-title a, .subhero-card-title a');
         const title = titleEl ? titleEl.textContent.trim() : "Artículo";
         const url = titleEl ? titleEl.getAttribute('href') : "#";
-        
+
         const imgEl = card.querySelector('.card-image, .subhero-card-img, img');
         const image = imgEl ? imgEl.getAttribute('src') : "";
 
@@ -1280,7 +1280,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 author = match ? match[1].trim() : creditsEl.textContent.trim();
             }
         }
-        
+
         const id = url && url !== '#' ? url.replace('.html', '') : title.toLowerCase().replace(/[^a-z0-9]+/g, '-');
 
         return { id, title, kicker, url, image, badge, author };
@@ -1292,7 +1292,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const title = titleEl.textContent.trim();
         const url = window.location.pathname.split('/').pop() || "index.html";
-        
+
         const imgEl = document.querySelector('.article-featured-image');
         const image = imgEl ? imgEl.getAttribute('src') : "";
 
@@ -1312,10 +1312,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function toggleFavorite(articleData) {
         if (!articleData) return;
-        
+
         let favorites = getFavorites();
         const index = favorites.findIndex(item => item.id === articleData.id);
-        
+
         if (index === -1) {
             favorites.push(articleData);
             saveFavorites(favorites);
@@ -1325,7 +1325,7 @@ document.addEventListener('DOMContentLoaded', () => {
             saveFavorites(favorites);
             showToast(`Eliminado de favoritos: "${articleData.title}"`);
         }
-        
+
         syncAllFavoriteButtons();
         if (favoritesDrawerOverlay && favoritesDrawerOverlay.classList.contains('active')) {
             renderFavoritesList();
@@ -1362,12 +1362,12 @@ document.addEventListener('DOMContentLoaded', () => {
             const countEl = card.querySelector('.fav-count');
             const btn = card.querySelector('.love-btn');
             const icon = btn.querySelector('i');
-            
+
             let baseCount = 0;
             if (id === 'patagonia') baseCount = 2154;
             else if (id === 'geopolitica') baseCount = 1421;
             else if (id === 'con-el-indio-se-murio-mi-juventud') baseCount = 892;
-            
+
             if (loggedIn && favIds.includes(id)) {
                 if (countEl) countEl.textContent = (baseCount + 1).toLocaleString('es-ES');
                 btn.classList.add('loved');
@@ -1384,7 +1384,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
         });
-        
+
         const floatLoveBtn = document.getElementById('floatLoveBtn');
         if (floatLoveBtn) {
             const data = extractActivePageData();
@@ -1419,15 +1419,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="popover-body"></div>
             `;
             document.body.appendChild(popover);
-            
+
             popover.querySelector('.popover-close').addEventListener('click', () => {
                 popover.classList.remove('active');
             });
         }
-        
+
         const authorText = author ? `${author} resaltó esto` : "Un lector resaltó esto";
         popover.querySelector('.popover-author').innerHTML = `<i class="fas fa-highlighter"></i> ${authorText}`;
-        
+
         const bodyEl = popover.querySelector('.popover-body');
         if (note) {
             bodyEl.textContent = `"${note}"`;
@@ -1435,14 +1435,14 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             bodyEl.style.display = 'none';
         }
-        
+
         const rect = el.getBoundingClientRect();
         const scrollX = window.scrollX || window.pageXOffset;
         const scrollY = window.scrollY || window.pageYOffset;
-        
+
         popover.style.left = `${rect.left + rect.width / 2 + scrollX}px`;
         popover.style.top = `${rect.top + scrollY - 10}px`;
-        
+
         popover.classList.add('active');
     }
 
@@ -1516,7 +1516,7 @@ document.addEventListener('DOMContentLoaded', () => {
         floatAnnotateBtn.addEventListener('click', (e) => {
             e.preventDefault();
             e.stopPropagation();
-            
+
             const isShowing = document.body.classList.toggle('show-highlights');
             floatAnnotateBtn.classList.toggle('active', isShowing);
 
@@ -1536,7 +1536,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function initializeReadingGuideToggle() {
         const guideToggleBtn = document.getElementById('activeReadingGuideToggle');
         const guideContainer = document.getElementById('activeReadingGuide');
-        
+
         if (guideToggleBtn && guideContainer) {
             guideToggleBtn.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -1549,9 +1549,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function renderFavoritesList() {
         if (!favoritesList) return;
-        
+
         const favorites = getFavorites();
-        
+
         if (favorites.length === 0) {
             favoritesList.innerHTML = `
                 <div class="favorites-empty-state">
@@ -1562,12 +1562,12 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
             return;
         }
-        
+
         let html = '';
         favorites.forEach(item => {
             const displayUrl = item.url && item.url !== '#' ? item.url : '#';
             const displayImg = item.image || 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=150';
-            
+
             html += `
                 <div class="favorite-item-card" data-id="${item.id}">
                     <div class="favorite-item-img-container">
@@ -1588,9 +1588,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             `;
         });
-        
+
         favoritesList.innerHTML = html;
-        
+
         const removeBtns = favoritesList.querySelectorAll('.favorite-remove-btn');
         removeBtns.forEach(btn => {
             btn.addEventListener('click', (e) => {
@@ -1625,7 +1625,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (homeHistorySection) homeHistorySection.style.display = 'none';
                     const scrollRestoreToast = document.getElementById('scrollRestoreToast');
                     if (scrollRestoreToast) scrollRestoreToast.classList.remove('active');
-                    
+
                     showToast("Sesión cerrada correctamente.");
                 }
             } else {
@@ -1710,7 +1710,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (localStorage.getItem('anfibia_logged_in') !== 'true') return;
         let history = getHistory();
         history = history.filter(item => item.id !== articleData.id);
-        
+
         history.unshift({
             ...articleData,
             progress: Math.round(progress),
@@ -1766,9 +1766,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function renderHistoryList() {
         if (!historyList) return;
-        
+
         const history = getHistory();
-        
+
         if (history.length === 0) {
             historyList.innerHTML = `
                 <div class="history-empty-state">
@@ -1779,17 +1779,17 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
             return;
         }
-        
+
         let html = '';
         history.forEach(item => {
             const displayUrl = item.url && item.url !== '#' ? item.url : '#';
             const displayImg = item.image || 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=150';
-            
+
             let progressText = `${item.progress}% leído`;
             if (item.progress >= 95) {
                 progressText = '<span style="color: #4cd2ff; font-weight: bold;"><i class="fas fa-check-circle"></i> Completado</span>';
             }
-            
+
             html += `
                 <div class="history-item-card" data-id="${item.id}">
                     <div class="history-item-img-container">
@@ -1819,9 +1819,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             `;
         });
-        
+
         historyList.innerHTML = html;
-        
+
         const removeBtns = historyList.querySelectorAll('.history-remove-btn');
         removeBtns.forEach(btn => {
             btn.addEventListener('click', (e) => {
@@ -1838,21 +1838,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function renderContinueReading() {
         if (!continueReadingSection || !continueReadingGrid) return;
-        
+
         const history = getHistory();
         const inProgress = history.filter(item => item.progress >= 5 && item.progress < 95);
-        
+
         if (inProgress.length === 0) {
             continueReadingSection.style.display = 'none';
             return;
         }
-        
+
         continueReadingSection.style.display = 'block';
-        
+
         let html = '';
         inProgress.forEach(item => {
             const displayUrl = item.url && item.url !== '#' ? item.url : '#';
-            
+
             html += `
                 <article class="continue-fav-card">
                     <div>
@@ -1881,7 +1881,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </article>
             `;
         });
-        
+
         continueReadingGrid.innerHTML = html;
     }
 
@@ -1889,29 +1889,29 @@ document.addEventListener('DOMContentLoaded', () => {
         const homeHistorySection = document.getElementById('homeHistorySection');
         const homeHistoryGrid = document.getElementById('homeHistoryGrid');
         if (!homeHistorySection || !homeHistoryGrid) return;
-        
+
         const history = getHistory();
 
         const nonInProgress = history.filter(item => item.progress < 5 || item.progress >= 95);
-        
+
         if (nonInProgress.length === 0) {
             homeHistorySection.style.display = 'none';
             return;
         }
-        
+
         homeHistorySection.style.display = 'block';
-        
+
         let html = '';
         nonInProgress.slice(0, 6).forEach(item => {
             const displayUrl = item.url && item.url !== '#' ? item.url : '#';
-            
+
             let btnText = "Retomar lectura";
             let progressText = `${item.progress}% leído`;
             if (item.progress >= 95) {
                 btnText = "Volver a leer";
                 progressText = '<span style="color: #5856d6; font-weight: bold;"><i class="fas fa-check-circle"></i> Completado</span>';
             }
-            
+
             html += `
                 <article class="continue-fav-card">
                     <div>
@@ -1940,7 +1940,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </article>
             `;
         });
-        
+
         homeHistoryGrid.innerHTML = html;
     }
 
