@@ -35,6 +35,7 @@ body {
     background-color: var(--color-light-gray);
     color: var(--color-black);
     line-height: 1.6;
+    width: 100%;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
 }
@@ -1148,6 +1149,10 @@ button {
     text-transform: uppercase;
     font-weight: 400;
     white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 0; /* necesario para que flex items respeten overflow */
+    flex-shrink: 1;
 }
 
 .banner-line {
@@ -1174,12 +1179,26 @@ button {
 .card-img-container {
     position: relative;
     width: 100%;
-    aspect-ratio: 16 / 10;
+    /* Fallback para Safari iOS < 15 que no soporta aspect-ratio */
+    padding-bottom: 62.5%; /* 10/16 = 62.5% equivale a 16:10 */
+    height: 0;
     overflow: hidden;
     background-color: var(--color-black);
 }
 
+/* Navegadores modernos sobreescriben el padding-bottom hack */
+@supports (aspect-ratio: 16 / 10) {
+    .card-img-container {
+        aspect-ratio: 16 / 10;
+        padding-bottom: 0;
+        height: auto;
+    }
+}
+
 .card-image {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -3331,8 +3350,17 @@ button {
     }
 
     .preview-column {
-        display: none;
+        display: flex;
+    }
 
+    .ig-card-preview,
+    .theme-selector-container,
+    .column-title {
+        display: none;
+    }
+
+    .preview-download-btn {
+        margin-top: 0;
     }
 }
 
